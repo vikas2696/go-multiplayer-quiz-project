@@ -2,8 +2,6 @@ package database
 
 import (
 	"database/sql"
-	"go-multiplayer-quiz-project/models"
-	"log"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -37,7 +35,7 @@ func createTables() {
 	_, err := DB.Exec(quizRoomQuery)
 
 	if err != nil {
-		log.Fatal("Unable to initialize table" + err.Error())
+		panic("Unable to initialize table" + err.Error())
 	}
 
 	playerQuery := `
@@ -48,33 +46,6 @@ func createTables() {
 
 	_, err = DB.Exec(playerQuery)
 	if err != nil {
-		log.Fatal("Unable to initialize table" + err.Error())
+		panic("Unable to initialize table" + err.Error())
 	}
-}
-
-func GetQuizRoomsFromDB() (q []models.QuizRoom) {
-
-	query := `	SELECT * FROM quizrooms	`
-
-	rows, err := DB.Query(query)
-
-	if err != nil {
-		panic("Unable to fetch Quiz Rooms: " + err.Error())
-	}
-
-	defer rows.Close()
-
-	var quizRoom models.QuizRoom
-	for rows.Next() {
-		var quizroom models.QuizRoom
-		err = rows.Scan(&quizroom.QuizRoomId, &quizroom.Players, &quizroom.TimerTime, &quizroom.QuizTopic)
-
-		if err != nil {
-			log.Fatal("Unable to fetch rows: " + err.Error())
-		}
-
-		q = append(q, quizRoom)
-	}
-
-	return q
 }
