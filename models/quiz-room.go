@@ -69,23 +69,11 @@ func (quizRoom QuizRoom) SaveQuizRoomToDB() error {
 		return err
 	}
 
-	result, err := stmt.Exec(playersJson, quizRoom.TimerTime, quizRoom.QuizTopic)
+	_, err = stmt.Exec(playersJson, quizRoom.TimerTime, quizRoom.QuizTopic)
 
 	if err != nil {
 		return err
 	}
 
-	quizRoomId, err := result.LastInsertId()
-
-	if err != nil {
-		return err
-	}
-
-	quizRoom.QuizRoomId = quizRoomId
-	//fmt.Print(quizRoom.QuizTopic)
 	return err
-}
-
-func (player Player) AddPlayerToQuiz() {
-
 }

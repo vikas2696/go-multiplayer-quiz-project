@@ -3,6 +3,7 @@ package main
 import (
 	"go-multiplayer-quiz-project/database"
 	"go-multiplayer-quiz-project/models"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -12,8 +13,9 @@ func main() {
 	database.InitDB()
 	server := gin.Default()
 
-	server.GET("/", showAllQuizRooms)
-	server.POST("/create-quiz", CreateQuizRoom)
+	server.GET("/quizrooms", showAllQuizRooms)
+	server.POST("/create-quizroom", createQuizRoom)
+	server.PATCH("/quizrooms/:id", joinQuizRoom)
 
 	err := server.Run("localhost:8080")
 
@@ -35,7 +37,7 @@ func showAllQuizRooms(context *gin.Context) {
 
 }
 
-func CreateQuizRoom(context *gin.Context) {
+func createQuizRoom(context *gin.Context) {
 	var quizRoom models.QuizRoom
 	err := context.ShouldBindJSON(&quizRoom)
 
@@ -51,4 +53,27 @@ func CreateQuizRoom(context *gin.Context) {
 	}
 
 	context.JSON(201, quizRoom)
+}
+
+func joinQuizRoom(context *gin.Context) {
+
+	var player models.Player
+	err := context.ShouldBindJSON(&player)
+
+	if err != nil {
+		context.String(400, "Bad Request"+err.Error())
+	}
+
+	quizId, err := strconv.Atoi(context.Param("id"))
+
+	if err != nil {
+		context.String(400, "Bad Request"+err.Error())
+	}
+
+	err = player.AddPlayerToQuiz(quizId)
+
+	if err != nil {
+		context.String(400, "Bad Request"+err.Error())
+	}
+
 }
