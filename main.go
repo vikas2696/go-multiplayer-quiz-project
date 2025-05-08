@@ -13,7 +13,7 @@ func main() {
 	server := gin.Default()
 
 	server.GET("/", showAllQuizRooms)
-	server.PUT("/create-quiz-room", CreateQuizRoom)
+	server.POST("/create-quiz", CreateQuizRoom)
 
 	err := server.Run("localhost:8080")
 
@@ -40,11 +40,15 @@ func CreateQuizRoom(context *gin.Context) {
 	err := context.ShouldBindJSON(&quizRoom)
 
 	if err != nil {
-		context.String(400, "Bad Request")
+		context.String(400, "Bad Request"+err.Error())
 		return
 	}
 
-	quizRoom.SaveQuizRoomToDB()
+	err = quizRoom.SaveQuizRoomToDB()
+	if err != nil {
+		context.String(400, "Bad Request"+err.Error())
+		return
+	}
 
 	context.JSON(201, quizRoom)
 }

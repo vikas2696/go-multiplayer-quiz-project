@@ -1,0 +1,17 @@
+POST http://localhost:8080/create-quiz
+Content-Type: application/json
+
+{
+  "Players": [{
+      "PlayerId": 101,
+      "Name": "John Doe",
+      "Score": 50
+    },
+    {
+      "PlayerId": 102,
+      "Name": "Jane Smith",
+      "Score": 45
+    }],
+  "TimerTime": 60,
+  "QuizTopic": "Maths"
+}

@@ -27,7 +27,7 @@ func createTables() {
 	quizRoomQuery := `
 		CREATE TABLE IF NOT EXISTS quizrooms (
 		quizroomid INTEGER PRIMARY KEY AUTOINCREMENT,
-		players TEXT NOT NULL,
+		players TEXT,
 		timertime INTEGER NOT NULL,
 		quiztopic TEXT NOT NULL
 		)`

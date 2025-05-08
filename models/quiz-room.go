@@ -1,6 +1,9 @@
 package models
 
-import "go-multiplayer-quiz-project/database"
+import (
+	"encoding/json"
+	"go-multiplayer-quiz-project/database"
+)
 
 type QuizRoom struct {
 	QuizRoomId int64
@@ -24,13 +27,23 @@ func GetQuizRoomsFromDB() ([]QuizRoom, error) {
 	defer rows.Close()
 
 	var quizRoom QuizRoom
+	var playersData string
+	var playersList []Player
 	for rows.Next() {
-		var quizroom QuizRoom
-		err = rows.Scan(&quizroom.QuizRoomId, &quizroom.Players, &quizroom.TimerTime, &quizroom.QuizTopic)
+
+		err = rows.Scan(&quizRoom.QuizRoomId, &playersData, &quizRoom.TimerTime, &quizRoom.QuizTopic)
 
 		if err != nil {
 			return q, err
 		}
+
+		err = json.Unmarshal([]byte(playersData), &playersList)
+
+		if err != nil {
+			return q, err
+		}
+
+		quizRoom.Players = playersList
 
 		q = append(q, quizRoom)
 	}
@@ -40,7 +53,7 @@ func GetQuizRoomsFromDB() ([]QuizRoom, error) {
 
 func (quizRoom QuizRoom) SaveQuizRoomToDB() error {
 
-	query := `	INSERT INTO quizrooms( players, timetime, quiztopic) 
+	query := `	INSERT INTO quizrooms( players, timertime, quiztopic) 
 			VALUES (?,?,?)	`
 
 	stmt, err := database.DB.Prepare(query)
@@ -51,7 +64,12 @@ func (quizRoom QuizRoom) SaveQuizRoomToDB() error {
 
 	defer stmt.Close()
 
-	result, err := stmt.Exec(quizRoom.Players, quizRoom.TimerTime, quizRoom.QuizTopic)
+	playersJson, err := json.Marshal(quizRoom.Players)
+	if err != nil {
+		return err
+	}
+
+	result, err := stmt.Exec(playersJson, quizRoom.TimerTime, quizRoom.QuizTopic)
 
 	if err != nil {
 		return err
@@ -64,6 +82,7 @@ func (quizRoom QuizRoom) SaveQuizRoomToDB() error {
 	}
 
 	quizRoom.QuizRoomId = quizRoomId
+	//fmt.Print(quizRoom.QuizTopic)
 	return err
 }
 
