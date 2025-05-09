@@ -1,8 +1,8 @@
-PATCH http://localhost:8080/quizrooms/2
+PATCH http://localhost:8080/quizrooms/3
 Content-Type: application/json
 
     {
-      "PlayerId": 107,
+      "PlayerId": 108,
       "Username": "New Name"
     }
 

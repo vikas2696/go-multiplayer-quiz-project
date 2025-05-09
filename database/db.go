@@ -35,7 +35,7 @@ func createTables() {
 	_, err := DB.Exec(quizRoomQuery)
 
 	if err != nil {
-		panic("Unable to initialize table" + err.Error())
+		panic("Unable to initialize quiz room table" + err.Error())
 	}
 
 	playerQuery := `
@@ -46,6 +46,6 @@ func createTables() {
 
 	_, err = DB.Exec(playerQuery)
 	if err != nil {
-		panic("Unable to initialize table" + err.Error())
+		panic("Unable to initialize player table" + err.Error())
 	}
 }

@@ -2,6 +2,7 @@ package routeshandlers
 
 import (
 	"go-multiplayer-quiz-project/models"
+	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -12,7 +13,7 @@ func showAllQuizRooms(context *gin.Context) {
 	quizRooms, err := models.GetQuizRoomsFromDB()
 
 	if err != nil {
-		context.String(500, "Internal Server Error: Could not fetch QuizRooms")
+		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Quizrooms not found"})
 		return
 	}
 
@@ -58,5 +59,7 @@ func joinQuizRoom(context *gin.Context) {
 	if err != nil {
 		context.String(400, "Bad Request"+err.Error())
 	}
+
+	context.JSON(201, player)
 
 }

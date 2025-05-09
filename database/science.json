@@ -1,0 +1,82 @@
+[
+  {
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Earth",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Venus",
+    "answer": "Mars"
+  },
+  {
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "ques": "What part of the cell contains DNA?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Cytoplasm",
+    "answer": "Nucleus"
+  },
+  {
+    "ques": "What is the chemical symbol for water?",
+    "optionA": "O2",
+    "optionB": "H2O",
+    "optionC": "CO2",
+    "optionD": "NaCl",
+    "answer": "H2O"
+  },
+  {
+    "ques": "What is the chemical element with the symbol 'O'?",
+    "optionA": "Oxygen",
+    "optionB": "Osmium",
+    "optionC": "Ozone",
+    "optionD": "Oganesson",
+    "answer": "Oxygen"
+  },
+  {
+    "ques": "Which planet has the most moons?",
+    "optionA": "Earth",
+    "optionB": "Jupiter",
+    "optionC": "Saturn",
+    "optionD": "Neptune",
+    "answer": "Saturn"
+  },
+  {
+    "ques": "What is the hardest natural substance on Earth?",
+    "optionA": "Gold",
+    "optionB": "Diamond",
+    "optionC": "Iron",
+    "optionD": "Platinum",
+    "answer": "Diamond"
+  },
+  {
+    "ques": "What organ pumps blood through the body?",
+    "optionA": "Brain",
+    "optionB": "Lungs",
+    "optionC": "Heart",
+    "optionD": "Stomach",
+    "answer": "Heart"
+  },
+  {
+    "ques": "Which vitamin is produced in skin by sunlight?",
+    "optionA": "Vitamin A",
+    "optionB": "Vitamin B12",
+    "optionC": "Vitamin C",
+    "optionD": "Vitamin D",
+    "answer": "Vitamin D"
+  },
+  {
+    "ques": "Which gas makes up most of Earth's atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "CO2",
+    "optionD": "Helium",
+    "answer": "Nitrogen"
+  }
+]
