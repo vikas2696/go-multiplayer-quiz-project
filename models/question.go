@@ -35,7 +35,7 @@ func GetQuestionsFromJSON(filename string) ([]Question, error) {
 	return questions, err
 }
 
-func GetQuestionFromQid(questions []Question, qId int) (q Question) {
+func GetQuestionFromId(questions []Question, qId int) (q Question) {
 
 	for index := range questions {
 		if questions[index].QuestionId == qId {

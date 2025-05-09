@@ -66,3 +66,24 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 
 	return err
 }
+
+func GetPlayerFromId(pId int) (p Player, err error) {
+
+	query := "SELECT * FROM players WHERE playerid = ?"
+	rows, err := database.DB.Query(query, pId)
+
+	if err != nil {
+		return p, err
+	}
+
+	defer rows.Close()
+
+	if rows.Next() {
+		err = rows.Scan(&p)
+		if err != nil {
+			return p, err
+		}
+	}
+
+	return p, err
+}
