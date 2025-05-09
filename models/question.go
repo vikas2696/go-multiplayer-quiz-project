@@ -7,12 +7,13 @@ import (
 )
 
 type Question struct {
-	Ques    string
-	OptionA string
-	OptionB string
-	OptionC string
-	OptionD string
-	Answer  string
+	QuestionId int
+	Ques       string
+	OptionA    string
+	OptionB    string
+	OptionC    string
+	OptionD    string
+	Answer     string
 }
 
 func GetQuestionsFromJSON(filename string) ([]Question, error) {
@@ -32,4 +33,16 @@ func GetQuestionsFromJSON(filename string) ([]Question, error) {
 	}
 
 	return questions, err
+}
+
+func GetQuestionFromQid(questions []Question, qId int) (q Question) {
+
+	for index := range questions {
+		if questions[index].QuestionId == qId {
+			q = questions[index]
+		}
+
+	}
+
+	return q
 }
