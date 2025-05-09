@@ -2,7 +2,7 @@ PATCH http://localhost:8080/quizrooms/2
 Content-Type: application/json
 
     {
-      "PlayerId": 106,
-      "Username": "Rahul Kumar"
+      "PlayerId": 107,
+      "Username": "New Name"
     }
 
