@@ -63,3 +63,22 @@ func joinQuizRoom(context *gin.Context) {
 	context.JSON(201, player)
 
 }
+
+func lobby(context *gin.Context) {
+
+	quizId, err := strconv.Atoi(context.Param("id"))
+	if err != nil {
+		context.JSON(http.StatusNotFound, gin.H{"Message": "Quiz Room not found"})
+		return
+	}
+
+	var quizRoom models.QuizRoom
+	err = quizRoom.GetQuizRoomFromId(quizId)
+	if err != nil {
+		context.JSON(http.StatusNotFound, gin.H{"Message": "Quiz Room not found"})
+		return
+	}
+
+	context.JSON(http.StatusOK, quizRoom)
+
+}

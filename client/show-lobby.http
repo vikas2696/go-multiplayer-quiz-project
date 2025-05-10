@@ -1,0 +1,3 @@
+GET http://localhost:8080/quizrooms/0/lobby
+Content-Type: application/json
+

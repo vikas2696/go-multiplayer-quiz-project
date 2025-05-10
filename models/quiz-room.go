@@ -93,3 +93,30 @@ func (quizRoom QuizRoom) SaveQuizRoomToDB() error {
 
 	return err
 }
+
+func (q *QuizRoom) GetQuizRoomFromId(quizId int) error {
+
+	query := `	SELECT * FROM quizrooms WHERE quizroomid = ?  `
+
+	rows := database.DB.QueryRow(query, quizId)
+
+	var playersData string
+	var scoresheetData string
+
+	err := rows.Scan(&q.QuizRoomId, &playersData, &q.TimerTime, &q.QuizTopic, &scoresheetData)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal([]byte(playersData), &q.Players)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal([]byte(scoresheetData), &q.ScoreSheet)
+	if err != nil {
+		return err
+	}
+
+	return err
+}
