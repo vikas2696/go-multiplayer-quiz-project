@@ -10,7 +10,7 @@ type Player struct {
 	Username string
 }
 
-func getPlayersList(quizId int) ([]Player, error) {
+func getJoinedPlayersList(quizId int) ([]Player, error) {
 
 	var players []Player
 	var dataString string
@@ -46,7 +46,7 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 				SET  players = ?
 				WHERE quizroomid = ?	`
 
-	players, err := getPlayersList(quizId)
+	players, err := getJoinedPlayersList(quizId)
 	if err != nil {
 		return err
 	}

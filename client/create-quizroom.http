@@ -2,14 +2,15 @@ POST http://localhost:8080/create-quizroom
 Content-Type: application/json
 
 {
-  "Players": [{
-      "PlayerId": 101,
-      "Username": "Hari Ram"
-    },
+  "Players": [
     {
-      "PlayerId": 102,
-      "Username": "Steve Smith"
-    }],
+      "PlayerId": 101,
+      "Username": "shree Ram"
+    }
+  ],
   "TimerTime": 60,
-  "QuizTopic": "Maths"
+  "QuizTopic": "Science",
+  "ScoreSheet": {
+    "101": 0
+  }
 }

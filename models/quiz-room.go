@@ -10,6 +10,7 @@ type QuizRoom struct {
 	Players    []Player
 	TimerTime  int
 	QuizTopic  string
+	ScoreSheet map[int64]int
 }
 
 func GetQuizRoomsFromDB() ([]QuizRoom, error) {
@@ -28,16 +29,23 @@ func GetQuizRoomsFromDB() ([]QuizRoom, error) {
 
 	var quizRoom QuizRoom
 	var playersData string
+	var scoresheetData string
 	var playersList []Player
 	for rows.Next() {
 
-		err = rows.Scan(&quizRoom.QuizRoomId, &playersData, &quizRoom.TimerTime, &quizRoom.QuizTopic)
+		err = rows.Scan(&quizRoom.QuizRoomId, &playersData, &quizRoom.TimerTime, &quizRoom.QuizTopic, &scoresheetData)
 
 		if err != nil {
 			return q, err
 		}
 
 		err = json.Unmarshal([]byte(playersData), &playersList)
+
+		if err != nil {
+			return q, err
+		}
+
+		err = json.Unmarshal([]byte(scoresheetData), &quizRoom.ScoreSheet)
 
 		if err != nil {
 			return q, err
@@ -53,8 +61,8 @@ func GetQuizRoomsFromDB() ([]QuizRoom, error) {
 
 func (quizRoom QuizRoom) SaveQuizRoomToDB() error {
 
-	query := `	INSERT INTO quizrooms( players, timertime, quiztopic) 
-			VALUES (?,?,?)	`
+	query := `	INSERT INTO quizrooms( players, timertime, quiztopic, scoresheet) 
+			VALUES (?,?,?,?)	`
 
 	stmt, err := database.DB.Prepare(query)
 
@@ -69,7 +77,15 @@ func (quizRoom QuizRoom) SaveQuizRoomToDB() error {
 		return err
 	}
 
-	_, err = stmt.Exec(playersJson, quizRoom.TimerTime, quizRoom.QuizTopic)
+	hostPlayerId := quizRoom.Players[0].PlayerId
+	quizRoom.ScoreSheet[hostPlayerId] = 0
+
+	scoreSheetJson, err := json.Marshal(quizRoom.ScoreSheet)
+	if err != nil {
+		return err
+	}
+
+	_, err = stmt.Exec(playersJson, quizRoom.TimerTime, quizRoom.QuizTopic, scoreSheetJson)
 
 	if err != nil {
 		return err

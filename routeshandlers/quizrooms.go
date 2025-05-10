@@ -26,13 +26,13 @@ func createQuizRoom(context *gin.Context) {
 	err := context.ShouldBindJSON(&quizRoom)
 
 	if err != nil {
-		context.String(400, "Bad Request"+err.Error())
+		context.String(400, "Bad Request "+err.Error())
 		return
 	}
 
 	err = quizRoom.SaveQuizRoomToDB()
 	if err != nil {
-		context.String(400, "Bad Request"+err.Error())
+		context.String(400, "Bad Request "+err.Error())
 		return
 	}
 

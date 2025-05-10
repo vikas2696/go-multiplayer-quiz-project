@@ -29,7 +29,8 @@ func createTables() {
 		quizroomid INTEGER PRIMARY KEY AUTOINCREMENT,
 		players TEXT,
 		timertime INTEGER NOT NULL,
-		quiztopic TEXT NOT NULL
+		quiztopic TEXT NOT NULL,
+		scoresheet TEXT NOT NULL
 		)`
 
 	_, err := DB.Exec(quizRoomQuery)
