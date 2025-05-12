@@ -8,6 +8,6 @@ func RunRoutes(server *gin.Engine) {
 	server.POST("/create-quizroom", createQuizRoom)
 	server.PATCH("/quizrooms/:id", joinQuizRoom)
 	server.GET("/quizrooms/:id/:ques_id", loadQuestion)
-	server.POST("/quizrooms/:id/:ques_id", checkAnswer)
 	server.GET("/quizrooms/:id/lobby", lobby)
+	server.POST("/quizrooms/:id/:ques_id/answer", showAnswer)
 }

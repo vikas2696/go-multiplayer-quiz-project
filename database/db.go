@@ -30,6 +30,7 @@ func createTables() {
 		players TEXT,
 		timertime INTEGER NOT NULL,
 		quiztopic TEXT NOT NULL,
+		isrunning INTEGER NOT NULL DEFAULT 0,
 		scoresheet TEXT NOT NULL
 		)`
 

@@ -57,7 +57,7 @@ func joinQuizRoom(context *gin.Context) {
 	err = player.AddPlayerToQuiz(quizId)
 
 	if err != nil {
-		context.String(400, "Bad Request"+err.Error())
+		context.String(400, "Bad Request "+err.Error())
 	}
 
 	context.JSON(201, player)

@@ -4,13 +4,19 @@ Content-Type: application/json
 {
   "Players": [
     {
-      "PlayerId": 101,
-      "Username": "shree Ram"
+      "PlayerId": 103,
+      "Username": "shree Krishna"
+    },
+
+    {
+      "PlayerId": 104,
+      "Username": "shree Kans"
     }
   ],
-  "TimerTime": 60,
-  "QuizTopic": "Science",
+  "TimerTime": 30,
+  "QuizTopic": "Maths",
   "ScoreSheet": {
-    "101": 0
+    "103": 0,
+    "104": 0
   }
 }

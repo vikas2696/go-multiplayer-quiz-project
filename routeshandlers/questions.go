@@ -10,6 +10,18 @@ import (
 
 func loadQuestion(context *gin.Context) {
 
+	quizRoomId, err := strconv.Atoi(context.Param("id"))
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Invalid Quiz Room"})
+		return
+	}
+
+	err = models.UpdateRoomStatus(int64(quizRoomId))
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Cannot update room status"})
+		return
+	}
+
 	ques_id, err := strconv.Atoi(context.Param("ques_id"))
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Cannot convert question id"})
@@ -28,7 +40,7 @@ func loadQuestion(context *gin.Context) {
 	context.JSON(http.StatusOK, question)
 }
 
-func checkAnswer(context *gin.Context) {
+func showAnswer(context *gin.Context) {
 
 	var userAnswer map[string]string
 	err := context.ShouldBindJSON(&userAnswer)

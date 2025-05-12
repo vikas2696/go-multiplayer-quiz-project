@@ -2,6 +2,7 @@ package models
 
 import (
 	"encoding/json"
+	"errors"
 	"go-multiplayer-quiz-project/database"
 )
 
@@ -42,6 +43,7 @@ func getJoinedPlayersList(quizId int) ([]Player, error) {
 }
 
 func (player Player) AddPlayerToQuiz(quizId int) error {
+
 	query := `	UPDATE quizrooms 
 				SET  players = ?
 				WHERE quizroomid = ?	`
@@ -49,6 +51,14 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 	players, err := getJoinedPlayersList(quizId)
 	if err != nil {
 		return err
+	}
+
+	for index := range players {
+
+		if players[index].PlayerId == player.PlayerId {
+			return errors.New("player already joined")
+		}
+
 	}
 
 	players = append(players, player)
@@ -62,6 +72,14 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 
 	if err != nil {
 		return err
+	}
+
+	var quizRoom QuizRoom
+	quizRoom.GetQuizRoomFromId(quizId)
+
+	err = AddPlayerToScoreSheet(quizId, player.PlayerId, quizRoom.ScoreSheet)
+	if err != nil {
+		return errors.New("unable to add player to scoresheet")
 	}
 
 	return err
