@@ -19,7 +19,7 @@ func GetQuizRoomsFromDB() ([]QuizRoom, error) {
 
 	var q []QuizRoom
 
-	query := `	SELECT * FROM quizrooms	`
+	query := "SELECT * FROM quizrooms"
 
 	rows, err := database.DB.Query(query)
 
@@ -34,6 +34,11 @@ func GetQuizRoomsFromDB() ([]QuizRoom, error) {
 	var scoresheetData string
 	var playersList []Player
 	for rows.Next() {
+
+		quizRoom = QuizRoom{}
+		playersData = ""
+		scoresheetData = ""
+		playersList = nil
 
 		err = rows.Scan(&quizRoom.QuizRoomId, &playersData, &quizRoom.TimerTime, &quizRoom.QuizTopic, &quizRoom.IsRunnning, &scoresheetData)
 
