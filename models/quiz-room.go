@@ -7,12 +7,13 @@ import (
 )
 
 type QuizRoom struct {
-	QuizRoomId int64
-	Players    []Player
-	TimerTime  int
-	QuizTopic  string
-	IsRunnning bool
-	ScoreSheet map[int64]int
+	QuizRoomId     int64
+	Players        []Player
+	TimerTime      int
+	QuizTopic      string
+	IsRunnning     bool
+	ScoreSheet     map[int64]int
+	PlayersAnswers map[int64]string
 }
 
 func GetQuizRoomsFromDB() ([]QuizRoom, error) {
@@ -32,28 +33,33 @@ func GetQuizRoomsFromDB() ([]QuizRoom, error) {
 	var quizRoom QuizRoom
 	var playersData string
 	var scoresheetData string
+	var playersAnswersData string
 	var playersList []Player
 	for rows.Next() {
 
 		quizRoom = QuizRoom{}
 		playersData = ""
 		scoresheetData = ""
+		playersAnswersData = ""
 		playersList = nil
 
-		err = rows.Scan(&quizRoom.QuizRoomId, &playersData, &quizRoom.TimerTime, &quizRoom.QuizTopic, &quizRoom.IsRunnning, &scoresheetData)
+		err = rows.Scan(&quizRoom.QuizRoomId, &playersData, &quizRoom.TimerTime, &quizRoom.QuizTopic, &quizRoom.IsRunnning, &scoresheetData, &playersAnswersData)
 
 		if err != nil {
 			return q, err
 		}
 
 		err = json.Unmarshal([]byte(playersData), &playersList)
+		if err != nil {
+			return q, err
+		}
 
+		err = json.Unmarshal([]byte(playersAnswersData), &quizRoom.PlayersAnswers)
 		if err != nil {
 			return q, err
 		}
 
 		err = json.Unmarshal([]byte(scoresheetData), &quizRoom.ScoreSheet)
-
 		if err != nil {
 			return q, err
 		}
@@ -66,39 +72,52 @@ func GetQuizRoomsFromDB() ([]QuizRoom, error) {
 	return q, err
 }
 
-func (quizRoom QuizRoom) SaveQuizRoomToDB() error {
+func (quizRoom QuizRoom) SaveQuizRoomToDB() (quizRoomId int64, err error) {
 
-	query := `	INSERT INTO quizrooms( players, timertime, quiztopic, isrunning, scoresheet) 
-			VALUES (?,?,?,?,?)	`
+	query := `	INSERT INTO quizrooms( players, timertime, quiztopic, isrunning, scoresheet, playersanswers) 
+			VALUES (?,?,?,?,?,?)	`
 
 	stmt, err := database.DB.Prepare(query)
 
 	if err != nil {
-		return err
+		return 0, err
 	}
 
 	defer stmt.Close()
 
 	playersJson, err := json.Marshal(quizRoom.Players)
 	if err != nil {
-		return err
+		return 0, err
 	}
 
 	hostPlayerId := quizRoom.Players[0].PlayerId
+
+	quizRoom.ScoreSheet = make(map[int64]int)
+	quizRoom.PlayersAnswers = make(map[int64]string)
 	quizRoom.ScoreSheet[hostPlayerId] = 0
+	quizRoom.PlayersAnswers[hostPlayerId] = ""
 
 	scoreSheetJson, err := json.Marshal(quizRoom.ScoreSheet)
 	if err != nil {
-		return err
+		return 0, err
 	}
 
-	_, err = stmt.Exec(playersJson, quizRoom.TimerTime, quizRoom.QuizTopic, quizRoom.IsRunnning, scoreSheetJson)
-
+	playersanswersJson, err := json.Marshal(quizRoom.PlayersAnswers)
 	if err != nil {
-		return err
+		return 0, err
 	}
 
-	return err
+	result, err := stmt.Exec(playersJson, quizRoom.TimerTime, quizRoom.QuizTopic, quizRoom.IsRunnning, scoreSheetJson, playersanswersJson)
+	if err != nil {
+		return 0, err
+	}
+
+	quizRoomId, err = result.LastInsertId()
+	if err != nil {
+		return 0, err
+	}
+
+	return quizRoomId, err
 }
 
 func (q *QuizRoom) GetQuizRoomFromId(quizId int) error {
@@ -109,8 +128,9 @@ func (q *QuizRoom) GetQuizRoomFromId(quizId int) error {
 
 	var playersData string
 	var scoresheetData string
+	var playersanswersData string
 
-	err := rows.Scan(&q.QuizRoomId, &playersData, &q.TimerTime, &q.QuizTopic, &q.IsRunnning, &scoresheetData)
+	err := rows.Scan(&q.QuizRoomId, &playersData, &q.TimerTime, &q.QuizTopic, &q.IsRunnning, &scoresheetData, &playersanswersData)
 	if err != nil {
 		return errors.New("unable to scan rows")
 	}
@@ -121,6 +141,11 @@ func (q *QuizRoom) GetQuizRoomFromId(quizId int) error {
 	}
 
 	err = json.Unmarshal([]byte(scoresheetData), &q.ScoreSheet)
+	if err != nil {
+		return errors.New("unable to unmarshal scoresheet")
+	}
+
+	err = json.Unmarshal([]byte(playersanswersData), &q.PlayersAnswers)
 	if err != nil {
 		return errors.New("unable to unmarshal scoresheet")
 	}
@@ -159,4 +184,58 @@ func AddPlayerToScoreSheet(quizRoomId int, playerId int64, scoreSheet map[int64]
 
 	return err
 
+}
+
+func AddPlayerToPlayersAnswers(quizRoomId int, playerId int64, playersAnswers map[int64]string) error {
+
+	query := "	UPDATE quizrooms SET playersanswers = ? WHERE quizroomid = ?  "
+
+	playersAnswers[playerId] = ""
+
+	playersAnswersData, err := json.Marshal(playersAnswers)
+	if err != nil {
+		return err
+	}
+
+	_, err = database.DB.Exec(query, playersAnswersData, quizRoomId)
+	if err != nil {
+		return err
+	}
+
+	return err
+
+}
+
+func SaveAnswersToDB(playersAnswers map[int64]string, quizRoomId int) error {
+
+	query := "UPDATE quizrooms SET playersanswers = ?  WHERE quizroomid = ?"
+
+	playersAnswersData, err := json.Marshal(playersAnswers)
+	if err != nil {
+		return err
+	}
+
+	_, err = database.DB.Exec(query, playersAnswersData, quizRoomId)
+	if err != nil {
+		return err
+	}
+
+	return err
+
+}
+
+func UpdateScoreSheetinDB(quizRoomId int64, scoreSheet map[int64]int) error {
+	query := "UPDATE quizrooms SET scoresheet = ?  WHERE quizroomid = ?"
+
+	scoreSheetData, err := json.Marshal(scoreSheet)
+	if err != nil {
+		return err
+	}
+
+	_, err = database.DB.Exec(query, scoreSheetData, quizRoomId)
+	if err != nil {
+		return err
+	}
+
+	return err
 }

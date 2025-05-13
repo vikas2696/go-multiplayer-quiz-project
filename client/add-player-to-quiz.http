@@ -1,8 +1,8 @@
-PATCH http://localhost:8080/quizrooms/3
+PATCH http://localhost:8080/quizrooms/6
 Content-Type: application/json
 
     {
-      "PlayerId": 109,
-      "Username": "Shree yahweh"
+      "PlayerId": 112,
+      "Username": "Vikas Mehra"
     }
 

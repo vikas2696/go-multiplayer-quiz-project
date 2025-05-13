@@ -44,9 +44,7 @@ func getJoinedPlayersList(quizId int) ([]Player, error) {
 
 func (player Player) AddPlayerToQuiz(quizId int) error {
 
-	query := `	UPDATE quizrooms 
-				SET  players = ?
-				WHERE quizroomid = ?	`
+	query := " UPDATE quizrooms SET  players = ? WHERE quizroomid = ? "
 
 	players, err := getJoinedPlayersList(quizId)
 	if err != nil {
@@ -78,6 +76,11 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 	quizRoom.GetQuizRoomFromId(quizId)
 
 	err = AddPlayerToScoreSheet(quizId, player.PlayerId, quizRoom.ScoreSheet)
+	if err != nil {
+		return errors.New("unable to add player to scoresheet")
+	}
+
+	err = AddPlayerToPlayersAnswers(quizId, player.PlayerId, quizRoom.PlayersAnswers)
 	if err != nil {
 		return errors.New("unable to add player to scoresheet")
 	}

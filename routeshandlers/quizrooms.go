@@ -30,13 +30,13 @@ func createQuizRoom(context *gin.Context) {
 		return
 	}
 
-	err = quizRoom.SaveQuizRoomToDB()
+	generatedId, err := quizRoom.SaveQuizRoomToDB()
 	if err != nil {
 		context.String(400, "Bad Request "+err.Error())
 		return
 	}
 
-	context.JSON(201, quizRoom)
+	context.JSON(http.StatusCreated, gin.H{"QuizRoom created with ID": generatedId})
 }
 
 func joinQuizRoom(context *gin.Context) {
