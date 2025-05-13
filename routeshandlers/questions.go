@@ -80,6 +80,8 @@ func showAnswer(context *gin.Context) {
 		return
 	}
 
+	context.JSON(http.StatusInternalServerError, scoreSheet)
+
 }
 
 func handlePlayerInputs(context *gin.Context) {

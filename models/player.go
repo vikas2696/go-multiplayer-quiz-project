@@ -44,6 +44,13 @@ func getJoinedPlayersList(quizId int) ([]Player, error) {
 
 func (player Player) AddPlayerToQuiz(quizId int) error {
 
+	var quizRoom QuizRoom
+	quizRoom.GetQuizRoomFromId(quizId)
+
+	if quizRoom.IsRunnning {
+		return errors.New("quiz is already going on")
+	}
+
 	query := " UPDATE quizrooms SET  players = ? WHERE quizroomid = ? "
 
 	players, err := getJoinedPlayersList(quizId)
@@ -71,9 +78,6 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 	if err != nil {
 		return err
 	}
-
-	var quizRoom QuizRoom
-	quizRoom.GetQuizRoomFromId(quizId)
 
 	err = AddPlayerToScoreSheet(quizId, player.PlayerId, quizRoom.ScoreSheet)
 	if err != nil {
