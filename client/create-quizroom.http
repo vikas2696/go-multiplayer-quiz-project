@@ -4,10 +4,10 @@ Content-Type: application/json
 {
   "Players": [
     {
-      "PlayerId": 107,
+      "PlayerId": 101,
       "Username": "Yashik"
     }
   ],
   "TimerTime": 60,
-  "QuizTopic": "Human"
+  "QuizTopic": "Science"
 }

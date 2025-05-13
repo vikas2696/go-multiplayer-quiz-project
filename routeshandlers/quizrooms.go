@@ -46,18 +46,21 @@ func joinQuizRoom(context *gin.Context) {
 
 	if err != nil {
 		context.String(400, "Bad Request"+err.Error())
+		return
 	}
 
 	quizId, err := strconv.Atoi(context.Param("id"))
 
 	if err != nil {
 		context.String(400, "Bad Request"+err.Error())
+		return
 	}
 
 	err = player.AddPlayerToQuiz(quizId)
 
 	if err != nil {
 		context.String(400, "Bad Request "+err.Error())
+		return
 	}
 
 	context.JSON(201, player)

@@ -157,9 +157,18 @@ func UpdateRoomStatus(quizRoomId int64) error {
 
 	query := "	UPDATE quizrooms SET isrunning = ? WHERE quizroomid = ?	"
 
-	_, err := database.DB.Exec(query, true, quizRoomId)
+	result, err := database.DB.Exec(query, true, quizRoomId)
 	if err != nil {
 		return err
+	}
+
+	rows, err := result.RowsAffected()
+	if err != nil {
+		return err
+	}
+
+	if rows == 0 {
+		return errors.New("invalid Quiz Room")
 	}
 
 	return err

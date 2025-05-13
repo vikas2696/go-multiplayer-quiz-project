@@ -18,7 +18,7 @@ func loadQuestion(context *gin.Context) {
 
 	err = models.UpdateRoomStatus(int64(quizRoomId))
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Cannot update room status"})
+		context.JSON(http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -29,13 +29,16 @@ func loadQuestion(context *gin.Context) {
 	}
 
 	questions, err := models.GetQuestionsFromJSON("database/science.json")
-
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Questions not found"})
 		return
 	}
 
-	question := models.GetQuestionFromId(questions, ques_id)
+	question, err := models.GetQuestionFromId(questions, ques_id)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, err.Error())
+		return
+	}
 
 	context.JSON(http.StatusOK, question)
 }
@@ -66,7 +69,11 @@ func showAnswer(context *gin.Context) {
 		return
 	}
 
-	question := models.GetQuestionFromId(questions, ques_id)
+	question, err := models.GetQuestionFromId(questions, ques_id)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, err.Error())
+		return
+	}
 
 	for key, value := range playersAnswers {
 		if value == question.Answer {

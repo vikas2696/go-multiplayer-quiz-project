@@ -1,7 +1,7 @@
-POST http://localhost:8080/quizrooms/1/10
+POST http://localhost:8080/quizrooms/1/2
 Content-type: application/json
 
 [
-    "101","earth"
+    "101","Carbon Dioxide"
 
 ]

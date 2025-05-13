@@ -45,7 +45,10 @@ func getJoinedPlayersList(quizId int) ([]Player, error) {
 func (player Player) AddPlayerToQuiz(quizId int) error {
 
 	var quizRoom QuizRoom
-	quizRoom.GetQuizRoomFromId(quizId)
+	err := quizRoom.GetQuizRoomFromId(quizId)
+	if err != nil {
+		return err
+	}
 
 	if quizRoom.IsRunnning {
 		return errors.New("quiz is already going on")
