@@ -13,4 +13,5 @@ func RunRoutes(server *gin.Engine) {
 	server.GET("/quizrooms/:id/:ques_id/answer", showAnswer)
 
 	server.POST("/signup", signUp)
+	server.POST("/login", logIn)
 }

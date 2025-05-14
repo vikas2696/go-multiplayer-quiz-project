@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"go-multiplayer-quiz-project/database"
 )
 
@@ -43,6 +44,20 @@ func (user *User) SaveUserToDB() error {
 	_, err = player_stmt.Exec(userId, user.Username)
 	if err != nil {
 		return err
+	}
+
+	return err
+}
+
+func (user *User) ValidateLogin() (err error) {
+
+	query := " SELECT * FROM users WHERE username = ? AND password = ? "
+
+	row := database.DB.QueryRow(query, user.Username, user.Password)
+
+	err = row.Scan(&user.UserId, &user.Username, &user.Password)
+	if err != nil {
+		return errors.New("invalid Username/Password")
 	}
 
 	return err

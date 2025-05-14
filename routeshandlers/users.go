@@ -25,3 +25,22 @@ func signUp(context *gin.Context) {
 	context.JSON(http.StatusCreated, gin.H{"User created with user Id": user.UserId})
 
 }
+
+func logIn(context *gin.Context) {
+
+	var user models.User
+	err := context.ShouldBindJSON(&user)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Message1": err.Error()})
+		return
+	}
+
+	err = user.ValidateLogin()
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Message1": err.Error()})
+		return
+	}
+
+	context.JSON(http.StatusInternalServerError, gin.H{"Login Successful": user})
+
+}
