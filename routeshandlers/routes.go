@@ -11,4 +11,6 @@ func RunRoutes(server *gin.Engine) {
 	server.POST("/quizrooms/:id/:ques_id", handlePlayerInputs)
 	server.GET("/quizrooms/:id/lobby", lobby)
 	server.GET("/quizrooms/:id/:ques_id/answer", showAnswer)
+
+	server.POST("/signup", signUp)
 }

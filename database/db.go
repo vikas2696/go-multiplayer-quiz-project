@@ -43,7 +43,7 @@ func createTables() {
 
 	playerQuery := `
 		CREATE TABLE IF NOT EXISTS players (
-		playerid INTEGER PRIMARY KEY AUTOINCREMENT,
+		playerid INTEGER PRIMARY KEY,
 		username TEXT NOT NULL
 		)`
 
@@ -51,4 +51,17 @@ func createTables() {
 	if err != nil {
 		panic("Unable to initialize player table" + err.Error())
 	}
+
+	userQuery := `
+		CREATE TABLE IF NOT EXISTS users (
+		userid INTEGER PRIMARY KEY AUTOINCREMENT,
+		username TEXT NOT NULL UNIQUE,
+		password TEXT NOT NULL
+		)`
+
+	_, err = DB.Exec(userQuery)
+	if err != nil {
+		panic("Unable to initialize user table" + err.Error())
+	}
+
 }

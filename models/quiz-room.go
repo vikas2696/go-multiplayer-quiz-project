@@ -78,7 +78,6 @@ func (quizRoom QuizRoom) SaveQuizRoomToDB() (quizRoomId int64, err error) {
 			VALUES (?,?,?,?,?,?)	`
 
 	stmt, err := database.DB.Prepare(query)
-
 	if err != nil {
 		return 0, err
 	}
@@ -116,7 +115,6 @@ func (quizRoom QuizRoom) SaveQuizRoomToDB() (quizRoomId int64, err error) {
 	if err != nil {
 		return 0, err
 	}
-
 	return quizRoomId, err
 }
 
