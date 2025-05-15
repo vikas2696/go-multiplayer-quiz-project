@@ -3,6 +3,8 @@ package models
 import (
 	"errors"
 	"go-multiplayer-quiz-project/database"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 type User struct {
@@ -51,11 +53,18 @@ func (user *User) SaveUserToDB() error {
 
 func (user *User) ValidateLogin() (err error) {
 
-	query := " SELECT * FROM users WHERE username = ? AND password = ? "
+	query := " SELECT * FROM users WHERE username = ? "
 
-	row := database.DB.QueryRow(query, user.Username, user.Password)
+	row := database.DB.QueryRow(query, user.Username)
 
-	err = row.Scan(&user.UserId, &user.Username, &user.Password)
+	var hashedPassword string
+
+	err = row.Scan(&user.UserId, &user.Username, &hashedPassword)
+	if err != nil {
+		return errors.New("invalid Username/Password")
+	}
+
+	err = bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(user.Password))
 	if err != nil {
 		return errors.New("invalid Username/Password")
 	}
