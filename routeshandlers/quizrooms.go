@@ -2,6 +2,7 @@ package routeshandlers
 
 import (
 	"go-multiplayer-quiz-project/models"
+	"go-multiplayer-quiz-project/utils"
 	"net/http"
 	"strconv"
 
@@ -22,8 +23,21 @@ func showAllQuizRooms(context *gin.Context) {
 }
 
 func createQuizRoom(context *gin.Context) {
+
+	token := context.Request.Header.Get("Authorization")
+	if token == "" {
+		context.AbortWithStatusJSON(400, gin.H{"No token found": "Authorization failed"})
+		return
+	}
+
+	err := utils.ValidateToken(token)
+	if err != nil {
+		context.AbortWithStatusJSON(400, gin.H{"Invalid token": "Authorization failed"})
+		return
+	}
+
 	var quizRoom models.QuizRoom
-	err := context.ShouldBindJSON(&quizRoom)
+	err = context.ShouldBindJSON(&quizRoom)
 
 	if err != nil {
 		context.String(400, "Bad Request "+err.Error())
