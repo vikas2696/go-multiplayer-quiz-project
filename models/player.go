@@ -95,6 +95,64 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 	return err
 }
 
+func (player Player) DeletePlayerFromQuiz(quizId int) error {
+
+	var quizRoom QuizRoom
+	err := quizRoom.GetQuizRoomFromId(quizId)
+	if err != nil {
+		return err
+	}
+
+	if quizRoom.IsRunnning {
+		return errors.New("quiz is already going on")
+	}
+
+	players, err := getJoinedPlayersList(quizId)
+	if err != nil {
+		return err
+	}
+
+	indexToRemove := -1
+	for index := range players {
+
+		if players[index].PlayerId == player.PlayerId {
+			indexToRemove = index
+			break
+		}
+
+	}
+
+	if indexToRemove != -1 {
+		players = append(players[:indexToRemove], players[indexToRemove+1:]...)
+	} else {
+		return errors.New("invalid Request")
+	}
+
+	playersJson, err := json.Marshal(players)
+	if err != nil {
+		return err
+	}
+	query := " UPDATE quizrooms SET  players = ? WHERE quizroomid = ? "
+
+	_, err = database.DB.Exec(query, playersJson, quizId)
+
+	if err != nil {
+		return err
+	}
+
+	err = RemovePlayerFromScoreSheet(quizId, player.PlayerId, quizRoom.ScoreSheet)
+	if err != nil {
+		return errors.New("unable to remove player to scoresheet")
+	}
+
+	err = RemovePlayerToPlayersAnswers(quizId, player.PlayerId, quizRoom.PlayersAnswers)
+	if err != nil {
+		return errors.New("unable to remove player to scoresheet")
+	}
+
+	return err
+}
+
 func GetPlayerFromId(pId int) (p Player, err error) {
 
 	query := "SELECT * FROM players WHERE playerid = ?"

@@ -1,8 +1,9 @@
 PATCH http://localhost:8080/quizrooms/1
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDc0MTQzMjIsInVzZXJfaWQiOjEsInVzZXJuYW1lIjoidGVzdCJ9.dZcIvpDcSep4xkaKt9e8NUGsMfQ-grPVzATesKnrFJA
 
     {
-      "PlayerId": 102,
-      "Username": "Vikas Mehra"
+      "PlayerId": 1,
+      "Username": "test"
     }
 

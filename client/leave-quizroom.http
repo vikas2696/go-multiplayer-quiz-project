@@ -1,0 +1,9 @@
+PATCH http://localhost:8080/quizrooms/1/leave
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDc0MTM2MzQsInVzZXJfaWQiOjUsInVzZXJuYW1lIjoidGVzdCJ9.BI1Va6jeMQuOCJ6QrA_XmAuGXAtaR8qyC1hX6wFTL10
+
+    {
+      "PlayerId": 1,
+      "Username": "Vikas Mehra"
+    }
+

@@ -15,4 +15,5 @@ func main() {
 	routeshandlers.RunRoutes(server)
 
 	server.Run("localhost:8080")
+
 }

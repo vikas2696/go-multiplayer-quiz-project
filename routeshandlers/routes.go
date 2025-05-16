@@ -20,6 +20,7 @@ func RunRoutes(server *gin.Engine) {
 		AuthOnlyRoutes.POST("/quizrooms/:id/:ques_id", enterAnswer)
 		AuthOnlyRoutes.GET("/quizrooms/:id/lobby", lobby)
 		AuthOnlyRoutes.GET("/quizrooms/:id/:ques_id/answer", showAnswer)
+		AuthOnlyRoutes.PATCH("/quizrooms/:id/leave", leaveQuizRoom)
 
 	}
 

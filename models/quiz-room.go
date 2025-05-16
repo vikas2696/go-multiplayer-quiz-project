@@ -193,11 +193,51 @@ func AddPlayerToScoreSheet(quizRoomId int, playerId int64, scoreSheet map[int64]
 
 }
 
+func RemovePlayerFromScoreSheet(quizRoomId int, playerId int64, scoreSheet map[int64]int) error {
+
+	query := "	UPDATE quizrooms SET scoresheet = ? WHERE quizroomid = ?  "
+
+	delete(scoreSheet, playerId)
+
+	scoreSheetData, err := json.Marshal(scoreSheet)
+	if err != nil {
+		return err
+	}
+
+	_, err = database.DB.Exec(query, scoreSheetData, quizRoomId)
+	if err != nil {
+		return err
+	}
+
+	return err
+
+}
+
 func AddPlayerToPlayersAnswers(quizRoomId int, playerId int64, playersAnswers map[int64]string) error {
 
 	query := "	UPDATE quizrooms SET playersanswers = ? WHERE quizroomid = ?  "
 
 	playersAnswers[playerId] = ""
+
+	playersAnswersData, err := json.Marshal(playersAnswers)
+	if err != nil {
+		return err
+	}
+
+	_, err = database.DB.Exec(query, playersAnswersData, quizRoomId)
+	if err != nil {
+		return err
+	}
+
+	return err
+
+}
+
+func RemovePlayerToPlayersAnswers(quizRoomId int, playerId int64, playersAnswers map[int64]string) error {
+
+	query := "	UPDATE quizrooms SET playersanswers = ? WHERE quizroomid = ?  "
+
+	delete(playersAnswers, playerId)
 
 	playersAnswersData, err := json.Marshal(playersAnswers)
 	if err != nil {

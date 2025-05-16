@@ -64,7 +64,7 @@ func joinQuizRoom(context *gin.Context) {
 		return
 	}
 
-	context.JSON(201, player)
+	context.JSON(http.StatusCreated, gin.H{"Player joined Successfully to room " + strconv.Itoa(quizId): player})
 
 }
 
@@ -84,5 +84,33 @@ func lobby(context *gin.Context) {
 	}
 
 	context.JSON(http.StatusOK, quizRoom)
+
+}
+
+func leaveQuizRoom(context *gin.Context) {
+
+	var player models.Player
+	err := context.ShouldBindJSON(&player)
+
+	if err != nil {
+		context.JSON(400, "Bad Request"+err.Error())
+		return
+	}
+
+	quizId, err := strconv.Atoi(context.Param("id"))
+
+	if err != nil {
+		context.JSON(400, "Bad Request"+err.Error())
+		return
+	}
+
+	err = player.DeletePlayerFromQuiz(quizId)
+
+	if err != nil {
+		context.JSON(400, "Bad Request "+err.Error())
+		return
+	}
+
+	context.JSON(http.StatusCreated, gin.H{"Player left Successfully from room " + strconv.Itoa(quizId): player})
 
 }
