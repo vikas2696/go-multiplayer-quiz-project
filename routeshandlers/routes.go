@@ -1,17 +1,26 @@
 package routeshandlers
 
-import "github.com/gin-gonic/gin"
+import (
+	"go-multiplayer-quiz-project/middleware"
+
+	"github.com/gin-gonic/gin"
+)
 
 func RunRoutes(server *gin.Engine) {
 
-	server.GET("/quizrooms", showAllQuizRooms)
-	server.POST("/create-quizroom", createQuizRoom)
-	server.PATCH("/quizrooms/:id", joinQuizRoom)
-	server.GET("/quizrooms/:id/:ques_id", loadQuestion)
-	server.POST("/quizrooms/:id/:ques_id", handlePlayerInputs)
-	server.GET("/quizrooms/:id/lobby", lobby)
-	server.GET("/quizrooms/:id/:ques_id/answer", showAnswer)
-
 	server.POST("/signup", signUp)
 	server.POST("/login", logIn)
+	server.GET("/quizrooms", showAllQuizRooms)
+
+	AuthOnlyRoutes := server.Group("/", middleware.AuthMiddeleware)
+	{
+		AuthOnlyRoutes.POST("/create-quizroom", createQuizRoom)
+		AuthOnlyRoutes.PATCH("/quizrooms/:id", joinQuizRoom)
+		AuthOnlyRoutes.GET("/quizrooms/:id/:ques_id", loadQuestion)
+		AuthOnlyRoutes.POST("/quizrooms/:id/:ques_id", enterAnswer)
+		AuthOnlyRoutes.GET("/quizrooms/:id/lobby", lobby)
+		AuthOnlyRoutes.GET("/quizrooms/:id/:ques_id/answer", showAnswer)
+
+	}
+
 }

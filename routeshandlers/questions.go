@@ -91,7 +91,7 @@ func showAnswer(context *gin.Context) {
 
 }
 
-func handlePlayerInputs(context *gin.Context) {
+func enterAnswer(context *gin.Context) {
 
 	quizRoomId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
