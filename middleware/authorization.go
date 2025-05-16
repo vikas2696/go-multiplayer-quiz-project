@@ -13,7 +13,7 @@ func AuthMiddeleware(context *gin.Context) {
 		return
 	}
 
-	err := utils.ValidateToken(token)
+	err := utils.ValidateToken(token, context)
 	if err != nil {
 		context.AbortWithStatusJSON(400, gin.H{"Invalid token": "Authorization failed"})
 		return

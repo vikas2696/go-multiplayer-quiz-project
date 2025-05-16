@@ -43,12 +43,21 @@ func createQuizRoom(context *gin.Context) {
 func joinQuizRoom(context *gin.Context) {
 
 	var player models.Player
-	err := context.ShouldBindJSON(&player)
 
-	if err != nil {
-		context.String(400, "Bad Request"+err.Error())
+	player_id, found := context.Get("userId")
+	if !found {
+		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
 		return
 	}
+
+	player_username, found := context.Get("username")
+	if !found {
+		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
+		return
+	}
+
+	player.PlayerId = player_id.(int64)
+	player.Username = player_username.(string)
 
 	quizId, err := strconv.Atoi(context.Param("id"))
 
@@ -90,12 +99,21 @@ func lobby(context *gin.Context) {
 func leaveQuizRoom(context *gin.Context) {
 
 	var player models.Player
-	err := context.ShouldBindJSON(&player)
 
-	if err != nil {
-		context.JSON(400, "Bad Request"+err.Error())
+	player_id, found := context.Get("userId")
+	if !found {
+		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
 		return
 	}
+
+	player_username, found := context.Get("username")
+	if !found {
+		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
+		return
+	}
+
+	player.PlayerId = player_id.(int64)
+	player.Username = player_username.(string)
 
 	quizId, err := strconv.Atoi(context.Param("id"))
 

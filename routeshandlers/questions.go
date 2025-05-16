@@ -104,20 +104,20 @@ func enterAnswer(context *gin.Context) {
 
 	playersAnswers := quizRoom.PlayersAnswers
 
-	var answerData []string
+	var answerData string
 	err = context.ShouldBindJSON(&answerData)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to get input answer"})
 		return
 	}
 
-	p_id, err := strconv.Atoi(answerData[0])
-	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to get input answer"})
+	p_id, found := context.Get("userId")
+	if !found {
+		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
 		return
 	}
 
-	playersAnswers[int64(p_id)] = answerData[1]
+	playersAnswers[p_id.(int64)] = answerData
 
 	err = models.SaveAnswersToDB(playersAnswers, quizRoomId)
 	if err != nil {
