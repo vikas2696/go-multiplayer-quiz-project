@@ -11,7 +11,7 @@ type Player struct {
 	Username string
 }
 
-func getJoinedPlayersList(quizId int) ([]Player, error) {
+func GetJoinedPlayersList(quizId int) ([]Player, error) {
 
 	var players []Player
 	var dataString string
@@ -56,7 +56,7 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 
 	query := " UPDATE quizrooms SET  players = ? WHERE quizroomid = ? "
 
-	players, err := getJoinedPlayersList(quizId)
+	players, err := GetJoinedPlayersList(quizId)
 	if err != nil {
 		return err
 	}
@@ -107,7 +107,7 @@ func (player Player) DeletePlayerFromQuiz(quizId int) error {
 		return errors.New("quiz is already going on")
 	}
 
-	players, err := getJoinedPlayersList(quizId)
+	players, err := GetJoinedPlayersList(quizId)
 	if err != nil {
 		return err
 	}
