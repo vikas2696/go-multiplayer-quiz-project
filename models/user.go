@@ -3,8 +3,7 @@ package models
 import (
 	"errors"
 	"go-multiplayer-quiz-project/database"
-
-	"golang.org/x/crypto/bcrypt"
+	"go-multiplayer-quiz-project/utils"
 )
 
 type User struct {
@@ -64,8 +63,9 @@ func (user *User) ValidateLogin() (err error) {
 		return errors.New("invalid Username/Password")
 	}
 
-	err = bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(user.Password))
-	if err != nil {
+	match := utils.CheckPassword(hashedPassword, user.Password)
+
+	if !match {
 		return errors.New("invalid Username/Password")
 	}
 

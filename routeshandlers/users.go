@@ -2,10 +2,10 @@ package routeshandlers
 
 import (
 	"go-multiplayer-quiz-project/models"
+	"go-multiplayer-quiz-project/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"golang.org/x/crypto/bcrypt"
 )
 
 func signUp(context *gin.Context) {
@@ -17,7 +17,7 @@ func signUp(context *gin.Context) {
 		return
 	}
 
-	user.Password, err = hashPassword(user.Password)
+	user.Password, err = utils.HashPassword(user.Password)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Message2": err.Error()})
 		return
@@ -48,15 +48,12 @@ func logIn(context *gin.Context) {
 		return
 	}
 
-	context.JSON(http.StatusOK, gin.H{"Login Successful": user})
-
-}
-
-func hashPassword(password string) (string, error) {
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	token, err := utils.GetSessionToken(user.UserId, user.Username)
 	if err != nil {
-		return "", err
+		context.JSON(http.StatusInternalServerError, gin.H{"Message2": err.Error()})
+		return
 	}
 
-	return string(hashedPassword), err
+	context.JSON(http.StatusOK, gin.H{"Login Successful with session token ": token})
+
 }
