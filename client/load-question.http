@@ -1,4 +1,4 @@
 GET http://localhost:8080/quizrooms/1/2
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDc0MTA2NzQsInVzZXJfaWQiOjUsInVzZXJuYW1lIjoidGVzdCJ9.SftjhzstCnvPiv37Inhusf9QMmcGeZNhUQv_UJskXy0
+Authorization: 
 

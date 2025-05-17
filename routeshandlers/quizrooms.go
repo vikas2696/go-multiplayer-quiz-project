@@ -116,19 +116,40 @@ func leaveQuizRoom(context *gin.Context) {
 	player.Username = player_username.(string)
 
 	quizId, err := strconv.Atoi(context.Param("id"))
-
 	if err != nil {
 		context.JSON(400, "Bad Request"+err.Error())
 		return
 	}
 
 	err = player.DeletePlayerFromQuiz(quizId)
-
 	if err != nil {
 		context.JSON(400, "Bad Request "+err.Error())
 		return
 	}
 
 	context.JSON(http.StatusCreated, gin.H{"Player left Successfully from room " + strconv.Itoa(quizId): player})
+
+}
+
+func deleteQuizRoom(context *gin.Context) {
+
+	quizId, err := strconv.Atoi(context.Param("id"))
+	if err != nil {
+		context.JSON(400, "Bad Request"+err.Error())
+		return
+	}
+
+	deletable := models.IsRoomDeletable(quizId)
+	if !deletable {
+		context.JSON(http.StatusBadRequest, gin.H{"Message": "Only host can delete"})
+	}
+
+	err = models.DeleteQuizRoomFromDB(int64(quizId))
+	if err != nil {
+		context.JSON(400, "Bad Request"+err.Error()+" of "+strconv.Itoa(quizId))
+		return
+	}
+
+	context.JSON(http.StatusBadRequest, gin.H{"Message": "QuizRoom deleted"})
 
 }

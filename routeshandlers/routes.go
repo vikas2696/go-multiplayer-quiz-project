@@ -20,6 +20,7 @@ func RunRoutes(server *gin.Engine) {
 		{
 			QuizRoomAuthRoutes.PATCH("/join", joinQuizRoom)
 			QuizRoomAuthRoutes.PATCH("/leave", leaveQuizRoom)
+			QuizRoomAuthRoutes.DELETE("/delete", deleteQuizRoom)
 			QuizRoomAuthRoutes.GET("/lobby", lobby)
 			QuizRoomAuthRoutes.GET("/:ques_id", loadQuestion)
 			QuizRoomAuthRoutes.POST("/:ques_id", enterAnswer)

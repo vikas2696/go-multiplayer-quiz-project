@@ -286,3 +286,19 @@ func UpdateScoreSheetinDB(quizRoomId int64, scoreSheet map[int64]int) error {
 
 	return err
 }
+
+func DeleteQuizRoomFromDB(quizId int64) error {
+
+	query := "DELETE FROM quizrooms WHERE quizroomid = ?"
+
+	_, err := database.DB.Exec(query, quizId)
+	if err != nil {
+		return errors.New("invalid deletion")
+	}
+
+	return err
+}
+
+func IsRoomDeletable(quizId int) bool {
+	return true
+}
