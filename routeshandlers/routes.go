@@ -12,16 +12,21 @@ func RunRoutes(server *gin.Engine) {
 	server.POST("/login", logIn)
 	server.GET("/quizrooms", showAllQuizRooms)
 
+	server.GET("/quizrooms/:id/ws/lobby", webSocketLobby)
+
 	AuthOnlyRoutes := server.Group("/", middleware.AuthMiddeleware)
 	{
 		AuthOnlyRoutes.POST("/create-quizroom", createQuizRoom)
+		AuthOnlyRoutes.PATCH("/quizrooms/:id/join", joinQuizRoom)
 
 		QuizRoomAuthRoutes := AuthOnlyRoutes.Group("/quizrooms/:id", middleware.QuizJoinMiddleware)
 		{
-			QuizRoomAuthRoutes.PATCH("/join", joinQuizRoom)
 			QuizRoomAuthRoutes.PATCH("/leave", leaveQuizRoom)
 			QuizRoomAuthRoutes.DELETE("/delete", deleteQuizRoom)
-			QuizRoomAuthRoutes.GET("/lobby", lobby)
+			QuizRoomAuthRoutes.GET("/", getQuizRoom)
+
+			//QuizRoomAuthRoutes.GET("/ws/lobby", webSocketLobby)
+
 			QuizRoomAuthRoutes.GET("/:ques_id", loadQuestion)
 			QuizRoomAuthRoutes.POST("/:ques_id", enterAnswer)
 			QuizRoomAuthRoutes.GET("/:ques_id/answer", showAnswer)

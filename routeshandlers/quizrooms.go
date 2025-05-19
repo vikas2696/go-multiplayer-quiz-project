@@ -77,7 +77,7 @@ func joinQuizRoom(context *gin.Context) {
 
 }
 
-func lobby(context *gin.Context) {
+func getQuizRoom(context *gin.Context) {
 
 	quizId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
