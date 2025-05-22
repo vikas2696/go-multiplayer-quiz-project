@@ -145,7 +145,7 @@ func deleteQuizRoom(context *gin.Context) {
 		return
 	}
 
-	deletable := models.IsHost(quizId, playerId.(int))
+	deletable := models.IsHost(quizId, playerId.(int64))
 	if !deletable {
 		context.JSON(http.StatusBadRequest, gin.H{"Message": "Only host can delete"})
 		return
