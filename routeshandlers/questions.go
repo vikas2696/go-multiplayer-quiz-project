@@ -23,13 +23,7 @@ func GetAllQuestions(context *gin.Context) {
 		return
 	}
 
-	err = models.UpdateRoomStatus(int64(quizRoomId))
-	if err != nil {
-		context.JSON(http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	questions, err := models.GetQuestionsFromJSON("database/science.json")
+	questions, err := models.GetQuestionsFromJSON("database/" + quizRoom.QuizTopic + ".json")
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Questions not found"})
 		return
@@ -40,13 +34,32 @@ func GetAllQuestions(context *gin.Context) {
 
 func loadQuestion(context *gin.Context) {
 
+	quizRoomId, err := strconv.Atoi(context.Param("id"))
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Invalid Quiz Room"})
+		return
+	}
+
+	err = models.UpdateRoomStatus(int64(quizRoomId))
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	var quizRoom models.QuizRoom
+	err = quizRoom.GetQuizRoomFromId(quizRoomId)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Invalid Quiz Room"})
+		return
+	}
+
 	ques_id, err := strconv.Atoi(context.Param("ques_id"))
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Cannot convert question id"})
 		return
 	}
 
-	questions, err := models.GetQuestionsFromJSON("database/science.json")
+	questions, err := models.GetQuestionsFromJSON("database/" + quizRoom.QuizTopic + ".json")
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Questions not found"})
 		return
