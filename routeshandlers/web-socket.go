@@ -43,61 +43,66 @@ func webSocketLobby(context *gin.Context) {
 		return
 	}
 
+	_, exists := broadcastChans[quizId]
+	if !exists { //host creates and room and joins and starts both goroutines which will forever listens for other players to join and update the player list
+		broadcastChans[quizId] = make(chan models.LobbyMessage)
+	}
+
+	go braodcastAll(quizId)
+	go readMessages(conn, quizId)
+
 	mu.Lock()
 	joinedPlayers[quizId] = append(joinedPlayers[quizId], conn)
 	mu.Unlock()
+	broadcastChans[quizId] <- models.LobbyMessage{Msg: "join", Conn: conn}
+}
 
-	_, exists := broadcastChans[quizId]
-	if !exists { //host creates and room and joins and starts this goroutine which will forever listens for other players to join and update the player list
-		broadcastChans[quizId] = make(chan models.LobbyMessage)
-		go func() { // for adding another player and then braodcast updated player list
+func braodcastAll(quizId int) { // for adding another player and then braodcast updated player list
 
-			for { //broadcast code
+	for { //broadcast code
 
-				lobbyMessage := <-broadcastChans[quizId] //channel to trigger when message receives
+		lobbyMessage := <-broadcastChans[quizId] //channel to trigger when message receives
 
-				if lobbyMessage.Msg == "leave" {
+		if lobbyMessage.Msg == "leave" {
 
-					for i, c := range joinedPlayers[quizId] {
+			for i, c := range joinedPlayers[quizId] {
 
-						if c == lobbyMessage.Conn {
-							mu.Lock()
-							joinedPlayers[quizId] = append(joinedPlayers[quizId][:i], joinedPlayers[quizId][i+1:]...)
-							mu.Unlock()
-							break
-						}
-					}
-
-					lobbyMessage.Conn.Close()
-				}
-
-				mu.RLock()
-				conns := append([]*websocket.Conn{}, joinedPlayers[quizId]...)
-				mu.RUnlock()
-
-				for _, connection := range conns { // per room
-					err = connection.WriteJSON(gin.H{"type": lobbyMessage.Msg,
-						"players": joinedPlayers[quizId]})
-					if err != nil {
-						fmt.Println("websocket write error", err)
-						connection.Close()
-					}
+				if c == lobbyMessage.Conn {
+					mu.Lock()
+					joinedPlayers[quizId] = append(joinedPlayers[quizId][:i], joinedPlayers[quizId][i+1:]...)
+					mu.Unlock()
+					break
 				}
 			}
-		}()
-	}
 
-	go func() { // for keep reading the messages to the room
-		for { // per connection
-			_, msg, err := conn.ReadMessage()
-			if err != nil {
-				fmt.Println("Connection is closed", err)
-				//conn.Close()
-				return
-			}
-			lobbyMessage := models.LobbyMessage{Msg: string(msg), Conn: conn}
-			broadcastChans[quizId] <- lobbyMessage //triggers broadcast channel
+			lobbyMessage.Conn.Close()
 		}
-	}()
 
+		mu.RLock()
+		conns := append([]*websocket.Conn{}, joinedPlayers[quizId]...)
+		mu.RUnlock()
+
+		for _, connection := range conns { // per room
+			err := connection.WriteJSON(gin.H{"type": lobbyMessage.Msg,
+				"players": joinedPlayers[quizId]})
+			if err != nil {
+				fmt.Println("websocket write error", err)
+				connection.Close()
+			}
+		}
+	}
+}
+
+func readMessages(conn *websocket.Conn, quizId int) { // for keep reading the messages to the room
+
+	for { // per connection
+		_, msg, err := conn.ReadMessage()
+		if err != nil {
+			fmt.Println("Connection is closed", err)
+			//conn.Close()
+			return
+		}
+		lobbyMessage := models.LobbyMessage{Msg: string(msg), Conn: conn} //sending correct connection
+		broadcastChans[quizId] <- lobbyMessage                            //triggers broadcast channel
+	}
 }
