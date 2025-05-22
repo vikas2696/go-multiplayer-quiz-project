@@ -139,17 +139,24 @@ func deleteQuizRoom(context *gin.Context) {
 		return
 	}
 
-	deletable := models.IsRoomDeletable(quizId)
+	playerId, found := context.Get("userId")
+	if !found {
+		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
+		return
+	}
+
+	deletable := models.IsHost(quizId, playerId.(int))
 	if !deletable {
 		context.JSON(http.StatusBadRequest, gin.H{"Message": "Only host can delete"})
+		return
 	}
 
 	err = models.DeleteQuizRoomFromDB(int64(quizId))
 	if err != nil {
-		context.JSON(400, "Bad Request"+err.Error()+" of "+strconv.Itoa(quizId))
+		context.JSON(http.StatusBadRequest, gin.H{"Message": "Deletion failed: " + err.Error()})
 		return
 	}
 
-	context.JSON(http.StatusBadRequest, gin.H{"Message": "QuizRoom deleted"})
+	context.JSON(http.StatusOK, gin.H{"Message": "QuizRoom deleted"})
 
 }

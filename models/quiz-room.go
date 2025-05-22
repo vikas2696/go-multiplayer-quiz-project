@@ -299,6 +299,10 @@ func DeleteQuizRoomFromDB(quizId int64) error {
 	return err
 }
 
-func IsRoomDeletable(quizId int) bool {
-	return true
+func IsHost(quizId int, playerId int) bool {
+
+	var quizRoom QuizRoom
+	quizRoom.GetQuizRoomFromId(quizId)
+
+	return playerId == int(quizRoom.Players[0].PlayerId)
 }
