@@ -27,6 +27,7 @@ func RunRoutes(server *gin.Engine) {
 
 			//QuizRoomAuthRoutes.GET("/ws/lobby", webSocketLobby)
 
+			QuizRoomAuthRoutes.GET("/get-questions", GetAllQuestions)
 			QuizRoomAuthRoutes.GET("/:ques_id", loadQuestion)
 			QuizRoomAuthRoutes.POST("/:ques_id", enterAnswer)
 			QuizRoomAuthRoutes.GET("/:ques_id/answer", showAnswer)

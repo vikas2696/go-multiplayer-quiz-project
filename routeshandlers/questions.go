@@ -8,9 +8,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func loadQuestion(context *gin.Context) {
+func GetAllQuestions(context *gin.Context) {
 
 	quizRoomId, err := strconv.Atoi(context.Param("id"))
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Invalid Quiz Room"})
+		return
+	}
+
+	var quizRoom models.QuizRoom
+	err = quizRoom.GetQuizRoomFromId(quizRoomId)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Invalid Quiz Room"})
 		return
@@ -21,6 +28,17 @@ func loadQuestion(context *gin.Context) {
 		context.JSON(http.StatusInternalServerError, err.Error())
 		return
 	}
+
+	questions, err := models.GetQuestionsFromJSON("database/science.json")
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Questions not found"})
+		return
+	}
+
+	context.JSON(http.StatusOK, questions)
+}
+
+func loadQuestion(context *gin.Context) {
 
 	ques_id, err := strconv.Atoi(context.Param("ques_id"))
 	if err != nil {
