@@ -1,4 +1,0 @@
-DELETE http://localhost:8080/quizrooms/4/delete
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDc1MjIwOTMsInVzZXJfaWQiOjEsInVzZXJuYW1lIjoidGVzdCJ9.lOQcFyE0Gth-DZliyERlDbDkc1r26lDmKkhILQOIFeY
-
