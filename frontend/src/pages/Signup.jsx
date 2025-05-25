@@ -1,383 +1,273 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
   TextField,
   Typography,
-  Alert,
-  CircularProgress,
+  Link,
+  IconButton,
+  useTheme,
 } from '@mui/material';
-import axios from 'axios'; // Import axios for HTTP requests
-import FloatingSymbols from '../components/FloatingSymbols';
+import { motion } from 'framer-motion';
+import { Sun, Moon } from 'lucide-react';
 
-const Signup = () => {
-  const [authType, setAuthType] = React.useState('signup');
-  
-  // State to store form data
-  const [formData, setFormData] = React.useState({
-    username: '',
-    password: ''
-  });
-  
-  // State to handle loading and messages
-  const [loading, setLoading] = React.useState(false);
-  const [message, setMessage] = React.useState('');
-  const [error, setError] = React.useState('');
-  const [token, setToken] = React.useState(''); // State to store and display token
-
-  const toggleAuthType = () => {
-    setAuthType((prev) => (prev === 'signup' ? 'login' : 'signup'));
-    // Clear messages when switching
-    setMessage('');
-    setError('');
-    setToken(''); // Clear token when switching
-  };
-
-  // Handle input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page refresh
-    
-    // Basic validation
-    if (!formData.username || !formData.password) {
-      setError('Please fill in all fields');
-      return;
-    }
-
-    setLoading(true);
-    setError('');
-    setMessage('');
-    setToken(''); // Clear previous token
-
-    try {
-      // Your exact backend URLs
-      const endpoint = authType === 'signup' ? 'http://localhost:8080/signup' : 'http://localhost:8080/login';
-      
-      const response = await axios.post(endpoint, {
-        username: formData.username,
-        password: formData.password
-      });
-
-      // Handle successful response
-      console.log('Success data:', response.data);
-      
-      if (authType === 'signup') {
-        // Your signup response: {"User created with user Id": user.UserId}
-        const userId = response.data["User created with user Id"];
-        setMessage(`Account created successfully! User ID: ${userId}`);
-      } else {
-        // Your login response: {"Login Successful with session token ": token}
-        const token = response.data["Login Successful with session token "];
-        setMessage('Login successful!');
-        
-        // Store and display the token
-        if (token) {
-          localStorage.setItem('token', token);
-          setToken(token); // Store token in state to display
-          console.log('Token stored:', token);
-        } else {
-          console.log('No token found in response');
-          console.log('Available keys:', Object.keys(response.data));
-        }
-      }
-
-    } catch (error) {
-      // Handle errors - Your backend sends errors in different Message fields
-      console.error('Full error object:', error);
-      console.error('Error response data:', error.response?.data);
-      
-      if (error.response && error.response.data) {
-        // Server responded with error status
-        let errorMessage = 'Something went wrong';
-        
-        // Your backend sends errors as Message1, Message2, Message3
-        if (error.response.data.Message1) {
-          errorMessage = error.response.data.Message1;
-        } else if (error.response.data.Message2) {
-          errorMessage = error.response.data.Message2;
-        } else if (error.response.data.Message3) {
-          errorMessage = error.response.data.Message3;
-        } else {
-          // Fallback: try to find any message field
-          const data = error.response.data;
-          const messageKey = Object.keys(data).find(key => 
-            key.toLowerCase().includes('message') || 
-            key.toLowerCase().includes('error')
-          );
-          if (messageKey) {
-            errorMessage = data[messageKey];
-          }
-        }
-        
-        setError(errorMessage);
-      } else if (error.request) {
-        // Request was made but no response received
-        setError('Cannot connect to server. Please check if your backend is running.');
-      } else {
-        // Something else happened
-        setError('An unexpected error occurred: ' + error.message);
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+const FloatingSymbols = () => {
+  const symbols = ['atom', 'rocket', 'microscope', 'flask-conical', 'telescope'];
+  const positions = [
+    { top: '10%', left: '20%' },
+    { top: '30%', right: '25%' },
+    { bottom: '20%', left: '15%' },
+    { bottom: '10%', right: '20%' },
+    { top: '50%', left: '50%' },
+  ];
 
   return (
     <>
-      {/* Stars background */}
-      <Box
-        sx={{
-          position: 'fixed',
-          inset: 0,
-          background: 'radial-gradient(white 1px, transparent 1px), radial-gradient(white 1px, transparent 1px)',
-          backgroundPosition: '0 0, 25px 25px',
-          backgroundSize: '50px 50px',
-          zIndex: 0,
-          pointerEvents: 'none',
-          opacity: 0.2,
-        }}
-      />
-
-      {/* Floating symbols smaller */}
-      <FloatingSymbols scale={0.5} />
-
-      {/* Header pinned top center */}
-      <Typography
-        variant="h3"
-        align="center"
-        sx={{
-          position: 'fixed',
-          top: 16,
-          left: 0,
-          right: 0,
-          color: 'white',
-          fontWeight: 'bold',
-          userSelect: 'none',
-          zIndex: 2,
-        }}
-      >
-        QUIZ
-      </Typography>
-
-      {/* Form container */}
-      <Box
-        component="form"
-        noValidate
-        autoComplete="off"
-        onSubmit={handleSubmit} // Add form submission handler
-        sx={{
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: 2,
-          px: 2,
-          position: 'relative',
-          zIndex: 1,
-          maxWidth: 400,
-          margin: '0 auto',
-        }}
-      >
-        {/* Show error message */}
-        {error && (
-          <Alert 
-            severity="error" 
-            sx={{ 
-              width: '100%', 
-              mb: 2,
-              backgroundColor: '#d32f2f',
-              color: 'white',
-              borderRadius: '10px',
-              '& .MuiAlert-icon': {
-                color: 'white',
-              },
-              '& .MuiAlert-message': {
-                color: 'white',
-              }
-            }}
-          >
-            {error}
-          </Alert>
-        )}
-
-        {/* Show token after successful login */}
-        {token && (
-          <Box
-            sx={{
-              width: '100%',
-              mb: 2,
-              p: 2,
-              backgroundColor: '#1e1e1e',
-              border: '2px solid #4caf50',
-              borderRadius: '10px',
-            }}
-          >
-            <Typography variant="body2" sx={{ color: '#4caf50', fontWeight: 'bold', mb: 1 }}>
-              Your Login Token:
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                color: 'white',
-                backgroundColor: '#000',
-                p: 1,
-                borderRadius: '5px',
-                fontFamily: 'monospace',
-                fontSize: '0.8rem',
-                wordBreak: 'break-all',
-              }}
-            >
-              {token}
-            </Typography>
-          </Box>
-        )}
-
-        {/* Show success message */}
-        {message && (
-          <Alert 
-            severity="success" 
-            sx={{ 
-              width: '100%', 
-              mb: 2,
-              backgroundColor: '#2e7d32',
-              color: 'white',
-              borderRadius: '10px',
-              '& .MuiAlert-icon': {
-                color: 'white',
-              },
-              '& .MuiAlert-message': {
-                color: 'white',
-              }
-            }}
-          >
-            {message}
-          </Alert>
-        )}
-
-        <TextField
-          fullWidth
-          name="username" // Add name attribute
-          label="Username"
-          value={formData.username} // Controlled input
-          onChange={handleInputChange} // Handle changes
-          margin="normal"
-          variant="outlined"
-          disabled={loading} // Disable when loading
-          InputProps={{
-            sx: {
-              borderRadius: '20px',
-              backgroundColor: '#1e1e1e',
-              color: 'white',
-              border: '2px solid black',
-              boxShadow: 'inset 2px 2px 5px #000000cc, inset -2px -2px 5px #333',
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'black',
-                borderWidth: 2,
-              },
-              '&:hover .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'black',
-              },
-              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'black',
-                borderWidth: 3,
-              },
-            },
-          }}
-          InputLabelProps={{
-            sx: { color: '#bbb' },
-          }}
-        />
-
-        <TextField
-          fullWidth
-          name="password" // Add name attribute
-          label="Password"
-          type="password"
-          value={formData.password} // Controlled input
-          onChange={handleInputChange} // Handle changes
-          margin="normal"
-          variant="outlined"
-          disabled={loading} // Disable when loading
-          InputProps={{
-            sx: {
-              borderRadius: '20px',
-              backgroundColor: '#1e1e1e',
-              color: 'white',
-              border: '2px solid black',
-              boxShadow: 'inset 2px 2px 5px #000000cc, inset -2px -2px 5px #333',
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'black',
-                borderWidth: 2,
-              },
-              '&:hover .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'black',
-              },
-              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'black',
-                borderWidth: 3,
-              },
-            },
-          }}
-          InputLabelProps={{
-            sx: { color: '#bbb' },
-          }}
-        />
-
-        <Button
-          fullWidth
-          type="submit" // Make it a submit button
-          variant="contained"
-          disabled={loading} // Disable when loading
-          sx={{
-            mt: 3,
-            borderRadius: '20px',
-            fontWeight: 'bold',
-            backgroundColor: 'black',
-            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.6)',
-            color: 'white',
-            '&:hover': {
-              backgroundColor: '#222',
-              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.8)',
-            },
+      {symbols.map((symbol, i) => (
+        <motion.div
+          key={i}
+          initial={{ y: 0 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 4 + i, ease: 'easeInOut' }}
+          style={{
+            position: 'absolute',
+            fontSize: '1.5rem',
+            color: 'rgba(255,255,255,0.1)',
+            pointerEvents: 'none',
+            zIndex: 0,
+            ...positions[i],
           }}
         >
-          {loading ? (
-            <CircularProgress size={24} color="inherit" />
-          ) : (
-            authType === 'signup' ? 'Sign Up' : 'Log In'
-          )}
-        </Button>
-
-        <Typography
-          variant="body2"
-          onClick={toggleAuthType}
-          sx={{
-            mt: 1,
-            color: '#ccc',
-            textDecoration: 'underline',
-            cursor: 'pointer',
-            userSelect: 'none',
-            fontSize: '0.8rem',
-            textAlign: 'center',
-            width: '100%',
-          }}
-        >
-          {authType === 'signup'
-            ? 'Already have an account? Log In'
-            : "Don't have an account? Sign Up"}
-        </Typography>
-      </Box>
+          <i className={`lucide lucide-${symbol}`} />
+        </motion.div>
+      ))}
     </>
   );
 };
 
-export default Signup;
+const AnimatedStars = () => {
+  const stars = Array.from({ length: 80 }, (_, i) => ({
+    id: i,
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    size: `${Math.random() * 2 + 1}px`,
+    duration: Math.random() * 2 + 1,
+  }));
+
+  return (
+    <>
+      {stars.map((star) => (
+        <motion.div
+          key={star.id}
+          initial={{ opacity: 0.2 }}
+          animate={{ opacity: [0.2, 1, 0.2] }}
+          transition={{ repeat: Infinity, duration: star.duration, ease: 'easeInOut' }}
+          style={{
+            position: 'absolute',
+            top: star.top,
+            left: star.left,
+            width: star.size,
+            height: star.size,
+            backgroundColor: 'white',
+            borderRadius: '50%',
+            opacity: 0.2,
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+        />
+      ))}
+    </>
+  );
+};
+
+export default function LoginPage() {
+  const [isLogin, setIsLogin] = useState(true);
+  const [darkMode, setDarkMode] = useState(true);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const theme = useTheme();
+
+  const handleLogin = () => {
+    // Add your authentication logic here
+    navigate('/quizrooms');
+  };
+
+  return (
+    <Box
+      sx={{
+        position: 'absolute',
+        inset: 0,
+        background: darkMode ? '#1a1a1a' : '#f5f5f5',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        px: 2,
+        gap: 2,
+        color: darkMode ? 'white' : 'black',
+        fontFamily: 'Roboto, sans-serif',
+        transition: 'background 0.3s, color 0.3s',
+      }}
+    >
+      <AnimatedStars />
+      <FloatingSymbols />
+
+      <IconButton
+        onClick={() => setDarkMode(!darkMode)}
+        sx={{
+          position: 'absolute',
+          top: 16,
+          right: 16,
+          color: darkMode ? 'white' : 'black',
+          outline: 'none',
+          zIndex: 10,
+        }}
+        aria-label="Toggle light/dark mode"
+        disableRipple
+        disableFocusRipple
+      >
+        {darkMode ? <Sun size={24} /> : <Moon size={24} />}
+      </IconButton>
+
+      <Typography
+        variant="h4"
+        sx={{
+          mb: 3,
+          fontWeight: 700,
+          letterSpacing: '2px',
+          userSelect: 'none',
+          zIndex: 1,
+        }}
+      >
+        QuiZ
+      </Typography>
+
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: 300,
+          background: darkMode ? '#0d0d0d' : '#e0e0e0',
+          borderRadius: '20px',
+          boxShadow: darkMode
+            ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
+            : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
+          border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
+          zIndex: 1,
+        }}
+      >
+        <TextField
+          fullWidth
+          placeholder="Username"
+          variant="standard"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          type="text"
+          InputProps={{
+            disableUnderline: true,
+            sx: {
+              color: darkMode ? 'white' : 'black',
+              px: 2,
+              py: 1,
+              fontSize: '0.85rem',
+              background: 'transparent',
+            },
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: 300,
+          background: darkMode ? '#0d0d0d' : '#e0e0e0',
+          borderRadius: '20px',
+          boxShadow: darkMode
+            ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
+            : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
+          border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
+          zIndex: 1,
+        }}
+      >
+        <TextField
+          fullWidth
+          placeholder="Password"
+          variant="standard"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          InputProps={{
+            disableUnderline: true,
+            sx: {
+              color: darkMode ? 'white' : 'black',
+              px: 2,
+              py: 1,
+              fontSize: '0.85rem',
+              background: 'transparent',
+            },
+          }}
+        />
+      </Box>
+
+      <Box sx={{ width: '100%', maxWidth: 300, mx: 'auto', zIndex: 1 }}>
+        <Button
+          fullWidth
+          onClick={handleLogin}
+          sx={{
+            py: 1.1,
+            borderRadius: '20px',
+            fontSize: '0.85rem',
+            textTransform: 'none',
+            color: '#fff',
+            background: '#000',
+            border: darkMode
+              ? `1px solid ${theme.palette.divider}`
+              : `2px solid ${theme.palette.divider}`,
+            '&:hover': {
+              background: darkMode ? '#1a1a1a' : '#222',
+            },
+            '&:focus-visible': {
+              outline: 'none',
+              borderColor: '#66ccff',
+              boxShadow: '0 0 6px 2px #66ccff',
+            },
+          }}
+        >
+          {isLogin ? 'Login' : 'Create Account'}
+        </Button>
+      </Box>
+
+      <Typography
+        sx={{
+          color: darkMode ? '#aaa' : '#555',
+          mt: 1,
+          fontSize: '0.75rem',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1,
+        }}
+      >
+        {isLogin ? 'New here?' : 'Already have an account?'}{' '}
+        <Link
+          component="button"
+          onClick={() => setIsLogin(!isLogin)}
+          underline="hover"
+          sx={{
+            color: '#66ccff',
+            ml: 0.5,
+            outline: 'none',
+            textDecoration: 'none',
+            '&:hover': { textDecoration: 'underline' },
+          }}
+          disableRipple
+          disableFocusRipple
+        >
+          {isLogin ? 'Create Account' : 'Login'}
+        </Link>
+      </Typography>
+    </Box>
+  );
+}
