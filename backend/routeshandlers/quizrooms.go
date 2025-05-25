@@ -160,3 +160,54 @@ func deleteQuizRoom(context *gin.Context) {
 	context.JSON(http.StatusOK, gin.H{"Message": "QuizRoom deleted"})
 
 }
+
+func updateScoreSheet(context *gin.Context) {
+
+	var newScoreSheet map[int64]int
+	err := context.ShouldBindJSON(&newScoreSheet)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Wrong format"})
+		return
+	}
+
+	quizId, err := strconv.Atoi(context.Param("id"))
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid quiz room"})
+		return
+	}
+
+	var quizRoom models.QuizRoom
+	err = quizRoom.GetQuizRoomFromId(quizId)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid quiz room"})
+		return
+	}
+
+	err = models.UpdateScoreSheetinDB(int64(quizId), newScoreSheet)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Could not update score in DB"})
+		return
+	}
+
+	context.JSON(http.StatusCreated, gin.H{"message": "Score Sheet Updated"})
+
+}
+
+func getScoreSheet(context *gin.Context) {
+
+	quizId, err := strconv.Atoi(context.Param("id"))
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid quiz room"})
+		return
+	}
+
+	var quizRoom models.QuizRoom
+	err = quizRoom.GetQuizRoomFromId(quizId)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid quiz room"})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"score_sheet": quizRoom.ScoreSheet})
+
+}

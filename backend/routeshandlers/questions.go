@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllQuestions(context *gin.Context) {
+func getAllQuestions(context *gin.Context) {
 
 	quizRoomId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {

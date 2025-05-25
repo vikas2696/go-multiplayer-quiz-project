@@ -1,12 +1,12 @@
 POST http://localhost:8080/create-quizroom
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDc5MjUzNDAsInVzZXJfaWQiOjEsInVzZXJuYW1lIjoidGVzdCJ9.-v3lUx50t0SpntamoJm0QchS6ZEQEdFRYd99aVMEW9k
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDgyMDQzMTIsInVzZXJfaWQiOjIsInVzZXJuYW1lIjoidGVzdDIifQ.nWaKU360cRrtHiIhYwh2u0CHX1Pdt0OzgtQroOCrPRw  
   
   {
   "Players": [
     {
-      "PlayerId": 1,
-      "Username": "test"
+      "PlayerId": 2,
+      "Username": "test2"
     }
   ],
   "TimerTime": 60,
