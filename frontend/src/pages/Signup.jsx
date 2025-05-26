@@ -12,7 +12,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
 
 const AnimatedStars = () => {
@@ -53,6 +53,7 @@ const AnimatedStars = () => {
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [darkMode, setDarkMode] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);  // <-- added
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -182,6 +183,7 @@ export default function LoginPage() {
             : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
           border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
           zIndex: 1,
+          position: 'relative',
         }}
       >
         <TextField
@@ -216,6 +218,7 @@ export default function LoginPage() {
             : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
           border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
           zIndex: 1,
+          position: 'relative',
         }}
       >
         <TextField
@@ -225,7 +228,7 @@ export default function LoginPage() {
           value={formData.password}
           onChange={handleInputChange}
           variant="standard"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           InputProps={{
             disableUnderline: true,
             sx: {
@@ -235,6 +238,22 @@ export default function LoginPage() {
               fontSize: '0.85rem',
               background: 'transparent',
             },
+            endAdornment: (
+              <IconButton
+                onClick={() => setShowPassword(!showPassword)}
+                edge="end"
+                sx={{
+                  color: 'grey',
+                  outline: 'none',
+                  '&:focus-visible': {
+                    outline: 'none',
+                    boxShadow: 'none',
+                  },
+                }}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </IconButton>
+            ),
           }}
         />
       </Box>
@@ -266,7 +285,6 @@ export default function LoginPage() {
         >
           {loading ? <CircularProgress size={20} sx={{ color: 'white' }} /> : isLogin ? 'Login' : 'Create Account'}
         </Button>
-
       </Box>
 
       <Typography
