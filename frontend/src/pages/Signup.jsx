@@ -7,44 +7,13 @@ import {
   Typography,
   Link,
   IconButton,
+  Alert,
+  CircularProgress,
   useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
-
-const FloatingSymbols = () => {
-  const symbols = ['atom', 'rocket', 'microscope', 'flask-conical', 'telescope'];
-  const positions = [
-    { top: '10%', left: '20%' },
-    { top: '30%', right: '25%' },
-    { bottom: '20%', left: '15%' },
-    { bottom: '10%', right: '20%' },
-    { top: '50%', left: '50%' },
-  ];
-
-  return (
-    <>
-      {symbols.map((symbol, i) => (
-        <motion.div
-          key={i}
-          initial={{ y: 0 }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 4 + i, ease: 'easeInOut' }}
-          style={{
-            position: 'absolute',
-            fontSize: '1.5rem',
-            color: 'rgba(255,255,255,0.1)',
-            pointerEvents: 'none',
-            zIndex: 0,
-            ...positions[i],
-          }}
-        >
-          <i className={`lucide lucide-${symbol}`} />
-        </motion.div>
-      ))}
-    </>
-  );
-};
+import axios from 'axios';
 
 const AnimatedStars = () => {
   const stars = Array.from({ length: 80 }, (_, i) => ({
@@ -84,14 +53,64 @@ const AnimatedStars = () => {
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [darkMode, setDarkMode] = useState(true);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const theme = useTheme();
 
-  const handleLogin = () => {
-    // Add your authentication logic here
-    navigate('/quizrooms');
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleAuth = async () => {
+    if (!formData.username || !formData.password) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+    setMessage('');
+
+    try {
+      const endpoint = isLogin
+        ? 'http://localhost:8080/login'
+        : 'http://localhost:8080/signup';
+
+      const response = await axios.post(endpoint, formData);
+
+      if (isLogin) {
+        const token = response.data.token;
+        setMessage('Login successful!');
+        if (token) {
+          localStorage.setItem('token', token);
+          navigate('/quizrooms');
+        }
+      } else {
+        setMessage('Account created successfully! Login to continue.');
+        setIsLogin(true);
+      }
+    } catch (err) {
+      if (err.response?.data) {
+        const data = err.response.data;
+        const messageKey = Object.keys(data).find(
+          (key) => key.toLowerCase().includes('message') || key.toLowerCase().includes('error')
+        );
+        setError(messageKey ? data[messageKey] : 'Something went wrong');
+      } else if (err.request) {
+        setError('Cannot connect to server.');
+      } else {
+        setError('An unexpected error occurred: ' + err.message);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -113,7 +132,6 @@ export default function LoginPage() {
       }}
     >
       <AnimatedStars />
-      <FloatingSymbols />
 
       <IconButton
         onClick={() => setDarkMode(!darkMode)}
@@ -122,18 +140,14 @@ export default function LoginPage() {
           top: 16,
           right: 16,
           color: darkMode ? 'white' : 'black',
-          outline: 'none',
           zIndex: 10,
         }}
-        aria-label="Toggle light/dark mode"
-        disableRipple
-        disableFocusRipple
       >
         {darkMode ? <Sun size={24} /> : <Moon size={24} />}
       </IconButton>
 
       <Typography
-        variant="h4"
+        variant="h2"
         sx={{
           mb: 3,
           fontWeight: 700,
@@ -142,8 +156,20 @@ export default function LoginPage() {
           zIndex: 1,
         }}
       >
-        QuiZ
+        The Surface Quiz
       </Typography>
+
+      {error && (
+        <Alert severity="error" sx={{ zIndex: 1, width: '80%', maxWidth: 300 }}>
+          {error}
+        </Alert>
+      )}
+
+      {message && (
+        <Alert severity="success" sx={{ zIndex: 1, width: '80%', maxWidth: 300 }}>
+          {message}
+        </Alert>
+      )}
 
       <Box
         sx={{
@@ -161,9 +187,10 @@ export default function LoginPage() {
         <TextField
           fullWidth
           placeholder="Username"
+          name="username"
+          value={formData.username}
+          onChange={handleInputChange}
           variant="standard"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
           type="text"
           InputProps={{
             disableUnderline: true,
@@ -194,9 +221,10 @@ export default function LoginPage() {
         <TextField
           fullWidth
           placeholder="Password"
+          name="password"
+          value={formData.password}
+          onChange={handleInputChange}
           variant="standard"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
           type="password"
           InputProps={{
             disableUnderline: true,
@@ -214,7 +242,8 @@ export default function LoginPage() {
       <Box sx={{ width: '100%', maxWidth: 300, mx: 'auto', zIndex: 1 }}>
         <Button
           fullWidth
-          onClick={handleLogin}
+          onClick={handleAuth}
+          disabled={loading}
           sx={{
             py: 1.1,
             borderRadius: '20px',
@@ -235,8 +264,9 @@ export default function LoginPage() {
             },
           }}
         >
-          {isLogin ? 'Login' : 'Create Account'}
+          {loading ? <CircularProgress size={20} sx={{ color: 'white' }} /> : isLogin ? 'Login' : 'Create Account'}
         </Button>
+
       </Box>
 
       <Typography
@@ -244,26 +274,24 @@ export default function LoginPage() {
           color: darkMode ? '#aaa' : '#555',
           mt: 1,
           fontSize: '0.75rem',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
           zIndex: 1,
         }}
       >
         {isLogin ? 'New here?' : 'Already have an account?'}{' '}
         <Link
           component="button"
-          onClick={() => setIsLogin(!isLogin)}
+          onClick={() => {
+            setIsLogin(!isLogin);
+            setError('');
+            setMessage('');
+          }}
           underline="hover"
           sx={{
             color: '#66ccff',
             ml: 0.5,
-            outline: 'none',
             textDecoration: 'none',
             '&:hover': { textDecoration: 'underline' },
           }}
-          disableRipple
-          disableFocusRipple
         >
           {isLogin ? 'Create Account' : 'Login'}
         </Link>
