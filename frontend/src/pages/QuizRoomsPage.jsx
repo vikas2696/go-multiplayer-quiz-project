@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AnimatedStars from '../components/Starbg';
+import axios from 'axios';
+import { GetErrorMessage } from '../utils/ErrorHandler';
+import { textFieldStyles } from '../components/EmbeddedTextField';
+import { buttonStyles } from '../components/DarkButton';
+import jwtDecode from 'jwt-decode'
 import {
   Box,
   Button,
@@ -10,8 +15,6 @@ import {
   Slider,
   useTheme,
 } from '@mui/material';
-import axios from 'axios';
-import { GetErrorMessage } from '../utils/ErrorHandler';
 
 export default function QuizRoomPage() {
   const theme = useTheme();
@@ -21,9 +24,48 @@ export default function QuizRoomPage() {
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
 
-  const handleRoom = () => {
-    // Add your authentication logic here
-    navigate('/lobby');
+  const token = localStorage.getItem('token');
+  const decoded = jwtDecode(token);
+
+  const handleCreate = () => {
+    axios.post('http://localhost:8080/create-quizroom',{
+        "Players": [
+          {
+            "PlayerId": decoded.user_id,
+            "Username": decoded.username
+          }
+        ],
+        "TimerTime": 60,
+        "QuizTopic": "Science"
+    },
+    {
+    headers: {
+      Authorization: `${token}`,
+      'Content-Type': 'application/json',
+     }
+    })
+    .then( response => {
+      navigate('/lobby');
+    })
+    .catch(err => {
+      console.log(GetErrorMessage(err));
+    })
+  };
+
+  const handleJoin = () => {
+    axios.patch('http://localhost:8080/quizrooms/'+roomCode+'/join',{},
+      {
+    headers: {
+      Authorization: `${token}`,
+      'Content-Type': 'application/json',
+     }
+    })
+    .then(response => {
+      navigate('/lobby');
+    })
+    .catch(err => {
+      console.log(GetErrorMessage(err));
+    })
   };
 
   useEffect(() => {
@@ -35,34 +77,6 @@ export default function QuizRoomPage() {
         console.log(GetErrorMessage(err));
       });
   },[]);
-
-  const textFieldStyles = (darkMode) => ({
-    width: '100%',
-    background: darkMode ? '#0d0d0d' : '#e0e0e0',
-    borderRadius: '20px',
-    boxShadow: darkMode
-      ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
-      : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
-    border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
-  });
-
-  const buttonStyles = {
-    py: 1.1,
-    borderRadius: '20px',
-    fontSize: '0.85rem',
-    textTransform: 'none',
-    color: '#fff',
-    background: '#000',
-    border: `1px solid ${theme.palette.divider}`,
-    '&:hover': {
-      background: '#1a1a1a',
-    },
-    '&:focus-visible': {
-      outline: 'none',
-      borderColor: '#66ccff',
-      boxShadow: '0 0 6px 2px #66ccff',
-    },
-  };
 
   const darkMode = true;
 
@@ -145,9 +159,8 @@ export default function QuizRoomPage() {
             sx={{ color: '#66ccff' }}
           />
 
-          <Button onClick = {handleRoom} sx={buttonStyles}>Create Quiz Room</Button>
+          <Button onClick = {handleCreate} sx={buttonStyles(theme)}>Create Quiz Room</Button>
         </Box>
-
         {/* Section D */}
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', px: 30, py:5, gap: 2 }}>
           <Box sx={textFieldStyles(darkMode)}>
@@ -170,7 +183,7 @@ export default function QuizRoomPage() {
             />
           </Box>
 
-          <Button onClick = {handleRoom} sx={buttonStyles}>Join</Button>
+          <Button onClick = {handleJoin} sx={buttonStyles(theme)}>Join</Button>
         </Box>
       </Box>
     </Box>

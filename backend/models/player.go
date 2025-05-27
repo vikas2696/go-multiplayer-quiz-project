@@ -47,7 +47,7 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 	var quizRoom QuizRoom
 	err := quizRoom.GetQuizRoomFromId(quizId)
 	if err != nil {
-		return err
+		return errors.New("quizroom not found")
 	}
 
 	if quizRoom.IsRunnning {

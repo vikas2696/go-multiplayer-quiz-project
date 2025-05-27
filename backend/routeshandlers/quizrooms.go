@@ -46,13 +46,13 @@ func joinQuizRoom(context *gin.Context) {
 
 	player_id, found := context.Get("userId")
 	if !found {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Unable to authenticate"})
 		return
 	}
 
 	player_username, found := context.Get("username")
 	if !found {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Unable to authenticate"})
 		return
 	}
 
@@ -60,20 +60,18 @@ func joinQuizRoom(context *gin.Context) {
 	player.Username = player_username.(string)
 
 	quizId, err := strconv.Atoi(context.Param("id"))
-
 	if err != nil {
-		context.String(400, "Bad Request"+err.Error())
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid code"})
 		return
 	}
 
 	err = player.AddPlayerToQuiz(quizId)
-
 	if err != nil {
-		context.String(400, "Bad Request "+err.Error())
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to join: " + err.Error()})
 		return
 	}
 
-	context.JSON(http.StatusCreated, gin.H{"Player joined Successfully to room " + strconv.Itoa(quizId): player})
+	context.JSON(http.StatusCreated, gin.H{"message": "Joined Successfully"})
 
 }
 

@@ -6,7 +6,7 @@ export function GetErrorMessage(err) {
         key.toLowerCase().includes('message') ||
         key.toLowerCase().includes('error')
     );
-    return messageKey ? data[messageKey] : 'Something went wrong';
+    return messageKey ? data[messageKey] : 'Something went wrong: '+JSON.stringify(data);
   } else if (err.request) {
     return 'Cannot connect to server.';
   } else {

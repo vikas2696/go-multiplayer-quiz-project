@@ -20,7 +20,7 @@ import { GetErrorMessage } from '../utils/ErrorHandler';
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [darkMode, setDarkMode] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);  // <-- added
+  const [showPassword, setShowPassword] = useState(false); 
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
