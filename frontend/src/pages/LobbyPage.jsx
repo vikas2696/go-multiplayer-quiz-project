@@ -40,7 +40,21 @@ export default function LobbyPage() {
     .catch(err => {
       GetErrorMessage(err)
     })
-  },[]);
+
+    const handleUnload = () => {
+    fetch(`http://localhost:8080/quizrooms/${quizId}/leave`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `${token}`,
+      },
+        keepalive: true,
+      });
+    };
+
+      window.addEventListener('beforeunload', handleUnload);
+      return () => window.removeEventListener('beforeunload', handleUnload);
+
+    },[]);
 
   const handleStartQuiz = () => {
     // Add any state changes or API calls before navigating if needed
