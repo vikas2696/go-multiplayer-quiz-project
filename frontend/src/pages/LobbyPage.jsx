@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Box,
   Typography,
@@ -10,100 +10,37 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
-
-// Reuse the FloatingSymbols and AnimatedStars from your login page
-const FloatingSymbols = () => {
-  const symbols = ['atom', 'rocket', 'microscope', 'flask-conical', 'telescope'];
-  const positions = [
-    { top: '10%', left: '20%' },
-    { top: '30%', right: '25%' },
-    { bottom: '20%', left: '15%' },
-    { bottom: '10%', right: '20%' },
-    { top: '50%', left: '50%' },
-  ];
-
-  return (
-    <>
-      {symbols.map((symbol, i) => (
-        <motion.div
-          key={i}
-          initial={{ y: 0 }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 4 + i, ease: 'easeInOut' }}
-          style={{
-            position: 'absolute',
-            fontSize: '1.5rem',
-            color: 'rgba(255,255,255,0.1)',
-            pointerEvents: 'none',
-            zIndex: 0,
-            ...positions[i],
-          }}
-        >
-          <i className={`lucide lucide-${symbol}`} />
-        </motion.div>
-      ))}
-    </>
-  );
-};
-
-const AnimatedStars = () => {
-  const stars = Array.from({ length: 80 }, (_, i) => ({
-    id: i,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    size: `${Math.random() * 2 + 1}px`,
-    duration: Math.random() * 2 + 1,
-  }));
-
-  return (
-    <>
-      {stars.map((star) => (
-        <motion.div
-          key={star.id}
-          initial={{ opacity: 0.2 }}
-          animate={{ opacity: [0.2, 1, 0.2] }}
-          transition={{ repeat: Infinity, duration: star.duration, ease: 'easeInOut' }}
-          style={{
-            position: 'absolute',
-            top: star.top,
-            left: star.left,
-            width: star.size,
-            height: star.size,
-            backgroundColor: 'white',
-            borderRadius: '50%',
-            opacity: 0.2,
-            pointerEvents: 'none',
-            zIndex: 0,
-          }}
-        />
-      ))}
-    </>
-  );
-};
+import Starbg from '../components/Starbg';
+import axios from 'axios';
+import { GetErrorMessage } from '../utils/ErrorHandler';
+import { jwtDecode } from 'jwt-decode';
 
 export default function LobbyPage() {
   const [darkMode, setDarkMode] = useState(true);
   const theme = useTheme();
   const navigate = useNavigate();
+  const [quizRoom, setQuizRoom] = useState({});
 
-  const quizRoom = {
-    QuizRoomId: 101,
-    Players: [
-      { id: 1, name: 'Alice' },
-      { id: 2, name: 'Bob' },
-    ],
-    TimerTime: 60,
-    QuizTopic: 'Physics',
-    IsRunnning: false,
-    ScoreSheet: {
-      1: 10,
-      2: 5,
-    },
-    PlayersAnswers: {
-      1: 'A',
-      2: 'C',
-    },
-  };
+  const token = localStorage.getItem('token');
+  const decoded = jwtDecode(token);
+  const { quizId } = useParams();
+
+  useEffect(() => {
+      axios.get('http://localhost:8080/quizrooms/'+ quizId +'/lobby',
+    {
+    headers: {
+      Authorization: `${token}`,
+      'Content-Type': 'application/json',
+     }
+    }
+  )
+    .then(response => {
+      setQuizRoom(response.data.quizroom)
+    })
+    .catch(err => {
+      GetErrorMessage(err)
+    })
+  },[]);
 
   const handleStartQuiz = () => {
     // Add any state changes or API calls before navigating if needed
@@ -126,8 +63,7 @@ export default function LobbyPage() {
         overflowY: 'auto',
       }}
     >
-      <AnimatedStars />
-      <FloatingSymbols />
+      <Starbg />
 
       <IconButton
         onClick={() => setDarkMode(!darkMode)}
@@ -169,11 +105,12 @@ export default function LobbyPage() {
         <Divider sx={{ my: 2 }} />
 
         <Typography sx={{ fontWeight: 600, mb: 1 }}>Players:</Typography>
-        {quizRoom.Players.map((player) => (
-          <Typography key={player.id}>
-            {player.name} — Score: {quizRoom.ScoreSheet[player.id] ?? 0}, Answer: {quizRoom.PlayersAnswers[player.id] ?? '—'}
-          </Typography>
-        ))}
+            {quizRoom?.Players?.map((player) => (
+              <Typography key={player.PlayerId}>
+                {player.Username} — Score: {quizRoom.ScoreSheet[player.PlayerId] ?? 0}
+              </Typography>
+            ))}
+
 
         <Button
           onClick={handleStartQuiz}

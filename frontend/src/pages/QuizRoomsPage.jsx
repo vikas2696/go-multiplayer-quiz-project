@@ -35,8 +35,8 @@ export default function QuizRoomPage() {
             "Username": decoded.username
           }
         ],
-        "TimerTime": 60,
-        "QuizTopic": "Science"
+        "TimerTime": time,
+        "QuizTopic": topic
     },
     {
     headers: {
@@ -45,7 +45,7 @@ export default function QuizRoomPage() {
      }
     })
     .then( response => {
-      navigate('/lobby');
+      navigate(`/quizrooms/${response.data.quiz_id}/lobby`);
     })
     .catch(err => {
       console.log(GetErrorMessage(err));
@@ -61,7 +61,7 @@ export default function QuizRoomPage() {
      }
     })
     .then(response => {
-      navigate('/lobby');
+      navigate(`/quizrooms/${roomCode}/lobby`);
     })
     .catch(err => {
       console.log(GetErrorMessage(err));
@@ -122,7 +122,7 @@ export default function QuizRoomPage() {
       <Box sx={{ flex: 1, display: 'flex', p: 2, gap: 2 }}>
         {/* Section C */}
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column',py: 5, px: 30, gap: 2 }}>
-          <Box sx={textFieldStyles(darkMode)}>
+          <Box sx={textFieldStyles(theme)}> 
             <TextField
               select
               fullWidth

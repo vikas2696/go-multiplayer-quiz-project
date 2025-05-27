@@ -25,19 +25,18 @@ func createQuizRoom(context *gin.Context) {
 
 	var quizRoom models.QuizRoom
 	err := context.ShouldBindJSON(&quizRoom)
-
 	if err != nil {
-		context.String(400, "Bad Request "+err.Error())
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid inputs"})
 		return
 	}
 
 	generatedId, err := quizRoom.SaveQuizRoomToDB()
 	if err != nil {
-		context.String(400, "Bad Request "+err.Error())
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to create quizroom"})
 		return
 	}
 
-	context.JSON(http.StatusCreated, gin.H{"QuizRoom created with ID": generatedId})
+	context.JSON(http.StatusCreated, gin.H{"quiz_id": generatedId})
 }
 
 func joinQuizRoom(context *gin.Context) {
@@ -79,18 +78,18 @@ func getQuizRoom(context *gin.Context) {
 
 	quizId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
-		context.JSON(http.StatusNotFound, gin.H{"Message": "Quiz Room not found"})
+		context.JSON(http.StatusNotFound, gin.H{"message": "Quiz Room not found"})
 		return
 	}
 
 	var quizRoom models.QuizRoom
 	err = quizRoom.GetQuizRoomFromId(quizId)
 	if err != nil {
-		context.JSON(http.StatusNotFound, gin.H{"Message": "Quiz Room not found"})
+		context.JSON(http.StatusNotFound, gin.H{"message": "Quiz Room not found"})
 		return
 	}
 
-	context.JSON(http.StatusOK, quizRoom)
+	context.JSON(http.StatusOK, gin.H{"quizroom": quizRoom})
 
 }
 

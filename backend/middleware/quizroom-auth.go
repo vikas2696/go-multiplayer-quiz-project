@@ -14,14 +14,14 @@ func QuizJoinMiddleware(context *gin.Context) {
 
 	player_id, found := context.Get("userId")
 	if !found {
-		context.JSON(http.StatusForbidden, gin.H{"Message": "Invalid Token"})
+		context.JSON(http.StatusForbidden, gin.H{"message": "Invalid Token"})
 		context.Abort()
 		return
 	}
 
 	player_username, found := context.Get("username")
 	if !found {
-		context.JSON(http.StatusForbidden, gin.H{"Message": "Invalid Token"})
+		context.JSON(http.StatusForbidden, gin.H{"message": "Invalid Token"})
 		context.Abort()
 		return
 	}
@@ -31,7 +31,7 @@ func QuizJoinMiddleware(context *gin.Context) {
 
 	quizId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
-		context.JSON(http.StatusForbidden, gin.H{"Message": "Invalid Quiz Room"})
+		context.JSON(http.StatusForbidden, gin.H{"message": "Invalid Quiz Room"})
 		context.Abort()
 		return
 	}

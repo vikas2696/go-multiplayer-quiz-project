@@ -23,7 +23,7 @@ func RunRoutes(server *gin.Engine) {
 		{
 			QuizRoomAuthRoutes.PATCH("/leave", leaveQuizRoom)
 			QuizRoomAuthRoutes.DELETE("/delete", deleteQuizRoom)
-			QuizRoomAuthRoutes.GET("/", getQuizRoom)
+			QuizRoomAuthRoutes.GET("/lobby", getQuizRoom)
 
 			//QuizRoomAuthRoutes.GET("/ws/lobby", webSocketLobby)
 
