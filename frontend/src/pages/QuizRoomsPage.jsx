@@ -5,7 +5,7 @@ import axios from 'axios';
 import { GetErrorMessage } from '../utils/ErrorHandler';
 import { textFieldStyles } from '../components/EmbeddedTextField';
 import { buttonStyles } from '../components/DarkButton';
-import jwtDecode from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 import {
   Box,
   Button,
