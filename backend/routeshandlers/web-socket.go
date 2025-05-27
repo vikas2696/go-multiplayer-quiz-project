@@ -26,25 +26,25 @@ var (
 func webSocketLobby(context *gin.Context) {
 	quizId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid quizroom"})
 		return
 	}
 
 	var quizRoom models.QuizRoom
 	err = quizRoom.GetQuizRoomFromId(quizId)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
 	conn, err := upgrader.Upgrade(context.Writer, context.Request, nil)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to upgrade the connection"})
 		return
 	}
 
 	_, exists := broadcastChans[quizId]
-	if !exists { //host creates and room and joins and starts both goroutines which will forever listens for other players to join and update the player list
+	if !exists { //host creates the room and joins and starts both goroutines which will forever listens for other players to join and update the player list
 		broadcastChans[quizId] = make(chan models.LobbyMessage)
 	}
 
@@ -93,7 +93,7 @@ func braodcastAll(quizId int) { // for adding another player and then braodcast 
 	}
 }
 
-func readMessages(conn *websocket.Conn, quizId int) { // for keep reading the messages to the room
+func readMessages(conn *websocket.Conn, quizId int) { // to read messages from the frontent
 
 	for { // per connection
 		_, msg, err := conn.ReadMessage()

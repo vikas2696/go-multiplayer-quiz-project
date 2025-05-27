@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -27,6 +27,14 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const theme = useTheme();
+
+    useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/quizrooms');
+    }
+  }, []);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
