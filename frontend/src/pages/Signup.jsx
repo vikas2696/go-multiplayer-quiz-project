@@ -12,43 +12,10 @@ import {
   useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
+import Starbg from '../components/Starbg'
 import { Sun, Moon, Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
-
-const AnimatedStars = () => {
-  const stars = Array.from({ length: 80 }, (_, i) => ({
-    id: i,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    size: `${Math.random() * 2 + 1}px`,
-    duration: Math.random() * 2 + 1,
-  }));
-
-  return (
-    <>
-      {stars.map((star) => (
-        <motion.div
-          key={star.id}
-          initial={{ opacity: 0.2 }}
-          animate={{ opacity: [0.2, 1, 0.2] }}
-          transition={{ repeat: Infinity, duration: star.duration, ease: 'easeInOut' }}
-          style={{
-            position: 'absolute',
-            top: star.top,
-            left: star.left,
-            width: star.size,
-            height: star.size,
-            backgroundColor: 'white',
-            borderRadius: '50%',
-            opacity: 0.2,
-            pointerEvents: 'none',
-            zIndex: 0,
-          }}
-        />
-      ))}
-    </>
-  );
-};
+import { extractErrorMessage } from '../utils/ErrorHandler';
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -98,17 +65,7 @@ export default function LoginPage() {
         setIsLogin(true);
       }
     } catch (err) {
-      if (err.response?.data) {
-        const data = err.response.data;
-        const messageKey = Object.keys(data).find(
-          (key) => key.toLowerCase().includes('message') || key.toLowerCase().includes('error')
-        );
-        setError(messageKey ? data[messageKey] : 'Something went wrong');
-      } else if (err.request) {
-        setError('Cannot connect to server.');
-      } else {
-        setError('An unexpected error occurred: ' + err.message);
-      }
+      setError(extractErrorMessage(err))
     } finally {
       setLoading(false);
     }
@@ -132,7 +89,7 @@ export default function LoginPage() {
         transition: 'background 0.3s, color 0.3s',
       }}
     >
-      <AnimatedStars />
+      <Starbg />
 
       <IconButton
         onClick={() => setDarkMode(!darkMode)}

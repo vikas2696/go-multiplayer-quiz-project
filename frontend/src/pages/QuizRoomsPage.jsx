@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AnimatedStars from '../components/Starbg';
+import FloatingPlanets from '../components/FloatingPlanets'
 
 import {
   Box,
@@ -51,7 +53,7 @@ export default function QuizRoomPage() {
     },
   };
 
-  const darkMode = true; // you can wire this up to a toggle if needed
+  const darkMode = true;
 
   return (
     <Box
@@ -63,11 +65,14 @@ export default function QuizRoomPage() {
         fontFamily: 'Roboto, sans-serif',
         display: 'flex',
         flexDirection: 'column',
+        p: 10,
       }}
     >
+
+    <AnimatedStars />
       {/* Section A */}
-      <Box sx={{ flex: 1.5, overflowY: 'auto', p: 2, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-        {[...Array(6)].map((_, i) => (
+      <Box sx={{ flex: 1.5, overflowY: 'auto', p: 10, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+        {[...Array(20)].map((_, i) => (
           <Box
             key={i}
             sx={{
@@ -90,7 +95,7 @@ export default function QuizRoomPage() {
       {/* Section B */}
       <Box sx={{ flex: 1, display: 'flex', p: 2, gap: 2 }}>
         {/* Section C */}
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column',py: 5, px: 30, gap: 2 }}>
           <Box sx={textFieldStyles(darkMode)}>
             <TextField
               select
@@ -132,7 +137,7 @@ export default function QuizRoomPage() {
         </Box>
 
         {/* Section D */}
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', px: 30, py:5, gap: 2 }}>
           <Box sx={textFieldStyles(darkMode)}>
             <TextField
               fullWidth
