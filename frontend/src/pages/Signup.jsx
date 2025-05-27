@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 import Starbg from '../components/Starbg'
 import { Sun, Moon, Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
-import { extractErrorMessage } from '../utils/ErrorHandler';
+import { GetErrorMessage } from '../utils/ErrorHandler';
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -65,7 +65,7 @@ export default function LoginPage() {
         setIsLogin(true);
       }
     } catch (err) {
-      setError(extractErrorMessage(err))
+      setError(GetErrorMessage(err))
     } finally {
       setLoading(false);
     }

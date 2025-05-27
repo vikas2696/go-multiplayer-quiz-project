@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AnimatedStars from '../components/Starbg';
-import FloatingPlanets from '../components/FloatingPlanets'
-
 import {
   Box,
   Button,
@@ -12,18 +10,31 @@ import {
   Slider,
   useTheme,
 } from '@mui/material';
+import axios from 'axios';
+import { GetErrorMessage } from '../utils/ErrorHandler';
 
 export default function QuizRoomPage() {
   const theme = useTheme();
   const [topic, setTopic] = useState('');
   const [time, setTime] = useState(10);
   const [roomCode, setRoomCode] = useState('');
+  const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
 
   const handleRoom = () => {
     // Add your authentication logic here
     navigate('/lobby');
   };
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/quizrooms')
+      .then(response => {
+        setRooms(response.data.quizrooms);
+      })
+      .catch(err => {
+        console.log(GetErrorMessage(err));
+      });
+  },[]);
 
   const textFieldStyles = (darkMode) => ({
     width: '100%',
@@ -68,11 +79,10 @@ export default function QuizRoomPage() {
         p: 10,
       }}
     >
-
     <AnimatedStars />
-      {/* Section A */}
+    {/* Section A */}
       <Box sx={{ flex: 1.5, overflowY: 'auto', p: 10, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-        {[...Array(20)].map((_, i) => (
+        {rooms.map((room, i) => (
           <Box
             key={i}
             sx={{
@@ -87,11 +97,13 @@ export default function QuizRoomPage() {
               justifyContent: 'center',
             }}
           >
-            <Typography>Quiz Room #{i + 1}</Typography>
+            <Typography>Quiz Room #{room.QuizRoomId}</Typography>
+            <Typography>Time {room.TimerTime}</Typography>
+            <Typography>Topic {room.QuizTopic}</Typography>
+            <Typography>Status {room.IsRunnning}</Typography>
           </Box>
         ))}
       </Box>
-
       {/* Section B */}
       <Box sx={{ flex: 1, display: 'flex', p: 2, gap: 2 }}>
         {/* Section C */}

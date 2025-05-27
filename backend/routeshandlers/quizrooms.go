@@ -13,11 +13,11 @@ func showAllQuizRooms(context *gin.Context) {
 	quizRooms, err := models.GetQuizRoomsFromDB()
 
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Quizrooms not found"})
+		context.JSON(http.StatusBadRequest, gin.H{"message": "Quizrooms not found"})
 		return
 	}
 
-	context.JSON(200, quizRooms)
+	context.JSON(http.StatusOK, gin.H{"quizrooms": quizRooms})
 
 }
 
