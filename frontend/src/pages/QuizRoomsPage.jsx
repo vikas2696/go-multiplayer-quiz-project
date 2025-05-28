@@ -6,6 +6,7 @@ import { GetErrorMessage } from '../utils/ErrorHandler';
 import { textFieldStyles } from '../components/EmbeddedTextField';
 import { buttonStyles } from '../components/DarkButton';
 import { jwtDecode } from 'jwt-decode'
+import { toast } from 'react-toastify';
 import {
   Box,
   Button,
@@ -45,10 +46,11 @@ export default function QuizRoomPage() {
      }
     })
     .then( response => {
+      toast.success(response.data.message);
       navigate(`/quizrooms/${response.data.quiz_id}/lobby`);
     })
     .catch(err => {
-      console.log(GetErrorMessage(err));
+     toast.error((GetErrorMessage(err)));
     })
   };
 
@@ -61,10 +63,11 @@ export default function QuizRoomPage() {
      }
     })
     .then(response => {
+      toast.success(response.data.message);
       navigate(`/quizrooms/${roomCode}/lobby`);
     })
     .catch(err => {
-      console.log(GetErrorMessage(err));
+     toast.error(GetErrorMessage(err));
     })
   };
 
@@ -74,7 +77,7 @@ export default function QuizRoomPage() {
         setRooms(response.data.quizrooms);
       })
       .catch(err => {
-        console.log(GetErrorMessage(err));
+        toast.error(GetErrorMessage(err));
       });
   },[]);
 

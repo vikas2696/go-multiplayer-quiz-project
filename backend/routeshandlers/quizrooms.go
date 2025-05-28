@@ -36,7 +36,7 @@ func createQuizRoom(context *gin.Context) {
 		return
 	}
 
-	context.JSON(http.StatusCreated, gin.H{"quiz_id": generatedId})
+	context.JSON(http.StatusCreated, gin.H{"quiz_id": generatedId, "message": "Quiz room created successfully!"})
 }
 
 func joinQuizRoom(context *gin.Context) {
@@ -99,13 +99,13 @@ func leaveQuizRoom(context *gin.Context) {
 
 	player_id, found := context.Get("userId")
 	if !found {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
+		context.JSON(http.StatusUnauthorized, gin.H{"error": "Unable to authenticate"})
 		return
 	}
 
 	player_username, found := context.Get("username")
 	if !found {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
+		context.JSON(http.StatusUnauthorized, gin.H{"error": "Unable to authenticate"})
 		return
 	}
 
@@ -114,17 +114,17 @@ func leaveQuizRoom(context *gin.Context) {
 
 	quizId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
-		context.JSON(400, "Bad Request"+err.Error())
+		context.JSON(http.StatusBadRequest, err.Error())
 		return
 	}
 
 	err = player.DeletePlayerFromQuiz(quizId)
 	if err != nil {
-		context.JSON(400, "Bad Request "+err.Error())
+		context.JSON(http.StatusBadRequest, err.Error())
 		return
 	}
 
-	context.JSON(http.StatusCreated, gin.H{"Player left Successfully from room " + strconv.Itoa(quizId): player})
+	context.JSON(http.StatusCreated, gin.H{"message": "player left successfully"})
 
 }
 
@@ -132,29 +132,29 @@ func deleteQuizRoom(context *gin.Context) {
 
 	quizId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
-		context.JSON(400, "Bad Request"+err.Error())
+		context.JSON(http.StatusBadRequest, err.Error())
 		return
 	}
 
 	playerId, found := context.Get("userId")
 	if !found {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
+		context.JSON(http.StatusUnauthorized, gin.H{"error": "Unable to authenticate"})
 		return
 	}
 
 	host := models.IsHost(quizId, playerId.(int64))
 	if !host {
-		context.JSON(http.StatusBadRequest, gin.H{"Message": "Only host can delete"})
+		context.JSON(http.StatusBadRequest, gin.H{"message": "Only host can delete"})
 		return
 	}
 
 	err = models.DeleteQuizRoomFromDB(int64(quizId))
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"Message": "Deletion failed: " + err.Error()})
+		context.JSON(http.StatusBadRequest, gin.H{"message": "Deletion failed: " + err.Error()})
 		return
 	}
 
-	context.JSON(http.StatusOK, gin.H{"Message": "QuizRoom deleted"})
+	context.JSON(http.StatusOK, gin.H{"message": "QuizRoom deleted"})
 
 }
 

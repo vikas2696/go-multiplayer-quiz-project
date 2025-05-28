@@ -46,7 +46,7 @@ export default function LoginPage() {
 
   const handleAuth = async () => {
     if (!formData.username || !formData.password) {
-      setError('Please fill in all fields');
+      toast.success(setError('Please fill in all fields'));
       return;
     }
 
@@ -63,17 +63,18 @@ export default function LoginPage() {
 
       if (isLogin) {
         const token = response.data.token;
-        setMessage('Login successful!');
+        toast.success(setMessage('Login successful!'));
         if (token) {
           localStorage.setItem('token', token);
           navigate('/quizrooms');
         }
       } else {
-        setMessage('Account created successfully! Login to continue.');
+        toast.success(setMessage('Account created successfully! Login to continue.'));
         setIsLogin(true);
       }
     } catch (err) {
-      setError(GetErrorMessage(err))
+      toast.error(setError(GetErrorMessage(err)))
+      
     } finally {
       setLoading(false);
     }
@@ -124,18 +125,6 @@ export default function LoginPage() {
       >
         The Surface Quiz
       </Typography>
-
-      {error && (
-        <Alert severity="error" sx={{ zIndex: 1, width: '80%', maxWidth: 300 }}>
-          {error}
-        </Alert>
-      )}
-
-      {message && (
-        <Alert severity="success" sx={{ zIndex: 1, width: '80%', maxWidth: 300 }}>
-          {message}
-        </Alert>
-      )}
 
       <Box
         sx={{
