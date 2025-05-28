@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
 import {
   Box,
   Typography,
@@ -16,20 +17,28 @@ import axios from 'axios';
 import { GetErrorMessage } from '../utils/ErrorHandler';
 import { jwtDecode } from 'jwt-decode';
 import handleUnload from '../utils/UnloadHandler';
+import { useBackButtonConfirmation } from '../utils/useBackButtonConfirmation'
 
 export default function LobbyPage() {
   const [darkMode, setDarkMode] = useState(true);
   const theme = useTheme();
   const navigate = useNavigate();
   const [quizRoom, setQuizRoom] = useState({});
+  const hasRun = useRef(false);
 
   const token = localStorage.getItem('token');
   const decoded = jwtDecode(token);
   const { quizId } = useParams();
+
   const leaveRoom_endpoint = `http://localhost:8080/quizrooms/${quizId}/leave`;
 
-
+  // Pass the endpoint and token to the hook
+  const { showConfirm, handleConfirmLeave, handleStay } = useBackButtonConfirmation(leaveRoom_endpoint, token);
+  
   useEffect(() => {
+    if (hasRun.current) return;
+    hasRun.current = true;
+
       axios.get('http://localhost:8080/quizrooms/'+ quizId +'/lobby',
     {
     headers: {
@@ -46,18 +55,7 @@ export default function LobbyPage() {
       navigate('/quizrooms');
     })
 
-    const handlePageHide = (event) => {
-    // Only trigger if actually leaving the page (not just hiding)
-    if (event.persisted) return; // Page is going into bfcache, not actually leaving
-    
-    handleUnload(leaveRoom_endpoint, 'PATCH', token);
-  };
-
-     // const unloadCallback = () => handleUnload(leaveRoom_endpoint,'PATCH',token);
-      window.addEventListener('pagehide', handlePageHide);
-      return () => window.removeEventListener('pagehide', handlePageHide);
-
-    },[]);
+  }, []);
 
   const handleStartQuiz = () => {
     // Add any state changes or API calls before navigating if needed
@@ -81,6 +79,31 @@ export default function LobbyPage() {
       }}
     >
       <Starbg />
+
+       {showConfirm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900">Leave Room?</h3>
+            <p className="text-gray-600 mb-6">
+              Are you sure you want to leave the room? This will end your current session.
+            </p>
+            <div className="flex space-x-4">
+              <button
+                onClick={handleConfirmLeave}
+                className="flex-1 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition-colors"
+              >
+                Yes, Leave
+              </button>
+              <button
+                onClick={handleStay}
+                className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400 transition-colors"
+              >
+                Stay
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <IconButton
         onClick={() => setDarkMode(!darkMode)}
