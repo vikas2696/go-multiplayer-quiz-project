@@ -46,7 +46,8 @@ export default function LoginPage() {
 
   const handleAuth = async () => {
     if (!formData.username || !formData.password) {
-      toast.success(setError('Please fill in all fields'));
+      setError('Please fill in all fields')
+      toast.error('Please fill in all fields');
       return;
     }
 
@@ -63,17 +64,20 @@ export default function LoginPage() {
 
       if (isLogin) {
         const token = response.data.token;
-        toast.success(setMessage('Login successful!'));
+        setMessage('Login successful!')
+        toast.success('Login successful!');
         if (token) {
           localStorage.setItem('token', token);
           navigate('/quizrooms');
         }
       } else {
-        toast.success(setMessage('Account created successfully! Login to continue.'));
+        setMessage('Account created successfully! Login to continue.')
+        toast.success('Account created successfully! Login to continue.');
         setIsLogin(true);
       }
     } catch (err) {
-      toast.error(setError(GetErrorMessage(err)))
+      setError(GetErrorMessage(err))
+      toast.error(GetErrorMessage(err))
       
     } finally {
       setLoading(false);

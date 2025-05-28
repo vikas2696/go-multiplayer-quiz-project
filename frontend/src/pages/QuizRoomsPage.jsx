@@ -7,6 +7,7 @@ import { textFieldStyles } from '../components/EmbeddedTextField';
 import { buttonStyles } from '../components/DarkButton';
 import { jwtDecode } from 'jwt-decode'
 import { toast } from 'react-toastify';
+import LogoutButton from '../components/LogoutButton';
 import {
   Box,
   Button,
@@ -83,6 +84,12 @@ export default function QuizRoomPage() {
 
   const darkMode = true;
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    toast.success('Logout Successful!');
+    navigate('/');
+  }
+
   return (
     <Box
       sx={{
@@ -97,6 +104,7 @@ export default function QuizRoomPage() {
       }}
     >
     <AnimatedStars />
+    <LogoutButton onLogout={logout}/>
     {/* Section A */}
       <Box sx={{ flex: 1.5, overflowY: 'auto', p: 10, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
         {rooms.map((room, i) => (
