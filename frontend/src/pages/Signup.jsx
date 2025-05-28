@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import {
   Box,
   Button,
@@ -16,6 +17,7 @@ import Starbg from '../components/Starbg'
 import { Sun, Moon, Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
 import { GetErrorMessage } from '../utils/ErrorHandler';
+import isTokenValid from '../utils/TokenHandler';
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -29,12 +31,10 @@ export default function LoginPage() {
   const theme = useTheme();
 
     useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
+    if (isTokenValid()) {
       navigate('/quizrooms');
     }
   }, []);
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

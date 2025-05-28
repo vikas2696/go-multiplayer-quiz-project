@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import {
   Box,
   Typography,
@@ -14,6 +15,7 @@ import Starbg from '../components/Starbg';
 import axios from 'axios';
 import { GetErrorMessage } from '../utils/ErrorHandler';
 import { jwtDecode } from 'jwt-decode';
+import handleUnload from '../utils/UnloadHandler';
 
 export default function LobbyPage() {
   const [darkMode, setDarkMode] = useState(true);
@@ -24,6 +26,8 @@ export default function LobbyPage() {
   const token = localStorage.getItem('token');
   const decoded = jwtDecode(token);
   const { quizId } = useParams();
+  const leaveRoom_endpoint = `http://localhost:8080/quizrooms/${quizId}/leave`;
+
 
   useEffect(() => {
       axios.get('http://localhost:8080/quizrooms/'+ quizId +'/lobby',
@@ -38,21 +42,20 @@ export default function LobbyPage() {
       setQuizRoom(response.data.quizroom)
     })
     .catch(err => {
-      GetErrorMessage(err)
+      toast.error(GetErrorMessage(err));
+      navigate('/quizrooms');
     })
 
-    const handleUnload = () => {
-    fetch(`http://localhost:8080/quizrooms/${quizId}/leave`, {
-      method: 'PATCH',
-      headers: {
-        'Authorization': `${token}`,
-      },
-        keepalive: true,
-      });
-    };
+    const handlePageHide = (event) => {
+    // Only trigger if actually leaving the page (not just hiding)
+    if (event.persisted) return; // Page is going into bfcache, not actually leaving
+    
+    handleUnload(leaveRoom_endpoint, 'PATCH', token);
+  };
 
-      window.addEventListener('beforeunload', handleUnload);
-      return () => window.removeEventListener('beforeunload', handleUnload);
+     // const unloadCallback = () => handleUnload(leaveRoom_endpoint,'PATCH',token);
+      window.addEventListener('pagehide', handlePageHide);
+      return () => window.removeEventListener('pagehide', handlePageHide);
 
     },[]);
 
