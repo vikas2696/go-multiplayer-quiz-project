@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { toast } from 'react-toastify';
+import { GetErrorMessage } from '../utils/ErrorHandler';
 import {
   Box,
   Typography,
@@ -6,20 +8,57 @@ import {
 } from '@mui/material';
 import { Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function LiveQuizPage() {
   const [darkMode, setDarkMode] = useState(true);
+  const optionKeys = ["OptionA", "OptionB", "OptionC", "OptionD"];
+
+  const [questions, setQuestions] = useState([]);
+  const [question, setQuestion] = useState({});
+  const [questionId, setQuestionId] = useState(0);
+  const [answer, setAnswer] = useState('');
+  const ques_no = useRef(0);
+
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const question = {
-    text: 'What is the speed of light?',
-    options: {
-      a: '3 x 10^8 m/s',
-      b: '1.5 x 10^7 m/s',
-      c: '9.8 m/s²',
-      d: '6.67 x 10^-11 N·m²/kg²',
-    },
-  };
+  const token = localStorage.getItem('token');
+  const decoded = jwtDecode(token);
+  const { quizId } = useParams();
+  const hasRun = useRef(false);
+
+    useEffect(() => {
+    if (hasRun.current) return;
+    hasRun.current = true;
+
+    axios.get(`http://localhost:8080/quizrooms/${quizId}/get-questions`,
+      {
+          headers: {
+            Authorization: token,
+            'Content-Type': 'application/json',
+           }
+          }
+        )
+          .then(response => {
+            setQuestions(response.data);
+            ques_no.current = response.data.length;
+            console.log(response.data[ques_no.current - 1]);
+            setQuestion(response.data[ques_no.current - 1]);
+          })
+          .catch(err => {
+            toast.error(GetErrorMessage(err));
+          });
+  }, []);
+
+  const nextQuestion = () => {
+    console.log(ques_no.current);
+    if(ques_no.current - 1) {
+      ques_no.current = ques_no.current - 1;
+      setQuestion(questions[ques_no.current - 1]);
+    }
+  }
 
   const handleSelect = (optionKey) => {
     setSelectedOption(prev => (prev === optionKey ? null : optionKey));
@@ -149,7 +188,7 @@ export default function LiveQuizPage() {
         }}
       >
         <Typography variant="h4" sx={{ fontWeight: 700 }}>
-          {question.text}
+          {question.Ques}
         </Typography>
       </Box>
 
@@ -166,7 +205,7 @@ export default function LiveQuizPage() {
           zIndex: 1,
         }}
       >
-        {Object.entries(question.options).map(([key, value]) => (
+        {optionKeys.map((key) => (
           <Box
             key={key}
             onClick={() => handleSelect(key)}
@@ -175,9 +214,10 @@ export default function LiveQuizPage() {
               ...getOptionStyles(key),
             }}
           >
-            {key.toUpperCase()}: {value}
+            {key.replace("Option", "")}: {question[key]}
           </Box>
         ))}
+
       </Box>
     </Box>
   );

@@ -68,7 +68,7 @@ export default function LobbyPage() {
 
     const handleMessage = (e) => {
       const data = JSON.parse(e.data);
-      data.type === 'start' && navigate('/live');
+      data.type === 'start' && navigate(`/quizrooms/${quizId}/live`);
       setMessages(prev => [...prev, data.type]);
     };
 

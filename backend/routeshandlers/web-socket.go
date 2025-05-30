@@ -92,7 +92,7 @@ func braodcastAll(quizId int) { // for adding another player and then braodcast 
 	}
 }
 
-func readMessages(conn *websocket.Conn, quizId int) { // to read messages from the frontent
+func readMessages(conn *websocket.Conn, quizId int) { // to read messages from the frontend
 
 	for { // per connection
 		_, msg, err := conn.ReadMessage()
