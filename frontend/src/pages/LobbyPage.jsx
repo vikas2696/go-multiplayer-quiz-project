@@ -13,14 +13,17 @@ import {
 import { motion } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 import Starbg from '../components/Starbg';
+import { buttonStyles } from '../components/DarkButton'
 import axios from 'axios';
 import { GetErrorMessage } from '../utils/ErrorHandler';
 import { jwtDecode } from 'jwt-decode';
 import handleUnload from '../utils/UnloadHandler';
 import { useBackButtonConfirmation } from '../utils/useBackButtonConfirmation'
+import useWebSocket from '../hooks/useWebSocket';
 
 export default function LobbyPage() {
   const [darkMode, setDarkMode] = useState(true);
+  const [isHost, setHost] = useState(false);
   const theme = useTheme();
   const navigate = useNavigate();
   const [quizRoom, setQuizRoom] = useState({});
@@ -31,10 +34,12 @@ export default function LobbyPage() {
   const { quizId } = useParams();
 
   const leaveRoom_endpoint = `http://localhost:8080/quizrooms/${quizId}/leave`;
+  const ws_url = `ws://localhost:8080/quizrooms/${quizId}/ws/lobby`;
 
-  // Pass the endpoint and token to the hook
   const { showConfirm, handleConfirmLeave, handleStay } = useBackButtonConfirmation(leaveRoom_endpoint, token);
-  
+  const socketRef = useWebSocket(ws_url);
+  const [messages, setMessages] = useState([]);
+
   useEffect(() => {
     if (hasRun.current) return;
     hasRun.current = true;
@@ -42,24 +47,50 @@ export default function LobbyPage() {
       axios.get('http://localhost:8080/quizrooms/'+ quizId +'/lobby',
     {
     headers: {
-      Authorization: `${token}`,
+      Authorization: token,
       'Content-Type': 'application/json',
      }
     }
   )
     .then(response => {
-      setQuizRoom(response.data.quizroom)
+      setQuizRoom(response.data.quizroom);
+      setHost(decoded.user_id === response.data.quizroom.Players[0].PlayerId);
     })
     .catch(err => {
       toast.error(GetErrorMessage(err));
       navigate('/quizrooms');
-    })
+    });
 
   }, []);
 
+  useEffect(() => {
+    if (!socketRef.current) return;
+
+    const handleMessage = (e) => {
+      const data = JSON.parse(e.data);
+      data.type === 'start' && navigate('/live');
+      setMessages(prev => [...prev, data.type]);
+    };
+
+    socketRef.current.addEventListener('message', handleMessage);
+
+    return () => {
+      socketRef.current.removeEventListener('message', handleMessage);
+    };
+  }, [socketRef]);
+
+  const sendMessage = (msg) => {
+    if (socketRef.current?.readyState === WebSocket.OPEN) {
+      socketRef.current.send(msg);
+    } else {
+      console.warn('Socket not open');
+    }
+  };
+
   const handleStartQuiz = () => {
     // Add any state changes or API calls before navigating if needed
-    navigate('/live');
+    sendMessage('start');
+    //navigate('/live');
   };
 
   return (
@@ -85,7 +116,7 @@ export default function LobbyPage() {
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
             <h3 className="text-lg font-semibold mb-4 text-gray-900">Leave Room?</h3>
             <p className="text-gray-600 mb-6">
-              Are you sure you want to leave the room? This will end your current session.
+              Are you sure you want to leave the room?.
             </p>
             <div className="flex space-x-4">
               <button
@@ -150,23 +181,17 @@ export default function LobbyPage() {
                 {player.Username} — Score: {quizRoom.ScoreSheet[player.PlayerId] ?? 0}
               </Typography>
             ))}
-
-
-        <Button
+      </Box>
+      {isHost && < Button
           onClick={handleStartQuiz}
           variant="contained"
           color="primary"
-          fullWidth
-          sx={{
-            mt: 3,
-            fontWeight: 600,
-            borderRadius: '12px',
-            textTransform: 'none',
-          }}
-        >
+          sx={buttonStyles(theme)}>
           Start Quiz
-        </Button>
-      </Box>
-    </Box>
+        </Button> }
+        <ul>
+        {messages.map((msg, idx) => <li key={idx}>{JSON.stringify(msg)}</li>)}
+      </ul>
+    </Box> 
   );
 }

@@ -124,7 +124,7 @@ func leaveQuizRoom(context *gin.Context) {
 		return
 	}
 
-	context.JSON(http.StatusCreated, gin.H{"message": "player left successfully"})
+	context.JSON(http.StatusCreated, gin.H{"message": "player left the quizroom successfully"})
 
 }
 

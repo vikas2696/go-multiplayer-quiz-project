@@ -83,8 +83,7 @@ func braodcastAll(quizId int) { // for adding another player and then braodcast 
 		mu.RUnlock()
 
 		for _, connection := range conns { // per room
-			err := connection.WriteJSON(gin.H{"type": lobbyMessage.Msg,
-				"players": joinedPlayers[quizId]})
+			err := connection.WriteJSON(gin.H{"type": lobbyMessage.Msg, "players": joinedPlayers[quizId]})
 			if err != nil {
 				fmt.Println("websocket write error", err)
 				connection.Close()

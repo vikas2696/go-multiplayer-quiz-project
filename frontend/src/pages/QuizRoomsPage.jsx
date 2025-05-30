@@ -59,7 +59,7 @@ export default function QuizRoomPage() {
     axios.patch('http://localhost:8080/quizrooms/'+roomCode+'/join',{},
       {
     headers: {
-      Authorization: `${token}`,
+      Authorization: token,
       'Content-Type': 'application/json',
      }
     })
