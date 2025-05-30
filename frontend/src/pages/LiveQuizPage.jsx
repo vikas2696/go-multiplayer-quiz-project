@@ -19,7 +19,7 @@ export default function LiveQuizPage() {
   const [questions, setQuestions] = useState([]);
   const [question, setQuestion] = useState({});
   const [questionId, setQuestionId] = useState(0);
-  const [answer, setAnswer] = useState('');
+  const [user_answer, setAnswer] = useState('');
   const ques_no = useRef(0);
 
   const [selectedOption, setSelectedOption] = useState(null);
@@ -61,9 +61,18 @@ export default function LiveQuizPage() {
   }
 
   const handleSelect = (optionKey) => {
-    setSelectedOption(prev => (prev === optionKey ? null : optionKey));
+    setSelectedOption(prev => {
+      if (prev === optionKey) {
+        setAnswer(null);          // deselected, so clear answer
+        console.log(null);
+        return null;
+      } else {
+        setAnswer(question[optionKey]); // selected, set answer value
+        console.log(question[optionKey]);
+        return optionKey;
+      }
+    });
   };
-
   const getOptionStyles = (key) => {
     const isSelected = selectedOption === key;
     const muddyOrange = '#a1662f'; // slight orangish-brown
