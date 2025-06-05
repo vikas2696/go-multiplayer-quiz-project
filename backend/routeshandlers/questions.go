@@ -12,20 +12,20 @@ func getAllQuestions(context *gin.Context) {
 
 	quizRoomId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Invalid Quiz Room"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid Quiz Room"})
 		return
 	}
 
 	var quizRoom models.QuizRoom
 	err = quizRoom.GetQuizRoomFromId(quizRoomId)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Invalid Quiz Room"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid Quiz Room"})
 		return
 	}
 
 	questions, err := models.GetQuestionsFromJSON("database/" + quizRoom.QuizTopic + ".json")
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Questions not found"})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Questions not found"})
 		return
 	}
 
@@ -78,7 +78,7 @@ func showAnswer(context *gin.Context) {
 
 	quizRoomId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"Message": "Cannot find Room"})
+		context.JSON(http.StatusBadRequest, gin.H{"message": "Cannot find Room"})
 		return
 	}
 
@@ -90,19 +90,19 @@ func showAnswer(context *gin.Context) {
 
 	ques_id, err := strconv.Atoi(context.Param("ques_id"))
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Cannot convert question id"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Cannot convert question id"})
 		return
 	}
 
 	questions, err := models.GetQuestionsFromJSON("database/science.json")
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Questions not found"})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Questions not found"})
 		return
 	}
 
 	question, err := models.GetQuestionFromId(questions, ques_id)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, err.Error())
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Question not found"})
 		return
 	}
 
@@ -114,7 +114,7 @@ func showAnswer(context *gin.Context) {
 
 	err = models.UpdateScoreSheetinDB(int64(quizRoomId), scoreSheet)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Unable to update score"})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to update score"})
 		return
 	}
 
@@ -126,7 +126,7 @@ func enterAnswer(context *gin.Context) {
 
 	quizRoomId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to get quiz id"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Unable to get quiz id"})
 		return
 	}
 
@@ -138,13 +138,13 @@ func enterAnswer(context *gin.Context) {
 	var answerData string
 	err = context.ShouldBindJSON(&answerData)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to get input answer"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Unable to get input answer"})
 		return
 	}
 
 	p_id, found := context.Get("userId")
 	if !found {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to authenticate"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Unable to authenticate"})
 		return
 	}
 
@@ -152,9 +152,9 @@ func enterAnswer(context *gin.Context) {
 
 	err = models.SaveAnswersToDB(playersAnswers, quizRoomId)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Internal Server Error": "Unable to save answer"})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to save answer"})
 		return
 	}
 
-	context.JSON(http.StatusCreated, playersAnswers)
+	context.JSON(http.StatusCreated, gin.H{"message": "answer submitted successfully"})
 }
