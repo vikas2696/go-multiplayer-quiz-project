@@ -68,8 +68,15 @@ export default function LobbyPage() {
 
     const handleMessage = (e) => {
       const data = JSON.parse(e.data);
+      console.log(data);
       data.type === 'start' && navigate(`/quizrooms/${quizId}/live`);
-      setMessages(prev => [...prev, data.type]);
+        if (data.Type === 'join') {
+          setMessages(prev => [...prev, data.Msg.Username+' joined the room.']);
+        } else if(data.Type === 'leave') {
+          setMessages(prev => [...prev, data.Msg.Username+' left the room.']);
+        } else {
+          setMessages(prev => [...prev, data.Msg.Username+': '+data.Msg.Chat]);
+        }
     };
 
     socketRef.current.addEventListener('message', handleMessage);
@@ -92,6 +99,16 @@ export default function LobbyPage() {
     sendMessage('start');
     //navigate('/live');
   };
+
+  const handleLeavePressed = () => {
+    const msg = {
+      Type: 'leave',
+      Msg: { PlayerId: decoded.user_id, Username: decoded.username }
+    };
+    console.log(msg);
+    sendMessage(JSON.stringify(msg));
+    handleConfirmLeave();
+  }
 
   return (
     <Box
@@ -120,7 +137,7 @@ export default function LobbyPage() {
             </p>
             <div className="flex space-x-4">
               <button
-                onClick={handleConfirmLeave}
+                onClick={handleLeavePressed}
                 className="flex-1 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition-colors"
               >
                 Yes, Leave
