@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+
 
 const useWebSocket = (url) => {
   const socketRef = useRef(null);
-  
 
   useEffect(() => {
     const socket = new WebSocket(url);

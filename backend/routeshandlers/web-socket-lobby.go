@@ -1,8 +1,11 @@
 package routeshandlers
 
 import (
+	"encoding/json"
 	"fmt"
 	"go-multiplayer-quiz-project/backend/models"
+	"go-multiplayer-quiz-project/backend/utils"
+	"log"
 
 	"net/http"
 	"strconv"
@@ -38,9 +41,41 @@ func webSocketLobby(context *gin.Context) {
 		return
 	}
 
+	token := context.Query("token")
+	err = utils.ValidateToken(token, context)
+	if err != nil {
+		context.Writer.WriteHeader(http.StatusUnauthorized)
+		context.Writer.Write([]byte("Invalid token"))
+		return
+	}
+
+	playerId, found := context.Get("userId")
+	if !found {
+		context.Writer.WriteHeader(http.StatusUnauthorized)
+		context.Writer.Write([]byte("player id not found"))
+		return
+	}
+
+	playerIdInt64, ok := playerId.(int64)
+	if !ok {
+		log.Println("playerId is not of type int64:", playerId)
+		context.Writer.WriteHeader(http.StatusInternalServerError)
+		context.Writer.Write([]byte("Invalid player ID type"))
+		return
+	}
+
+	currentPlayer, err := models.GetPlayerFromId(int(playerIdInt64))
+	if err != nil {
+		log.Println(err.Error())
+		context.Writer.WriteHeader(http.StatusInternalServerError)
+		context.Writer.Write([]byte("cannot fetch player info"))
+		return
+	}
+
 	conn, err := upgrader.Upgrade(context.Writer, context.Request, nil)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to upgrade the connection"})
+		context.Writer.WriteHeader(http.StatusBadRequest)
+		context.Writer.Write([]byte("Unable to upgrade connection"))
 		return
 	}
 
@@ -55,7 +90,7 @@ func webSocketLobby(context *gin.Context) {
 	mu.Lock()
 	joinedPlayers[quizId] = append(joinedPlayers[quizId], conn)
 	mu.Unlock()
-	broadcastChans[quizId] <- models.LobbyMessage{Msg: "join", Conn: conn}
+	broadcastChans[quizId] <- models.LobbyMessage{Type: "join", Msg: currentPlayer, Conn: conn}
 }
 
 func braodcastAll(quizId int) { // for adding another player and then braodcast updated player list
@@ -64,7 +99,7 @@ func braodcastAll(quizId int) { // for adding another player and then braodcast 
 
 		lobbyMessage := <-broadcastChans[quizId] //channel to trigger when message receives
 
-		if lobbyMessage.Msg == "leave" {
+		if lobbyMessage.Type == "leave" {
 
 			for i, c := range joinedPlayers[quizId] {
 
@@ -84,7 +119,7 @@ func braodcastAll(quizId int) { // for adding another player and then braodcast 
 		mu.RUnlock()
 
 		for _, connection := range conns { // per room
-			err := connection.WriteJSON(gin.H{"type": lobbyMessage.Msg, "players": joinedPlayers[quizId]})
+			err := connection.WriteJSON(lobbyMessage)
 			if err != nil {
 				fmt.Println("websocket write error", err)
 				connection.Close()
@@ -95,14 +130,21 @@ func braodcastAll(quizId int) { // for adding another player and then braodcast 
 
 func readMessages(conn *websocket.Conn, quizId int) { // to read messages from the frontend
 
+	var lobbyClientMessage models.LobbyMessage
 	for { // per connection
-		_, msg, err := conn.ReadMessage()
+		_, msgJSON, err := conn.ReadMessage()
 		if err != nil {
 			fmt.Println("Connection is closed", err)
 			//conn.Close()
 			return
 		}
-		lobbyMessage := models.LobbyMessage{Msg: string(msg), Conn: conn} //sending correct connection
-		broadcastChans[quizId] <- lobbyMessage                            //triggers broadcast channel
+
+		err = json.Unmarshal(msgJSON, &lobbyClientMessage)
+		if err != nil {
+			fmt.Println("Wrong message format: ", err)
+		}
+
+		lobbyClientMessage.Conn = conn
+		broadcastChans[quizId] <- lobbyClientMessage //triggers broadcast channel
 	}
 }

@@ -1,9 +1,12 @@
 package models
 
-import "github.com/gorilla/websocket"
+import (
+	"github.com/gorilla/websocket"
+)
 
 type LobbyMessage struct {
-	Msg  string
+	Type string
+	Msg  any
 	Conn *websocket.Conn
 }
 

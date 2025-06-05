@@ -165,7 +165,7 @@ func GetPlayerFromId(pId int) (p Player, err error) {
 	defer rows.Close()
 
 	if rows.Next() {
-		err = rows.Scan(&p)
+		err = rows.Scan(&p.PlayerId, &p.Username)
 		if err != nil {
 			return p, err
 		}
