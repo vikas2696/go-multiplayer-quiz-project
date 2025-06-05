@@ -3,7 +3,7 @@ package models
 import (
 	"encoding/json"
 	"errors"
-	"go-multiplayer-quiz-project/database"
+	"go-multiplayer-quiz-project/backend/database"
 )
 
 type Player struct {

@@ -1,7 +1,7 @@
 package routeshandlers
 
 import (
-	"go-multiplayer-quiz-project/models"
+	"go-multiplayer-quiz-project/backend/models"
 	"net/http"
 	"strconv"
 

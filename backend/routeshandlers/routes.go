@@ -1,7 +1,7 @@
 package routeshandlers
 
 import (
-	"go-multiplayer-quiz-project/middleware"
+	"go-multiplayer-quiz-project/backend/middleware"
 
 	"github.com/gin-gonic/gin"
 )

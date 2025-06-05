@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"go-multiplayer-quiz-project/utils"
+	"go-multiplayer-quiz-project/backend/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

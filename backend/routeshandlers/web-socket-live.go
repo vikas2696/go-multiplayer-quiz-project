@@ -3,7 +3,8 @@ package routeshandlers
 import (
 	"encoding/json"
 	"fmt"
-	"go-multiplayer-quiz-project/models"
+	"go-multiplayer-quiz-project/backend/models"
+
 	"net/http"
 	"strconv"
 	"sync"

@@ -1,8 +1,8 @@
 package routeshandlers
 
 import (
-	"go-multiplayer-quiz-project/models"
-	"go-multiplayer-quiz-project/utils"
+	"go-multiplayer-quiz-project/backend/models"
+	"go-multiplayer-quiz-project/backend/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

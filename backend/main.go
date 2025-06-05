@@ -1,8 +1,8 @@
 package main
 
 import (
-	"go-multiplayer-quiz-project/database"
-	"go-multiplayer-quiz-project/routeshandlers"
+	"go-multiplayer-quiz-project/backend/database"
+	"go-multiplayer-quiz-project/backend/routeshandlers"
 
 	"github.com/gin-gonic/gin"
 )

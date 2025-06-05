@@ -2,8 +2,8 @@ package models
 
 import (
 	"errors"
-	"go-multiplayer-quiz-project/database"
-	"go-multiplayer-quiz-project/utils"
+	"go-multiplayer-quiz-project/backend/database"
+	"go-multiplayer-quiz-project/backend/utils"
 )
 
 type User struct {
