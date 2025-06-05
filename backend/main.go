@@ -12,7 +12,7 @@ func main() {
 	database.InitDB()
 	server := gin.Default()
 
-	// CORS middleware
+	//CORS middleware
 	// server.Use(cors.New(cors.Config{
 	// 	AllowOrigins:     []string{"http://localhost:5173"},
 	// 	AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"},
