@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate, useParams } from 'react-router-dom';
-import ScorecardModal from '../components/ScoreBoardDialog';
+import NeumorphicScoreboard from '../components/ScoreSheetDesign'
 import useWebSocketLive from '../hooks/useWebSocketLive';
 
 export default function LiveQuizPage() {
@@ -88,7 +88,7 @@ export default function LiveQuizPage() {
     }
   },[questions, isHost]);
 
-  //for getting messages from WS
+  //for receiving messages from WS
   useEffect(() => {
     if (!socketRef.current) return;
     const handleMessage = (e) => {
@@ -147,6 +147,7 @@ export default function LiveQuizPage() {
               }
     };
     sendMessage(JSON.stringify(msg));
+    setSelectedOption(null);
     setShowScorecard(true);
   };
 
@@ -261,9 +262,10 @@ export default function LiveQuizPage() {
               justifyContent: 'space-between',
             }}
           >
-            <Typography variant="h3" sx={{ fontWeight: 700, mt: 2 }}>
-              SCORES
-            </Typography>
+              <NeumorphicScoreboard 
+                scoreSheet={scoreSheet} 
+                darkMode={darkMode} 
+              />
 
             {isHost && !showEndButton && <Button
               variant="contained"
