@@ -1,14 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 
-const useWebSocket = (url) => {
+
+const useWebSocketLive = (url) => {
   const socketRef = useRef(null);
-  
+  const [connected, setConnected] = useState(false);
 
   useEffect(() => {
     const socket = new WebSocket(url);
     socketRef.current = socket;
 
-    socket.onopen = () => console.log('WebSocket connected');
+    socket.onopen = () => {
+      setConnected(true);
+      console.log('WebSocket connected');
+    }
 
     socket.onmessage = (e) => {
       console.log('Received:', e.data);
@@ -25,7 +29,7 @@ const useWebSocket = (url) => {
     };
   }, [url]);
 
-  return socketRef; 
+  return [socketRef, connected]; 
 };
 
-export default useWebSocket;
+export default useWebSocketLive;

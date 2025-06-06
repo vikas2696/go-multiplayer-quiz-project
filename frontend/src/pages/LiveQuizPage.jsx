@@ -13,7 +13,7 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate, useParams } from 'react-router-dom';
 import ScorecardModal from '../components/ScoreBoardDialog';
-import useWebSocket from '../hooks/useWebSocket';
+import useWebSocketLive from '../hooks/useWebSocketLive';
 
 export default function LiveQuizPage() {
   const [darkMode, setDarkMode] = useState(true);
@@ -35,18 +35,19 @@ export default function LiveQuizPage() {
   const [showScorecard, setShowScorecard] = useState(false);
 
   const ws_url = `ws://localhost:8080/quizrooms/${quizId}/ws/live?token=${token}`;
-  const socketRef = useWebSocket(ws_url);
+  const [ socketRef, connected ] = useWebSocketLive(ws_url);
 
   useEffect(() => {
-    if (hasRun.current) return;
-    hasRun.current = true;
 
-    axios.get(`http://localhost:8080/quizrooms/${quizId}/get-questions`, {
-      headers: {
-        Authorization: token,
-        'Content-Type': 'application/json',
-      }
-    })
+      if (hasRun.current || !connected) return;
+      hasRun.current = true;
+
+      axios.get(`http://localhost:8080/quizrooms/${quizId}/get-questions`, {
+        headers: {
+          Authorization: token,
+          'Content-Type': 'application/json',
+        }
+      })
       .then(response => {
         setQuestions(response.data);
       })
@@ -58,8 +59,8 @@ export default function LiveQuizPage() {
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',
-      }
-    })
+        }
+      })
       .then(response => {
       setHost(decoded.user_id === response.data.quizroom.Players[0].PlayerId);
       })
@@ -67,22 +68,26 @@ export default function LiveQuizPage() {
         toast.error(GetErrorMessage(err));
       });
 
-  }, []);
+  }, [connected]);
 
+  //for sending questions to WS
   useEffect(() => {
+    if(!isHost) return;
     const msg = {
       Type: 'questions',
       Msg: questions
     };
-    sendMessage(JSON.stringify(msg));
-  },[questions]);
+    if(questions.length) {
+      sendMessage(JSON.stringify(msg));
+    }
+  },[questions, isHost]);
 
+  //for getting messages from WS
   useEffect(() => {
     if (!socketRef.current) return;
 
     const handleMessage = (e) => {
       const data = JSON.parse(e.data);
-      console.log(data);
     };
 
     socketRef.current.addEventListener('message', handleMessage);
@@ -92,16 +97,18 @@ export default function LiveQuizPage() {
     };
   }, [socketRef]);
 
+  //for sending messages to WS
   const sendMessage = (msg) => {
     if (socketRef.current?.readyState === WebSocket.OPEN) {
       socketRef.current.send(msg);
+      console.log('sent: ',msg);
     } else {
       console.warn('Socket not open');
     }
   };
 
   const nextQuestion = () => {
-    //next
+    //later
   };
 
   const handleTimeUp = () => {

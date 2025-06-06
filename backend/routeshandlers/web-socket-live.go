@@ -122,15 +122,36 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 		}
 
 		clientMsg.Conn = conn
+
 		if clientMsg.Type == "questions" {
-			questionsPerRoom[quizId] = (clientMsg.Msg).([]models.Question)
+			questionsBytes, err := json.Marshal(clientMsg.Msg)
+			if err != nil {
+				fmt.Println("Wrong message format: ", err)
+			}
+			var questions []models.Question
+			err = json.Unmarshal(questionsBytes, &questions)
+			if err != nil {
+				fmt.Println("Wrong message format: ", err)
+			}
+			live_mu.Lock()
+			questionsPerRoom[quizId] = questions
+			live_mu.Unlock()
+			live_broadcastChans[quizId] <- models.LiveMessage{
+				Type: "ack",
+				Msg:  "Questions received",
+				Conn: conn}
 		} else if clientMsg.Type == "next_question" {
 			live_broadcastChans[quizId] <- models.LiveMessage{
 				Type: "question",
-				Msg:  questionsPerRoom[quizId][(clientMsg.Msg).(int)],
+				Msg:  questionsPerRoom[quizId][int((clientMsg.Msg).(float64))],
+				Conn: conn}
+		} else if clientMsg.Type == "get_scorecard" {
+			live_broadcastChans[quizId] <- models.LiveMessage{
+				Type: "scorecard",
+				Msg:  nil,
 				Conn: conn}
 		} else {
-			live_broadcastChans[quizId] <- clientMsg //triggers broadcast channel
+			live_broadcastChans[quizId] <- clientMsg
 		}
 	}
 }
