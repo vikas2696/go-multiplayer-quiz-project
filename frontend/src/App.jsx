@@ -21,7 +21,9 @@ function App() {
           <ProtectedRoute> <LobbyPage /></ProtectedRoute>
           } />  
         <Route path="/dashboard" element={<Dashboard />} />  
-        <Route path="/quizrooms/:quizId/live" element={<LivePage />} />  
+        <Route path="/quizrooms/:quizId/live" element={
+          <ProtectedRoute> <LivePage /></ProtectedRoute>
+          } />  
       </Routes>
       <ToastContainer />
     </Router>

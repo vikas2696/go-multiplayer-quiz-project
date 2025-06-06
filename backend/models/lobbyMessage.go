@@ -15,3 +15,9 @@ type LiveMessage struct {
 	Msg  any
 	Conn *websocket.Conn
 }
+
+type PlayerScore struct {
+	Username      string
+	CurrentAnswer string
+	CurrentScore  int
+}

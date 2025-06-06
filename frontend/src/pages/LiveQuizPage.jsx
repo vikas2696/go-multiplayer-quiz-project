@@ -38,6 +38,8 @@ export default function LiveQuizPage() {
   const [isHost, setHost] = useState(false);
   const [showScorecard, setShowScorecard] = useState(false);
   const [showEndButton, setShowEndButton] = useState(false);
+  const hasTimeUpRun = useRef(false);
+  const selectedAnswerRef = useRef('');
 
   const ws_url = `ws://localhost:8080/quizrooms/${quizId}/ws/live?token=${token}`;
   const [ socketRef, connected ] = useWebSocketLive(ws_url);
@@ -94,13 +96,13 @@ export default function LiveQuizPage() {
       if(data.Type === 'question') {
         setShowScorecard(false);
         setQuestion(data.Msg);
-        startTimer(1);
+        startTimer(5);
       } else if(data.Type === 'scorecard') {
         setScoreSheet(data.Msg);
       } else if(data.Type === 'last_question') {
         setShowScorecard(false);
         setQuestion(data.Msg);
-        startTimer(1);
+        startTimer(5);
         setShowEndButton(true);
       }
     };
@@ -135,16 +137,21 @@ export default function LiveQuizPage() {
   }
 
   const handleTimeUp = () => {
-    toast.warning('Time is up!');
-    // const msg = {
-    //   Type: 'get_scorecard',
-    // };
-    //   sendMessage(JSON.stringify(msg));
+    if (hasTimeUpRun.current) return; 
+      hasTimeUpRun.current = true;
+    toast.warning('Time Up!');
+    const msg = {
+      Type: 'answer',
+      Msg:  { UserId: decoded.user_id,
+              Answer: selectedAnswerRef.current
+              }
+    };
+    sendMessage(JSON.stringify(msg));
     setShowScorecard(true);
-      //nextQuestion();
   };
 
   const startTimer = (duration) => {
+    hasTimeUpRun.current = false;
     if (timerRef.current) {
       timerRef.current.startTimer(duration);
     }
@@ -153,13 +160,16 @@ export default function LiveQuizPage() {
   const handleSelect = (optionKey) => {
     setSelectedOption(prev => {
       if (prev === optionKey) {
-        setAnswer(null);
+        console.log(null);
+        selectedAnswerRef.current = '';
         return null;
       } else {
-        setAnswer(question[optionKey]);
+        console.log(question[optionKey]);
+        selectedAnswerRef.current = question[optionKey]
         return optionKey;
       }
     });
+    console.log(selectedAnswerRef.current);
   };
 
   const getOptionStyles = (key) => {

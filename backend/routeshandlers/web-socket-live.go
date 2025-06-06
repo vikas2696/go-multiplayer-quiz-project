@@ -21,6 +21,7 @@ var (
 	live_broadcastChans  = make(map[int]chan models.LiveMessage)
 	questionsPerRoom     = make(map[int][]models.Question)
 	current_ques_indices = make(map[int]int)
+	scorecardPerRoom     = make(map[int]map[int]*models.PlayerScore)
 )
 
 func webSocketLive(context *gin.Context) {
@@ -76,8 +77,15 @@ func webSocketLive(context *gin.Context) {
 	_, exists := live_broadcastChans[quizId]
 	if !exists { //first one to join
 		live_broadcastChans[quizId] = make(chan models.LiveMessage)
+	}
+
+	if scorecardPerRoom[quizId] == nil {
+		scorecardPerRoom[quizId] = make(map[int]*models.PlayerScore)
 		live_mu.Lock()
 		current_ques_indices[quizId] = 0
+		for _, player := range quizRoom.Players {
+			scorecardPerRoom[quizId][int(player.PlayerId)] = &models.PlayerScore{Username: player.Username, CurrentAnswer: "", CurrentScore: 0}
+		}
 		live_mu.Unlock()
 	}
 
@@ -175,7 +183,19 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 				Msg:  nil,
 				Conn: conn}
 		} else if clientMsg.Type == "answer" {
-
+			dataMap := clientMsg.Msg.(map[string]interface{})
+			user_id := int(dataMap["UserId"].(float64))
+			answer := dataMap["Answer"].(string)
+			live_mu.Lock()
+			scorecardPerRoom[quizId][user_id].CurrentAnswer = answer
+			if answer == questionsPerRoom[quizId][current_ques_indices[quizId]].Answer {
+				scorecardPerRoom[quizId][user_id].CurrentScore++
+			}
+			live_mu.Unlock()
+			live_broadcastChans[quizId] <- models.LiveMessage{
+				Type: "scorecard",
+				Msg:  scorecardPerRoom[quizId],
+				Conn: conn}
 		} else {
 			live_broadcastChans[quizId] <- clientMsg
 		}

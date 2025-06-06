@@ -9,13 +9,15 @@ const CountdownTimer = forwardRef(({ onTimeUp }, ref) => {
     setSecondsLeft(seconds);
     intervalRef.current = setInterval(() => {
       setSecondsLeft(prev => {
-        if (prev === 1) {
+        const next = prev - 1;
+        if (next === 0) {
           clearInterval(intervalRef.current);
           intervalRef.current = null;
-          if (onTimeUp) onTimeUp();
-          return 0;
+          setTimeout(() => {
+            if (onTimeUp) onTimeUp(); // ✅ Now safe
+          }, 0);
         }
-        return prev - 1;
+        return next;
       });
     }, 1000);
   };
