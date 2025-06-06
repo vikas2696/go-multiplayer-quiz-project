@@ -16,10 +16,11 @@ import (
 )
 
 var (
-	livePlayers         = make(map[int][]*websocket.Conn)
-	live_mu             sync.RWMutex
-	live_broadcastChans = make(map[int]chan models.LiveMessage)
-	questionsPerRoom    = make(map[int][]models.Question)
+	livePlayers          = make(map[int][]*websocket.Conn)
+	live_mu              sync.RWMutex
+	live_broadcastChans  = make(map[int]chan models.LiveMessage)
+	questionsPerRoom     = make(map[int][]models.Question)
+	current_ques_indices = make(map[int]int)
 )
 
 func webSocketLive(context *gin.Context) {
@@ -75,6 +76,9 @@ func webSocketLive(context *gin.Context) {
 	_, exists := live_broadcastChans[quizId]
 	if !exists { //first one to join
 		live_broadcastChans[quizId] = make(chan models.LiveMessage)
+		live_mu.Lock()
+		current_ques_indices[quizId] = 0
+		live_mu.Unlock()
 	}
 
 	go livebraodcastAll(quizId)
@@ -137,19 +141,24 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 			questionsPerRoom[quizId] = questions
 			live_mu.Unlock()
 			live_broadcastChans[quizId] <- models.LiveMessage{
-				Type: "ack",
-				Msg:  "Questions received",
+				Type: "question",
+				Msg:  questions[current_ques_indices[quizId]],
 				Conn: conn}
 		} else if clientMsg.Type == "next_question" {
-			live_broadcastChans[quizId] <- models.LiveMessage{
-				Type: "question",
-				Msg:  questionsPerRoom[quizId][int((clientMsg.Msg).(float64))],
-				Conn: conn}
+			if current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId]) {
+				current_ques_indices[quizId]++
+				live_broadcastChans[quizId] <- models.LiveMessage{
+					Type: "question",
+					Msg:  questionsPerRoom[quizId][current_ques_indices[quizId]],
+					Conn: conn}
+			}
 		} else if clientMsg.Type == "get_scorecard" {
 			live_broadcastChans[quizId] <- models.LiveMessage{
 				Type: "scorecard",
 				Msg:  nil,
 				Conn: conn}
+		} else if clientMsg.Type == "answer" {
+
 		} else {
 			live_broadcastChans[quizId] <- clientMsg
 		}

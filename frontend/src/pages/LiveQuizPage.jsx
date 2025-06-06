@@ -2,10 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { GetErrorMessage } from '../utils/ErrorHandler';
 import CountdownTimer from '../utils/Timer';
+import Starbg from '../components/Starbg'
 import {
   Box,
   Typography,
   IconButton,
+  Modal,
+  Button,
 } from '@mui/material';
 import { Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -88,6 +91,12 @@ export default function LiveQuizPage() {
 
     const handleMessage = (e) => {
       const data = JSON.parse(e.data);
+      if(data.Type === 'question') {
+        setQuestion(data.Msg);
+        startTimer(10);
+      } else if(data.Type === 'scorecard') {
+        setScoreSheet(data.Msg);
+      }
     };
 
     socketRef.current.addEventListener('message', handleMessage);
@@ -108,14 +117,32 @@ export default function LiveQuizPage() {
   };
 
   const nextQuestion = () => {
-    //later
+    if(!isHost) return;
+    ques_no.current = ques_no.current + 1;
+    const msg = {
+      Type: 'next_question',
+      Msg: ques_no.current
+    };
+    if(ques_no.current < questions.length) {
+      sendMessage(JSON.stringify(msg));
+    }
   };
 
   const handleTimeUp = () => {
     toast.warning('Time is up!');
-    //nextQuestion();
+    // const msg = {
+    //   Type: 'get_scorecard',
+    // };
+    //   sendMessage(JSON.stringify(msg));
+    setShowScorecard(true);
+      //nextQuestion();
   };
 
+  const startTimer = (duration) => {
+    if (timerRef.current) {
+      timerRef.current.startTimer(duration);
+    }
+  };
 
   const handleSelect = (optionKey) => {
     setSelectedOption(prev => {
@@ -158,23 +185,6 @@ export default function LiveQuizPage() {
     };
   };
 
-  const symbols = ['atom', 'rocket', 'microscope', 'flask-conical', 'telescope'];
-  const symbolPositions = [
-    { top: '10%', left: '20%' },
-    { top: '30%', right: '25%' },
-    { bottom: '20%', left: '15%' },
-    { bottom: '10%', right: '20%' },
-    { top: '50%', left: '50%' },
-  ];
-
-  const stars = Array.from({ length: 80 }, (_, i) => ({
-    id: i,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    size: `${Math.random() * 2 + 1}px`,
-    duration: Math.random() * 2 + 1,
-  }));
-
   return (
     <Box sx={{
       position: 'absolute',
@@ -185,29 +195,9 @@ export default function LiveQuizPage() {
       overflow: 'hidden',
       pb: 5,
     }}>
-      {stars.map((star) => (
-        <motion.div key={star.id} initial={{ opacity: 0.2 }} animate={{ opacity: [0.2, 1, 0.2] }} transition={{ repeat: Infinity, duration: star.duration, ease: 'easeInOut' }}
-          style={{ position: 'absolute', top: star.top, left: star.left, width: star.size, height: star.size, backgroundColor: 'white', borderRadius: '50%', pointerEvents: 'none', zIndex: 0 }}
-        />
-      ))}
 
+    <Starbg />
       <CountdownTimer ref={timerRef} onTimeUp={handleTimeUp} />
-      <ScorecardModal
-      open={showScorecard}
-      onClose={() => setShowScorecard(false)}
-      scorecard={scoreSheet}
-      correctAnswer={question.Answer}
-      isHost={isHost}
-      onNextQuestion={handleNextQuestion}
-    />
-      {symbols.map((symbol, i) => (
-        <motion.div key={i} initial={{ y: 0 }} animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 4 + i, ease: 'easeInOut' }}
-          style={{ position: 'absolute', fontSize: '1.5rem', color: 'rgba(255,255,255,0.1)', pointerEvents: 'none', zIndex: 0, ...symbolPositions[i] }}
-        >
-          <i className={`lucide lucide-${symbol}`} />
-        </motion.div>
-      ))}
-
       <IconButton
         onClick={() => setDarkMode(!darkMode)}
         sx={{ position: 'absolute', top: 16, right: 16, color: darkMode ? 'white' : 'black', zIndex: 10 }}
@@ -233,6 +223,61 @@ export default function LiveQuizPage() {
           </Box>
         ))}
       </Box>
+
+        <Modal
+          open={showScorecard}
+          onClose={() => {}}
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backdropFilter: 'blur(6px)',
+          }}
+        >
+          <Box
+            sx={{
+              width: '90%',
+              height: '90%',
+              bgcolor: darkMode ? '#1a1a1a' : '#f5f5f5',
+              color: darkMode ? 'white' : 'black',
+              borderRadius: 4,
+              boxShadow: 24,
+              p: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Typography variant="h3" sx={{ fontWeight: 700, mt: 2 }}>
+              SCORES
+            </Typography>
+
+            <Button
+              variant="contained"
+              onClick={() => {
+                setShowScorecard(false);
+                nextQuestion();
+              }}
+              sx={{
+                mt: 4,
+                bgcolor: darkMode ? '#a1662f' : '#333',
+                color: 'white',
+                fontSize: '1rem',
+                fontWeight: 600,
+                borderRadius: 2,
+                px: 4,
+                py: 1,
+                '&:hover': {
+                  bgcolor: darkMode ? '#864d24' : '#555',
+                },
+              }}
+            >
+              Next
+            </Button>
+          </Box>
+        </Modal>
+
     </Box>
   );
 }
