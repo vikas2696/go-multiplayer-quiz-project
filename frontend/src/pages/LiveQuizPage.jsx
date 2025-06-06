@@ -27,6 +27,7 @@ export default function LiveQuizPage() {
   const [user_answer, setAnswer] = useState('');
   const [scoreSheet, setScoreSheet] = useState({});
   const ques_no = useRef(0);
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const decoded = jwtDecode(token);
   const user_id = decoded.user_id;
@@ -36,6 +37,7 @@ export default function LiveQuizPage() {
   const [quizRoom, setQuizRoom] = useState({});
   const [isHost, setHost] = useState(false);
   const [showScorecard, setShowScorecard] = useState(false);
+  const [showEndButton, setShowEndButton] = useState(false);
 
   const ws_url = `ws://localhost:8080/quizrooms/${quizId}/ws/live?token=${token}`;
   const [ socketRef, connected ] = useWebSocketLive(ws_url);
@@ -75,7 +77,6 @@ export default function LiveQuizPage() {
 
   //for sending questions to WS
   useEffect(() => {
-    if(!isHost) return;
     const msg = {
       Type: 'questions',
       Msg: questions
@@ -88,14 +89,19 @@ export default function LiveQuizPage() {
   //for getting messages from WS
   useEffect(() => {
     if (!socketRef.current) return;
-
     const handleMessage = (e) => {
       const data = JSON.parse(e.data);
       if(data.Type === 'question') {
+        setShowScorecard(false);
         setQuestion(data.Msg);
-        startTimer(10);
+        startTimer(1);
       } else if(data.Type === 'scorecard') {
         setScoreSheet(data.Msg);
+      } else if(data.Type === 'last_question') {
+        setShowScorecard(false);
+        setQuestion(data.Msg);
+        startTimer(1);
+        setShowEndButton(true);
       }
     };
 
@@ -118,15 +124,15 @@ export default function LiveQuizPage() {
 
   const nextQuestion = () => {
     if(!isHost) return;
-    ques_no.current = ques_no.current + 1;
     const msg = {
       Type: 'next_question',
-      Msg: ques_no.current
     };
-    if(ques_no.current < questions.length) {
-      sendMessage(JSON.stringify(msg));
-    }
+    sendMessage(JSON.stringify(msg));
   };
+
+  const handleQuizExit = () => {
+    navigate('/quizrooms', { replace: true });
+  }
 
   const handleTimeUp = () => {
     toast.warning('Time is up!');
@@ -155,10 +161,6 @@ export default function LiveQuizPage() {
       }
     });
   };
-
-  const handleNextQuestion = () => {
-    //not yet
-  }
 
   const getOptionStyles = (key) => {
     const isSelected = selectedOption === key;
@@ -253,10 +255,9 @@ export default function LiveQuizPage() {
               SCORES
             </Typography>
 
-            <Button
+            {isHost && !showEndButton && <Button
               variant="contained"
               onClick={() => {
-                setShowScorecard(false);
                 nextQuestion();
               }}
               sx={{
@@ -274,7 +275,28 @@ export default function LiveQuizPage() {
               }}
             >
               Next
-            </Button>
+            </Button>}
+            {showEndButton && <Button
+              variant="contained"
+              onClick={() => {
+                handleQuizExit();
+              }}
+              sx={{
+                mt: 4,
+                bgcolor: darkMode ? '#a1662f' : '#333',
+                color: 'white',
+                fontSize: '1rem',
+                fontWeight: 600,
+                borderRadius: 2,
+                px: 4,
+                py: 1,
+                '&:hover': {
+                  bgcolor: darkMode ? '#864d24' : '#555',
+                },
+              }}
+            >
+              EXIT
+            </Button>}
           </Box>
         </Modal>
 

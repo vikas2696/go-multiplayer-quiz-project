@@ -140,18 +140,35 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 			live_mu.Lock()
 			questionsPerRoom[quizId] = questions
 			live_mu.Unlock()
-			live_broadcastChans[quizId] <- models.LiveMessage{
-				Type: "question",
-				Msg:  questions[current_ques_indices[quizId]],
-				Conn: conn}
+
+			if current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId]) {
+				live_broadcastChans[quizId] <- models.LiveMessage{
+					Type: "question",
+					Msg:  questions[current_ques_indices[quizId]],
+					Conn: conn}
+			} else {
+				live_broadcastChans[quizId] <- models.LiveMessage{
+					Type: "end_quiz",
+					Msg:  nil,
+					Conn: conn}
+			}
+
 		} else if clientMsg.Type == "next_question" {
 			if current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId]) {
 				current_ques_indices[quizId]++
-				live_broadcastChans[quizId] <- models.LiveMessage{
-					Type: "question",
-					Msg:  questionsPerRoom[quizId][current_ques_indices[quizId]],
-					Conn: conn}
+				if current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId]) {
+					live_broadcastChans[quizId] <- models.LiveMessage{
+						Type: "last_question",
+						Msg:  questionsPerRoom[quizId][current_ques_indices[quizId]],
+						Conn: conn}
+				} else {
+					live_broadcastChans[quizId] <- models.LiveMessage{
+						Type: "question",
+						Msg:  questionsPerRoom[quizId][current_ques_indices[quizId]],
+						Conn: conn}
+				}
 			}
+
 		} else if clientMsg.Type == "get_scorecard" {
 			live_broadcastChans[quizId] <- models.LiveMessage{
 				Type: "scorecard",
