@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"go-multiplayer-quiz-project/backend/models"
+	"go-multiplayer-quiz-project/backend/utils"
+	"log"
 
 	"net/http"
 	"strconv"
@@ -17,6 +19,7 @@ var (
 	livePlayers         = make(map[int][]*websocket.Conn)
 	live_mu             sync.RWMutex
 	live_broadcastChans = make(map[int]chan models.LiveMessage)
+	questionsPerRoom    = make(map[int][]models.Question)
 )
 
 func webSocketLive(context *gin.Context) {
@@ -33,17 +36,36 @@ func webSocketLive(context *gin.Context) {
 		return
 	}
 
-	// playerId, found := context.Get("userId")
-	// if !found {
+	token := context.Query("token")
+	err = utils.ValidateToken(token, context)
+	if err != nil {
+		context.Writer.WriteHeader(http.StatusUnauthorized)
+		context.Writer.Write([]byte("Invalid token"))
+		return
+	}
 
-	// 	context.JSON(http.StatusUnauthorized, gin.H{"error": "Unable to authenticate"})
-	// 	return
-	// }
-	// currentPlayer, err := models.GetPlayerFromId(playerId.(int))
-	// if err != nil {
-	// 	context.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to authenticate"})
-	// 	return
-	// }
+	playerId, found := context.Get("userId")
+	if !found {
+		context.Writer.WriteHeader(http.StatusUnauthorized)
+		context.Writer.Write([]byte("player id not found"))
+		return
+	}
+
+	playerIdInt64, ok := playerId.(int64)
+	if !ok {
+		log.Println("playerId is not of type int64:", playerId)
+		context.Writer.WriteHeader(http.StatusInternalServerError)
+		context.Writer.Write([]byte("Invalid player ID type"))
+		return
+	}
+
+	currentPlayer, err := models.GetPlayerFromId(int(playerIdInt64))
+	if err != nil {
+		log.Println(err.Error())
+		context.Writer.WriteHeader(http.StatusInternalServerError)
+		context.Writer.Write([]byte("cannot fetch player info"))
+		return
+	}
 
 	conn, err := upgrader.Upgrade(context.Writer, context.Request, nil)
 	if err != nil {
@@ -61,29 +83,13 @@ func webSocketLive(context *gin.Context) {
 	live_mu.Lock()
 	livePlayers[quizId] = append(livePlayers[quizId], conn)
 	live_mu.Unlock()
-	live_broadcastChans[quizId] <- models.LiveMessage{Type: "join", Msg: models.Player{PlayerId: 1, Username: "test"}, Conn: conn}
+	live_broadcastChans[quizId] <- models.LiveMessage{Type: "join", Msg: currentPlayer, Conn: conn}
 }
 
-func livebraodcastAll(quizId int) { // for adding another player and then braodcast updated player list
+func livebraodcastAll(quizId int) {
 
 	for { //broadcast code
-
 		liveMessage := <-live_broadcastChans[quizId] //channel to trigger when message receives
-
-		if liveMessage.Type == "leave" {
-
-			for i, c := range livePlayers[quizId] {
-
-				if c == liveMessage.Conn {
-					live_mu.Lock()
-					livePlayers[quizId] = append(livePlayers[quizId][:i], livePlayers[quizId][i+1:]...)
-					live_mu.Unlock()
-					break
-				}
-			}
-
-			liveMessage.Conn.Close()
-		}
 
 		live_mu.RLock()
 		conns := append([]*websocket.Conn{}, livePlayers[quizId]...)
@@ -115,8 +121,16 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 			fmt.Println("Wrong message format: ", err)
 		}
 
-		//liveMessage := models.LiveMessage{Msg: clientMsg.Msg, Conn: conn} //sending correct connection
 		clientMsg.Conn = conn
-		live_broadcastChans[quizId] <- clientMsg //triggers broadcast channel
+		if clientMsg.Type == "questions" {
+			questionsPerRoom[quizId] = (clientMsg.Msg).([]models.Question)
+		} else if clientMsg.Type == "next_question" {
+			live_broadcastChans[quizId] <- models.LiveMessage{
+				Type: "question",
+				Msg:  questionsPerRoom[quizId][(clientMsg.Msg).(int)],
+				Conn: conn}
+		} else {
+			live_broadcastChans[quizId] <- clientMsg //triggers broadcast channel
+		}
 	}
 }

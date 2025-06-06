@@ -13,6 +13,7 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate, useParams } from 'react-router-dom';
 import ScorecardModal from '../components/ScoreBoardDialog';
+import useWebSocket from '../hooks/useWebSocket';
 
 export default function LiveQuizPage() {
   const [darkMode, setDarkMode] = useState(true);
@@ -33,6 +34,9 @@ export default function LiveQuizPage() {
   const [isHost, setHost] = useState(false);
   const [showScorecard, setShowScorecard] = useState(false);
 
+  const ws_url = `ws://localhost:8080/quizrooms/${quizId}/ws/live?token=${token}`;
+  const socketRef = useWebSocket(ws_url);
+
   useEffect(() => {
     if (hasRun.current) return;
     hasRun.current = true;
@@ -45,8 +49,6 @@ export default function LiveQuizPage() {
     })
       .then(response => {
         setQuestions(response.data);
-        ques_no.current = 0;
-        setQuestion(response.data[0]);
       })
       .catch(err => {
         toast.error(GetErrorMessage(err));
@@ -59,8 +61,6 @@ export default function LiveQuizPage() {
       }
     })
       .then(response => {
-      setQuizRoom(response.data.quizroom);
-      setScoreSheet(response.data.quizroom.ScoreSheet)
       setHost(decoded.user_id === response.data.quizroom.Players[0].PlayerId);
       })
       .catch(err => {
@@ -70,101 +70,44 @@ export default function LiveQuizPage() {
   }, []);
 
   useEffect(() => {
-    if (question && question.Ques) {
-      
-      startTimer(10);
-    }
-  }, [question]);
+    const msg = {
+      Type: 'questions',
+      Msg: questions
+    };
+    sendMessage(JSON.stringify(msg));
+  },[questions]);
 
-  const startTimer = (duration) => {
-    if (timerRef.current) {
-      timerRef.current.startTimer(duration);
+  useEffect(() => {
+    if (!socketRef.current) return;
+
+    const handleMessage = (e) => {
+      const data = JSON.parse(e.data);
+      console.log(data);
+    };
+
+    socketRef.current.addEventListener('message', handleMessage);
+
+    return () => {
+      socketRef.current.removeEventListener('message', handleMessage);
+    };
+  }, [socketRef]);
+
+  const sendMessage = (msg) => {
+    if (socketRef.current?.readyState === WebSocket.OPEN) {
+      socketRef.current.send(msg);
+    } else {
+      console.warn('Socket not open');
     }
   };
 
   const nextQuestion = () => {
-    setSelectedOption(null);
-    setAnswer('');
-
-    console.log("Current question index:", ques_no.current);
-    console.log("Total questions:", questions.length);
-
-    if (ques_no.current < questions.length - 1) {
-      ques_no.current += 1;
-      setQuestion(questions[ques_no.current]);
-      console.log("Moved to question:", questions[ques_no.current]);
-    } else {
-      console.log("No more questions");
-      toast.success("Quiz complete!");
-    }
+    //next
   };
-
-  useEffect(() => {
-      axios.post(`http://localhost:8080/quizrooms/${quizId}/save-answer`, 
-      user_answer , {
-      headers: {
-        Authorization: token,
-        'Content-Type': 'application/json',
-      }
-    })
-      .then(response => {
-        toast.success(response.data.message+' '+question[selectedOption])
-      })
-      .catch(err => {
-        toast.error(GetErrorMessage(err));
-      });
-  }, [user_answer]);
 
   const handleTimeUp = () => {
     toast.warning('Time is up!');
-     axios.get(`http://localhost:8080/quizrooms/${quizId}/lobby`, 
-     {
-      headers: {
-        Authorization: token,
-        'Content-Type': 'application/json',
-      }
-    })
-      .then(response => {
-        console.log(response.data.quizroom.PlayersAnswers)
-        setScoreSheet(updateScorecard(response.data.quizroom.Players,
-          response.data.quizroom.PlayersAnswers,
-          question.Answer,
-          scoreSheet
-        ));
-        setShowScorecard(true);
-      })
-      .catch(err => {
-        toast.error(GetErrorMessage(err));
-      });
     //nextQuestion();
   };
-
-  function updateScorecard(players, playersAnswers, correctAnswer, scorecard) {
-    players.forEach(player => {
-      const { PlayerId, Username } = player;
-      const selectedAnswer = playersAnswers[PlayerId];
-      const isCorrect = selectedAnswer === correctAnswer;
-
-      // Initialize player in scorecard if not present
-      if (!scorecard[PlayerId]) {
-        scorecard[PlayerId] = {
-          username: Username,
-          score: 0,
-        };
-      }
-
-      // Update score if correct
-      if (isCorrect) {
-        scorecard[PlayerId].score += 1;
-      }
-
-      // Optionally store last answer and correctness (for frontend display)
-      scorecard[PlayerId].selectedAnswer = selectedAnswer || null;
-      scorecard[PlayerId].isCorrect = isCorrect;
-    });
-
-    return scorecard;
-  }
 
 
   const handleSelect = (optionKey) => {

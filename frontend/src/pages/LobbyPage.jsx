@@ -69,12 +69,13 @@ export default function LobbyPage() {
     const handleMessage = (e) => {
       const data = JSON.parse(e.data);
       console.log(data);
-      data.type === 'start' && navigate(`/quizrooms/${quizId}/live`);
         if (data.Type === 'join') {
           setMessages(prev => [...prev, data.Msg.Username+' joined the room.']);
         } else if(data.Type === 'leave') {
           setMessages(prev => [...prev, data.Msg.Username+' left the room.']);
-        } else {
+        } else if(data.Type === 'start') {
+          navigate(`/quizrooms/${quizId}/live`);
+        } else{
           setMessages(prev => [...prev, data.Msg.Username+': '+data.Msg.Chat]);
         }
     };
@@ -95,8 +96,12 @@ export default function LobbyPage() {
   };
 
   const handleStartQuiz = () => {
-    // Add any state changes or API calls before navigating if needed
-    sendMessage('start');
+    const msg = {
+      Type: 'start',
+      Msg: { PlayerId: decoded.user_id, Username: decoded.username }
+    };
+    console.log(msg);
+    sendMessage(JSON.stringify(msg));
     //navigate('/live');
   };
 
