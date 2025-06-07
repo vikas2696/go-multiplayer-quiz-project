@@ -148,6 +148,7 @@ export default function LiveQuizPage() {
     };
     sendMessage(JSON.stringify(msg));
     setSelectedOption(null);
+    selectedAnswerRef.current = '';
     setShowScorecard(true);
   };
 
