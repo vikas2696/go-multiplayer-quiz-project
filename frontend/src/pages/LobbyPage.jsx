@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+import { textFieldStyles } from '../components/EmbeddedTextField';
 import {
   Box,
+  TextField,
   Typography,
   IconButton,
   useTheme,
@@ -39,6 +40,7 @@ export default function LobbyPage() {
   const { showConfirm, handleConfirmLeave, handleStay } = useBackButtonConfirmation(leaveRoom_endpoint, token);
   const socketRef = useWebSocket(ws_url);
   const [messages, setMessages] = useState([]);
+  const [chatMessage, setChatMessage] = useState('');
 
   useEffect(() => {
     if (hasRun.current) return;
@@ -113,6 +115,16 @@ export default function LobbyPage() {
     console.log(msg);
     sendMessage(JSON.stringify(msg));
     handleConfirmLeave();
+  }
+
+  const handleSend = () => {
+     const msg = {
+      Type: 'chat',
+      Msg: { Username: decoded.username, Chat: chatMessage }
+    };
+    console.log(msg);
+    setChatMessage('');
+    sendMessage(JSON.stringify(msg));
   }
 
   return (
@@ -214,6 +226,31 @@ export default function LobbyPage() {
         <ul>
         {messages.map((msg, idx) => <li key={idx}>{JSON.stringify(msg)}</li>)}
       </ul>
+        {/* send message UI */}
+        <Box sx={{ flex: 1, position: 'fixed', bottom: 0,display: 'flex', flexDirection: 'column', py:5, gap: 2 }}>
+          <Box sx={textFieldStyles(darkMode)}>
+            <TextField
+              fullWidth
+              value={chatMessage}
+              onChange={(e) => setChatMessage(e.target.value)}
+              variant="standard"
+              placeholder="send message..."
+              InputProps={{
+                disableUnderline: true,
+                sx: {
+                  color: darkMode ? 'white' : 'black',
+                  px: 2,
+                  py: 1,
+                  fontSize: '0.85rem',
+                  background: 'transparent',
+                },
+              }}
+            />
+          </Box>
+
+          <Button onClick = {handleSend} sx={buttonStyles(theme)}>SEND</Button>
+        </Box>
+
     </Box> 
   );
 }

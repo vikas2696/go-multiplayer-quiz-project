@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const NeumorphicScoreboard = ({ scoreSheet, darkMode = true }) => {
+const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
   return (
     <Box sx={{ 
       width: '100%', 
@@ -17,7 +17,7 @@ const NeumorphicScoreboard = ({ scoreSheet, darkMode = true }) => {
         variant="h3" 
         sx={{ 
           fontWeight: 700, 
-          mb: 4,
+          mb: 3,
           color: darkMode ? '#e0e0e0' : '#333',
           textAlign: 'center',
           letterSpacing: '1px'
@@ -25,6 +25,54 @@ const NeumorphicScoreboard = ({ scoreSheet, darkMode = true }) => {
       >
         SCORES
       </Typography>
+
+      {/* Current Question Display */}
+      {question && (
+        <Box sx={{ 
+          width: '100%', 
+          maxWidth: '600px',
+          mb: 4,
+          textAlign: 'center'
+        }}>
+          <Typography 
+            variant="body2" 
+            sx={{ 
+              color: darkMode ? '#888' : '#666',
+              mb: 1,
+              fontSize: '0.75rem',
+              fontWeight: 500,
+              letterSpacing: '0.5px',
+              textTransform: 'uppercase'
+            }}
+          >
+            Question #{question.QuestionId}
+          </Typography>
+          
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              color: darkMode ? '#b0b0b0' : '#555',
+              mb: 2,
+              fontSize: '0.9rem',
+              fontWeight: 400,
+              lineHeight: 1.3
+            }}
+          >
+            {question.Ques}
+          </Typography>
+
+          <Typography 
+            variant="caption" 
+            sx={{ 
+              color: darkMode ? '#666' : '#888',
+              fontSize: '0.7rem',
+              fontStyle: 'italic'
+            }}
+          >
+            Answer: {question.Answer}
+          </Typography>
+        </Box>
+      )}
 
       {/* Scoreboard Container */}
       <Box sx={{ 
@@ -34,7 +82,7 @@ const NeumorphicScoreboard = ({ scoreSheet, darkMode = true }) => {
         flexDirection: 'column',
         gap: 3
       }}>
-        {Object.entries(scoreSheet)
+        {scoreSheet && Object.entries(scoreSheet)
           .sort(([,a], [,b]) => b.CurrentScore - a.CurrentScore)
           .map(([id, player], index) => (
             <Box 
@@ -110,12 +158,24 @@ const NeumorphicScoreboard = ({ scoreSheet, darkMode = true }) => {
                       fontSize: '0.9rem'
                     }}
                   >
-                    Last Answer: <span style={{ 
+                    Answer: <span style={{ 
                       fontWeight: 500,
                       color: player.CurrentAnswer ? (darkMode ? '#a1662f' : '#d4af37') : '#999'
                     }}>
                       {player.CurrentAnswer || 'No answer'}
                     </span>
+                    {player.CurrentAnswer && question && (
+                      <span style={{
+                        marginLeft: '8px',
+                        fontSize: '0.8rem',
+                        fontWeight: 600,
+                        color: player.CurrentAnswer === question.Answer 
+                          ? (darkMode ? '#4ade80' : '#198754') 
+                          : (darkMode ? '#f87171' : '#dc3545')
+                      }}>
+                        {player.CurrentAnswer === question.Answer ? '✓ Correct' : '✗ Wrong'}
+                      </span>
+                    )}
                   </Typography>
                 </Box>
 
@@ -161,7 +221,7 @@ const NeumorphicScoreboard = ({ scoreSheet, darkMode = true }) => {
       </Box>
 
       {/* Empty State */}
-      {Object.keys(scoreSheet).length === 0 && (
+      {(!scoreSheet || Object.keys(scoreSheet).length === 0) && (
         <Box sx={{ 
           textAlign: 'center', 
           mt: 4,

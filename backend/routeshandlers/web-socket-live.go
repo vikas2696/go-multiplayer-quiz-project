@@ -194,7 +194,10 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 			live_mu.Unlock()
 			live_broadcastChans[quizId] <- models.LiveMessage{
 				Type: "scorecard",
-				Msg:  scorecardPerRoom[quizId],
+				Msg: gin.H{
+					"Question":   questionsPerRoom[quizId][current_ques_indices[quizId]],
+					"ScoreSheet": scorecardPerRoom[quizId],
+				},
 				Conn: conn}
 		} else {
 			live_broadcastChans[quizId] <- clientMsg

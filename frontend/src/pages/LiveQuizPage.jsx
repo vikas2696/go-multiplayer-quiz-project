@@ -264,7 +264,8 @@ export default function LiveQuizPage() {
             }}
           >
               <NeumorphicScoreboard 
-                scoreSheet={scoreSheet} 
+                scoreSheet={scoreSheet.ScoreSheet} 
+                question={scoreSheet.Question}
                 darkMode={darkMode} 
               />
 
