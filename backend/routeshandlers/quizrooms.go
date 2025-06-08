@@ -144,13 +144,13 @@ func deleteQuizRoom(context *gin.Context) {
 
 	host := models.IsHost(quizId, playerId.(int64))
 	if !host {
-		context.JSON(http.StatusBadRequest, gin.H{"message": "Only host can delete"})
+		context.JSON(http.StatusUnauthorized, gin.H{"error": "Only host can delete"})
 		return
 	}
 
 	err = models.DeleteQuizRoomFromDB(int64(quizId))
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"message": "Deletion failed: " + err.Error()})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Deletion failed: " + err.Error()})
 		return
 	}
 

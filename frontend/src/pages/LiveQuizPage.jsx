@@ -133,7 +133,23 @@ export default function LiveQuizPage() {
   };
 
   const handleQuizExit = () => {
-    navigate('/quizrooms', { replace: true });
+    if(isHost) {
+      axios.delete(`http://localhost:8080/quizrooms/${quizId}/delete`, {
+        headers: {
+          Authorization: token,
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(response => {
+        navigate('/quizrooms', { replace: true });
+        toast.success('Quizroom deleted!');
+      })
+      .catch(err => {
+        console.log(GetErrorMessage(err));
+      });
+    } else {
+      navigate('/quizrooms', { replace: true });
+    }
   }
 
   const handleTimeUp = () => {

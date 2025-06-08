@@ -185,7 +185,6 @@ func readliveMessages(conn *websocket.Conn, quizId int, quizRoom models.QuizRoom
 
 			live_mu.RLock()
 			next_question_available := current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId])
-			last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
 			timeLeftPerRoom[quizId] = quizRoom.TimerTime
 			live_mu.RUnlock()
 
@@ -193,6 +192,7 @@ func readliveMessages(conn *websocket.Conn, quizId int, quizRoom models.QuizRoom
 				go startTicking(quizId)
 				live_mu.Lock()
 				current_ques_indices[quizId]++
+				last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
 				live_mu.Unlock()
 
 				live_mu.RLock()

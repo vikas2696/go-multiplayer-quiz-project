@@ -36,7 +36,7 @@ func loadQuestion(context *gin.Context) {
 
 	quizRoomId, err := strconv.Atoi(context.Param("id"))
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Invalid Quiz Room"})
+		context.JSON(http.StatusBadRequest, gin.H{"Message": "Invalid Quiz Room"})
 		return
 	}
 
@@ -49,13 +49,13 @@ func loadQuestion(context *gin.Context) {
 	var quizRoom models.QuizRoom
 	err = quizRoom.GetQuizRoomFromId(quizRoomId)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Invalid Quiz Room"})
+		context.JSON(http.StatusBadRequest, gin.H{"Message": "Invalid Quiz Room"})
 		return
 	}
 
 	ques_id, err := strconv.Atoi(context.Param("ques_id"))
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Cannot convert question id"})
+		context.JSON(http.StatusBadRequest, gin.H{"Message": "Cannot convert question id1"})
 		return
 	}
 

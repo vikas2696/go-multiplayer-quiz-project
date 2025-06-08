@@ -1,6 +1,6 @@
 POST http://localhost:8080/create-quizroom
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDgyMDQzMTIsInVzZXJfaWQiOjIsInVzZXJuYW1lIjoidGVzdDIifQ.nWaKU360cRrtHiIhYwh2u0CHX1Pdt0OzgtQroOCrPRw  
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDkzOTU2MDYsInVzZXJfaWQiOjIsInVzZXJuYW1lIjoidGVzdDIifQ.0Oa75eYt0O6kSv3bo1q2Pb6dbx6RPT9h0HedF51Hwoo  
   
   {
   "Players": [
