@@ -22,6 +22,7 @@ var (
 	questionsPerRoom     = make(map[int][]models.Question)
 	current_ques_indices = make(map[int]int)
 	scorecardPerRoom     = make(map[int]map[int]*models.PlayerScore)
+	timerPerRoom         = make(map[int]int)
 )
 
 func webSocketLive(context *gin.Context) {
@@ -80,11 +81,16 @@ func webSocketLive(context *gin.Context) {
 	}
 
 	if scorecardPerRoom[quizId] == nil {
-		scorecardPerRoom[quizId] = make(map[int]*models.PlayerScore)
 		live_mu.Lock()
+		scorecardPerRoom[quizId] = make(map[int]*models.PlayerScore)
+		timerPerRoom[quizId] = quizRoom.TimerTime
 		current_ques_indices[quizId] = 0
 		for _, player := range quizRoom.Players {
-			scorecardPerRoom[quizId][int(player.PlayerId)] = &models.PlayerScore{Username: player.Username, CurrentAnswer: "", CurrentScore: 0}
+			scorecardPerRoom[quizId][int(player.PlayerId)] = &models.PlayerScore{
+				Username:      player.Username,
+				CurrentAnswer: "",
+				CurrentScore:  0,
+			}
 		}
 		live_mu.Unlock()
 	}
@@ -149,22 +155,35 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 			questionsPerRoom[quizId] = questions
 			live_mu.Unlock()
 
-			if current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId]) {
+			live_mu.RLock()
+			next_question_available := current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId])
+			last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
+			live_mu.RUnlock()
+
+			if next_question_available {
 				live_broadcastChans[quizId] <- models.LiveMessage{
 					Type: "question",
 					Msg:  questions[current_ques_indices[quizId]],
 					Conn: conn}
-			} else {
+			} else if last_question {
 				live_broadcastChans[quizId] <- models.LiveMessage{
-					Type: "end_quiz",
-					Msg:  nil,
+					Type: "last_question",
+					Msg:  questionsPerRoom[quizId][current_ques_indices[quizId]],
 					Conn: conn}
 			}
 
 		} else if clientMsg.Type == "next_question" {
-			if current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId]) {
+
+			live_mu.RLock()
+			next_question_available := current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId])
+			last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
+			live_mu.RUnlock()
+
+			if next_question_available {
+				live_mu.Lock()
 				current_ques_indices[quizId]++
-				if current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId]) {
+				live_mu.Unlock()
+				if last_question {
 					live_broadcastChans[quizId] <- models.LiveMessage{
 						Type: "last_question",
 						Msg:  questionsPerRoom[quizId][current_ques_indices[quizId]],
