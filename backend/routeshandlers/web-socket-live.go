@@ -158,17 +158,18 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 			live_mu.RLock()
 			next_question_available := current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId])
 			last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
+			question_to_send := questionsPerRoom[quizId][current_ques_indices[quizId]]
 			live_mu.RUnlock()
 
 			if next_question_available {
 				live_broadcastChans[quizId] <- models.LiveMessage{
 					Type: "question",
-					Msg:  questions[current_ques_indices[quizId]],
+					Msg:  question_to_send,
 					Conn: conn}
 			} else if last_question {
 				live_broadcastChans[quizId] <- models.LiveMessage{
 					Type: "last_question",
-					Msg:  questionsPerRoom[quizId][current_ques_indices[quizId]],
+					Msg:  question_to_send,
 					Conn: conn}
 			}
 
@@ -183,15 +184,20 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 				live_mu.Lock()
 				current_ques_indices[quizId]++
 				live_mu.Unlock()
+
+				live_mu.RLock()
+				question_to_send := questionsPerRoom[quizId][current_ques_indices[quizId]]
+				live_mu.RUnlock()
+
 				if last_question {
 					live_broadcastChans[quizId] <- models.LiveMessage{
 						Type: "last_question",
-						Msg:  questionsPerRoom[quizId][current_ques_indices[quizId]],
+						Msg:  question_to_send,
 						Conn: conn}
 				} else {
 					live_broadcastChans[quizId] <- models.LiveMessage{
 						Type: "question",
-						Msg:  questionsPerRoom[quizId][current_ques_indices[quizId]],
+						Msg:  question_to_send,
 						Conn: conn}
 				}
 			}
