@@ -1,29 +1,92 @@
 [
   {
     "questionId": 1,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Earth",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Venus",
-    "answer": "Mars"
+    "ques": "What is the chemical symbol for the element gold?",
+    "optionA": "Au",
+    "optionB": "Ag",
+    "optionC": "Gd",
+    "optionD": "Go",
+    "answer": "Au"
   },
   {
     "questionId": 2,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which organ in the human body is primarily responsible for detoxification?",
+    "optionA": "Kidney",
+    "optionB": "Liver",
+    "optionC": "Lungs",
+    "optionD": "Spleen",
+    "answer": "Liver"
   },
   {
     "questionId": 3,
-    "ques": "What part of the cell contains DNA?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Cytoplasm",
-    "answer": "Nucleus"
+    "ques": "What type of bond is formed when two atoms share electrons?",
+    "optionA": "Ionic bond",
+    "optionB": "Covalent bond",
+    "optionC": "Hydrogen bond",
+    "optionD": "Metallic bond",
+    "answer": "Covalent bond"
+  },
+  {
+    "questionId": 4,
+    "ques": "Which planet has the strongest gravitational pull in our solar system?",
+    "optionA": "Earth",
+    "optionB": "Jupiter",
+    "optionC": "Saturn",
+    "optionD": "Neptune",
+    "answer": "Jupiter"
+  },
+  {
+    "questionId": 5,
+    "ques": "What is the main gas responsible for the greenhouse effect on Earth?",
+    "optionA": "Methane",
+    "optionB": "Carbon Dioxide",
+    "optionC": "Oxygen",
+    "optionD": "Nitrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 6,
+    "ques": "What is the process by which plants lose water vapor through their leaves called?",
+    "optionA": "Photosynthesis",
+    "optionB": "Transpiration",
+    "optionC": "Respiration",
+    "optionD": "Evaporation",
+    "answer": "Transpiration"
+  },
+  {
+    "questionId": 7,
+    "ques": "Which part of the brain controls balance and coordination?",
+    "optionA": "Cerebrum",
+    "optionB": "Cerebellum",
+    "optionC": "Medulla",
+    "optionD": "Hypothalamus",
+    "answer": "Cerebellum"
+  },
+  {
+    "questionId": 8,
+    "ques": "What is the unit of electrical resistance?",
+    "optionA": "Volt",
+    "optionB": "Ohm",
+    "optionC": "Ampere",
+    "optionD": "Watt",
+    "answer": "Ohm"
+  },
+  {
+    "questionId": 9,
+    "ques": "Which vitamin is primarily synthesized in the skin when exposed to sunlight?",
+    "optionA": "Vitamin A",
+    "optionB": "Vitamin B12",
+    "optionC": "Vitamin D",
+    "optionD": "Vitamin C",
+    "answer": "Vitamin D"
+  },
+  {
+    "questionId": 10,
+    "ques": "What phenomenon causes the bending of light as it passes from one medium to another?",
+    "optionA": "Reflection",
+    "optionB": "Diffraction",
+    "optionC": "Refraction",
+    "optionD": "Absorption",
+    "answer": "Refraction"
   }
 ]

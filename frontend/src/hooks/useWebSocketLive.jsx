@@ -15,7 +15,7 @@ const useWebSocketLive = (url) => {
     }
 
     socket.onmessage = (e) => {
-      console.log('Received:', e.data);
+      //console.log('Received:', e.data);
     };
 
     socket.onerror = (e) => console.error('WebSocket error:', e);

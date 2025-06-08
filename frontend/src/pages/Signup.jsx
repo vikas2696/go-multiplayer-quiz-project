@@ -127,7 +127,7 @@ export default function LoginPage() {
           zIndex: 1,
         }}
       >
-        The Surface Quiz
+        The Quiz
       </Typography>
 
       <Box

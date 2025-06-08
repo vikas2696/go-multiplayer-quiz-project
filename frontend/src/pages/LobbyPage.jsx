@@ -70,7 +70,7 @@ export default function LobbyPage() {
 
     const handleMessage = (e) => {
       const data = JSON.parse(e.data);
-      console.log(data);
+      //console.log(data);
         if (data.Type === 'join') {
           setMessages(prev => [...prev, data.Msg.Username+' joined the room.']);
         } else if(data.Type === 'leave') {
@@ -102,7 +102,7 @@ export default function LobbyPage() {
       Type: 'start',
       Msg: { PlayerId: decoded.user_id, Username: decoded.username }
     };
-    console.log(msg);
+    //console.log(msg);
     sendMessage(JSON.stringify(msg));
     //navigate('/live');
   };
@@ -112,7 +112,7 @@ export default function LobbyPage() {
       Type: 'leave',
       Msg: { PlayerId: decoded.user_id, Username: decoded.username }
     };
-    console.log(msg);
+    //console.log(msg);
     sendMessage(JSON.stringify(msg));
     handleConfirmLeave();
   }
@@ -122,7 +122,7 @@ export default function LobbyPage() {
       Type: 'chat',
       Msg: { Username: decoded.username, Chat: chatMessage }
     };
-    console.log(msg);
+    //console.log(msg);
     setChatMessage('');
     sendMessage(JSON.stringify(msg));
   }

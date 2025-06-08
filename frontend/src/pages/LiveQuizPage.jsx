@@ -118,7 +118,7 @@ export default function LiveQuizPage() {
   const sendMessage = (msg) => {
     if (socketRef.current?.readyState === WebSocket.OPEN) {
       socketRef.current.send(msg);
-      console.log('sent: ',msg);
+      //console.log('sent: ',msg);
     } else {
       console.warn('Socket not open');
     }
@@ -178,16 +178,16 @@ export default function LiveQuizPage() {
   const handleSelect = (optionKey) => {
     setSelectedOption(prev => {
       if (prev === optionKey) {
-        console.log(null);
+        //console.log(null);
         selectedAnswerRef.current = '';
         return null;
       } else {
-        console.log(question[optionKey]);
+        //console.log(question[optionKey]);
         selectedAnswerRef.current = question[optionKey]
         return optionKey;
       }
     });
-    console.log(selectedAnswerRef.current);
+    //console.log(selectedAnswerRef.current);
   };
 
   const getOptionStyles = (key) => {

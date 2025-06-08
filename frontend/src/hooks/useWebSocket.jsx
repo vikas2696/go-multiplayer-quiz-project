@@ -11,7 +11,7 @@ const useWebSocket = (url) => {
     socket.onopen = () => console.log('WebSocket connected');
 
     socket.onmessage = (e) => {
-      console.log('Received:', e.data);
+      //console.log('Received:', e.data);
     };
 
     socket.onerror = (e) => console.error('WebSocket error:', e);
