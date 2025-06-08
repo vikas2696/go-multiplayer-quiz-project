@@ -6,6 +6,13 @@ const CountdownTimer = forwardRef(({ onTimeUp }, ref) => {
 
   const startTimer = (seconds) => {
     clearInterval(intervalRef.current);
+
+    if (seconds <= 0) {
+      setSecondsLeft(0);
+      if (onTimeUp) onTimeUp();
+      return;
+    }
+
     setSecondsLeft(seconds);
     intervalRef.current = setInterval(() => {
       setSecondsLeft(prev => {

@@ -95,14 +95,14 @@ export default function LiveQuizPage() {
       const data = JSON.parse(e.data);
       if(data.Type === 'question') {
         setShowScorecard(false);
-        setQuestion(data.Msg);
-        startTimer(5);
+        setQuestion(data.Msg.Question);
+        startTimer(data.Msg.Timer);
       } else if(data.Type === 'scorecard') {
         setScoreSheet(data.Msg);
       } else if(data.Type === 'last_question') {
         setShowScorecard(false);
-        setQuestion(data.Msg);
-        startTimer(5);
+        setQuestion(data.Msg.Question);
+        startTimer(data.Msg.Timer);
         setShowEndButton(true);
       }
     };

@@ -6,6 +6,7 @@ import (
 	"go-multiplayer-quiz-project/backend/models"
 	"go-multiplayer-quiz-project/backend/utils"
 	"log"
+	"time"
 
 	"net/http"
 	"strconv"
@@ -22,7 +23,8 @@ var (
 	questionsPerRoom     = make(map[int][]models.Question)
 	current_ques_indices = make(map[int]int)
 	scorecardPerRoom     = make(map[int]map[int]*models.PlayerScore)
-	timerPerRoom         = make(map[int]int)
+	tickerChanPerRoom    = make(map[int]*time.Ticker)
+	timeLeftPerRoom      = make(map[int]int)
 )
 
 func webSocketLive(context *gin.Context) {
@@ -83,7 +85,7 @@ func webSocketLive(context *gin.Context) {
 	if scorecardPerRoom[quizId] == nil {
 		live_mu.Lock()
 		scorecardPerRoom[quizId] = make(map[int]*models.PlayerScore)
-		timerPerRoom[quizId] = quizRoom.TimerTime
+		timeLeftPerRoom[quizId] = quizRoom.TimerTime
 		current_ques_indices[quizId] = 0
 		for _, player := range quizRoom.Players {
 			scorecardPerRoom[quizId][int(player.PlayerId)] = &models.PlayerScore{
@@ -96,7 +98,7 @@ func webSocketLive(context *gin.Context) {
 	}
 
 	go livebraodcastAll(quizId)
-	go readliveMessages(conn, quizId)
+	go readliveMessages(conn, quizId, quizRoom)
 
 	live_mu.Lock()
 	livePlayers[quizId] = append(livePlayers[quizId], conn)
@@ -123,7 +125,7 @@ func livebraodcastAll(quizId int) {
 	}
 }
 
-func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages from the frontend
+func readliveMessages(conn *websocket.Conn, quizId int, quizRoom models.QuizRoom) { // to read messages from the frontend
 
 	var clientMsg models.LiveMessage
 	for { // per connection
@@ -159,17 +161,23 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 			next_question_available := current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId])
 			last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
 			question_to_send := questionsPerRoom[quizId][current_ques_indices[quizId]]
+			data_to_send := gin.H{
+				"Question": question_to_send,
+				"Timer":    timeLeftPerRoom[quizId],
+			}
 			live_mu.RUnlock()
 
 			if next_question_available {
+				go startTicking(quizId)
 				live_broadcastChans[quizId] <- models.LiveMessage{
 					Type: "question",
-					Msg:  question_to_send,
+					Msg:  data_to_send,
 					Conn: conn}
 			} else if last_question {
+				go startTicking(quizId)
 				live_broadcastChans[quizId] <- models.LiveMessage{
 					Type: "last_question",
-					Msg:  question_to_send,
+					Msg:  data_to_send,
 					Conn: conn}
 			}
 
@@ -178,26 +186,32 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 			live_mu.RLock()
 			next_question_available := current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId])
 			last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
+			timeLeftPerRoom[quizId] = quizRoom.TimerTime
 			live_mu.RUnlock()
 
 			if next_question_available {
+				go startTicking(quizId)
 				live_mu.Lock()
 				current_ques_indices[quizId]++
 				live_mu.Unlock()
 
 				live_mu.RLock()
 				question_to_send := questionsPerRoom[quizId][current_ques_indices[quizId]]
+				data_to_send := gin.H{
+					"Question": question_to_send,
+					"Timer":    timeLeftPerRoom[quizId],
+				}
 				live_mu.RUnlock()
 
 				if last_question {
 					live_broadcastChans[quizId] <- models.LiveMessage{
 						Type: "last_question",
-						Msg:  question_to_send,
+						Msg:  data_to_send,
 						Conn: conn}
 				} else {
 					live_broadcastChans[quizId] <- models.LiveMessage{
 						Type: "question",
-						Msg:  question_to_send,
+						Msg:  data_to_send,
 						Conn: conn}
 				}
 			}
@@ -226,6 +240,19 @@ func readliveMessages(conn *websocket.Conn, quizId int) { // to read messages fr
 				Conn: conn}
 		} else {
 			live_broadcastChans[quizId] <- clientMsg
+		}
+	}
+}
+
+func startTicking(quizId int) {
+	tickerChanPerRoom[quizId] = time.NewTicker(1 * time.Second)
+	for {
+		<-tickerChanPerRoom[quizId].C
+		if timeLeftPerRoom[quizId] > 0 {
+			timeLeftPerRoom[quizId]--
+		} else {
+			tickerChanPerRoom[quizId].Stop()
+			return
 		}
 	}
 }
