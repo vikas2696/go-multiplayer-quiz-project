@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://vikas2696.github.io/go-multiplayer-quiz-project/frontend",
+  "homepage": "https://vikas2696.github.io/go-multiplayer-quiz-project",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
