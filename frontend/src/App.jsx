@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/go-multiplayer-quiz-project">
       <Routes>        
         <Route path="/" element={<Signup />} />  
         <Route path="/quizrooms" element={
