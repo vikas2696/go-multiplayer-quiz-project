@@ -1,0 +1,92 @@
+[
+  {
+    "questionId": 1,
+    "ques": "What is the capital city of New Zealand?",
+    "optionA": "Auckland",
+    "optionB": "Wellington",
+    "optionC": "Christchurch",
+    "optionD": "Hamilton",
+    "answer": "Wellington"
+  },
+  {
+    "questionId": 2,
+    "ques": "Which city is the capital of Nigeria?",
+    "optionA": "Lagos",
+    "optionB": "Abuja",
+    "optionC": "Kano",
+    "optionD": "Ibadan",
+    "answer": "Abuja"
+  },
+  {
+    "questionId": 3,
+    "ques": "What is the capital of Kazakhstan?",
+    "optionA": "Astana",
+    "optionB": "Almaty",
+    "optionC": "Nur-Sultan",
+    "optionD": "Shymkent",
+    "answer": "Nur-Sultan"
+  },
+  {
+    "questionId": 4,
+    "ques": "Which city is the capital of Portugal?",
+    "optionA": "Lisbon",
+    "optionB": "Porto",
+    "optionC": "Madrid",
+    "optionD": "Barcelona",
+    "answer": "Lisbon"
+  },
+  {
+    "questionId": 5,
+    "ques": "What is the capital of Chile?",
+    "optionA": "Santiago",
+    "optionB": "Valparaíso",
+    "optionC": "Concepción",
+    "optionD": "La Serena",
+    "answer": "Santiago"
+  },
+  {
+    "questionId": 6,
+    "ques": "Which city is the capital of Croatia?",
+    "optionA": "Split",
+    "optionB": "Zagreb",
+    "optionC": "Dubrovnik",
+    "optionD": "Rijeka",
+    "answer": "Zagreb"
+  },
+  {
+    "questionId": 7,
+    "ques": "What is the capital of Mongolia?",
+    "optionA": "Ulaanbaatar",
+    "optionB": "Erdenet",
+    "optionC": "Darkhan",
+    "optionD": "Choibalsan",
+    "answer": "Ulaanbaatar"
+  },
+  {
+    "questionId": 8,
+    "ques": "Which city is the capital of Iceland?",
+    "optionA": "Reykjavik",
+    "optionB": "Akureyri",
+    "optionC": "Keflavik",
+    "optionD": "Hafnarfjörður",
+    "answer": "Reykjavik"
+  },
+  {
+    "questionId": 9,
+    "ques": "What is the capital of Bangladesh?",
+    "optionA": "Chittagong",
+    "optionB": "Dhaka",
+    "optionC": "Khulna",
+    "optionD": "Rajshahi",
+    "answer": "Dhaka"
+  },
+  {
+    "questionId": 10,
+    "ques": "Which city is the capital of Finland?",
+    "optionA": "Helsinki",
+    "optionB": "Espoo",
+    "optionC": "Tampere",
+    "optionD": "Vantaa",
+    "answer": "Helsinki"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "questionId": 1,
+    "ques": "What does CPU stand for in computing?",
+    "optionA": "Central Processing Unit",
+    "optionB": "Computer Personal Unit",
+    "optionC": "Central Performance Utility",
+    "optionD": "Control Processing Unit",
+    "answer": "Central Processing Unit"
+  },
+  {
+    "questionId": 2,
+    "ques": "Which programming language is primarily used for web development alongside HTML and CSS?",
+    "optionA": "Python",
+    "optionB": "JavaScript",
+    "optionC": "C++",
+    "optionD": "Java",
+    "answer": "JavaScript"
+  },
+  {
+    "questionId": 3,
+    "ques": "What type of software is an operating system?",
+    "optionA": "Utility software",
+    "optionB": "Application software",
+    "optionC": "System software",
+    "optionD": "Middleware",
+    "answer": "System software"
+  },
+  {
+    "questionId": 4,
+    "ques": "What does RAM stand for?",
+    "optionA": "Read Access Memory",
+    "optionB": "Random Access Memory",
+    "optionC": "Run Access Memory",
+    "optionD": "Ready Access Memory",
+    "answer": "Random Access Memory"
+  },
+  {
+    "questionId": 5,
+    "ques": "Which device is used to convert digital signals into analog signals for transmission?",
+    "optionA": "Router",
+    "optionB": "Modem",
+    "optionC": "Switch",
+    "optionD": "Hub",
+    "answer": "Modem"
+  },
+  {
+    "questionId": 6,
+    "ques": "What is the primary function of the ALU in a CPU?",
+    "optionA": "Perform arithmetic and logic operations",
+    "optionB": "Manage memory",
+    "optionC": "Control input/output devices",
+    "optionD": "Store data temporarily",
+    "answer": "Perform arithmetic and logic operations"
+  },
+  {
+    "questionId": 7,
+    "ques": "Which of these is a type of non-volatile memory?",
+    "optionA": "RAM",
+    "optionB": "ROM",
+    "optionC": "Cache",
+    "optionD": "Registers",
+    "answer": "ROM"
+  },
+  {
+    "questionId": 8,
+    "ques": "What does HTTP stand for?",
+    "optionA": "HyperText Transfer Protocol",
+    "optionB": "HyperText Transmission Protocol",
+    "optionC": "High Transfer Text Protocol",
+    "optionD": "Hyper Terminal Transfer Protocol",
+    "answer": "HyperText Transfer Protocol"
+  },
+  {
+    "questionId": 9,
+    "ques": "Which programming paradigm focuses on objects containing data and methods?",
+    "optionA": "Procedural programming",
+    "optionB": "Functional programming",
+    "optionC": "Object-oriented programming",
+    "optionD": "Declarative programming",
+    "answer": "Object-oriented programming"
+  },
+  {
+    "questionId": 10,
+    "ques": "What is the main purpose of an IP address?",
+    "optionA": "To identify a device on a network",
+    "optionB": "To encrypt data",
+    "optionC": "To store files",
+    "optionD": "To control hardware",
+    "answer": "To identify a device on a network"
+  }
+]

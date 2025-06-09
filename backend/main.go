@@ -16,7 +16,7 @@ func main() {
 
 	//CORS middleware
 	server.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://vikas2696.github.io"},
+		AllowOrigins:     []string{"https://vikas2696.github.io", "http://localhost:5173"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
