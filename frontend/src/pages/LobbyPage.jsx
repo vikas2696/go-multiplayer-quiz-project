@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import BASE_URL from "../config";
 import { textFieldStyles } from '../components/EmbeddedTextField';
 import {
   Box,
@@ -34,7 +35,7 @@ export default function LobbyPage() {
   const decoded = jwtDecode(token);
   const { quizId } = useParams();
 
-  const leaveRoom_endpoint = `http://localhost:8080/quizrooms/${quizId}/leave`;
+  const leaveRoom_endpoint = `${BASE_URL}/quizrooms/${quizId}/leave`;
   const ws_url = `ws://localhost:8080/quizrooms/${quizId}/ws/lobby?token=${token}`;
 
   const { showConfirm, handleConfirmLeave, handleStay } = useBackButtonConfirmation(leaveRoom_endpoint, token);
@@ -46,7 +47,7 @@ export default function LobbyPage() {
     if (hasRun.current) return;
     hasRun.current = true;
 
-      axios.get('http://localhost:8080/quizrooms/'+ quizId +'/lobby',
+      axios.get(`${BASE_URL}/quizrooms/`+ quizId +'/lobby',
     {
     headers: {
       Authorization: token,

@@ -5,7 +5,8 @@ import axios from 'axios';
 import { GetErrorMessage } from '../utils/ErrorHandler';
 import { textFieldStyles } from '../components/EmbeddedTextField';
 import { buttonStyles } from '../components/DarkButton';
-import { jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode';
+import BASE_URL from "../config";
 import { toast } from 'react-toastify';
 import LogoutButton from '../components/LogoutButton';
 import {
@@ -30,7 +31,7 @@ export default function QuizRoomPage() {
   const decoded = jwtDecode(token);
 
   const handleCreate = () => {
-    axios.post('http://localhost:8080/create-quizroom',{
+    axios.post(`${BASE_URL}/create-quizroom`,{
         "Players": [
           {
             "PlayerId": decoded.user_id,
@@ -56,7 +57,7 @@ export default function QuizRoomPage() {
   };
 
   const handleJoin = () => {
-    axios.patch('http://localhost:8080/quizrooms/'+roomCode+'/join',{},
+    axios.patch(`${BASE_URL}/quizrooms/${roomCode}/join`,{},
       {
     headers: {
       Authorization: token,
@@ -73,7 +74,7 @@ export default function QuizRoomPage() {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:8080/quizrooms')
+    axios.get(`${BASE_URL}/quizrooms`)
       .then(response => {
         setRooms(response.data.quizrooms);
       })

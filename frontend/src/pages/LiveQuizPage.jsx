@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { GetErrorMessage } from '../utils/ErrorHandler';
 import CountdownTimer from '../utils/Timer';
 import Starbg from '../components/Starbg'
+import BASE_URL from "../config";
 import {
   Box,
   Typography,
@@ -49,7 +50,7 @@ export default function LiveQuizPage() {
       if (hasRun.current || !connected) return;
       hasRun.current = true;
 
-      axios.get(`http://localhost:8080/quizrooms/${quizId}/get-questions`, {
+      axios.get(`${BASE_URL}/quizrooms/${quizId}/get-questions`, {
         headers: {
           Authorization: token,
           'Content-Type': 'application/json',
@@ -62,7 +63,7 @@ export default function LiveQuizPage() {
         toast.error(GetErrorMessage(err));
       });
 
-      axios.get(`http://localhost:8080/quizrooms/${quizId}/lobby`, {
+      axios.get(`${BASE_URL}/quizrooms/${quizId}/lobby`, {
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',
@@ -134,7 +135,7 @@ export default function LiveQuizPage() {
 
   const handleQuizExit = () => {
     if(isHost) {
-      axios.delete(`http://localhost:8080/quizrooms/${quizId}/delete`, {
+      axios.delete(`${BASE_URL}/quizrooms/${quizId}/delete`, {
         headers: {
           Authorization: token,
           'Content-Type': 'application/json',

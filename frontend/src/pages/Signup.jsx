@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import BASE_URL from "../config";
 import {
   Box,
   Button,
@@ -57,8 +58,8 @@ export default function LoginPage() {
 
     try {
       const endpoint = isLogin
-        ? 'http://localhost:8080/login'
-        : 'http://localhost:8080/signup';
+        ? `${BASE_URL}/login`
+        : `${BASE_URL}/signup`;
 
       const response = await axios.post(endpoint, formData);
 
