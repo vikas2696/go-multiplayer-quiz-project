@@ -19,6 +19,7 @@ func RunRoutes(server *gin.Engine) {
 	{
 		AuthOnlyRoutes.POST("/create-quizroom", createQuizRoom)
 		AuthOnlyRoutes.PATCH("/quizrooms/:id/join", joinQuizRoom)
+		AuthOnlyRoutes.GET("/quizrooms/:id/check-page-access", middleware.CheckPageAccess)
 
 		QuizRoomAuthRoutes := AuthOnlyRoutes.Group("/quizrooms/:id", middleware.QuizJoinMiddleware)
 		{

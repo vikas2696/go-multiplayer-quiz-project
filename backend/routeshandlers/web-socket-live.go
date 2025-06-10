@@ -19,6 +19,7 @@ import (
 var (
 	livePlayers          = make(map[int][]*websocket.Conn)
 	live_mu              sync.RWMutex
+	live_broadcast_mu    sync.Mutex
 	live_broadcastChans  = make(map[int]chan models.LiveMessage)
 	questionsPerRoom     = make(map[int][]models.Question)
 	current_ques_indices = make(map[int]int)
@@ -115,6 +116,7 @@ func livebraodcastAll(quizId int) {
 		conns := append([]*websocket.Conn{}, livePlayers[quizId]...)
 		live_mu.RUnlock()
 
+		live_broadcast_mu.Lock()
 		for _, connection := range conns { // per room
 			err := connection.WriteJSON(liveMessage)
 			if err != nil {
@@ -122,6 +124,7 @@ func livebraodcastAll(quizId int) {
 				connection.Close()
 			}
 		}
+		live_broadcast_mu.Unlock()
 	}
 }
 

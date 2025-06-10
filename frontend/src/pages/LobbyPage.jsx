@@ -57,22 +57,22 @@ export default function LobbyPage() {
     if (hasRun.current) return;
     hasRun.current = true;
 
-      axios.get(`${BASE_URL}/quizrooms/`+ quizId +'/lobby',
-    {
-    headers: {
-      Authorization: token,
-      'Content-Type': 'application/json',
-     }
-    }
-  )
-    .then(response => {
-      setQuizRoom(response.data.quizroom);
-      setHost(decoded.user_id === response.data.quizroom.Players[0].PlayerId);
-    })
-    .catch(err => {
-      toast.error(GetErrorMessage(err));
-      navigate('/quizrooms');
-    });
+    axios.get(`${BASE_URL}/quizrooms/`+ quizId +'/lobby',
+      {
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
+      }
+      }
+    )
+      .then(response => {
+        setQuizRoom(response.data.quizroom);
+        setHost(decoded.user_id === response.data.quizroom.Players[0].PlayerId);
+      })
+      .catch(err => {
+        toast.error(GetErrorMessage(err));
+        navigate('/quizrooms');
+      });
 
   }, []);
 
@@ -81,7 +81,7 @@ export default function LobbyPage() {
 
     const handleMessage = (e) => {
       const data = JSON.parse(e.data);
-      //console.log(data);
+      console.log(data);
         if (data.Type === 'join') {
           setMessages(prev => [...prev, data.Msg.Username+' joined the room.']);
         } else if(data.Type === 'leave') {

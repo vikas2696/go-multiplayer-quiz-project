@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProtectedRoute from './utils/AuthProtectionRoute'
+import AuthProtectedRoute from './middleware/AuthProtectionRoute'
+import FlowProtectedRoute from './middleware/FlowProtectionRoute'
+import LiveFlowProtectedRouteHost from './middleware/LiveQuizFlowProtectionHost';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dasboard'
 import QuizRooms from './pages/QuizRoomsPage'
@@ -12,22 +14,35 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <Router basename="/go-multiplayer-quiz-project">
-      <Routes>        
-        <Route path="/" element={<Signup />} />  
+      <Routes>
+        <Route path="/" element={<Signup />} />
+        
         <Route path="/quizrooms" element={
-          <ProtectedRoute> <QuizRooms /></ProtectedRoute>
-          }/>
+          <AuthProtectedRoute>
+            <QuizRooms />
+          </AuthProtectedRoute>
+        }/>
+        
         <Route path="/quizrooms/:quizId/lobby" element={
-          <ProtectedRoute> <LobbyPage /></ProtectedRoute>
-          } />  
-        <Route path="/dashboard" element={<Dashboard />} />  
+          <AuthProtectedRoute>
+            <FlowProtectedRoute currentPage="lobby">
+              <LobbyPage />
+            </FlowProtectedRoute>
+          </AuthProtectedRoute>
+        } />
+        
         <Route path="/quizrooms/:quizId/live" element={
-          <ProtectedRoute> <LivePage /></ProtectedRoute>
-          } />  
+          <AuthProtectedRoute>
+            <FlowProtectedRoute>
+              <LiveFlowProtectedRouteHost currentPage="live">
+              <LivePage />
+              </LiveFlowProtectedRouteHost>
+            </FlowProtectedRoute>
+          </AuthProtectedRoute>
+        } />
       </Routes>
       <ToastContainer />
     </Router>
-    
   );
 }
 
