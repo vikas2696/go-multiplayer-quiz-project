@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import BASE_URL from "../config";
 import { jwtDecode } from 'jwt-decode';
 
@@ -10,8 +10,16 @@ const LiveFlowProtectedRouteHost = ({ children, currentPage }) => {
   const [isHost, setHost] = useState(false);
   const token = localStorage.getItem('token');
   const decoded = jwtDecode(token);
+  const location = useLocation();
   
   useEffect(() => {
+
+    if (location.state?.skipProtection) { // if sent by host to force start the quiz
+      console.log(`Skipping protection for ${currentPage}`);
+      setIsChecking(false);
+      return;
+    }
+
     const checkAccess = async () => {
       try {
         const response = await fetch(`${BASE_URL}/quizrooms/${quizId}/lobby`, {
@@ -31,11 +39,11 @@ const LiveFlowProtectedRouteHost = ({ children, currentPage }) => {
             console.log(`Access granted for page: ${currentPage}`);
         } else {
             console.log(`Access denied. Redirecting back`);
-            navigate(-1, { replace: true });
+            navigate(`/quizrooms/${quizId}/lobby`, { replace: true });
         }
       } catch (error) {
         console.error('Flow protection check failed:', error);
-        navigate(-1,  { replace: true });
+        navigate(`/quizrooms/${quizId}/lobby`,  { replace: true });
       } finally {
         setIsChecking(false);
       }

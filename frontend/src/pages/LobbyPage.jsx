@@ -87,7 +87,7 @@ export default function LobbyPage() {
         } else if(data.Type === 'leave') {
           setMessages(prev => [...prev, data.Msg.Username+' left the room.']);
         } else if(data.Type === 'start') {
-          navigate(`/quizrooms/${quizId}/live`);
+          navigate(`/quizrooms/${quizId}/live`, { state: { skipProtection: true } });
         } else{
           setMessages(prev => [...prev, data.Msg.Username+': '+data.Msg.Chat]);
         }
