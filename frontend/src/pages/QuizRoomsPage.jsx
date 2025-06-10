@@ -75,7 +75,7 @@ export default function QuizRoomPage() {
   const logout = () => {
     localStorage.removeItem('token');
     toast.success('Logout Successful!');
-    navigate('/');
+    navigate('/', { replace: true });
   };
 
   const darkMode = true;
@@ -178,7 +178,7 @@ export default function QuizRoomPage() {
           </Box>
 
           <Typography gutterBottom sx={{ fontSize: '0.85rem' }}>
-            Time Control: {time} seconds
+            Time per Question: {time} seconds
           </Typography>
           <Slider
             value={time}

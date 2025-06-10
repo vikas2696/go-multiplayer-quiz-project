@@ -16,6 +16,12 @@ func getAllQuestions(context *gin.Context) {
 		return
 	}
 
+	err = models.UpdateRoomStatus(int64(quizRoomId))
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Invalid Quiz Room"})
+		return
+	}
+
 	var quizRoom models.QuizRoom
 	err = quizRoom.GetQuizRoomFromId(quizRoomId)
 	if err != nil {
