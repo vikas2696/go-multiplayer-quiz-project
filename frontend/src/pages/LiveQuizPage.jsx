@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { GetErrorMessage } from '../utils/ErrorHandler';
 import CountdownTimer from '../utils/Timer';
 import Starbg from '../components/Starbg'
-import BASE_URL from "../config";
+import config from "../config";
 import {
   Box,
   Typography,
@@ -42,7 +42,7 @@ export default function LiveQuizPage() {
   const hasTimeUpRun = useRef(false);
   const selectedAnswerRef = useRef('');
 
-  const ws_url = `ws://localhost:8080/quizrooms/${quizId}/ws/live?token=${token}`;
+  const ws_url = `${config.BASE_WS_URL}/quizrooms/${quizId}/ws/live?token=${token}`;
   const [ socketRef, connected ] = useWebSocketLive(ws_url);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function LiveQuizPage() {
       if (hasRun.current || !connected) return;
       hasRun.current = true;
 
-      axios.get(`${BASE_URL}/quizrooms/${quizId}/get-questions`, {
+      axios.get(`${config.BASE_URL}/quizrooms/${quizId}/get-questions`, {
         headers: {
           Authorization: token,
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export default function LiveQuizPage() {
         toast.error(GetErrorMessage(err));
       });
 
-      axios.get(`${BASE_URL}/quizrooms/${quizId}/lobby`, {
+      axios.get(`${config.BASE_URL}/quizrooms/${quizId}/lobby`, {
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ export default function LiveQuizPage() {
 
   const handleQuizExit = () => {
     if(isHost) {
-      axios.delete(`${BASE_URL}/quizrooms/${quizId}/delete`, {
+      axios.delete(`${config.BASE_URL}/quizrooms/${quizId}/delete`, {
         headers: {
           Authorization: token,
           'Content-Type': 'application/json',

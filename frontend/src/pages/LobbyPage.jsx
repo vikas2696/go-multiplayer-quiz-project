@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import BASE_URL from "../config";
+import config from "../config";
 import { textFieldStyles } from '../components/EmbeddedTextField';
 import {
   Box,
@@ -36,8 +36,8 @@ export default function LobbyPage() {
   const decoded = jwtDecode(token);
   const { quizId } = useParams();
 
-  const leaveRoom_endpoint = `${BASE_URL}/quizrooms/${quizId}/leave`;
-  const ws_url = `ws://localhost:8080/quizrooms/${quizId}/ws/lobby?token=${token}`;
+  const leaveRoom_endpoint = `${config.BASE_URL}/quizrooms/${quizId}/leave`;
+  const ws_url = `${config.BASE_WS_URL}/quizrooms/${quizId}/ws/lobby?token=${token}`;
 
   const { showConfirm, handleConfirmLeave, handleStay } = useBackButtonConfirmation(leaveRoom_endpoint, token);
   const socketRef = useWebSocket(ws_url);
@@ -57,14 +57,13 @@ export default function LobbyPage() {
     if (hasRun.current) return;
     hasRun.current = true;
 
-    axios.get(`${BASE_URL}/quizrooms/`+ quizId +'/lobby',
+    axios.get(`${config.BASE_URL}/quizrooms/`+ quizId +'/lobby',
       {
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',
       }
-      }
-    )
+      })
       .then(response => {
         setQuizRoom(response.data.quizroom);
         setHost(decoded.user_id === response.data.quizroom.Players[0].PlayerId);

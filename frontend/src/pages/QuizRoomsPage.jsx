@@ -6,7 +6,7 @@ import { GetErrorMessage } from '../utils/ErrorHandler';
 import { textFieldStyles } from '../components/EmbeddedTextField';
 import { buttonStyles } from '../components/DarkButton';
 import { jwtDecode } from 'jwt-decode';
-import BASE_URL from "../config";
+import config from "../config";
 import { toast } from 'react-toastify';
 import LogoutButton from '../components/LogoutButton';
 import {
@@ -32,7 +32,7 @@ export default function QuizRoomPage() {
   const decoded = jwtDecode(token);
 
   const handleCreate = () => {
-    axios.post(`${BASE_URL}/create-quizroom`, {
+    axios.post(`${config.BASE_URL}/create-quizroom`, {
       "Players": [{
         "PlayerId": decoded.user_id,
         "Username": decoded.username
@@ -53,7 +53,7 @@ export default function QuizRoomPage() {
   };
 
   const handleJoin = () => {
-    axios.patch(`${BASE_URL}/quizrooms/${roomCode}/join`, {}, {
+    axios.patch(`${config.BASE_URL}/quizrooms/${roomCode}/join`, {}, {
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export default function QuizRoomPage() {
   };
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/quizrooms`)
+    axios.get(`${config.BASE_URL}/quizrooms`)
       .then(response => setRooms(response.data.quizrooms))
       .catch(err => toast.error(GetErrorMessage(err)));
   }, []);

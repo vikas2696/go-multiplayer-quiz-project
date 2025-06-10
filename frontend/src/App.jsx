@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthProtectedRoute from './middleware/AuthProtectionRoute'
 import FlowProtectedRoute from './middleware/FlowProtectionRoute'
 import LiveFlowProtectedRouteHost from './middleware/LiveQuizFlowProtectionHost';
@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <Router basename="/go-multiplayer-quiz-project">
+    <Router>
       <Routes>
         <Route path="/" element={<Signup />} />
         

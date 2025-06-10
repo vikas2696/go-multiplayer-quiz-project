@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import BASE_URL from "../config";
+import config from "../config";
 import {
   Box,
   Button,
@@ -58,8 +58,8 @@ export default function LoginPage() {
 
     try {
       const endpoint = isLogin
-        ? `${BASE_URL}/login`
-        : `${BASE_URL}/signup`;
+        ? `${config.BASE_URL}/login`
+        : `${config.BASE_URL}/signup`;
 
       const response = await axios.post(endpoint, formData);
 
