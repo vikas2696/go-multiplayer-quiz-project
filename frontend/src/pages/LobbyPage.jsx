@@ -44,6 +44,7 @@ export default function LobbyPage() {
   const [messages, setMessages] = useState([]);
   const [chatMessage, setChatMessage] = useState('');
   const [reloadLobby, setReloadLobby] = useState('');
+   const [number, setNumber] = useState('');
 
   // Scroll to bottom when new message arrives
   const scrollToBottom = () => {
@@ -64,6 +65,8 @@ export default function LobbyPage() {
       })
       .then(response => {
         setQuizRoom(response.data.quizroom);
+        setNumber(response.data.quizroom.PlayersAnswers[0])
+        //console.log(response.data.quizroom);
         setHost(decoded.user_id === response.data.quizroom.Players[0].PlayerId);
       })
       .catch(err => {
@@ -249,6 +252,7 @@ export default function LobbyPage() {
             <Typography>Topic: {quizRoom.QuizTopic}</Typography>
             <Typography>Timer: {quizRoom.TimerTime} seconds</Typography>
             <Typography>Status: {quizRoom.IsRunnning ? 'Running' : 'Waiting'}</Typography>
+            <Typography>Questions: {number}</Typography>
 
             <Divider sx={{ my: 2 }} />
 

@@ -24,6 +24,7 @@ export default function QuizRoomPage() {
   const theme = useTheme();
   const [topic, setTopic] = useState('science');
   const [time, setTime] = useState(10);
+  const [number, setNumber] = useState(10);
   const [roomCode, setRoomCode] = useState('');
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
@@ -38,7 +39,8 @@ export default function QuizRoomPage() {
         "Username": decoded.username
       }],
       "TimerTime": time,
-      "QuizTopic": topic
+      "QuizTopic": topic,
+      "PlayersAnswers": {0: String(number)}
     }, {
       headers: {
         Authorization: `${token}`,
@@ -177,17 +179,38 @@ export default function QuizRoomPage() {
 
           </Box>
 
-          <Typography gutterBottom sx={{ fontSize: '0.85rem' }}>
-            Time per Question: {time} seconds
-          </Typography>
-          <Slider
-            value={time}
-            onChange={(_, val) => setTime(val)}
-            min={3}
-            max={60}
-            step={1}
-            sx={{ color: '#66ccff' }}
-          />
+          <Box sx={{ display: 'flex', gap: 4, justifyContent: 'center', alignItems: 'center' }}>
+            
+            {/* Time per Question */}
+            <Box sx={{ width: '200px' }}>
+              <Typography gutterBottom sx={{ fontSize: '0.85rem' }}>
+                Time per Question: {time} seconds
+              </Typography>
+              <Slider
+                value={time}
+                onChange={(_, val) => setTime(val)}
+                min={2}
+                max={30}
+                step={1}
+                sx={{ color: '#66ccff' }}
+              />
+            </Box>
+
+            {/* Number of Questions */}
+            <Box sx={{ width: '200px' }}>
+              <Typography gutterBottom sx={{ fontSize: '0.85rem' }}>
+                No. of Questions: {number}
+              </Typography>
+              <Slider
+                value={number}
+                onChange={(_, val) => setNumber(val)}
+                min={5}
+                max={25}
+                step={1}
+                sx={{ color: '#66ccff' }}
+              />
+            </Box>
+        </Box>
 
           <Button onClick={handleCreate} sx={buttonStyles(theme)}>
             Create Quiz Room

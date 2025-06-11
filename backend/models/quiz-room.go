@@ -92,9 +92,9 @@ func (quizRoom QuizRoom) SaveQuizRoomToDB() (quizRoomId int64, err error) {
 	hostPlayerId := quizRoom.Players[0].PlayerId
 
 	quizRoom.ScoreSheet = make(map[int64]int)
-	quizRoom.PlayersAnswers = make(map[int64]string)
+	//quizRoom.PlayersAnswers = make(map[int64]string)
 	quizRoom.ScoreSheet[hostPlayerId] = 0
-	quizRoom.PlayersAnswers[hostPlayerId] = ""
+	//quizRoom.PlayersAnswers[hostPlayerId] = ""
 
 	scoreSheetJson, err := json.Marshal(quizRoom.ScoreSheet)
 	if err != nil {

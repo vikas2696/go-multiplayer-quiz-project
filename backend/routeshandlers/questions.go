@@ -43,6 +43,16 @@ func getAllQuestions(context *gin.Context) {
 		questions[i], questions[j] = questions[j], questions[i]
 	})
 
+	no_of_ques, err := strconv.Atoi(quizRoom.PlayersAnswers[0])
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "invalid number of questions"})
+		return
+	}
+
+	if no_of_ques <= len(questions) {
+		questions = questions[:no_of_ques]
+	}
+
 	context.JSON(http.StatusOK, questions)
 }
 
