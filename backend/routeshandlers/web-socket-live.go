@@ -156,9 +156,11 @@ func readliveMessages(conn *websocket.Conn, quizId int, quizRoom models.QuizRoom
 			if err != nil {
 				fmt.Println("Wrong message format: ", err)
 			}
-			live_mu.Lock()
-			questionsPerRoom[quizId] = questions
-			live_mu.Unlock()
+			if current_ques_indices[quizId] == 0 {
+				live_mu.Lock()
+				questionsPerRoom[quizId] = questions
+				live_mu.Unlock()
+			}
 
 			live_mu.RLock()
 			next_question_available := current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId])
