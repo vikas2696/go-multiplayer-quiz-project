@@ -43,6 +43,7 @@ export default function LobbyPage() {
   const socketRef = useWebSocket(ws_url);
   const [messages, setMessages] = useState([]);
   const [chatMessage, setChatMessage] = useState('');
+  const [reloadLobby, setReloadLobby] = useState('');
 
   // Scroll to bottom when new message arrives
   const scrollToBottom = () => {
@@ -54,9 +55,6 @@ export default function LobbyPage() {
   }, [messages]);
 
   useEffect(() => {
-    if (hasRun.current) return;
-    hasRun.current = true;
-
     axios.get(`${config.BASE_URL}/quizrooms/`+ quizId +'/lobby',
       {
       headers: {
@@ -73,7 +71,7 @@ export default function LobbyPage() {
         navigate('/quizrooms');
       });
 
-  }, []);
+  }, [reloadLobby]);
 
   useEffect(() => {
     if (!socketRef.current) return;
@@ -82,12 +80,14 @@ export default function LobbyPage() {
       const data = JSON.parse(e.data);
       console.log(data);
         if (data.Type === 'join') {
-          setMessages(prev => [...prev, data.Msg.Username+' joined the room.']);
+          setMessages(prev => [...prev, data.Msg.Username+' entered the lobby.']);
+          setReloadLobby('joined');
         } else if(data.Type === 'leave') {
-          setMessages(prev => [...prev, data.Msg.Username+' left the room.']);
+          setMessages(prev => [...prev, data.Msg.Username+' left the lobby.']);
+          setReloadLobby('left');
         } else if(data.Type === 'start') {
           navigate(`/quizrooms/${quizId}/live`, { state: { skipProtection: true } });
-        } else{
+        } else if(data.Type === 'chat'){
           setMessages(prev => [...prev, data.Msg.Username+': '+data.Msg.Chat]);
         }
     };

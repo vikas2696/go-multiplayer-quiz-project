@@ -98,7 +98,6 @@ export default function LiveQuizPage() {
       if(data.Type === 'question') {
         setShowScorecard(false);
         setQuestion(data.Msg.Question);
-        //console.log(data.Msg.Question);
         startTimer(data.Msg.Timer);
       } else if(data.Type === 'scorecard') {
         setScoreSheet(data.Msg);
@@ -240,12 +239,40 @@ export default function LiveQuizPage() {
       </IconButton>
 
       {/* Question box */}
-      <Box sx={{ height: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', px: 3, textAlign: 'center', zIndex: 1 }}>
-        <Typography variant="h4" sx={{ fontWeight: 700 }}>
-          Question #{question.QuestionId}: 
-          {question.Ques}
-        </Typography>
-      </Box>
+        <Box
+          sx={{
+            height: '50%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            px: 3,
+            textAlign: 'center',
+            zIndex: 1,
+          }}
+        >
+          <Box
+              sx={{
+                position: 'absolute',
+                top: 8,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                border: '1px solid',
+                borderColor: 'grey.500',
+                borderRadius: 1,
+                px: 1.5,
+                py: 0.5,
+                mt: 1,
+                fontSize: '0.9rem',
+                fontWeight: 500,
+              }}
+            >
+            Question #{question.QuestionId}
+          </Box>
+          <Typography variant="h4" sx={{ fontWeight: 700 }}>
+            {question.Ques}
+          </Typography>
+        </Box>
 
       {/* Options box */}
       <Box sx={{ height: '50%', display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: 2, p: 3, pb: 5, zIndex: 1 }}>
@@ -264,8 +291,8 @@ export default function LiveQuizPage() {
             transition: 'all 0.2s ease-in-out',
             ...getOptionStyles(key),
             '&:hover': {
-              boxShadow: darkMode ? '0 0 8px #ffffff33' : '0 0 8px #00000022',
-              transform: 'scale(1.02)',
+              boxShadow: darkMode ? '0 0 6px #ffffff33' : '0 0 6px #00000022',
+              transform: 'scale(1.01)',
             },
           }}
         >
@@ -273,7 +300,6 @@ export default function LiveQuizPage() {
         </Box>
         ))}
       </Box>
-
         <Modal
           open={showScorecard}
           onClose={() => {}}
