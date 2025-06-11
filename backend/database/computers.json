@@ -1,92 +1,902 @@
 [
   {
     "questionId": 1,
-    "ques": "What does CPU stand for in computing?",
-    "optionA": "Central Processing Unit",
-    "optionB": "Computer Personal Unit",
-    "optionC": "Central Performance Utility",
-    "optionD": "Control Processing Unit",
-    "answer": "Central Processing Unit"
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
   },
   {
     "questionId": 2,
-    "ques": "Which programming language is primarily used for web development alongside HTML and CSS?",
-    "optionA": "Python",
-    "optionB": "JavaScript",
-    "optionC": "C++",
-    "optionD": "Java",
-    "answer": "JavaScript"
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
   },
   {
     "questionId": 3,
-    "ques": "What type of software is an operating system?",
-    "optionA": "Utility software",
-    "optionB": "Application software",
-    "optionC": "System software",
-    "optionD": "Middleware",
-    "answer": "System software"
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
   },
   {
     "questionId": 4,
-    "ques": "What does RAM stand for?",
-    "optionA": "Read Access Memory",
-    "optionB": "Random Access Memory",
-    "optionC": "Run Access Memory",
-    "optionD": "Ready Access Memory",
-    "answer": "Random Access Memory"
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
   },
   {
     "questionId": 5,
-    "ques": "Which device is used to convert digital signals into analog signals for transmission?",
-    "optionA": "Router",
-    "optionB": "Modem",
-    "optionC": "Switch",
-    "optionD": "Hub",
-    "answer": "Modem"
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
   },
   {
     "questionId": 6,
-    "ques": "What is the primary function of the ALU in a CPU?",
-    "optionA": "Perform arithmetic and logic operations",
-    "optionB": "Manage memory",
-    "optionC": "Control input/output devices",
-    "optionD": "Store data temporarily",
-    "answer": "Perform arithmetic and logic operations"
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
   },
   {
     "questionId": 7,
-    "ques": "Which of these is a type of non-volatile memory?",
-    "optionA": "RAM",
-    "optionB": "ROM",
-    "optionC": "Cache",
-    "optionD": "Registers",
-    "answer": "ROM"
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
   },
   {
     "questionId": 8,
-    "ques": "What does HTTP stand for?",
-    "optionA": "HyperText Transfer Protocol",
-    "optionB": "HyperText Transmission Protocol",
-    "optionC": "High Transfer Text Protocol",
-    "optionD": "Hyper Terminal Transfer Protocol",
-    "answer": "HyperText Transfer Protocol"
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
   },
   {
     "questionId": 9,
-    "ques": "Which programming paradigm focuses on objects containing data and methods?",
-    "optionA": "Procedural programming",
-    "optionB": "Functional programming",
-    "optionC": "Object-oriented programming",
-    "optionD": "Declarative programming",
-    "answer": "Object-oriented programming"
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
   },
   {
     "questionId": 10,
-    "ques": "What is the main purpose of an IP address?",
-    "optionA": "To identify a device on a network",
-    "optionB": "To encrypt data",
-    "optionC": "To store files",
-    "optionD": "To control hardware",
-    "answer": "To identify a device on a network"
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 11,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 12,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 13,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 14,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 15,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 16,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 17,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 18,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 19,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 20,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 21,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 22,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 23,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 24,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 25,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 26,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 27,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 28,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 29,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 30,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 31,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 32,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 33,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 34,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 35,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 36,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 37,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 38,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 39,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 40,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 41,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 42,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 43,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 44,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 45,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 46,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 47,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 48,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 49,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 50,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 51,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 52,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 53,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 54,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 55,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 56,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 57,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 58,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 59,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 60,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 61,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 62,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 63,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 64,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 65,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 66,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 67,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 68,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 69,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 70,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 71,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 72,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 73,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 74,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 75,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 76,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 77,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 78,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 79,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 80,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 81,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 82,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 83,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 84,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 85,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 86,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 87,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 88,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 89,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 90,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 91,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "questionId": 92,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 93,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 94,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 95,
+    "ques": "Which of these is an input device?",
+    "optionA": "Printer",
+    "optionB": "Monitor",
+    "optionC": "Keyboard",
+    "optionD": "Speaker",
+    "answer": "Keyboard"
+  },
+  {
+    "questionId": 96,
+    "ques": "What is the brain of the computer?",
+    "optionA": "RAM",
+    "optionB": "Hard Drive",
+    "optionC": "CPU",
+    "optionD": "Monitor",
+    "answer": "CPU"
+  },
+  {
+    "questionId": 97,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 98,
+    "ques": "Which language is primarily used for Android app development?",
+    "optionA": "Python",
+    "optionB": "Java",
+    "optionC": "C#",
+    "optionD": "Ruby",
+    "answer": "Java"
+  },
+  {
+    "questionId": 99,
+    "ques": "What does GUI stand for?",
+    "optionA": "Graphical User Interface",
+    "optionB": "General Utility Interface",
+    "optionC": "Global User Interface",
+    "optionD": "Graphical Unit Interface",
+    "answer": "Graphical User Interface"
+  },
+  {
+    "questionId": 100,
+    "ques": "What does URL stand for?",
+    "optionA": "Uniform Resource Locator",
+    "optionB": "Unified Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Referencing Link",
+    "answer": "Uniform Resource Locator"
   }
 ]

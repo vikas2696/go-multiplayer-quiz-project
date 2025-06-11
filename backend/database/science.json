@@ -1,92 +1,902 @@
 [
   {
     "questionId": 1,
-    "ques": "What is the chemical symbol for the element gold?",
-    "optionA": "Au",
-    "optionB": "Ag",
-    "optionC": "Gd",
-    "optionD": "Go",
-    "answer": "Au"
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
   },
   {
     "questionId": 2,
-    "ques": "Which organ in the human body is primarily responsible for detoxification?",
-    "optionA": "Kidney",
-    "optionB": "Liver",
-    "optionC": "Lungs",
-    "optionD": "Spleen",
-    "answer": "Liver"
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
   },
   {
     "questionId": 3,
-    "ques": "What type of bond is formed when two atoms share electrons?",
-    "optionA": "Ionic bond",
-    "optionB": "Covalent bond",
-    "optionC": "Hydrogen bond",
-    "optionD": "Metallic bond",
-    "answer": "Covalent bond"
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
   },
   {
     "questionId": 4,
-    "ques": "Which planet has the strongest gravitational pull in our solar system?",
-    "optionA": "Earth",
-    "optionB": "Jupiter",
-    "optionC": "Saturn",
-    "optionD": "Neptune",
-    "answer": "Jupiter"
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
   },
   {
     "questionId": 5,
-    "ques": "What is the main gas responsible for the greenhouse effect on Earth?",
-    "optionA": "Methane",
-    "optionB": "Carbon Dioxide",
-    "optionC": "Oxygen",
-    "optionD": "Nitrogen",
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
     "answer": "Carbon Dioxide"
   },
   {
     "questionId": 6,
-    "ques": "What is the process by which plants lose water vapor through their leaves called?",
-    "optionA": "Photosynthesis",
-    "optionB": "Transpiration",
-    "optionC": "Respiration",
-    "optionD": "Evaporation",
-    "answer": "Transpiration"
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
   },
   {
     "questionId": 7,
-    "ques": "Which part of the brain controls balance and coordination?",
-    "optionA": "Cerebrum",
-    "optionB": "Cerebellum",
-    "optionC": "Medulla",
-    "optionD": "Hypothalamus",
-    "answer": "Cerebellum"
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
   },
   {
     "questionId": 8,
-    "ques": "What is the unit of electrical resistance?",
-    "optionA": "Volt",
-    "optionB": "Ohm",
-    "optionC": "Ampere",
-    "optionD": "Watt",
-    "answer": "Ohm"
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
   },
   {
     "questionId": 9,
-    "ques": "Which vitamin is primarily synthesized in the skin when exposed to sunlight?",
-    "optionA": "Vitamin A",
-    "optionB": "Vitamin B12",
-    "optionC": "Vitamin D",
-    "optionD": "Vitamin C",
-    "answer": "Vitamin D"
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
   },
   {
     "questionId": 10,
-    "ques": "What phenomenon causes the bending of light as it passes from one medium to another?",
-    "optionA": "Reflection",
-    "optionB": "Diffraction",
-    "optionC": "Refraction",
-    "optionD": "Absorption",
-    "answer": "Refraction"
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 11,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 12,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 13,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 14,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 15,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 16,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 17,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 18,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 19,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 20,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 21,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 22,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 23,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 24,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 25,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 26,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 27,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 28,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 29,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 30,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 31,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 32,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 33,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 34,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 35,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 36,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 37,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 38,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 39,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 40,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 41,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 42,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 43,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 44,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 45,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 46,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 47,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 48,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 49,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 50,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 51,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 52,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 53,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 54,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 55,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 56,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 57,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 58,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 59,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 60,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 61,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 62,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 63,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 64,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 65,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 66,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 67,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 68,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 69,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 70,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 71,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 72,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 73,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 74,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 75,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 76,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 77,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 78,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 79,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 80,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 81,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 82,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 83,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 84,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 85,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 86,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 87,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 88,
+    "ques": "Which part of the atom has no electric charge?",
+    "optionA": "Proton",
+    "optionB": "Electron",
+    "optionC": "Neutron",
+    "optionD": "Nucleus",
+    "answer": "Neutron"
+  },
+  {
+    "questionId": 89,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 90,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 91,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 92,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 93,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 94,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 95,
+    "ques": "What gas do plants absorb from the atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon Dioxide",
+    "optionD": "Hydrogen",
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "questionId": 96,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
+  },
+  {
+    "questionId": 97,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 98,
+    "ques": "What is the powerhouse of the cell?",
+    "optionA": "Nucleus",
+    "optionB": "Mitochondria",
+    "optionC": "Ribosome",
+    "optionD": "Chloroplast",
+    "answer": "Mitochondria"
+  },
+  {
+    "questionId": 99,
+    "ques": "What planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Saturn",
+    "answer": "Mars"
+  },
+  {
+    "questionId": 100,
+    "ques": "At what temperature does water boil at sea level?",
+    "optionA": "90\u00b0C",
+    "optionB": "100\u00b0C",
+    "optionC": "110\u00b0C",
+    "optionD": "120\u00b0C",
+    "answer": "100\u00b0C"
   }
 ]

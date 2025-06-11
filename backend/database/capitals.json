@@ -1,92 +1,902 @@
 [
   {
     "questionId": 1,
-    "ques": "What is the capital city of New Zealand?",
-    "optionA": "Auckland",
-    "optionB": "Wellington",
-    "optionC": "Christchurch",
-    "optionD": "Hamilton",
-    "answer": "Wellington"
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
   },
   {
     "questionId": 2,
-    "ques": "Which city is the capital of Nigeria?",
-    "optionA": "Lagos",
-    "optionB": "Abuja",
-    "optionC": "Kano",
-    "optionD": "Ibadan",
-    "answer": "Abuja"
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
   },
   {
     "questionId": 3,
-    "ques": "What is the capital of Kazakhstan?",
-    "optionA": "Astana",
-    "optionB": "Almaty",
-    "optionC": "Nur-Sultan",
-    "optionD": "Shymkent",
-    "answer": "Nur-Sultan"
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
   },
   {
     "questionId": 4,
-    "ques": "Which city is the capital of Portugal?",
-    "optionA": "Lisbon",
-    "optionB": "Porto",
-    "optionC": "Madrid",
-    "optionD": "Barcelona",
-    "answer": "Lisbon"
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
   },
   {
     "questionId": 5,
-    "ques": "What is the capital of Chile?",
-    "optionA": "Santiago",
-    "optionB": "Valparaíso",
-    "optionC": "Concepción",
-    "optionD": "La Serena",
-    "answer": "Santiago"
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
   },
   {
     "questionId": 6,
-    "ques": "Which city is the capital of Croatia?",
-    "optionA": "Split",
-    "optionB": "Zagreb",
-    "optionC": "Dubrovnik",
-    "optionD": "Rijeka",
-    "answer": "Zagreb"
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
   },
   {
     "questionId": 7,
-    "ques": "What is the capital of Mongolia?",
-    "optionA": "Ulaanbaatar",
-    "optionB": "Erdenet",
-    "optionC": "Darkhan",
-    "optionD": "Choibalsan",
-    "answer": "Ulaanbaatar"
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
   },
   {
     "questionId": 8,
-    "ques": "Which city is the capital of Iceland?",
-    "optionA": "Reykjavik",
-    "optionB": "Akureyri",
-    "optionC": "Keflavik",
-    "optionD": "Hafnarfjörður",
-    "answer": "Reykjavik"
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
   },
   {
     "questionId": 9,
-    "ques": "What is the capital of Bangladesh?",
-    "optionA": "Chittagong",
-    "optionB": "Dhaka",
-    "optionC": "Khulna",
-    "optionD": "Rajshahi",
-    "answer": "Dhaka"
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
   },
   {
     "questionId": 10,
-    "ques": "Which city is the capital of Finland?",
-    "optionA": "Helsinki",
-    "optionB": "Espoo",
-    "optionC": "Tampere",
-    "optionD": "Vantaa",
-    "answer": "Helsinki"
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 11,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 12,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 13,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 14,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 15,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 16,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 17,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 18,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 19,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 20,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 21,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 22,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 23,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 24,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 25,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 26,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 27,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 28,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 29,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 30,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 31,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 32,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 33,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 34,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 35,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 36,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 37,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 38,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 39,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 40,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 41,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 42,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 43,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 44,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 45,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 46,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 47,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 48,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 49,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 50,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 51,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 52,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 53,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 54,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 55,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 56,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 57,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 58,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 59,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 60,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 61,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 62,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 63,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 64,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 65,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 66,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 67,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 68,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 69,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 70,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 71,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 72,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 73,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 74,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 75,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 76,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 77,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 78,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 79,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 80,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 81,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 82,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 83,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 84,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 85,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 86,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 87,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 88,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 89,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 90,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 91,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 92,
+    "ques": "What is the capital of France?",
+    "optionA": "Berlin",
+    "optionB": "Madrid",
+    "optionC": "Paris",
+    "optionD": "Rome",
+    "answer": "Paris"
+  },
+  {
+    "questionId": 93,
+    "ques": "What is the capital of Egypt?",
+    "optionA": "Cairo",
+    "optionB": "Alexandria",
+    "optionC": "Giza",
+    "optionD": "Luxor",
+    "answer": "Cairo"
+  },
+  {
+    "questionId": 94,
+    "ques": "What is the capital of Brazil?",
+    "optionA": "S\u00e3o Paulo",
+    "optionB": "Rio de Janeiro",
+    "optionC": "Bras\u00edlia",
+    "optionD": "Salvador",
+    "answer": "Bras\u00edlia"
+  },
+  {
+    "questionId": 95,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 96,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 97,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
+  },
+  {
+    "questionId": 98,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 99,
+    "ques": "What is the capital of India?",
+    "optionA": "Mumbai",
+    "optionB": "Delhi",
+    "optionC": "New Delhi",
+    "optionD": "Kolkata",
+    "answer": "New Delhi"
+  },
+  {
+    "questionId": 100,
+    "ques": "What is the capital of Japan?",
+    "optionA": "Seoul",
+    "optionB": "Tokyo",
+    "optionC": "Beijing",
+    "optionD": "Bangkok",
+    "answer": "Tokyo"
   }
 ]

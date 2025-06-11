@@ -1,92 +1,902 @@
 [
   {
     "questionId": 1,
-    "ques": "Which river is the longest in South America?",
-    "optionA": "Amazon",
-    "optionB": "Paraná",
-    "optionC": "Orinoco",
-    "optionD": "São Francisco",
-    "answer": "Amazon"
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
   },
   {
     "questionId": 2,
-    "ques": "Mount Kilimanjaro is located in which African country?",
-    "optionA": "Kenya",
-    "optionB": "Tanzania",
-    "optionC": "Uganda",
-    "optionD": "Ethiopia",
-    "answer": "Tanzania"
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
   },
   {
     "questionId": 3,
-    "ques": "The Great Barrier Reef is off the coast of which country?",
-    "optionA": "New Zealand",
-    "optionB": "Australia",
-    "optionC": "Fiji",
-    "optionD": "Indonesia",
-    "answer": "Australia"
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
   },
   {
     "questionId": 4,
-    "ques": "Which desert is the largest hot desert in the world?",
-    "optionA": "Gobi",
-    "optionB": "Sahara",
-    "optionC": "Kalahari",
-    "optionD": "Thar",
-    "answer": "Sahara"
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
   },
   {
     "questionId": 5,
-    "ques": "Which country has the most natural lakes?",
-    "optionA": "Canada",
-    "optionB": "Russia",
-    "optionC": "USA",
-    "optionD": "Finland",
-    "answer": "Canada"
-  },
-  {
-    "questionId": 6,
-    "ques": "Which ocean is the deepest in the world?",
-    "optionA": "Atlantic Ocean",
-    "optionB": "Indian Ocean",
-    "optionC": "Pacific Ocean",
-    "optionD": "Arctic Ocean",
-    "answer": "Pacific Ocean"
-  },
-  {
-    "questionId": 7,
-    "ques": "Which mountain range separates Europe from Asia?",
-    "optionA": "Andes",
-    "optionB": "Ural",
-    "optionC": "Himalayas",
-    "optionD": "Alps",
-    "answer": "Ural"
-  },
-  {
-    "questionId": 8,
-    "ques": "Which continent has the highest number of countries?",
+    "ques": "Which is the largest continent by area?",
     "optionA": "Africa",
     "optionB": "Asia",
     "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 6,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 7,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
     "optionD": "South America",
-    "answer": "Africa"
+    "answer": "Asia"
+  },
+  {
+    "questionId": 8,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
   },
   {
     "questionId": 9,
-    "ques": "Which city is known as the 'City of Seven Hills'?",
-    "optionA": "Rome",
-    "optionB": "Istanbul",
-    "optionC": "Lisbon",
-    "optionD": "Athens",
-    "answer": "Rome"
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
   },
   {
     "questionId": 10,
-    "ques": "Which country is the largest by area in the world?",
-    "optionA": "Canada",
-    "optionB": "China",
-    "optionC": "USA",
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 11,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 12,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
     "optionD": "Russia",
-    "answer": "Russia"
+    "answer": "China"
+  },
+  {
+    "questionId": 13,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 14,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 15,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 16,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 17,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 18,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 19,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 20,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 21,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 22,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 23,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 24,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 25,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 26,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 27,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 28,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 29,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 30,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 31,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 32,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 33,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 34,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 35,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 36,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 37,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 38,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 39,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 40,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 41,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 42,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 43,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 44,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 45,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 46,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 47,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 48,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 49,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 50,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 51,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 52,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 53,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 54,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 55,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 56,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 57,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 58,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 59,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 60,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 61,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 62,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 63,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 64,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 65,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 66,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 67,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 68,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 69,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 70,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 71,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 72,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 73,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 74,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 75,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 76,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 77,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 78,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 79,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 80,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 81,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 82,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 83,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 84,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 85,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 86,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 87,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 88,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 89,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 90,
+    "ques": "Which ocean is the smallest?",
+    "optionA": "Atlantic",
+    "optionB": "Indian",
+    "optionC": "Southern",
+    "optionD": "Arctic",
+    "answer": "Arctic"
+  },
+  {
+    "questionId": 91,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 92,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 93,
+    "ques": "Which country is landlocked?",
+    "optionA": "India",
+    "optionB": "Nepal",
+    "optionC": "Japan",
+    "optionD": "Indonesia",
+    "answer": "Nepal"
+  },
+  {
+    "questionId": 94,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 95,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 96,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 97,
+    "ques": "What country has the most people?",
+    "optionA": "USA",
+    "optionB": "India",
+    "optionC": "China",
+    "optionD": "Russia",
+    "answer": "China"
+  },
+  {
+    "questionId": 98,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 99,
+    "ques": "Which is the largest continent by area?",
+    "optionA": "Africa",
+    "optionB": "Asia",
+    "optionC": "Europe",
+    "optionD": "North America",
+    "answer": "Asia"
+  },
+  {
+    "questionId": 100,
+    "ques": "The Himalayas are located in which continent?",
+    "optionA": "Europe",
+    "optionB": "Asia",
+    "optionC": "Africa",
+    "optionD": "South America",
+    "answer": "Asia"
   }
 ]
