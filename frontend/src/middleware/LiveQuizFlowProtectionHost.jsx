@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import BASE_URL from "../config";
+import config from "../config";
 import { jwtDecode } from 'jwt-decode';
 
 const LiveFlowProtectedRouteHost = ({ children, currentPage }) => {
@@ -22,7 +22,7 @@ const LiveFlowProtectedRouteHost = ({ children, currentPage }) => {
 
     const checkAccess = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/quizrooms/${quizId}/lobby`, {
+        const response = await fetch(`${config.BASE_URL}/quizrooms/${quizId}/lobby`, {
           method: 'GET',
           headers: { 
             'Content-Type': 'application/json',

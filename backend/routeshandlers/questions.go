@@ -2,8 +2,10 @@ package routeshandlers
 
 import (
 	"go-multiplayer-quiz-project/backend/models"
+	"math/rand"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,6 +36,12 @@ func getAllQuestions(context *gin.Context) {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": "Questions not found"})
 		return
 	}
+
+	seed := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(seed)
+	r.Shuffle(len(questions), func(i, j int) {
+		questions[i], questions[j] = questions[j], questions[i]
+	})
 
 	context.JSON(http.StatusOK, questions)
 }

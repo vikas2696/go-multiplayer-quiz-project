@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import BASE_URL from "../config";
+import config from "../config";
 import { jwtDecode } from 'jwt-decode';
 
 const FlowProtectedRoute = ({ children, currentPage }) => {
@@ -11,7 +11,7 @@ const FlowProtectedRoute = ({ children, currentPage }) => {
   useEffect(() => {
     const checkAccess = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/quizrooms/${quizId}/check-page-access`, {
+        const response = await fetch(`${config.BASE_URL}/quizrooms/${quizId}/check-page-access`, {
           method: 'GET',
           headers: { 
             'Content-Type': 'application/json',
