@@ -58,6 +58,7 @@ export default function LiveQuizPage() {
       })
       .then(response => {
         setQuestions(response.data);
+        //console.log(response.data)
       })
       .catch(err => {
         toast.error(GetErrorMessage(err));
@@ -97,6 +98,7 @@ export default function LiveQuizPage() {
       if(data.Type === 'question') {
         setShowScorecard(false);
         setQuestion(data.Msg.Question);
+        //console.log(data.Msg.Question);
         startTimer(data.Msg.Timer);
       } else if(data.Type === 'scorecard') {
         setScoreSheet(data.Msg);
@@ -237,21 +239,38 @@ export default function LiveQuizPage() {
         {darkMode ? <Sun size={24} /> : <Moon size={24} />}
       </IconButton>
 
+      {/* Question box */}
       <Box sx={{ height: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', px: 3, textAlign: 'center', zIndex: 1 }}>
         <Typography variant="h4" sx={{ fontWeight: 700 }}>
+          Question #{question.QuestionId}: 
           {question.Ques}
         </Typography>
       </Box>
 
+      {/* Options box */}
       <Box sx={{ height: '50%', display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: 2, p: 3, pb: 5, zIndex: 1 }}>
         {optionKeys.map((key) => (
-          <Box
-            key={key}
-            onClick={() => handleSelect(key)}
-            sx={{ borderRadius: '20px', ...getOptionStyles(key) }}
-          >
-            {key.replace("Option", "")}: {question[key]}
-          </Box>
+        <Box
+          key={key}
+          onClick={() => handleSelect(key)}
+          sx={{
+            borderRadius: '16px',
+            py: 2,
+            px: 3,
+            textAlign: 'center',
+            cursor: 'pointer',
+            fontWeight: 500,
+            fontSize: '1rem',
+            transition: 'all 0.2s ease-in-out',
+            ...getOptionStyles(key),
+            '&:hover': {
+              boxShadow: darkMode ? '0 0 8px #ffffff33' : '0 0 8px #00000022',
+              transform: 'scale(1.02)',
+            },
+          }}
+        >
+          {question[key]}
+        </Box>
         ))}
       </Box>
 

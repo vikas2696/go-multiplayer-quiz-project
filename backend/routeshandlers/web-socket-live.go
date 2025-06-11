@@ -166,6 +166,7 @@ func readliveMessages(conn *websocket.Conn, quizId int, quizRoom models.QuizRoom
 			next_question_available := current_ques_indices[quizId]+1 < len(questionsPerRoom[quizId])
 			last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
 			question_to_send := questionsPerRoom[quizId][current_ques_indices[quizId]]
+			question_to_send.QuestionId = current_ques_indices[quizId] + 1
 			data_to_send := gin.H{
 				"Question": question_to_send,
 				"Timer":    timeLeftPerRoom[quizId],
@@ -197,11 +198,12 @@ func readliveMessages(conn *websocket.Conn, quizId int, quizRoom models.QuizRoom
 				go startTicking(quizId)
 				live_mu.Lock()
 				current_ques_indices[quizId]++
-				last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
 				live_mu.Unlock()
 
 				live_mu.RLock()
+				last_question := current_ques_indices[quizId]+1 == len(questionsPerRoom[quizId])
 				question_to_send := questionsPerRoom[quizId][current_ques_indices[quizId]]
+				question_to_send.QuestionId = current_ques_indices[quizId] + 1
 				data_to_send := gin.H{
 					"Question": question_to_send,
 					"Timer":    timeLeftPerRoom[quizId],
@@ -227,21 +229,32 @@ func readliveMessages(conn *websocket.Conn, quizId int, quizRoom models.QuizRoom
 				Msg:  nil,
 				Conn: conn}
 		} else if clientMsg.Type == "answer" {
-			dataMap := clientMsg.Msg.(map[string]interface{})
-			user_id := int(dataMap["UserId"].(float64))
-			answer := dataMap["Answer"].(string)
-			live_mu.Lock()
+			answerData := clientMsg.Msg.(map[string]interface{})
+			user_id := int(answerData["UserId"].(float64))
+			answer := answerData["Answer"].(string)
+
+			live_mu.RLock()
+			question_to_send := questionsPerRoom[quizId][current_ques_indices[quizId]]
 			scorecardPerRoom[quizId][user_id].CurrentAnswer = answer
-			if answer == questionsPerRoom[quizId][current_ques_indices[quizId]].Answer {
+			question_to_send.QuestionId = current_ques_indices[quizId] + 1
+			live_mu.RUnlock()
+
+			if answer == question_to_send.Answer {
+				live_mu.Lock()
 				scorecardPerRoom[quizId][user_id].CurrentScore++
+				live_mu.Unlock()
 			}
-			live_mu.Unlock()
+
+			live_mu.RLock()
+			msg_to_send := gin.H{
+				"Question":   question_to_send,
+				"ScoreSheet": scorecardPerRoom[quizId],
+			}
+			live_mu.RUnlock()
+
 			live_broadcastChans[quizId] <- models.LiveMessage{
 				Type: "scorecard",
-				Msg: gin.H{
-					"Question":   questionsPerRoom[quizId][current_ques_indices[quizId]],
-					"ScoreSheet": scorecardPerRoom[quizId],
-				},
+				Msg:  msg_to_send,
 				Conn: conn}
 		} else {
 			live_broadcastChans[quizId] <- clientMsg
