@@ -1,902 +1,1352 @@
 [
   {
     "questionId": 1,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What does CPU stand for?",
+    "optionA": "Central Processing Unit",
+    "optionB": "Computer Processing Unit",
+    "optionC": "Central Program Unit",
+    "optionD": "Computer Program Unit",
+    "answer": "Central Processing Unit"
   },
   {
     "questionId": 2,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which programming language is known for its use in web development and has a snake as its mascot?",
+    "optionA": "Java",
+    "optionB": "Python",
+    "optionC": "Ruby",
+    "optionD": "JavaScript",
+    "answer": "Python"
   },
   {
     "questionId": 3,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "What does HTTP stand for?",
+    "optionA": "HyperText Transfer Protocol",
+    "optionB": "HyperText Transmission Protocol",
+    "optionC": "HyperTransfer Text Protocol",
+    "optionD": "High Transfer Text Protocol",
+    "answer": "HyperText Transfer Protocol"
   },
   {
     "questionId": 4,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which data structure follows the LIFO (Last In, First Out) principle?",
+    "optionA": "Queue",
+    "optionB": "Array",
+    "optionC": "Stack",
+    "optionD": "Linked List",
+    "answer": "Stack"
   },
   {
     "questionId": 5,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What is the binary representation of the decimal number 10?",
+    "optionA": "1010",
+    "optionB": "1100",
+    "optionC": "1001",
+    "optionD": "1110",
+    "answer": "1010"
   },
   {
     "questionId": 6,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which company developed the Java programming language?",
+    "optionA": "Microsoft",
+    "optionB": "Sun Microsystems",
+    "optionC": "Apple",
+    "optionD": "IBM",
+    "answer": "Sun Microsystems"
   },
   {
     "questionId": 7,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "What does SQL stand for?",
+    "optionA": "Structured Query Language",
+    "optionB": "Standard Query Language",
+    "optionC": "Simple Query Language",
+    "optionD": "System Query Language",
+    "answer": "Structured Query Language"
   },
   {
     "questionId": 8,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which of the following is NOT an operating system?",
+    "optionA": "Windows",
+    "optionB": "macOS",
+    "optionC": "Linux",
+    "optionD": "Oracle",
+    "answer": "Oracle"
   },
   {
     "questionId": 9,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What is the time complexity of binary search?",
+    "optionA": "O(n)",
+    "optionB": "O(log n)",
+    "optionC": "O(n²)",
+    "optionD": "O(1)",
+    "answer": "O(log n)"
   },
   {
     "questionId": 10,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which protocol is used for secure web browsing?",
+    "optionA": "HTTP",
+    "optionB": "HTTPS",
+    "optionC": "FTP",
+    "optionD": "SMTP",
+    "answer": "HTTPS"
   },
   {
     "questionId": 11,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What does RAM stand for?",
+    "optionA": "Read Access Memory",
+    "optionB": "Random Access Memory",
+    "optionC": "Rapid Access Memory",
+    "optionD": "Remote Access Memory",
+    "answer": "Random Access Memory"
   },
   {
     "questionId": 12,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which programming paradigm does Python primarily support?",
+    "optionA": "Object-oriented only",
+    "optionB": "Functional only",
+    "optionC": "Multi-paradigm",
+    "optionD": "Procedural only",
+    "answer": "Multi-paradigm"
   },
   {
     "questionId": 13,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the maximum number of characters in a Tweet on Twitter (as of 2023)?",
+    "optionA": "140",
+    "optionB": "280",
+    "optionC": "320",
+    "optionD": "500",
+    "answer": "280"
   },
   {
     "questionId": 14,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which sorting algorithm has the best average-case time complexity?",
+    "optionA": "Bubble Sort",
+    "optionB": "Selection Sort",
+    "optionC": "Quick Sort",
+    "optionD": "Insertion Sort",
+    "answer": "Quick Sort"
   },
   {
     "questionId": 15,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What does API stand for?",
+    "optionA": "Application Programming Interface",
+    "optionB": "Advanced Programming Interface",
+    "optionC": "Automated Programming Interface",
+    "optionD": "Application Process Interface",
+    "answer": "Application Programming Interface"
   },
   {
     "questionId": 16,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which database management system is known for being NoSQL?",
+    "optionA": "MySQL",
+    "optionB": "PostgreSQL",
+    "optionC": "MongoDB",
+    "optionD": "Oracle",
+    "answer": "MongoDB"
   },
   {
     "questionId": 17,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the standard port number for HTTP?",
+    "optionA": "21",
+    "optionB": "25",
+    "optionC": "80",
+    "optionD": "443",
+    "answer": "80"
   },
   {
     "questionId": 18,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "Which programming language is primarily used for iOS app development?",
+    "optionA": "Java",
+    "optionB": "Swift",
+    "optionC": "Kotlin",
+    "optionD": "C#",
+    "answer": "Swift"
   },
   {
     "questionId": 19,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "What does CSS stand for?",
+    "optionA": "Computer Style Sheets",
+    "optionB": "Creative Style Sheets",
+    "optionC": "Cascading Style Sheets",
+    "optionD": "Colorful Style Sheets",
+    "answer": "Cascading Style Sheets"
   },
   {
     "questionId": 20,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which data structure is best for implementing a priority queue?",
+    "optionA": "Array",
+    "optionB": "Linked List",
+    "optionC": "Heap",
+    "optionD": "Stack",
+    "answer": "Heap"
   },
   {
     "questionId": 21,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What is the purpose of the 'git clone' command?",
+    "optionA": "Create a new repository",
+    "optionB": "Copy a repository from remote to local",
+    "optionC": "Delete a repository",
+    "optionD": "Merge two repositories",
+    "answer": "Copy a repository from remote to local"
   },
   {
     "questionId": 22,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which company owns GitHub?",
+    "optionA": "Google",
+    "optionB": "Microsoft",
+    "optionC": "Facebook",
+    "optionD": "Amazon",
+    "answer": "Microsoft"
   },
   {
     "questionId": 23,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What does JSON stand for?",
+    "optionA": "JavaScript Object Notation",
+    "optionB": "Java Standard Object Notation",
+    "optionC": "JavaScript Oriented Notation",
+    "optionD": "Java Script Object Network",
+    "answer": "JavaScript Object Notation"
   },
   {
     "questionId": 24,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "Which algorithm is used for finding the shortest path in a graph?",
+    "optionA": "Bubble Sort",
+    "optionB": "Dijkstra's Algorithm",
+    "optionC": "Binary Search",
+    "optionD": "Quick Sort",
+    "answer": "Dijkstra's Algorithm"
   },
   {
     "questionId": 25,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the default port for HTTPS?",
+    "optionA": "80",
+    "optionB": "443",
+    "optionC": "8080",
+    "optionD": "22",
+    "answer": "443"
   },
   {
     "questionId": 26,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "Which programming language is known as the 'mother of all languages'?",
+    "optionA": "Assembly",
+    "optionB": "C",
+    "optionC": "FORTRAN",
+    "optionD": "COBOL",
+    "answer": "C"
   },
   {
     "questionId": 27,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What does IDE stand for?",
+    "optionA": "Integrated Development Environment",
+    "optionB": "Interactive Development Environment",
+    "optionC": "Internet Development Environment",
+    "optionD": "Internal Development Environment",
+    "answer": "Integrated Development Environment"
   },
   {
     "questionId": 28,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which technology is used to style web pages?",
+    "optionA": "HTML",
+    "optionB": "JavaScript",
+    "optionC": "CSS",
+    "optionD": "PHP",
+    "answer": "CSS"
   },
   {
     "questionId": 29,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the primary purpose of a firewall?",
+    "optionA": "Speed up internet connection",
+    "optionB": "Block unauthorized access",
+    "optionC": "Compress data",
+    "optionD": "Store passwords",
+    "answer": "Block unauthorized access"
   },
   {
     "questionId": 30,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which of the following is a version control system?",
+    "optionA": "MySQL",
+    "optionB": "Git",
+    "optionC": "Apache",
+    "optionD": "Node.js",
+    "answer": "Git"
   },
   {
     "questionId": 31,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "What does URL stand for?",
+    "optionA": "Universal Resource Locator",
+    "optionB": "Uniform Resource Locator",
+    "optionC": "Universal Reference Link",
+    "optionD": "Uniform Reference Link",
+    "answer": "Uniform Resource Locator"
   },
   {
     "questionId": 32,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which data type in programming can store decimal numbers?",
+    "optionA": "Integer",
+    "optionB": "Boolean",
+    "optionC": "Float",
+    "optionD": "Character",
+    "answer": "Float"
   },
   {
     "questionId": 33,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the main purpose of DNS?",
+    "optionA": "Encrypt data",
+    "optionB": "Translate domain names to IP addresses",
+    "optionC": "Compress files",
+    "optionD": "Store cookies",
+    "answer": "Translate domain names to IP addresses"
   },
   {
     "questionId": 34,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which company developed the C++ programming language?",
+    "optionA": "Microsoft",
+    "optionB": "Bell Labs",
+    "optionC": "IBM",
+    "optionD": "Google",
+    "answer": "Bell Labs"
   },
   {
     "questionId": 35,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the time complexity of accessing an element in an array by index?",
+    "optionA": "O(1)",
+    "optionB": "O(n)",
+    "optionC": "O(log n)",
+    "optionD": "O(n²)",
+    "answer": "O(1)"
   },
   {
     "questionId": 36,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "Which protocol is used for sending emails?",
+    "optionA": "HTTP",
+    "optionB": "FTP",
+    "optionC": "SMTP",
+    "optionD": "POP3",
+    "answer": "SMTP"
   },
   {
     "questionId": 37,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What does XML stand for?",
+    "optionA": "eXtreme Markup Language",
+    "optionB": "eXtensible Markup Language",
+    "optionC": "eXtra Modern Language",
+    "optionD": "eXecutable Markup Language",
+    "answer": "eXtensible Markup Language"
   },
   {
     "questionId": 38,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which of the following is a cloud computing service?",
+    "optionA": "Adobe Photoshop",
+    "optionB": "Microsoft Word",
+    "optionC": "Amazon Web Services",
+    "optionD": "VLC Media Player",
+    "answer": "Amazon Web Services"
   },
   {
     "questionId": 39,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the binary representation of the decimal number 5?",
+    "optionA": "101",
+    "optionB": "110",
+    "optionC": "111",
+    "optionD": "100",
+    "answer": "101"
   },
   {
     "questionId": 40,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which programming language is primarily used for Android app development?",
+    "optionA": "Swift",
+    "optionB": "Objective-C",
+    "optionC": "Kotlin",
+    "optionD": "C#",
+    "answer": "Kotlin"
   },
   {
     "questionId": 41,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What does OOP stand for in programming?",
+    "optionA": "Object-Oriented Programming",
+    "optionB": "Open-Source Programming",
+    "optionC": "Optimized-Output Programming",
+    "optionD": "Online-Operations Programming",
+    "answer": "Object-Oriented Programming"
   },
   {
     "questionId": 42,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which data structure uses FIFO (First In, First Out) principle?",
+    "optionA": "Stack",
+    "optionB": "Queue",
+    "optionC": "Tree",
+    "optionD": "Graph",
+    "answer": "Queue"
   },
   {
     "questionId": 43,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What is the maximum value that can be stored in 8 bits?",
+    "optionA": "128",
+    "optionB": "255",
+    "optionC": "256",
+    "optionD": "127",
+    "answer": "255"
   },
   {
     "questionId": 44,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which company created the JavaScript programming language?",
+    "optionA": "Microsoft",
+    "optionB": "Netscape",
+    "optionC": "Google",
+    "optionD": "Apple",
+    "answer": "Netscape"
   },
   {
     "questionId": 45,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "What does SSD stand for in computer storage?",
+    "optionA": "Solid State Drive",
+    "optionB": "Super Speed Drive",
+    "optionC": "Secure Storage Device",
+    "optionD": "System Storage Drive",
+    "answer": "Solid State Drive"
   },
   {
     "questionId": 46,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which network topology connects all devices to a central hub?",
+    "optionA": "Ring",
+    "optionB": "Bus",
+    "optionC": "Star",
+    "optionD": "Mesh",
+    "answer": "Star"
   },
   {
     "questionId": 47,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What is the purpose of a compiler?",
+    "optionA": "Execute programs",
+    "optionB": "Debug code",
+    "optionC": "Translate source code to machine code",
+    "optionD": "Format text",
+    "answer": "Translate source code to machine code"
   },
   {
     "questionId": 48,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "Which of the following is NOT a programming language?",
+    "optionA": "Python",
+    "optionB": "HTML",
+    "optionC": "Java",
+    "optionD": "C++",
+    "answer": "HTML"
   },
   {
     "questionId": 49,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What does MVC stand for in software architecture?",
+    "optionA": "Model-View-Controller",
+    "optionB": "Multiple-Virtual-Components",
+    "optionC": "Master-View-Client",
+    "optionD": "Modern-Virtual-Computing",
+    "answer": "Model-View-Controller"
   },
   {
     "questionId": 50,
-    "ques": "What is the powerhouse of the cell?",
+    "ques": "Which algorithm is commonly used for data compression?",
+    "optionA": "Bubble Sort",
+    "optionB": "Huffman Coding",
+    "optionC": "Linear Search",
+    "optionD": "Dijkstra's Algorithm",
+    "answer": "Huffman Coding"
+  },
+  {
+    "questionId": 1,
+    "ques": "What is the SI unit of force?",
+    "optionA": "Newton",
+    "optionB": "Joule",
+    "optionC": "Pascal",
+    "optionD": "Watt",
+    "answer": "Newton"
+  },
+  {
+    "questionId": 2,
+    "ques": "Which organelle is known as the powerhouse of the cell?",
     "optionA": "Nucleus",
     "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
+    "optionC": "Chloroplast",
+    "optionD": "Ribosome",
     "answer": "Mitochondria"
+  },
+  {
+    "questionId": 3,
+    "ques": "What is the chemical formula for sulfuric acid?",
+    "optionA": "HCl",
+    "optionB": "HNO3",
+    "optionC": "H2SO4",
+    "optionD": "H3PO4",
+    "answer": "H2SO4"
+  },
+  {
+    "questionId": 4,
+    "ques": "Which planet has the most moons in our solar system?",
+    "optionA": "Jupiter",
+    "optionB": "Saturn",
+    "optionC": "Uranus",
+    "optionD": "Neptune",
+    "answer": "Saturn"
+  },
+  {
+    "questionId": 5,
+    "ques": "What type of bond forms between two water molecules?",
+    "optionA": "Ionic bond",
+    "optionB": "Covalent bond",
+    "optionC": "Hydrogen bond",
+    "optionD": "Metallic bond",
+    "answer": "Hydrogen bond"
+  },
+  {
+    "questionId": 6,
+    "ques": "What is the speed of light in vacuum?",
+    "optionA": "3 × 10^6 m/s",
+    "optionB": "3 × 10^7 m/s",
+    "optionC": "3 × 10^8 m/s",
+    "optionD": "3 × 10^9 m/s",
+    "answer": "3 × 10^8 m/s"
+  },
+  {
+    "questionId": 7,
+    "ques": "Which process converts ADP to ATP in cells?",
+    "optionA": "Photosynthesis",
+    "optionB": "Phosphorylation",
+    "optionC": "Hydrolysis",
+    "optionD": "Denaturation",
+    "answer": "Phosphorylation"
+  },
+  {
+    "questionId": 8,
+    "ques": "What is the atomic number of carbon?",
+    "optionA": "4",
+    "optionB": "6",
+    "optionC": "8",
+    "optionD": "12",
+    "answer": "6"
+  },
+  {
+    "questionId": 9,
+    "ques": "Which law states that energy cannot be created or destroyed?",
+    "optionA": "Newton's First Law",
+    "optionB": "Law of Conservation of Mass",
+    "optionC": "First Law of Thermodynamics",
+    "optionD": "Ohm's Law",
+    "answer": "First Law of Thermodynamics"
+  },
+  {
+    "questionId": 10,
+    "ques": "What is the pH of pure water at 25°C?",
+    "optionA": "0",
+    "optionB": "7",
+    "optionC": "14",
+    "optionD": "10",
+    "answer": "7"
+  },
+  {
+    "questionId": 11,
+    "ques": "Which type of electromagnetic radiation has the longest wavelength?",
+    "optionA": "Gamma rays",
+    "optionB": "X-rays",
+    "optionC": "Visible light",
+    "optionD": "Radio waves",
+    "answer": "Radio waves"
+  },
+  {
+    "questionId": 12,
+    "ques": "What is the process of cell division in somatic cells called?",
+    "optionA": "Meiosis",
+    "optionB": "Mitosis",
+    "optionC": "Binary fission",
+    "optionD": "Budding",
+    "answer": "Mitosis"
+  },
+  {
+    "questionId": 13,
+    "ques": "Which gas makes up approximately 78% of Earth's atmosphere?",
+    "optionA": "Oxygen",
+    "optionB": "Carbon dioxide",
+    "optionC": "Nitrogen",
+    "optionD": "Argon",
+    "answer": "Nitrogen"
+  },
+  {
+    "questionId": 14,
+    "ques": "What is the functional unit of the kidney?",
+    "optionA": "Neuron",
+    "optionB": "Nephron",
+    "optionC": "Alveolus",
+    "optionD": "Villus",
+    "answer": "Nephron"
+  },
+  {
+    "questionId": 15,
+    "ques": "Which element has the highest electronegativity?",
+    "optionA": "Oxygen",
+    "optionB": "Chlorine",
+    "optionC": "Fluorine",
+    "optionD": "Nitrogen",
+    "answer": "Fluorine"
+  },
+  {
+    "questionId": 16,
+    "ques": "What is the acceleration due to gravity on Earth?",
+    "optionA": "9.8 m/s²",
+    "optionB": "10.8 m/s²",
+    "optionC": "8.8 m/s²",
+    "optionD": "11.8 m/s²",
+    "answer": "9.8 m/s²"
+  },
+  {
+    "questionId": 17,
+    "ques": "Which vitamin is synthesized by the human skin in sunlight?",
+    "optionA": "Vitamin A",
+    "optionB": "Vitamin C",
+    "optionC": "Vitamin D",
+    "optionD": "Vitamin E",
+    "answer": "Vitamin D"
+  },
+  {
+    "questionId": 18,
+    "ques": "What type of reaction releases energy?",
+    "optionA": "Endothermic",
+    "optionB": "Exothermic",
+    "optionC": "Isothermic",
+    "optionD": "Adiabatic",
+    "answer": "Exothermic"
+  },
+  {
+    "questionId": 19,
+    "ques": "Which organ produces insulin?",
+    "optionA": "Liver",
+    "optionB": "Kidney",
+    "optionC": "Pancreas",
+    "optionD": "Thyroid",
+    "answer": "Pancreas"
+  },
+  {
+    "questionId": 20,
+    "ques": "What is the molecular formula of glucose?",
+    "optionA": "C6H12O6",
+    "optionB": "C12H22O11",
+    "optionC": "C3H6O3",
+    "optionD": "C2H5OH",
+    "answer": "C6H12O6"
+  },
+  {
+    "questionId": 21,
+    "ques": "Which type of lens is used to correct myopia?",
+    "optionA": "Convex lens",
+    "optionB": "Concave lens",
+    "optionC": "Bifocal lens",
+    "optionD": "Cylindrical lens",
+    "answer": "Concave lens"
+  },
+  {
+    "questionId": 22,
+    "ques": "What is the valency of oxygen?",
+    "optionA": "1",
+    "optionB": "2",
+    "optionC": "3",
+    "optionD": "4",
+    "answer": "2"
+  },
+  {
+    "questionId": 23,
+    "ques": "Which blood cells are responsible for immunity?",
+    "optionA": "Red blood cells",
+    "optionB": "White blood cells",
+    "optionC": "Platelets",
+    "optionD": "Plasma cells",
+    "answer": "White blood cells"
+  },
+  {
+    "questionId": 24,
+    "ques": "What is the SI unit of electric current?",
+    "optionA": "Volt",
+    "optionB": "Ohm",
+    "optionC": "Ampere",
+    "optionD": "Coulomb",
+    "answer": "Ampere"
+  },
+  {
+    "questionId": 25,
+    "ques": "Which acid is present in the stomach?",
+    "optionA": "Sulfuric acid",
+    "optionB": "Nitric acid",
+    "optionC": "Hydrochloric acid",
+    "optionD": "Acetic acid",
+    "answer": "Hydrochloric acid"
+  },
+  {
+    "questionId": 26,
+    "ques": "What is the primary pigment in plant photosynthesis?",
+    "optionA": "Carotene",
+    "optionB": "Chlorophyll",
+    "optionC": "Xanthophyll",
+    "optionD": "Anthocyanin",
+    "answer": "Chlorophyll"
+  },
+  {
+    "questionId": 27,
+    "ques": "Which law relates voltage, current, and resistance?",
+    "optionA": "Newton's Law",
+    "optionB": "Ohm's Law",
+    "optionC": "Faraday's Law",
+    "optionD": "Coulomb's Law",
+    "answer": "Ohm's Law"
+  },
+  {
+    "questionId": 28,
+    "ques": "What is the chemical symbol for gold?",
+    "optionA": "Go",
+    "optionB": "Gd",
+    "optionC": "Au",
+    "optionD": "Ag",
+    "answer": "Au"
+  },
+  {
+    "questionId": 29,
+    "ques": "Which process do plants use to make food?",
+    "optionA": "Respiration",
+    "optionB": "Photosynthesis",
+    "optionC": "Fermentation",
+    "optionD": "Digestion",
+    "answer": "Photosynthesis"
+  },
+  {
+    "questionId": 30,
+    "ques": "What is the charge on a proton?",
+    "optionA": "Negative",
+    "optionB": "Positive",
+    "optionC": "Neutral",
+    "optionD": "Variable",
+    "answer": "Positive"
+  },
+  {
+    "questionId": 31,
+    "ques": "Which tissue transports water in plants?",
+    "optionA": "Phloem",
+    "optionB": "Xylem",
+    "optionC": "Cambium",
+    "optionD": "Cortex",
+    "answer": "Xylem"
+  },
+  {
+    "questionId": 32,
+    "ques": "What is the formula for kinetic energy?",
+    "optionA": "½mv²",
+    "optionB": "mgh",
+    "optionC": "mc²",
+    "optionD": "mv",
+    "answer": "½mv²"
+  },
+  {
+    "questionId": 33,
+    "ques": "Which gas is released during photosynthesis?",
+    "optionA": "Carbon dioxide",
+    "optionB": "Nitrogen",
+    "optionC": "Oxygen",
+    "optionD": "Hydrogen",
+    "answer": "Oxygen"
+  },
+  {
+    "questionId": 34,
+    "ques": "What is the number of chromosomes in human cells?",
+    "optionA": "23",
+    "optionB": "46",
+    "optionC": "48",
+    "optionD": "44",
+    "answer": "46"
+  },
+  {
+    "questionId": 35,
+    "ques": "Which metal is liquid at room temperature?",
+    "optionA": "Sodium",
+    "optionB": "Mercury",
+    "optionC": "Gallium",
+    "optionD": "Lead",
+    "answer": "Mercury"
+  },
+  {
+    "questionId": 36,
+    "ques": "What type of wave is sound?",
+    "optionA": "Transverse wave",
+    "optionB": "Longitudinal wave",
+    "optionC": "Electromagnetic wave",
+    "optionD": "Surface wave",
+    "answer": "Longitudinal wave"
+  },
+  {
+    "questionId": 37,
+    "ques": "Which gland is known as the master gland?",
+    "optionA": "Thyroid",
+    "optionB": "Pituitary",
+    "optionC": "Adrenal",
+    "optionD": "Pineal",
+    "answer": "Pituitary"
+  },
+  {
+    "questionId": 38,
+    "ques": "What is the chemical name of common salt?",
+    "optionA": "Sodium chloride",
+    "optionB": "Sodium carbonate",
+    "optionC": "Sodium bicarbonate",
+    "optionD": "Sodium hydroxide",
+    "answer": "Sodium chloride"
+  },
+  {
+    "questionId": 39,
+    "ques": "Which phenomenon causes a rainbow?",
+    "optionA": "Reflection",
+    "optionB": "Refraction",
+    "optionC": "Dispersion",
+    "optionD": "Diffraction",
+    "answer": "Dispersion"
+  },
+  {
+    "questionId": 40,
+    "ques": "What is the study of heredity called?",
+    "optionA": "Ecology",
+    "optionB": "Genetics",
+    "optionC": "Evolution",
+    "optionD": "Taxonomy",
+    "answer": "Genetics"
+  },
+  {
+    "questionId": 41,
+    "ques": "Which element is the most abundant in the universe?",
+    "optionA": "Oxygen",
+    "optionB": "Carbon",
+    "optionC": "Hydrogen",
+    "optionD": "Helium",
+    "answer": "Hydrogen"
+  },
+  {
+    "questionId": 42,
+    "ques": "What is the unit of frequency?",
+    "optionA": "Hertz",
+    "optionB": "Decibel",
+    "optionC": "Pascal",
+    "optionD": "Newton",
+    "answer": "Hertz"
+  },
+  {
+    "questionId": 43,
+    "ques": "Which blood group is known as universal donor?",
+    "optionA": "A+",
+    "optionB": "B+",
+    "optionC": "AB+",
+    "optionD": "O-",
+    "answer": "O-"
+  },
+  {
+    "questionId": 44,
+    "ques": "What is the chemical formula of ammonia?",
+    "optionA": "NH4",
+    "optionB": "NH3",
+    "optionC": "NH2",
+    "optionD": "N2H4",
+    "answer": "NH3"
+  },
+  {
+    "questionId": 45,
+    "ques": "Which mirror forms virtual and erect images?",
+    "optionA": "Concave mirror",
+    "optionB": "Convex mirror",
+    "optionC": "Plane mirror",
+    "optionD": "Both B and C",
+    "answer": "Both B and C"
+  },
+  {
+    "questionId": 46,
+    "ques": "What is the main component of natural gas?",
+    "optionA": "Ethane",
+    "optionB": "Propane",
+    "optionC": "Methane",
+    "optionD": "Butane",
+    "answer": "Methane"
+  },
+  {
+    "questionId": 47,
+    "ques": "Which part of the brain controls balance?",
+    "optionA": "Cerebrum",
+    "optionB": "Cerebellum",
+    "optionC": "Medulla",
+    "optionD": "Pons",
+    "answer": "Cerebellum"
+  },
+  {
+    "questionId": 48,
+    "ques": "What is the SI unit of power?",
+    "optionA": "Joule",
+    "optionB": "Newton",
+    "optionC": "Watt",
+    "optionD": "Pascal",
+    "answer": "Watt"
+  },
+  {
+    "questionId": 49,
+    "ques": "Which enzyme breaks down starch?",
+    "optionA": "Lipase",
+    "optionB": "Amylase",
+    "optionC": "Protease",
+    "optionD": "Lactase",
+    "answer": "Amylase"
+  },
+  {
+    "questionId": 50,
+    "ques": "What is the atomic mass of hydrogen?",
+    "optionA": "1",
+    "optionB": "2",
+    "optionC": "3",
+    "optionD": "4",
+    "answer": "1"
   },
   {
     "questionId": 51,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which type of reproduction involves only one parent?",
+    "optionA": "Sexual reproduction",
+    "optionB": "Asexual reproduction",
+    "optionC": "Bisexual reproduction",
+    "optionD": "Cross reproduction",
+    "answer": "Asexual reproduction"
   },
   {
     "questionId": 52,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the melting point of ice at standard pressure?",
+    "optionA": "0°C",
+    "optionB": "100°C",
+    "optionC": "32°C",
+    "optionD": "-273°C",
+    "answer": "0°C"
   },
   {
     "questionId": 53,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which gas is used in fire extinguishers?",
+    "optionA": "Oxygen",
+    "optionB": "Nitrogen",
+    "optionC": "Carbon dioxide",
+    "optionD": "Helium",
+    "answer": "Carbon dioxide"
   },
   {
     "questionId": 54,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "What is the smallest bone in the human body?",
+    "optionA": "Femur",
+    "optionB": "Stapes",
+    "optionC": "Tibia",
+    "optionD": "Radius",
+    "answer": "Stapes"
   },
   {
     "questionId": 55,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "Which scientist discovered the electron?",
+    "optionA": "Rutherford",
+    "optionB": "Thomson",
+    "optionC": "Bohr",
+    "optionD": "Chadwick",
+    "answer": "Thomson"
   },
   {
     "questionId": 56,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the process of converting solid directly to gas?",
+    "optionA": "Evaporation",
+    "optionB": "Condensation",
+    "optionC": "Sublimation",
+    "optionD": "Deposition",
+    "answer": "Sublimation"
   },
   {
     "questionId": 57,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which hormone regulates blood sugar levels?",
+    "optionA": "Thyroxine",
+    "optionB": "Insulin",
+    "optionC": "Adrenaline",
+    "optionD": "Growth hormone",
+    "answer": "Insulin"
   },
   {
     "questionId": 58,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the chemical formula of methane?",
+    "optionA": "CH3",
+    "optionB": "CH4",
+    "optionC": "C2H6",
+    "optionD": "C2H4",
+    "answer": "CH4"
   },
   {
     "questionId": 59,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "Which type of energy is stored in a stretched spring?",
+    "optionA": "Kinetic energy",
+    "optionB": "Potential energy",
+    "optionC": "Thermal energy",
+    "optionD": "Chemical energy",
+    "answer": "Potential energy"
   },
   {
     "questionId": 60,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the function of red blood cells?",
+    "optionA": "Fight infection",
+    "optionB": "Transport oxygen",
+    "optionC": "Blood clotting",
+    "optionD": "Produce antibodies",
+    "answer": "Transport oxygen"
   },
   {
     "questionId": 61,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which planet is known as the Red Planet?",
+    "optionA": "Venus",
+    "optionB": "Mars",
+    "optionC": "Jupiter",
+    "optionD": "Mercury",
+    "answer": "Mars"
   },
   {
     "questionId": 62,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the pH range of acids?",
+    "optionA": "0-7",
+    "optionB": "7-14",
+    "optionC": "7",
+    "optionD": "Above 14",
+    "answer": "0-7"
   },
   {
     "questionId": 63,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which instrument is used to measure atmospheric pressure?",
+    "optionA": "Thermometer",
+    "optionB": "Barometer",
+    "optionC": "Hygrometer",
+    "optionD": "Anemometer",
+    "answer": "Barometer"
   },
   {
     "questionId": 64,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "What type of joint is the elbow?",
+    "optionA": "Ball and socket",
+    "optionB": "Hinge",
+    "optionC": "Pivot",
+    "optionD": "Fixed",
+    "answer": "Hinge"
   },
   {
     "questionId": 65,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "Which element is essential for hemoglobin formation?",
+    "optionA": "Calcium",
+    "optionB": "Iron",
+    "optionC": "Sodium",
+    "optionD": "Potassium",
+    "answer": "Iron"
   },
   {
     "questionId": 66,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the unit of resistance?",
+    "optionA": "Volt",
+    "optionB": "Ampere",
+    "optionC": "Ohm",
+    "optionD": "Watt",
+    "answer": "Ohm"
   },
   {
     "questionId": 67,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which process removes carbon dioxide from blood?",
+    "optionA": "Digestion",
+    "optionB": "Respiration",
+    "optionC": "Circulation",
+    "optionD": "Excretion",
+    "answer": "Respiration"
   },
   {
     "questionId": 68,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the common name for sodium bicarbonate?",
+    "optionA": "Washing soda",
+    "optionB": "Baking soda",
+    "optionC": "Caustic soda",
+    "optionD": "Soda ash",
+    "answer": "Baking soda"
   },
   {
     "questionId": 69,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which color has the shortest wavelength in visible light?",
+    "optionA": "Red",
+    "optionB": "Green",
+    "optionC": "Blue",
+    "optionD": "Violet",
+    "answer": "Violet"
   },
   {
     "questionId": 70,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the largest organ in the human body?",
+    "optionA": "Liver",
+    "optionB": "Brain",
+    "optionC": "Skin",
+    "optionD": "Heart",
+    "answer": "Skin"
   },
   {
     "questionId": 71,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "Which gas is known as laughing gas?",
+    "optionA": "Nitrogen dioxide",
+    "optionB": "Nitrous oxide",
+    "optionC": "Nitric oxide",
+    "optionD": "Nitrogen trioxide",
+    "answer": "Nitrous oxide"
   },
   {
     "questionId": 72,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "What is the formula for acceleration?",
+    "optionA": "Distance/Time",
+    "optionB": "Force/Mass",
+    "optionC": "Change in velocity/Time",
+    "optionD": "Mass × Velocity",
+    "answer": "Change in velocity/Time"
   },
   {
     "questionId": 73,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "Which vitamin deficiency causes scurvy?",
+    "optionA": "Vitamin A",
+    "optionB": "Vitamin B",
+    "optionC": "Vitamin C",
+    "optionD": "Vitamin D",
+    "answer": "Vitamin C"
   },
   {
     "questionId": 74,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "What is the oxidation state of oxygen in most compounds?",
+    "optionA": "+2",
+    "optionB": "-2",
+    "optionC": "+1",
+    "optionD": "-1",
+    "answer": "-2"
   },
   {
     "questionId": 75,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which layer of Earth's atmosphere contains the ozone layer?",
+    "optionA": "Troposphere",
+    "optionB": "Stratosphere",
+    "optionC": "Mesosphere",
+    "optionD": "Thermosphere",
+    "answer": "Stratosphere"
   },
   {
     "questionId": 76,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What type of solution has pH = 7?",
+    "optionA": "Acidic",
+    "optionB": "Basic",
+    "optionC": "Neutral",
+    "optionD": "Alkaline",
+    "answer": "Neutral"
   },
   {
     "questionId": 77,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which cell organelle contains digestive enzymes?",
+    "optionA": "Mitochondria",
+    "optionB": "Lysosome",
+    "optionC": "Ribosome",
+    "optionD": "Golgi apparatus",
+    "answer": "Lysosome"
   },
   {
     "questionId": 78,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the principle behind hydraulic machines?",
+    "optionA": "Archimedes' principle",
+    "optionB": "Pascal's law",
+    "optionC": "Bernoulli's principle",
+    "optionD": "Newton's law",
+    "answer": "Pascal's law"
   },
   {
     "questionId": 79,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which metal is the best conductor of electricity?",
+    "optionA": "Gold",
+    "optionB": "Copper",
+    "optionC": "Silver",
+    "optionD": "Aluminum",
+    "answer": "Silver"
   },
   {
     "questionId": 80,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the process of water loss from plant leaves?",
+    "optionA": "Respiration",
+    "optionB": "Transpiration",
+    "optionC": "Evaporation",
+    "optionD": "Perspiration",
+    "answer": "Transpiration"
   },
   {
     "questionId": 81,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "Which type of electromagnetic radiation is used in X-ray machines?",
+    "optionA": "Infrared",
+    "optionB": "Ultraviolet",
+    "optionC": "X-rays",
+    "optionD": "Microwaves",
+    "answer": "X-rays"
   },
   {
     "questionId": 82,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What is the molecular mass of water (H2O)?",
+    "optionA": "16 g/mol",
+    "optionB": "18 g/mol",
+    "optionC": "20 g/mol",
+    "optionD": "22 g/mol",
+    "answer": "18 g/mol"
   },
   {
     "questionId": 83,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which part of the eye controls the amount of light entering?",
+    "optionA": "Cornea",
+    "optionB": "Lens",
+    "optionC": "Iris",
+    "optionD": "Retina",
+    "answer": "Iris"
   },
   {
     "questionId": 84,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What type of bond is formed by sharing of electrons?",
+    "optionA": "Ionic bond",
+    "optionB": "Covalent bond",
+    "optionC": "Metallic bond",
+    "optionD": "Hydrogen bond",
+    "answer": "Covalent bond"
   },
   {
     "questionId": 85,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "Which scientist proposed the theory of evolution?",
+    "optionA": "Newton",
+    "optionB": "Einstein",
+    "optionC": "Darwin",
+    "optionD": "Mendel",
+    "answer": "Darwin"
   },
   {
     "questionId": 86,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the SI unit of work?",
+    "optionA": "Newton",
+    "optionB": "Joule",
+    "optionC": "Watt",
+    "optionD": "Pascal",
+    "answer": "Joule"
   },
   {
     "questionId": 87,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which blood vessels carry blood away from the heart?",
+    "optionA": "Veins",
+    "optionB": "Arteries",
+    "optionC": "Capillaries",
+    "optionD": "Venules",
+    "answer": "Arteries"
   },
   {
     "questionId": 88,
-    "ques": "Which part of the atom has no electric charge?",
-    "optionA": "Proton",
-    "optionB": "Electron",
-    "optionC": "Neutron",
-    "optionD": "Nucleus",
-    "answer": "Neutron"
+    "ques": "What is the main constituent of biogas?",
+    "optionA": "Hydrogen",
+    "optionB": "Carbon dioxide",
+    "optionC": "Methane",
+    "optionD": "Nitrogen",
+    "answer": "Methane"
   },
   {
     "questionId": 89,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which phenomenon explains why sky appears blue?",
+    "optionA": "Refraction",
+    "optionB": "Reflection",
+    "optionC": "Scattering",
+    "optionD": "Dispersion",
+    "answer": "Scattering"
   },
   {
     "questionId": 90,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What is the genetic material in most organisms?",
+    "optionA": "RNA",
+    "optionB": "DNA",
+    "optionC": "Protein",
+    "optionD": "Lipid",
+    "answer": "DNA"
   },
   {
     "questionId": 91,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "Which noble gas is used in electric bulbs?",
+    "optionA": "Helium",
+    "optionB": "Neon",
+    "optionC": "Argon",
+    "optionD": "Krypton",
+    "answer": "Argon"
   },
   {
     "questionId": 92,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "What is the unit of electric charge?",
+    "optionA": "Volt",
+    "optionB": "Coulomb",
+    "optionC": "Ampere",
+    "optionD": "Ohm",
+    "answer": "Coulomb"
   },
   {
     "questionId": 93,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "Which tissue connects muscle to bone?",
+    "optionA": "Ligament",
+    "optionB": "Tendon",
+    "optionC": "Cartilage",
+    "optionD": "Adipose",
+    "answer": "Tendon"
   },
   {
     "questionId": 94,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "What is the chemical name of vitamin C?",
+    "optionA": "Thiamine",
+    "optionB": "Riboflavin",
+    "optionC": "Ascorbic acid",
+    "optionD": "Folic acid",
+    "answer": "Ascorbic acid"
   },
   {
     "questionId": 95,
-    "ques": "What gas do plants absorb from the atmosphere?",
-    "optionA": "Oxygen",
-    "optionB": "Nitrogen",
-    "optionC": "Carbon Dioxide",
-    "optionD": "Hydrogen",
-    "answer": "Carbon Dioxide"
+    "ques": "Which mirror is used in car headlights?",
+    "optionA": "Plane mirror",
+    "optionB": "Convex mirror",
+    "optionC": "Concave mirror",
+    "optionD": "Cylindrical mirror",
+    "answer": "Concave mirror"
   },
   {
     "questionId": 96,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "What is the main ore of aluminum?",
+    "optionA": "Hematite",
+    "optionB": "Bauxite",
+    "optionC": "Magnetite",
+    "optionD": "Galena",
+    "answer": "Bauxite"
   },
   {
     "questionId": 97,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "Which part of the cell controls all cellular activities?",
+    "optionA": "Cytoplasm",
+    "optionB": "Nucleus",
+    "optionC": "Cell membrane",
+    "optionD": "Mitochondria",
+    "answer": "Nucleus"
   },
   {
     "questionId": 98,
-    "ques": "What is the powerhouse of the cell?",
-    "optionA": "Nucleus",
-    "optionB": "Mitochondria",
-    "optionC": "Ribosome",
-    "optionD": "Chloroplast",
-    "answer": "Mitochondria"
+    "ques": "What is the escape velocity from Earth?",
+    "optionA": "11.2 km/s",
+    "optionB": "7.9 km/s",
+    "optionC": "15.0 km/s",
+    "optionD": "9.8 km/s",
+    "answer": "11.2 km/s"
   },
   {
     "questionId": 99,
-    "ques": "What planet is known as the Red Planet?",
-    "optionA": "Venus",
-    "optionB": "Mars",
-    "optionC": "Jupiter",
-    "optionD": "Saturn",
-    "answer": "Mars"
+    "ques": "Which acid is known as the king of chemicals?",
+    "optionA": "Hydrochloric acid",
+    "optionB": "Nitric acid",
+    "optionC": "Sulfuric acid",
+    "optionD": "Acetic acid",
+    "answer": "Sulfuric acid"
   },
   {
     "questionId": 100,
-    "ques": "At what temperature does water boil at sea level?",
-    "optionA": "90\u00b0C",
-    "optionB": "100\u00b0C",
-    "optionC": "110\u00b0C",
-    "optionD": "120\u00b0C",
-    "answer": "100\u00b0C"
+    "ques": "What type of symbiosis benefits both organisms?",
+    "optionA": "Parasitism",
+    "optionB": "Mutualism",
+    "optionC": "Commensalism",
+    "optionD": "Predation",
+    "answer": "Mutualism"
   }
 ]
