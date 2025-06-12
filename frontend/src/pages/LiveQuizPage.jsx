@@ -76,7 +76,6 @@ export default function LiveQuizPage() {
       .catch(err => {
         toast.error(GetErrorMessage(err));
       });
-
   }, [connected]);
 
   //for sending questions to WS

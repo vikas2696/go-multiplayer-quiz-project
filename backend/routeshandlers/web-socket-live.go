@@ -87,7 +87,7 @@ func webSocketLive(context *gin.Context) {
 		live_mu.Lock()
 		scorecardPerRoom[quizId] = make(map[int]*models.PlayerScore)
 		timeLeftPerRoom[quizId] = quizRoom.TimerTime
-		current_ques_indices[quizId] = 0
+		current_ques_indices[quizId] = -1
 		for _, player := range quizRoom.Players {
 			scorecardPerRoom[quizId][int(player.PlayerId)] = &models.PlayerScore{
 				Username:      player.Username,
@@ -156,9 +156,10 @@ func readliveMessages(conn *websocket.Conn, quizId int, quizRoom models.QuizRoom
 			if err != nil {
 				fmt.Println("Wrong message format: ", err)
 			}
-			if current_ques_indices[quizId] == 0 {
+			if current_ques_indices[quizId] == -1 {
 				live_mu.Lock()
 				questionsPerRoom[quizId] = questions
+				current_ques_indices[quizId] = 0
 				live_mu.Unlock()
 			}
 
@@ -256,8 +257,6 @@ func readliveMessages(conn *websocket.Conn, quizId int, quizRoom models.QuizRoom
 				Type: "scorecard",
 				Msg:  msg_to_send,
 				Conn: conn}
-		} else {
-			live_broadcastChans[quizId] <- clientMsg
 		}
 	}
 }

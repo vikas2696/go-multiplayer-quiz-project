@@ -179,6 +179,7 @@ export default function QuizRoomPage() {
                 <MenuItem value="gk">General Knowledge</MenuItem>
                 <MenuItem value="inventions">Inventions</MenuItem>
                 <MenuItem value="indian_geography">Indian Geography</MenuItem>
+                <MenuItem value="bollywood_fun">Bollywood Fun</MenuItem>
               </TextField>
 
           </Box>

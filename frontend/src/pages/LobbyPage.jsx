@@ -84,10 +84,10 @@ export default function LobbyPage() {
       console.log(data);
         if (data.Type === 'join') {
           setMessages(prev => [...prev, data.Msg.Username+' entered the lobby.']);
-          setReloadLobby('joined');
+          setReloadLobby(data.Msg.Username+' entered the lobby.');
         } else if(data.Type === 'leave') {
           setMessages(prev => [...prev, data.Msg.Username+' left the lobby.']);
-          setReloadLobby('left');
+          setReloadLobby(data.Msg.Username+' left the lobby.');
         } else if(data.Type === 'start') {
           navigate(`/quizrooms/${quizId}/live`, { state: { skipProtection: true } });
         } else if(data.Type === 'chat'){
