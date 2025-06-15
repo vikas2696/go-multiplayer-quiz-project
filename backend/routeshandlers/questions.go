@@ -1,9 +1,12 @@
 package routeshandlers
 
 import (
+	"encoding/json"
 	"go-multiplayer-quiz-project/backend/models"
+	"io"
 	"math/rand"
 	"net/http"
+	"os"
 	"strconv"
 	"time"
 
@@ -181,4 +184,45 @@ func enterAnswer(context *gin.Context) {
 	}
 
 	context.JSON(http.StatusCreated, gin.H{"message": "answer submitted successfully"})
+}
+
+func handleUpdateQuestions(context *gin.Context) {
+
+	topic := context.Param("topic")
+
+	response, err := http.Get("https://opentdb.com/api.php?amount=50&category=9&type=multiple")
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "unable to get response from external api"})
+		return
+	}
+
+	defer response.Body.Close()
+
+	result, err := io.ReadAll(response.Body)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "unable to read the response"})
+		return
+	}
+
+	var resultMap map[string]interface{}
+	err = json.Unmarshal(result, &resultMap)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "unable to unmarshal the data"})
+		return
+	}
+
+	questionsJSON, err := json.MarshalIndent(resultMap, "", "  ")
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "unable to indent the data"})
+		return
+	}
+
+	err = os.WriteFile("database/"+topic+".json", questionsJSON, 0644)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "unable to write the data"})
+		return
+	}
+
+	context.JSON(http.StatusOK, "File updated successfully")
+
 }

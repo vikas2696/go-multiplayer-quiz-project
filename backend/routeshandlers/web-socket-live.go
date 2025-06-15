@@ -78,13 +78,12 @@ func webSocketLive(context *gin.Context) {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to upgrade the connection"})
 	}
 
+	live_mu.Lock()
 	_, exists := live_broadcastChans[quizId]
 	if !exists { //first one to join
 		live_broadcastChans[quizId] = make(chan models.LiveMessage)
 	}
-
 	if scorecardPerRoom[quizId] == nil {
-		live_mu.Lock()
 		scorecardPerRoom[quizId] = make(map[int]*models.PlayerScore)
 		timeLeftPerRoom[quizId] = quizRoom.TimerTime
 		current_ques_indices[quizId] = -1
@@ -95,8 +94,8 @@ func webSocketLive(context *gin.Context) {
 				CurrentScore:  0,
 			}
 		}
-		live_mu.Unlock()
 	}
+	live_mu.Unlock()
 
 	go livebraodcastAll(quizId)
 	go readliveMessages(conn, quizId, quizRoom)

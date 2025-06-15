@@ -14,6 +14,7 @@ func RunRoutes(server *gin.Engine) {
 
 	server.GET("/quizrooms/:id/ws/lobby", webSocketLobby)
 	server.GET("/quizrooms/:id/ws/live", webSocketLive)
+	server.GET("/:topic/update-questions", handleUpdateQuestions)
 
 	AuthOnlyRoutes := server.Group("/", middleware.AuthMiddeleware)
 	{
@@ -33,6 +34,7 @@ func RunRoutes(server *gin.Engine) {
 			QuizRoomAuthRoutes.PATCH("/update-scoresheet", updateScoreSheet)
 			QuizRoomAuthRoutes.GET("/get-scoresheet", getScoreSheet)
 
+			//not using for now
 			QuizRoomAuthRoutes.GET("/:ques_id", loadQuestion)
 			QuizRoomAuthRoutes.POST("/save-answer", enterAnswer)
 			QuizRoomAuthRoutes.GET("/:ques_id/answer", showAnswer)

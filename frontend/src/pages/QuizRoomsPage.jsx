@@ -243,7 +243,6 @@ export default function QuizRoomPage() {
               }}
             />
           </Box>
-
           <Button onClick={handleJoin} sx={buttonStyles(theme)}>Join</Button>
         </Box>
       </Box>
