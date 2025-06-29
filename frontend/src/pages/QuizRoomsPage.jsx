@@ -125,55 +125,81 @@ export default function QuizRoomPage() {
         <LogoutButton onLogout={logout} />
       </Box>
 
-      {/* Room Cards */}
-      <Box sx={{
-        flex: 1.5,
-        overflowY: 'auto',
-        p: 6,
-        display: 'flex',
-        gap: 3,
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-      }}>
-        {rooms.map((room, i) => (
-          <Box key={i} sx={{
-            width: 250,
-            borderRadius: 4,
-            background: '#222',
-            border: '1px solid #333',
-            boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
-            p: 3,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            textAlign: 'center',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'scale(1.05)',
-              boxShadow: '0 6px 30px rgba(255, 255, 255, 0.1)',
-            }
-          }}>
-            <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>Room #{room.QuizRoomId}</Typography>
-            <Divider sx={{ my: 1, background: '#444' }} />
-            <Typography variant="body2">⏱ Time: {room.TimerTime}s</Typography>
-            <Typography variant="body2">📘 Topic: {room.QuizTopic}</Typography>
-            <Typography variant="body2">🔄 Status: {room.IsRunnning ? "Running" : "Waiting"}</Typography>
-            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-            <Button 
-              onClick={() => handleCardJoin(room.QuizRoomId)} 
-              sx={{ 
-                ...buttonStyles(theme), 
-                width: 100, 
-                fontSize: '0.70rem',
-                visibility: room.IsRunnning ? 'hidden' : 'visible'
-              }}
-            >
-              JOIN
-            </Button>
-          </Box>
-          </Box>
-        ))}
+      <Box
+        sx={{
+          flex: 1,
+          p: 3,
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 3,
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          overflowY: 'auto',
+          maxHeight: '100%',
+          boxSizing: 'border-box',
+        }}>
+        {rooms.filter(room => room.PlayersAnswers[1] === 'false').length > 0 ? (
+          rooms.map((room, i) =>
+            room.PlayersAnswers[1] === 'false' && (
+              <Box
+                key={i}
+                sx={{
+                  width: 250,
+                  borderRadius: 4,
+                  background: '#222',
+                  border: '1px solid #333',
+                  boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
+                  p: 3,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  textAlign: 'center',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    boxShadow: '0 6px 30px rgba(255, 255, 255, 0.1)',
+                  },
+                }}
+              >
+                <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                  Room #{room.QuizRoomId}
+                </Typography>
+                <Divider sx={{ my: 1, background: '#444' }} />
+                <Typography variant="body2">⏱ Time: {room.TimerTime}s</Typography>
+                <Typography variant="body2">📘 Topic: {room.QuizTopic}</Typography>
+                <Typography variant="body2">
+                  🔄 Status: {room.IsRunnning ? 'Running' : 'Waiting'}
+                </Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    mt: 2,
+                    visibility: room.IsRunnning ? 'hidden' : 'visible',
+                  }}
+                >
+                  <Button
+                    onClick={() => handleCardJoin(room.QuizRoomId)}
+                    sx={{
+                      ...buttonStyles(theme),
+                      width: 100,
+                      fontSize: '0.70rem',
+                    }}
+                  >
+                    JOIN
+                  </Button>
+                </Box>
+              </Box>
+            )
+          )
+        ) : (
+              <Typography sx={{ color: '#aaa', fontStyle: 'italic', textAlign: 'center', mt: 5 }}>
+                No Active Public Rooms available...
+                Create one now to start Quizzing...
+              </Typography>
+        )}
       </Box>
+
 
       {/* Create & Join */}
       <Box sx={{ flex: 1, display: 'flex', paddingTop: 10, gap: 4 }}>
