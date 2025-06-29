@@ -9,6 +9,7 @@ import { jwtDecode } from 'jwt-decode';
 import config from "../config";
 import { toast } from 'react-toastify';
 import LogoutButton from '../components/LogoutButton';
+import Switch from '@mui/joy/Switch';
 import {
   Box,
   Button,
@@ -25,6 +26,7 @@ export default function QuizRoomPage() {
   const [topic, setTopic] = useState('science');
   const [time, setTime] = useState(10);
   const [number, setNumber] = useState(10);
+  const [privacy, setPrivacy] = useState(false);
   const [roomCode, setRoomCode] = useState('');
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
@@ -40,7 +42,8 @@ export default function QuizRoomPage() {
       }],
       "TimerTime": time,
       "QuizTopic": topic,
-      "PlayersAnswers": {0: String(number)}
+      "PlayersAnswers": {0: String(number), //using this for number of questions
+                         1: String(privacy)} //using this for public/private
     }, {
       headers: {
         Authorization: `${token}`,
@@ -80,6 +83,19 @@ export default function QuizRoomPage() {
     navigate('/', { replace: true });
   };
 
+  const handleCardJoin = (room_id) => {
+    axios.patch(`${config.BASE_URL}/quizrooms/${room_id}/join`, {}, {
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
+      }
+    }).then(response => {
+      toast.success(response.data.message);
+      navigate(`/quizrooms/${room_id}/lobby`);
+    }).catch(err => {
+      toast.error(GetErrorMessage(err));
+    });
+  }
   const darkMode = true;
 
   return (
@@ -142,6 +158,19 @@ export default function QuizRoomPage() {
             <Typography variant="body2">⏱ Time: {room.TimerTime}s</Typography>
             <Typography variant="body2">📘 Topic: {room.QuizTopic}</Typography>
             <Typography variant="body2">🔄 Status: {room.IsRunnning ? "Running" : "Waiting"}</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+            <Button 
+              onClick={() => handleCardJoin(room.QuizRoomId)} 
+              sx={{ 
+                ...buttonStyles(theme), 
+                width: 100, 
+                fontSize: '0.70rem',
+                visibility: room.IsRunnning ? 'hidden' : 'visible'
+              }}
+            >
+              JOIN
+            </Button>
+          </Box>
           </Box>
         ))}
       </Box>
@@ -215,10 +244,20 @@ export default function QuizRoomPage() {
                 sx={{ color: '#66ccff' }}
               />
             </Box>
+            <Box >
+              <Typography gutterBottom sx={{ fontSize: '0.85rem' }}>
+                Private:
+              </Typography>
+              <Switch
+                checked={privacy}
+                onChange={(event) => setPrivacy(event.target.checked)}
+                sx={{ color: '#66ccff' }}
+              />
+            </Box>
         </Box>
 
           <Button onClick={handleCreate} sx={buttonStyles(theme)}>
-            Create Quiz Room
+            CREATE QUIZROOM
           </Button>
         </Box>
 
@@ -243,7 +282,7 @@ export default function QuizRoomPage() {
               }}
             />
           </Box>
-          <Button onClick={handleJoin} sx={buttonStyles(theme)}>Join</Button>
+          <Button onClick={handleJoin} sx={buttonStyles(theme)}>JOIN</Button>
         </Box>
       </Box>
     </Box>
