@@ -160,32 +160,64 @@ export default function LobbyPage() {
       }}
     >
       <Starbg />
+        {showConfirm && (
+          <Box
+            sx={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 9999,
+              backgroundColor: 'rgba(0,0,0,0.6)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Box
+              sx={{
+                backgroundColor: '#1e1e1e',
+                color: 'white',
+                p: 4,
+                borderRadius: 3,
+                width: '90%',
+                maxWidth: 360,
+                boxShadow: '0 0 20px rgba(255,255,255,0.08)',
+                textAlign: 'center',
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Leave QuizRoom?
+              </Typography>
+              <Typography variant="body2" sx={{ color: '#ccc', mb: 3 }}>
+                Are you sure you want to leave this quizroom?
+              </Typography>
 
-       {showConfirm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900">Leave Room?</h3>
-            <p className="text-gray-600 mb-6">
-              Are you sure you want to leave the quizroom?.
-            </p>
-            <div className="flex space-x-4">
-              <button
-                onClick={handleLeavePressed}
-                className="flex-1 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition-colors"
-              >
-                Yes, Leave
-              </button>
-              <button
-                onClick={handleStay}
-                className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400 transition-colors"
-              >
-                Stay
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
+              <Box sx={{ display: 'flex', gap: 2 }}>
+                <Button
+                  onClick={handleLeavePressed}
+                  sx={{
+                    flex: 1,
+                    backgroundColor: '#ef4444',
+                    color: 'white',
+                    '&:hover': { backgroundColor: '#dc2626' },
+                  }}
+                >
+                  Yes, Leave
+                </Button>
+                <Button
+                  onClick={handleStay}
+                  sx={{
+                    flex: 1,
+                    backgroundColor: '#374151',
+                    color: 'white',
+                    '&:hover': { backgroundColor: '#4b5563' },
+                  }}
+                >
+                  Stay
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        )}
       {/* Header */}
       <Box
         sx={{
