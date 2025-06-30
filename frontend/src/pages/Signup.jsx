@@ -119,7 +119,7 @@ export default function LoginPage() {
     >
       <Starbg />
 
-      <IconButton
+      {/* <IconButton
         onClick={() => setDarkMode(!darkMode)}
         sx={{
           position: 'absolute',
@@ -130,7 +130,7 @@ export default function LoginPage() {
         }}
       >
         {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-      </IconButton>
+      </IconButton> */}
 
       <Typography
         variant="h2"

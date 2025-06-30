@@ -4,12 +4,14 @@ import { GetErrorMessage } from '../utils/ErrorHandler';
 import CountdownTimer from '../utils/Timer';
 import Starbg from '../components/Starbg'
 import config from "../config";
+import { buttonStyles } from '../components/DarkButton';
 import {
   Box,
   Typography,
   IconButton,
   Modal,
   Button,
+  useTheme,
 } from '@mui/material';
 import { Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -20,6 +22,7 @@ import NeumorphicScoreboard from '../components/ScoreSheetDesign'
 import useWebSocketLive from '../hooks/useWebSocketLive';
 
 export default function LiveQuizPage() {
+  const theme = useTheme();
   const [darkMode, setDarkMode] = useState(true);
   const optionKeys = ["OptionA", "OptionB", "OptionC", "OptionD"];
   const [questions, setQuestions] = useState([]);
@@ -156,7 +159,7 @@ export default function LiveQuizPage() {
   const handleTimeUp = () => {
     if (hasTimeUpRun.current) return; 
       hasTimeUpRun.current = true;
-    toast.warning('Time Up!');
+    //toast.warning('Time Up!');
     const msg = {
       Type: 'answer',
       Msg:  { UserId: decoded.user_id,
@@ -196,7 +199,7 @@ export default function LiveQuizPage() {
     const muddyOrange = '#a1662f';
 
     return {
-      background: isSelected ? muddyOrange : darkMode ? '#0d0d0d' : '#e0e0e0',
+      background: isSelected ? '#318CE7' : darkMode ? '#0d0d0d' : '#e0e0e0',
       boxShadow: isSelected
         ? darkMode
           ? '3px 3px 8px #000, -3px -3px 8px #1a1a1a'
@@ -229,13 +232,6 @@ export default function LiveQuizPage() {
 
     <Starbg />
       <CountdownTimer ref={timerRef} onTimeUp={handleTimeUp} />
-      <IconButton
-        onClick={() => setDarkMode(!darkMode)}
-        sx={{ position: 'absolute', top: 16, right: 16, color: darkMode ? 'white' : 'black', zIndex: 10 }}
-        aria-label="Toggle theme"
-      >
-        {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-      </IconButton>
 
       {/* Question box */}
         <Box
@@ -257,7 +253,7 @@ export default function LiveQuizPage() {
                 left: '50%',
                 transform: 'translateX(-50%)',
                 border: '1px solid',
-                borderColor: 'grey.500',
+                borderColor: '#58a6ff',
                 borderRadius: 1,
                 px: 1.5,
                 py: 0.5,
@@ -266,7 +262,9 @@ export default function LiveQuizPage() {
                 fontWeight: 500,
               }}
             >
-            Question #{question.QuestionId}
+            <Typography sx={{ color: '#58a6ff' }}>
+              Question #{question.QuestionId}
+            </Typography>
           </Box>
           <Typography variant="h4" sx={{ fontWeight: 700 }}>
             {question.Ques}
@@ -335,21 +333,16 @@ export default function LiveQuizPage() {
               onClick={() => {
                 nextQuestion();
               }}
-              sx={{
-                mt: 4,
-                bgcolor: darkMode ? '#a1662f' : '#333',
-                color: 'white',
-                fontSize: '1rem',
-                fontWeight: 600,
-                borderRadius: 2,
-                px: 4,
-                py: 1,
-                '&:hover': {
-                  bgcolor: darkMode ? '#864d24' : '#555',
-                },
-              }}
+                sx={{
+                  ...buttonStyles(theme),
+                  width: 150,
+                  height: 45,
+                  fontSize: '0.85rem',
+                  p:1,
+                  m: 2,
+                }}
             >
-              Next
+              Next Question
             </Button>}
             {showEndButton && <Button
               variant="contained"
@@ -357,17 +350,12 @@ export default function LiveQuizPage() {
                 handleQuizExit();
               }}
               sx={{
-                mt: 4,
-                bgcolor: darkMode ? '#a1662f' : '#333',
-                color: 'white',
-                fontSize: '1rem',
-                fontWeight: 600,
-                borderRadius: 2,
-                px: 4,
-                py: 1,
-                '&:hover': {
-                  bgcolor: darkMode ? '#864d24' : '#555',
-                },
+                  ...buttonStyles(theme),
+                  width: 150,
+                  height: 45,
+                  fontSize: '0.85rem',
+                  p:1,
+                  m: 2,
               }}
             >
               EXIT

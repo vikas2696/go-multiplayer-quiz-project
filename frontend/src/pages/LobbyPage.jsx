@@ -233,7 +233,7 @@ export default function LobbyPage() {
           Quiz Lobby
         </Typography>
         
-        <IconButton
+        {/* <IconButton
           onClick={() => setDarkMode(!darkMode)}
           sx={{
             color: darkMode ? 'white' : 'black',
@@ -242,7 +242,7 @@ export default function LobbyPage() {
           aria-label="Toggle light/dark mode"
         >
           {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-        </IconButton>
+        </IconButton> */}
       </Box>
 
       {/* Main Content - Two Column Layout on Desktop */}

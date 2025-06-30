@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import Starbg from './Starbg';
 
 const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
   return (
@@ -8,10 +9,11 @@ const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
       maxHeight: '70%', 
       overflowY: 'auto',
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: { xs: 'column', md: 'row' },
       alignItems: 'center',
       padding: '20px 0'
     }}>
+      <Starbg />
       {/* Title */}
       <Typography 
         variant="h3" 

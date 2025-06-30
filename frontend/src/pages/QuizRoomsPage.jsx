@@ -136,6 +136,8 @@ export default function QuizRoomPage() {
         </Typography>
       </Box>
 
+      <LogoutButton onLogout={logout} />
+
       {/* Main Content */}
       <Box 
         sx={{ 
@@ -296,7 +298,7 @@ export default function QuizRoomPage() {
                 )
               )
             ) : (
-              <Typography variant= 'h6' sx={{ color: '#aaa', fontStyle: 'italic', textAlign: 'center', mt: 5 }}>
+              <Typography variant= 'h6' sx={{ color: '#aaa', fontStyle: 'italic', textAlign: 'center', m: 5 }}>
                 No Active Public Rooms available...
                 Create one now to start Quizzing...
               </Typography>
