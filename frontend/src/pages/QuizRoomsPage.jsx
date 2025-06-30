@@ -134,9 +134,8 @@ export default function QuizRoomPage() {
         <Typography variant="h4" sx={{ fontWeight: 700, zIndex: 1 }}>
           QUIZROOMS
         </Typography>
+        <LogoutButton onLogout={logout} />
       </Box>
-
-      <LogoutButton onLogout={logout} />
 
       {/* Main Content */}
       <Box 

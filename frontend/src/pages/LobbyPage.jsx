@@ -160,6 +160,7 @@ export default function LobbyPage() {
       }}
     >
       <Starbg />
+      {/* confirm dialog box */}
         {showConfirm && (
           <Box
             sx={{
