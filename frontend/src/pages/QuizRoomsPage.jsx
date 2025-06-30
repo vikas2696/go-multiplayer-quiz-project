@@ -186,7 +186,7 @@ export default function QuizRoomPage() {
                   <Card
                     key={i}
                     sx={{
-                      backgroundColor: '#111',
+                      backgroundColor: 'rgba(17, 17, 17, 0.4)',
                       color: '#c9d1d9',
                       borderRadius: 2,
                       border: '1px solid #21262d',

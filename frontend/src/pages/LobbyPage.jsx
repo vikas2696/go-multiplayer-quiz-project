@@ -166,7 +166,7 @@ export default function LobbyPage() {
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
             <h3 className="text-lg font-semibold mb-4 text-gray-900">Leave Room?</h3>
             <p className="text-gray-600 mb-6">
-              Are you sure you want to leave the room?.
+              Are you sure you want to leave the quizroom?.
             </p>
             <div className="flex space-x-4">
               <button
@@ -248,20 +248,46 @@ export default function LobbyPage() {
               zIndex: 1,
             }}
           >
-            <Typography>Room ID: {quizRoom.QuizRoomId}</Typography>
-            <Typography>Topic: {quizRoom.QuizTopic}</Typography>
-            <Typography>Timer: {quizRoom.TimerTime} seconds</Typography>
-            <Typography>Status: {quizRoom.IsRunnning ? 'Running' : 'Waiting'}</Typography>
-            <Typography>Questions: {number}</Typography>
+            <Typography
+              variant="h6"
+              sx={{ color: '#58a6ff', fontWeight: 600, letterSpacing: 1, mb: 1 }}
+            >
+              QuizRoom #{quizRoom.QuizRoomId}
+            </Typography>
 
-            <Divider sx={{ my: 2 }} />
-
-            <Typography sx={{ fontWeight: 600, mb: 1 }}>Players:</Typography>
-            {quizRoom?.Players?.map((player) => (
-              <Typography key={player.PlayerId}>
-                {player.Username} — Score: {quizRoom.ScoreSheet[player.PlayerId] ?? 0}
+            <Box sx={{ lineHeight: 1.8 }}>
+              <Typography variant="body2" sx={{ color: '#c9d1d9' }}>
+                Topic: <span style={{ color: '#fff', fontWeight: 500, fontSize: '1rem', textTransform: 'uppercase' }}>{quizRoom.QuizTopic}</span>
               </Typography>
-            ))}
+              <Typography variant="body2" sx={{ color: '#c9d1d9' }}>
+                Timer: <span style={{ color: '#58a6ff' }}>{quizRoom.TimerTime}s</span>
+              </Typography>
+              <Typography variant="body2" sx={{ color: '#c9d1d9' }}>
+                Questions: <span style={{ color: '#58a6ff' }}>{number}</span>
+              </Typography>
+            </Box>
+
+            <Divider sx={{ my: 2, borderColor: '#333' }} />
+
+            <Typography
+              variant="subtitle2"
+              sx={{ color: '#58a6ff', fontWeight: 600, letterSpacing: 1, mb: 1 }}
+            >
+              Joined Players
+            </Typography>
+
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+              {quizRoom?.Players?.map((player) => (
+                <Typography
+                  key={player.PlayerId}
+                  variant="body2"
+                  sx={{ color: '#c9d1d9' }}
+                >
+                  ▸ {player.Username}
+                </Typography>
+              ))}
+            </Box>
+
           </Box>
 
           {isHost && (
