@@ -41,7 +41,35 @@ function App() {
           </AuthProtectedRoute>
         } />
       </Routes>
-      <ToastContainer />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={2000}
+          hideProgressBar={true}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          draggable
+          pauseOnHover
+          theme="dark"
+          toastStyle={{
+            background: 'rgba(18, 18, 18, 0.75)',
+            color: '#e0e0e0',
+            border: '1px solid #2a2a2a',
+            borderRadius: '16px',
+            fontFamily: 'monospace',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            padding: '12px 18px',
+            fontSize: '0.85rem',
+            lineHeight: 1,
+          }}
+          progressStyle={{
+            background: '#58a6ff',
+            height: '4px',
+            borderRadius: '0 0 10px 10px',
+          }}
+        />
     </Router>
   );
 }
