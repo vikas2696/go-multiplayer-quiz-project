@@ -23,8 +23,11 @@ import {
   Grid,
   Card,
   CardContent,
+  CardActions,
 } from '@mui/material';
+import { Circle } from '@mui/icons-material';
 import { Sun, Moon, Plus, Users } from 'lucide-react';
+import CompactCard from '../components/QuizRoomCard';
 
 export default function QuizRoomPage() {
   const theme = useTheme();
@@ -178,55 +181,118 @@ export default function QuizRoomPage() {
             {rooms.filter(room => room.PlayersAnswers[1] === 'false').length > 0 ? (
               rooms.map((room, i) =>
                 room.PlayersAnswers[1] === 'false' && (
-                  <Box
+                 // <CompactCard room= {room} handleCardJoin={handleCardJoin} theme={theme}/>
+                <Box>
+                  <Card
                     key={i}
                     sx={{
-                      width: 250,
-                      borderRadius: 4,
-                      background: '#222',
-                      border: '1px solid #333',
-                      boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
-                      p: 3,
+                      backgroundColor: '#111',
+                      color: '#c9d1d9',
+                      borderRadius: 2,
+                      border: '1px solid #21262d',
+                      fontFamily: 'monospace',
+                      position: 'relative',
+                      minWidth: 200,
+                      '&:hover': {
+                        transform: 'scale(1.03)',
+                        boxShadow: '0 6px 30px rgba(255, 255, 255, 0.1)',
+                      },
+                      transition: 'all 0.2s ease',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
-                      textAlign: 'center',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'scale(1.05)',
-                        boxShadow: '0 6px 30px rgba(255, 255, 255, 0.1)',
-                      },
                     }}
                   >
-                    <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                      Room #{room.QuizRoomId}
-                    </Typography>
-                    <Divider sx={{ my: 1, background: '#444' }} />
-                    <Typography variant="body2">⏱ Time: {room.TimerTime}s</Typography>
-                    <Typography variant="body2">📘 Topic: {room.QuizTopic}</Typography>
-                    <Typography variant="body2">
-                      🔄 Status: {room.IsRunnning ? 'Running' : 'Waiting'}
-                    </Typography>
+                    {/* Header */}
                     <Box
                       sx={{
                         display: 'flex',
-                        justifyContent: 'center',
-                        mt: 2,
-                        visibility: room.IsRunnning ? 'hidden' : 'visible',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        px: 2,
+                        py: 1,
+                        backgroundColor: '#161b22',
+                        borderBottom: '1px solid #21262d',
                       }}
                     >
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Circle sx={{ fontSize: 8, color: '#58a6ff' }} />
+                        <Circle sx={{ fontSize: 8, color: '#58a6ff' }} />
+                        <Circle sx={{ fontSize: 8, color: '#58a6ff' }} />
+                      </Box>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: '#fd9917',
+                          fontWeight: 500,
+                        }}
+                      >
+                        {room.IsRunning ? 'QUIZZING' : 'IN LOBBY'}
+                      </Typography>
+                    </Box>
+
+                    {/* Content */}
+                    <CardContent sx={{ px: 3, pt: 3, pb: 0, textAlign: 'center' }}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{
+                          color: '#58a6ff',
+                          fontWeight: 600,
+                          letterSpacing: 1,
+                          mb: 1,
+                        }}
+                      >
+                        QuizRoom #{room.QuizRoomId}
+                      </Typography>
+
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          color: '#ffffff',
+                          fontWeight: 700,
+                          letterSpacing: 1,
+                          textTransform: 'uppercase',
+                          mb: 1,
+                        }}
+                      >
+                        {room.QuizTopic}
+                      </Typography>
+
+                      <Box sx={{ lineHeight: 1.8 }}>
+                        <Typography variant="body2" sx={{ color: '#c9d1d9' }}>
+                          Timer: <span style={{ color: '#58a6ff' }}>{room.TimerTime}s</span>
+                        </Typography>
+
+                        <Typography variant="body2" sx={{ color: '#c9d1d9' }}>
+                          Players In:{' '}
+                          <span style={{ color: '#58a6ff' }}>{room.Players.length}</span>
+                        </Typography>
+
+                        <Typography variant="body2" sx={{ color: '#c9d1d9' }}>
+                          Questions:{' '}
+                          <span style={{ color: '#58a6ff' }}>{room.PlayersAnswers[0]}</span>
+                        </Typography>
+                      </Box>
+                    </CardContent>
+
+                    {/* Join Button */}
+                    <CardActions sx={{ px: 3, pt: 2, pb: 2, justifyContent: 'center' }}>
                       <Button
                         onClick={() => handleCardJoin(room.QuizRoomId)}
                         sx={{
                           ...buttonStyles(theme),
                           width: 100,
                           fontSize: '0.70rem',
+                          py: 0.8,
+                          px: 1,
+                          m: 2,
                         }}
                       >
                         JOIN
                       </Button>
-                    </Box>
-                  </Box>
+                    </CardActions>
+                  </Card>
+                </Box>
                 )
               )
             ) : (
@@ -340,8 +406,8 @@ export default function QuizRoomPage() {
               </Box>
 
               {/* Privacy Switch */}
-              <Box sx={{ display: 'flex', alignItems: 'center'}}>
-                <Typography sx={{ fontSize: '0.85rem', color: darkMode ? '#ccc' : '#666', mr:2 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', py: 1 }}>
+                <Typography sx={{ fontSize: '0.85rem', color: darkMode ? '#ccc' : '#666', mr: 2 }}>
                   Private:
                 </Typography>
                 <Switch
@@ -354,10 +420,12 @@ export default function QuizRoomPage() {
                   }}
                 />
               </Box>
+
               <Button 
                 onClick={handleCreate} 
                 sx={{
                   ...buttonStyles(theme),
+                  mt: 2,
                 }}
               >
                 CREATE QUIZROOM
