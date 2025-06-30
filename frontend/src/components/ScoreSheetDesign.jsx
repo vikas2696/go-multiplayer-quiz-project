@@ -69,7 +69,7 @@ const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
               fontStyle: 'italic'
             }}
           >
-            Answer: {question.Answer}
+            Correct answer: {question.Answer}
           </Typography>
         </Box>
       )}
