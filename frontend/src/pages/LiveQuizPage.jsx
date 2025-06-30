@@ -18,7 +18,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate, useParams } from 'react-router-dom';
-import NeumorphicScoreboard from '../components/ScoreSheetDesign'
+import SplitScoreboard from '../components/ScoreSheetDesign'
 import useWebSocketLive from '../hooks/useWebSocketLive';
 
 export default function LiveQuizPage() {
@@ -322,11 +322,12 @@ export default function LiveQuizPage() {
               justifyContent: 'space-between',
             }}
           >
-              <NeumorphicScoreboard 
-                scoreSheet={scoreSheet.ScoreSheet} 
-                question={scoreSheet.Question}
-                darkMode={darkMode} 
-              />
+            <Starbg />
+            <SplitScoreboard 
+              scoreSheet={scoreSheet.ScoreSheet} 
+              question={scoreSheet.Question}
+              darkMode={darkMode} 
+            />
 
             {isHost && !showEndButton && <Button
               variant="contained"

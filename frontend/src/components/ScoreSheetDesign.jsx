@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import Starbg from './Starbg';
 
 const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
   return (
@@ -9,14 +8,13 @@ const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
       maxHeight: '70%', 
       overflowY: 'auto',
       display: 'flex',
-      flexDirection: { xs: 'column', md: 'row' },
+      flexDirection: 'column',
       alignItems: 'center',
       padding: '20px 0'
     }}>
-      <Starbg />
       {/* Title */}
       <Typography 
-        variant="h3" 
+        variant="h4" 
         sx={{ 
           fontWeight: 700, 
           mb: 3,
@@ -25,7 +23,7 @@ const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
           letterSpacing: '1px'
         }}
       >
-        SCORES
+        TIME'S UP!
       </Typography>
 
       {/* Current Question Display */}
@@ -55,7 +53,7 @@ const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
             sx={{ 
               color: darkMode ? '#b0b0b0' : '#555',
               mb: 2,
-              fontSize: '0.9rem',
+              fontSize: '1.3rem',
               fontWeight: 400,
               lineHeight: 1.3
             }}
@@ -66,8 +64,8 @@ const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
           <Typography 
             variant="caption" 
             sx={{ 
-              color: darkMode ? '#666' : '#888',
-              fontSize: '0.7rem',
+              color: '#66ccff',
+              fontSize: '0.8rem',
               fontStyle: 'italic'
             }}
           >
@@ -93,7 +91,8 @@ const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
                 position: 'relative',
                 background: darkMode ? '#1a1a1a' : '#f0f0f0',
                 borderRadius: '20px',
-                padding: '24px',
+                px: '25px',
+                py: '20px',
                 // Neumorphic shadow effect
                 boxShadow: darkMode 
                   ? 'inset 8px 8px 16px #0d0d0d, inset -8px -8px 16px #262626, 4px 4px 12px #000000'
@@ -162,7 +161,7 @@ const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
                   >
                     Answer: <span style={{ 
                       fontWeight: 500,
-                      color: player.CurrentAnswer ? (darkMode ? '#a1662f' : '#d4af37') : '#999'
+                      color: player.CurrentAnswer ? '#66ccff' : '#999'
                     }}>
                       {player.CurrentAnswer || 'No answer'}
                     </span>
@@ -196,10 +195,7 @@ const NeumorphicScoreboard = ({ scoreSheet, question, darkMode = true }) => {
                     variant="h4" 
                     sx={{ 
                       fontWeight: 700,
-                      color: index === 0 ? '#ffd700' : 
-                             index === 1 ? '#c0c0c0' : 
-                             index === 2 ? '#cd7f32' : 
-                             darkMode ? '#a1662f' : '#666',
+                      color: '#66ccff',
                       lineHeight: 1
                     }}
                   >
