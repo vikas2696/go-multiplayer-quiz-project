@@ -185,7 +185,7 @@ export default function LobbyPage() {
               }}
             >
               <Typography variant="h6" sx={{ mb: 2 }}>
-                Leave QuizRoom?
+                Leaving Lobby?
               </Typography>
               <Typography variant="body2" sx={{ color: '#ccc', mb: 3 }}>
                 Are you sure you want to leave this quizroom?
@@ -212,7 +212,7 @@ export default function LobbyPage() {
                     '&:hover': { backgroundColor: '#4b5563' },
                   }}
                 >
-                  Stay
+                  No, Stay
                 </Button>
               </Box>
             </Box>

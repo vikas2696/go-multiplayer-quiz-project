@@ -30,6 +30,8 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const theme = useTheme();
+  const usernameRegex = /^[a-zA-Z0-9._-]+$/;
+  const passwordRegex = /^[\w\-!@#$%^&*()+=~`{}\[\]:;"'<>,.?\\/|]+$/;
 
     useEffect(() => {
     if (isTokenValid()) {
@@ -49,6 +51,18 @@ export default function LoginPage() {
     if (!formData.username || !formData.password) {
       setError('Please fill in all fields')
       toast.error('Please fill in all fields');
+      return;
+    }
+
+    if (!usernameRegex.test(formData.username)) {
+    setError('Username can only contain letters, numbers, underscores, and hyphens');
+    toast.error('Username can only contain letters, numbers, underscores, and hyphens');
+    return;
+    }
+
+    if (!passwordRegex.test(formData.password)) {
+      setError('Password contains invalid characters');
+      toast.error('Password contains invalid characters');
       return;
     }
 
