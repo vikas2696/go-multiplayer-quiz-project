@@ -179,7 +179,7 @@ export default function QuizRoomPage() {
               minHeight: 0,
             }}
           >
-            {rooms.filter(room => room.PlayersAnswers[1] === 'false').length > 0 ? (
+            {rooms && Array.isArray(rooms) && rooms.filter(room => room.PlayersAnswers[1] === 'false').length > 0 ? (
               rooms.map((room, i) =>
                 room.PlayersAnswers[1] === 'false' && (
                  // <CompactCard room= {room} handleCardJoin={handleCardJoin} theme={theme}/>

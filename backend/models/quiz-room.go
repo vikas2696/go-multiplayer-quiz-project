@@ -74,15 +74,11 @@ func GetQuizRoomsFromDB() ([]QuizRoom, error) {
 
 func (quizRoom QuizRoom) SaveQuizRoomToDB() (quizRoomId int64, err error) {
 
-	query := `	INSERT INTO quizrooms( players, timertime, quiztopic, isrunning, scoresheet, playersanswers) 
-			VALUES (?,?,?,?,?,?)	`
-
-	stmt, err := database.DB.Prepare(query)
-	if err != nil {
-		return 0, err
-	}
-
-	defer stmt.Close()
+	query := `
+		INSERT INTO quizrooms (players, timertime, quiztopic, isrunning, scoresheet, playersanswers) 
+		VALUES ($1, $2, $3, $4, $5, $6)
+		RETURNING quizroomid
+	`
 
 	playersJson, err := json.Marshal(quizRoom.Players)
 	if err != nil {
@@ -92,35 +88,38 @@ func (quizRoom QuizRoom) SaveQuizRoomToDB() (quizRoomId int64, err error) {
 	hostPlayerId := quizRoom.Players[0].PlayerId
 
 	quizRoom.ScoreSheet = make(map[int64]int)
-	//quizRoom.PlayersAnswers = make(map[int64]string)
 	quizRoom.ScoreSheet[hostPlayerId] = 0
-	//quizRoom.PlayersAnswers[hostPlayerId] = ""
 
 	scoreSheetJson, err := json.Marshal(quizRoom.ScoreSheet)
 	if err != nil {
 		return 0, err
 	}
 
-	playersanswersJson, err := json.Marshal(quizRoom.PlayersAnswers)
+	playersAnswersJson, err := json.Marshal(quizRoom.PlayersAnswers)
 	if err != nil {
 		return 0, err
 	}
 
-	result, err := stmt.Exec(playersJson, quizRoom.TimerTime, quizRoom.QuizTopic, quizRoom.IsRunnning, scoreSheetJson, playersanswersJson)
+	err = database.DB.QueryRow(
+		query,
+		playersJson,
+		quizRoom.TimerTime,
+		quizRoom.QuizTopic,
+		quizRoom.IsRunnning,
+		scoreSheetJson,
+		playersAnswersJson,
+	).Scan(&quizRoomId)
+
 	if err != nil {
 		return 0, err
 	}
 
-	quizRoomId, err = result.LastInsertId()
-	if err != nil {
-		return 0, err
-	}
 	return quizRoomId, err
 }
 
 func (q *QuizRoom) GetQuizRoomFromId(quizId int) error {
 
-	query := `	SELECT * FROM quizrooms WHERE quizroomid = ?  `
+	query := `	SELECT * FROM quizrooms WHERE quizroomid = $1  `
 
 	rows := database.DB.QueryRow(query, quizId)
 
@@ -153,7 +152,7 @@ func (q *QuizRoom) GetQuizRoomFromId(quizId int) error {
 
 func UpdateRoomStatus(quizRoomId int64) error {
 
-	query := "	UPDATE quizrooms SET isrunning = ? WHERE quizroomid = ?	"
+	query := "	UPDATE quizrooms SET isrunning = $1 WHERE quizroomid = $2"
 
 	result, err := database.DB.Exec(query, true, quizRoomId)
 	if err != nil {
@@ -175,7 +174,7 @@ func UpdateRoomStatus(quizRoomId int64) error {
 
 func AddPlayerToScoreSheet(quizRoomId int, playerId int64, scoreSheet map[int64]int) error {
 
-	query := "	UPDATE quizrooms SET scoresheet = ? WHERE quizroomid = ?  "
+	query := "	UPDATE quizrooms SET scoresheet = $1 WHERE quizroomid = $2  "
 
 	scoreSheet[playerId] = 0
 
@@ -195,7 +194,7 @@ func AddPlayerToScoreSheet(quizRoomId int, playerId int64, scoreSheet map[int64]
 
 func RemovePlayerFromScoreSheet(quizRoomId int, playerId int64, scoreSheet map[int64]int) error {
 
-	query := "	UPDATE quizrooms SET scoresheet = ? WHERE quizroomid = ?  "
+	query := "	UPDATE quizrooms SET scoresheet = $1 WHERE quizroomid = $2  "
 
 	delete(scoreSheet, playerId)
 
@@ -215,7 +214,7 @@ func RemovePlayerFromScoreSheet(quizRoomId int, playerId int64, scoreSheet map[i
 
 func AddPlayerToPlayersAnswers(quizRoomId int, playerId int64, playersAnswers map[int64]string) error {
 
-	query := "	UPDATE quizrooms SET playersanswers = ? WHERE quizroomid = ?  "
+	query := "	UPDATE quizrooms SET playersanswers = $1 WHERE quizroomid = $2  "
 
 	playersAnswers[playerId] = ""
 
@@ -235,7 +234,7 @@ func AddPlayerToPlayersAnswers(quizRoomId int, playerId int64, playersAnswers ma
 
 func RemovePlayerToPlayersAnswers(quizRoomId int, playerId int64, playersAnswers map[int64]string) error {
 
-	query := "	UPDATE quizrooms SET playersanswers = ? WHERE quizroomid = ?  "
+	query := "	UPDATE quizrooms SET playersanswers = $1 WHERE quizroomid = $2  "
 
 	delete(playersAnswers, playerId)
 
@@ -255,7 +254,7 @@ func RemovePlayerToPlayersAnswers(quizRoomId int, playerId int64, playersAnswers
 
 func SaveAnswersToDB(playersAnswers map[int64]string, quizRoomId int) error {
 
-	query := "UPDATE quizrooms SET playersanswers = ?  WHERE quizroomid = ?"
+	query := "UPDATE quizrooms SET playersanswers = $1  WHERE quizroomid = $2"
 
 	playersAnswersData, err := json.Marshal(playersAnswers)
 	if err != nil {
@@ -272,7 +271,7 @@ func SaveAnswersToDB(playersAnswers map[int64]string, quizRoomId int) error {
 }
 
 func UpdateScoreSheetinDB(quizRoomId int64, scoreSheet map[int64]int) error {
-	query := "UPDATE quizrooms SET scoresheet = ?  WHERE quizroomid = ?"
+	query := "UPDATE quizrooms SET scoresheet = $1  WHERE quizroomid = $2"
 
 	scoreSheetData, err := json.Marshal(scoreSheet)
 	if err != nil {
@@ -289,7 +288,7 @@ func UpdateScoreSheetinDB(quizRoomId int64, scoreSheet map[int64]int) error {
 
 func DeleteQuizRoomFromDB(quizId int64) error {
 
-	query := "DELETE FROM quizrooms WHERE quizroomid = ?"
+	query := "DELETE FROM quizrooms WHERE quizroomid = $1"
 
 	_, err := database.DB.Exec(query, quizId)
 	if err != nil {

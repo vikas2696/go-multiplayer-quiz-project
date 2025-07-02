@@ -2,16 +2,23 @@ package database
 
 import (
 	"database/sql"
+	"os"
 
-	_ "github.com/mattn/go-sqlite3"
+	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
 var err error
 
+func init() {
+	_ = godotenv.Load(".env") // only used locally
+}
+
 func InitDB() {
 
-	DB, err = sql.Open("sqlite3", "api.db")
+	dbUrl := os.Getenv("DATABASE_URL")
+	DB, err = sql.Open("postgres", dbUrl)
 
 	if err != nil {
 		panic("Cannot connect to the database: " + err.Error())
@@ -26,13 +33,13 @@ func createTables() {
 
 	quizRoomQuery := `
 		CREATE TABLE IF NOT EXISTS quizrooms (
-		quizroomid INTEGER PRIMARY KEY AUTOINCREMENT,
-		players TEXT,
-		timertime INTEGER NOT NULL,
-		quiztopic TEXT NOT NULL,
-		isrunning INTEGER NOT NULL DEFAULT 0,
-		scoresheet TEXT NOT NULL,
-		playersanswers TEXT NOT NULL DEFAULT ''
+			quizroomid SERIAL PRIMARY KEY,
+			players TEXT,
+			timertime INTEGER NOT NULL,
+			quiztopic TEXT NOT NULL,
+			isrunning BOOLEAN NOT NULL DEFAULT false,
+			scoresheet TEXT NOT NULL,
+			playersanswers TEXT NOT NULL DEFAULT ''
 		)`
 
 	_, err := DB.Exec(quizRoomQuery)
@@ -54,7 +61,7 @@ func createTables() {
 
 	userQuery := `
 		CREATE TABLE IF NOT EXISTS users (
-		userid INTEGER PRIMARY KEY AUTOINCREMENT,
+		userid SERIAL PRIMARY KEY,
 		username TEXT NOT NULL UNIQUE,
 		password TEXT NOT NULL
 		)`

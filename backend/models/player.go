@@ -16,7 +16,7 @@ func GetJoinedPlayersList(quizId int) ([]Player, error) {
 	var players []Player
 	var dataString string
 
-	query := "SELECT players FROM quizrooms WHERE quizroomid = ?"
+	query := "SELECT players FROM quizrooms WHERE quizroomid = $1"
 	rows, err := database.DB.Query(query, quizId)
 
 	if err != nil {
@@ -54,7 +54,7 @@ func (player Player) AddPlayerToQuiz(quizId int) error {
 		return errors.New("quiz is already going on")
 	}
 
-	query := " UPDATE quizrooms SET  players = ? WHERE quizroomid = ? "
+	query := " UPDATE quizrooms SET  players = $1 WHERE quizroomid = $2 "
 
 	players, err := GetJoinedPlayersList(quizId)
 	if err != nil {
@@ -132,7 +132,7 @@ func (player Player) DeletePlayerFromQuiz(quizId int) error {
 	if err != nil {
 		return err
 	}
-	query := " UPDATE quizrooms SET  players = ? WHERE quizroomid = ? "
+	query := " UPDATE quizrooms SET  players = $1 WHERE quizroomid = $2 "
 
 	_, err = database.DB.Exec(query, playersJson, quizId)
 
@@ -155,7 +155,7 @@ func (player Player) DeletePlayerFromQuiz(quizId int) error {
 
 func GetPlayerFromId(pId int) (p Player, err error) {
 
-	query := "SELECT * FROM players WHERE playerid = ?"
+	query := "SELECT * FROM players WHERE playerid = $1"
 	rows, err := database.DB.Query(query, pId)
 
 	if err != nil {
