@@ -108,15 +108,15 @@ export default function QuizRoomPage() {
 
   return (
     <Box sx={{
-      position: 'absolute',
-      inset: 0,
+      minHeight: '100vh',
+      width: '100%',
       background: darkMode ? '#1a1a1a' : '#f5f5f5',
       color: darkMode ? 'white' : 'black',
       fontFamily: 'Roboto, sans-serif',
       display: 'flex',
-      pb: 0,
       flexDirection: 'column',
-      overflow: 'hidden',
+      overflow: { xs: 'auto', lg: 'hidden' },
+      position: 'relative',
     }}>
       <AnimatedStars />
 
@@ -126,12 +126,19 @@ export default function QuizRoomPage() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          px: 2,
-          pt: 2,
+          px: { xs: 1, sm: 2 },
+          pt: { xs: 1, sm: 2 },
           zIndex: 10,
         }}
       >
-        <Typography variant="h4" sx={{ fontWeight: 700, zIndex: 1 }}>
+        <Typography 
+          variant="h4" 
+          sx={{ 
+            fontWeight: 700, 
+            zIndex: 1,
+            fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' }
+          }}
+        >
           QUIZROOMS
         </Typography>
         <LogoutButton onLogout={logout} />
@@ -143,26 +150,27 @@ export default function QuizRoomPage() {
           flex: 1, 
           display: 'flex', 
           flexDirection: { xs: 'column', lg: 'row' }, 
-          gap: 3, 
-          p: 2,
-          overflow: 'hidden',
-          minHeight: 0
+          gap: { xs: 2, sm: 3 }, 
+          p: { xs: 1, sm: 2 },
+          overflow: { xs: 'visible', lg: 'hidden' },
+          minHeight: { xs: 'auto', lg: 0 }
         }}
       >
         {/* Available Rooms Section */}
         <Box
           sx={{
-            flex: { xs: 1, lg: 2 },
+            flex: { xs: 'none', lg: 2 },
             display: 'flex',
             flexDirection: 'column',
             background: darkMode ? '#0d0d0d' : '#e0e0e0',
-            borderRadius: '20px',
+            borderRadius: { xs: '15px', sm: '20px' },
             boxShadow: darkMode
               ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
               : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
             border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
             overflow: 'hidden',
-            minHeight: { xs: '300px', lg: 'auto' },
+            height: { xs: '350px', sm: '400px', lg: 'auto' },
+            minHeight: { xs: '350px', sm: '400px', lg: 'auto' },
           }}
         >
           {/* Rooms Grid */}
@@ -170,11 +178,11 @@ export default function QuizRoomPage() {
             sx={{
               flex: 1,
               overflowY: 'auto',
-              p: 3,
+              p: { xs: 1.5, sm: 2, md: 3 },
               display: 'flex',
               flexWrap: 'wrap',
-              gap: 3,
-              justifyContent: 'left',
+              gap: { xs: 1.5, sm: 2, md: 3 },
+              justifyContent: { xs: 'center', sm: 'flex-start' },
               alignItems: 'flex-start',
               minHeight: 0,
             }}
@@ -182,123 +190,161 @@ export default function QuizRoomPage() {
             {rooms && Array.isArray(rooms) && rooms.filter(room => room.PlayersAnswers[1] === 'false').length > 0 ? (
               rooms.map((room, i) =>
                 room.PlayersAnswers[1] === 'false' && (
-                 // <CompactCard room= {room} handleCardJoin={handleCardJoin} theme={theme}/>
-                <Box>
-                  <Card
-                    key={i}
-                    sx={{
-                      backgroundColor: 'rgba(17, 17, 17, 0.4)',
-                      color: '#c9d1d9',
-                      borderRadius: 2,
-                      border: '1px solid #21262d',
-                      fontFamily: 'monospace',
-                      position: 'relative',
-                      minWidth: 200,
-                      '&:hover': {
-                        transform: 'scale(1.03)',
-                        boxShadow: '0 6px 30px rgba(255, 255, 255, 0.1)',
-                      },
-                      transition: 'all 0.2s ease',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    {/* Header */}
-                    <Box
+                  <Box key={i} sx={{ 
+                    width: { xs: 'calc(50% - 8px)', sm: '280px', md: '200px' },
+                    minWidth: { xs: '140px', sm: '200px' }
+                  }}>
+                    <Card
                       sx={{
+                        backgroundColor: 'rgba(17, 17, 17, 0.4)',
+                        color: '#c9d1d9',
+                        borderRadius: 2,
+                        border: '1px solid #21262d',
+                        fontFamily: 'monospace',
+                        position: 'relative',
+                        width: '100%',
+                        '&:hover': {
+                          transform: 'scale(1.03)',
+                          boxShadow: '0 6px 30px rgba(255, 255, 255, 0.1)',
+                        },
+                        transition: 'all 0.2s ease',
                         display: 'flex',
-                        alignItems: 'center',
+                        flexDirection: 'column',
                         justifyContent: 'space-between',
-                        px: 2,
-                        py: 1,
-                        backgroundColor: '#161b22',
-                        borderBottom: '1px solid #21262d',
                       }}
                     >
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <Circle sx={{ fontSize: 8, color: '#58a6ff' }} />
-                        <Circle sx={{ fontSize: 8, color: '#58a6ff' }} />
-                        <Circle sx={{ fontSize: 8, color: '#58a6ff' }} />
-                      </Box>
-                      <Typography
-                        variant="caption"
+                      {/* Header */}
+                      <Box
                         sx={{
-                          color: '#fd9917',
-                          fontWeight: 500,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          px: 2,
+                          py: 1,
+                          backgroundColor: '#161b22',
+                          borderBottom: '1px solid #21262d',
                         }}
                       >
-                        {room.IsRunning ? 'QUIZZING' : 'IN LOBBY'}
-                      </Typography>
-                    </Box>
-
-                    {/* Content */}
-                    <CardContent sx={{ px: 3, pt: 3, pb: 0, textAlign: 'center' }}>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{
-                          color: '#58a6ff',
-                          fontWeight: 600,
-                          letterSpacing: 1,
-                          mb: 1,
-                        }}
-                      >
-                        QuizRoom #{room.QuizRoomId}
-                      </Typography>
-
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          color: '#ffffff',
-                          fontWeight: 700,
-                          letterSpacing: 1,
-                          textTransform: 'uppercase',
-                          mb: 1,
-                        }}
-                      >
-                        {room.QuizTopic}
-                      </Typography>
-
-                      <Box sx={{ lineHeight: 1.8 }}>
-                        <Typography variant="body2" sx={{ color: '#c9d1d9' }}>
-                          Timer: <span style={{ color: '#58a6ff' }}>{room.TimerTime}s</span>
-                        </Typography>
-
-                        <Typography variant="body2" sx={{ color: '#c9d1d9' }}>
-                          Players In:{' '}
-                          <span style={{ color: '#58a6ff' }}>{room.Players.length}</span>
-                        </Typography>
-
-                        <Typography variant="body2" sx={{ color: '#c9d1d9' }}>
-                          Questions:{' '}
-                          <span style={{ color: '#58a6ff' }}>{room.PlayersAnswers[0]}</span>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <Circle sx={{ fontSize: 8, color: '#58a6ff' }} />
+                          <Circle sx={{ fontSize: 8, color: '#58a6ff' }} />
+                          <Circle sx={{ fontSize: 8, color: '#58a6ff' }} />
+                        </Box>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            color: room.IsRunnning ? '#00e676' : '#fd9917',
+                            fontWeight: 500,
+                            fontSize: { xs: '0.65rem', sm: '0.75rem' }
+                          }}
+                        >
+                          {room.IsRunnning ? 'QUIZZING' : 'IN LOBBY'}
                         </Typography>
                       </Box>
-                    </CardContent>
 
-                    {/* Join Button */}
-                    <CardActions sx={{ px: 3, pt: 2, pb: 2, justifyContent: 'center' }}>
-                      <Button
-                        onClick={() => handleCardJoin(room.QuizRoomId)}
-                        sx={{
-                          ...buttonStyles(theme),
-                          width: 100,
-                          fontSize: '0.70rem',
-                          py: 0.8,
-                          px: 1,
-                          m: 2,
-                        }}
-                      >
-                        JOIN
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Box>
+                      {/* Content */}
+                      <CardContent sx={{ px: { xs: 1, sm: 2 }, pt: { xs: 1, sm: 2 }, pb: 0, textAlign: 'center' }}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{
+                            color: '#58a6ff',
+                            fontWeight: 600,
+                            letterSpacing: { xs: 0.5, sm: 1 },
+                            mb: { xs: 0.5, sm: 1 },
+                            fontSize: { xs: '0.6rem', sm: '0.875rem' }
+                          }}
+                        >
+                          QuizRoom #{room.QuizRoomId}
+                        </Typography>
+
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            color: '#ffffff',
+                            fontWeight: 700,
+                            letterSpacing: { xs: 0.5, sm: 1 },
+                            textTransform: 'uppercase',
+                            mb: { xs: 0.5, sm: 1 },
+                            fontSize: { xs: '0.75rem', sm: '1.25rem' },
+                            lineHeight: { xs: 1.2, sm: 1.4 }
+                          }}
+                        >
+                          {room.QuizTopic}
+                        </Typography>
+
+                        <Box sx={{ lineHeight: { xs: 1.3, sm: 1.6 } }}>
+                          <Typography 
+                            variant="body2" 
+                            sx={{ 
+                              color: '#c9d1d9',
+                              fontSize: { xs: '0.6rem', sm: '0.875rem' },
+                              mb: { xs: 0.2, sm: 0.5 }
+                            }}
+                          >
+                            Timer: <span style={{ color: '#58a6ff' }}>{room.TimerTime}s</span>
+                          </Typography>
+
+                          <Typography 
+                            variant="body2" 
+                            sx={{ 
+                              color: '#c9d1d9',
+                              fontSize: { xs: '0.6rem', sm: '0.875rem' },
+                              mb: { xs: 0.2, sm: 0.5 }
+                            }}
+                          >
+                            Players:{' '}
+                            <span style={{ color: '#58a6ff' }}>{room.Players.length}</span>
+                          </Typography>
+
+                          <Typography 
+                            variant="body2" 
+                            sx={{ 
+                              color: '#c9d1d9',
+                              fontSize: { xs: '0.6rem', sm: '0.875rem' }
+                            }}
+                          >
+                            Questions:{' '}
+                            <span style={{ color: '#58a6ff' }}>{room.PlayersAnswers[0]}</span>
+                          </Typography>
+                        </Box>
+                      </CardContent>
+
+                      {/* Join Button */}
+                      <CardActions sx={{ px: { xs: 1, sm: 2 }, pt: { xs: 0.5, sm: 1 }, pb: { xs: 1, sm: 2 }, justifyContent: 'center' }}>
+                        <Button
+                          onClick={() => handleCardJoin(room.QuizRoomId)}
+                          sx={{
+                            ...buttonStyles(theme),
+                            width: { xs: '60px', sm: '100px' },
+                            height: { xs: '28px', sm: '36px' },
+                            fontSize: { xs: '0.6rem', sm: '0.70rem' },
+                            py: { xs: 0.4, sm: 0.8 },
+                            px: { xs: 0.8, sm: 1 },
+                            minWidth: { xs: '60px', sm: '100px' },
+                            visibility: room.IsRunnning ? 'hidden' : 'visible',
+                          }}
+                        >
+                          JOIN
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Box>
                 )
               )
             ) : (
-              <Typography variant= 'h6' sx={{ color: '#aaa', fontStyle: 'italic', textAlign: 'center', m: 5 }}>
+              <Typography 
+                variant='h6' 
+                sx={{ 
+                  color: '#aaa', 
+                  fontStyle: 'italic', 
+                  textAlign: 'center', 
+                  m: { xs: 2, sm: 3, md: 5 },
+                  fontSize: { xs: '1rem', sm: '1.25rem' },
+                  width: '100%'
+                }}
+              >
                 No Active Public Rooms available...
+                <br />
                 Create one now to start Quizzing...
               </Typography>
             )}
@@ -311,7 +357,7 @@ export default function QuizRoomPage() {
             flex: { xs: 1, lg: 1 },
             display: 'flex',
             flexDirection: 'column',
-            gap: 3,
+            gap: { xs: 2, sm: 3 },
             minHeight: { xs: 'auto', lg: '600px' },
           }}
         >
@@ -319,28 +365,28 @@ export default function QuizRoomPage() {
           <Box
             sx={{
               background: darkMode ? '#0d0d0d' : '#e0e0e0',
-              borderRadius: '20px',
+              borderRadius: { xs: '15px', sm: '20px' },
               boxShadow: darkMode
                 ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
                 : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
               border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
-              p: 3,
-              flex: 2,
-              minHeight: '400px',
+              p: { xs: 2, sm: 3 },
+              flex: { xs: 'none', lg: 2 },
+              minHeight: { xs: '300px', sm: '350px', lg: '400px' },
             }}
           >
             <Typography sx={{ 
               fontWeight: 600, 
-              mb: 3,
+              mb: { xs: 2, sm: 3 },
               display: 'flex',
               alignItems: 'center',
               gap: 1,
-              fontSize: '1.1rem'
+              fontSize: { xs: '1rem', sm: '1.1rem' }
             }}>
               Create New QuizRoom
             </Typography>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, sm: 3 } }}>
               {/* Topic Selection */}
               <Box sx={textFieldStyles(theme)}>
                 <TextField
@@ -355,7 +401,7 @@ export default function QuizRoomPage() {
                       color: darkMode ? 'white' : 'black',
                       px: 2,
                       py: 1,
-                      fontSize: '0.85rem',
+                      fontSize: { xs: '0.8rem', sm: '0.85rem' },
                       background: 'transparent',
                     },
                   }}
@@ -376,9 +422,16 @@ export default function QuizRoomPage() {
               </Box>
 
               {/* Sliders */}
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, sm: 3 } }}>
                 <Box>
-                  <Typography gutterBottom sx={{ fontSize: '0.85rem', color: darkMode ? '#ccc' : '#666', mb: 1 }}>
+                  <Typography 
+                    gutterBottom 
+                    sx={{ 
+                      fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
+                      color: darkMode ? '#ccc' : '#666', 
+                      mb: 1 
+                    }}
+                  >
                     Time per Question: {time} seconds
                   </Typography>
                   <Slider
@@ -387,12 +440,25 @@ export default function QuizRoomPage() {
                     min={2}
                     max={30}
                     step={1}
-                    sx={{ color: '#66ccff' }}
+                    sx={{ 
+                      color: '#66ccff',
+                      '& .MuiSlider-thumb': {
+                        width: { xs: 16, sm: 20 },
+                        height: { xs: 16, sm: 20 },
+                      }
+                    }}
                   />
                 </Box>
 
                 <Box>
-                  <Typography gutterBottom sx={{ fontSize: '0.85rem', color: darkMode ? '#ccc' : '#666', mb: 1 }}>
+                  <Typography 
+                    gutterBottom 
+                    sx={{ 
+                      fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
+                      color: darkMode ? '#ccc' : '#666', 
+                      mb: 1 
+                    }}
+                  >
                     No. of Questions: {number}
                   </Typography>
                   <Slider
@@ -401,23 +467,33 @@ export default function QuizRoomPage() {
                     min={5}
                     max={25}
                     step={1}
-                    sx={{ color: '#66ccff' }}
+                    sx={{ 
+                      color: '#66ccff',
+                      '& .MuiSlider-thumb': {
+                        width: { xs: 16, sm: 20 },
+                        height: { xs: 16, sm: 20 },
+                      }
+                    }}
                   />
                 </Box>
               </Box>
 
               {/* Privacy Switch */}
               <Box sx={{ display: 'flex', alignItems: 'center', py: 1 }}>
-                <Typography sx={{ fontSize: '0.85rem', color: darkMode ? '#ccc' : '#666', mr: 2 }}>
+                <Typography sx={{ 
+                  fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
+                  color: darkMode ? '#ccc' : '#666', 
+                  mr: 2 
+                }}>
                   Private:
                 </Typography>
                 <Switch
                   checked={privacy}
                   onChange={(event) => setPrivacy(event.target.checked)}
                   sx={{ 
-                    '--Switch-thumbSize': '20px',
-                    '--Switch-trackWidth': '40px',
-                    '--Switch-trackHeight': '24px',
+                    '--Switch-thumbSize': { xs: '18px', sm: '20px' },
+                    '--Switch-trackWidth': { xs: '36px', sm: '40px' },
+                    '--Switch-trackHeight': { xs: '20px', sm: '24px' },
                   }}
                 />
               </Box>
@@ -426,7 +502,9 @@ export default function QuizRoomPage() {
                 onClick={handleCreate} 
                 sx={{
                   ...buttonStyles(theme),
-                  mt: 2,
+                  mt: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.8rem', sm: '0.875rem' },
+                  py: { xs: 1, sm: 1.5 },
                 }}
               >
                 CREATE QUIZROOM
@@ -438,17 +516,21 @@ export default function QuizRoomPage() {
           <Box
             sx={{
               background: darkMode ? '#0d0d0d' : '#e0e0e0',
-              borderRadius: '20px',
+              borderRadius: { xs: '15px', sm: '20px' },
               boxShadow: darkMode
                 ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
                 : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
               border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
-              p: 3,
-              flex: 1,
-              minHeight: '150px',
+              p: { xs: 2, sm: 3 },
+              flex: { xs: 'none', lg: 1 },
+              minHeight: { xs: '100px', sm: '120px', lg: '150px' },
             }}
           >
-            <Typography sx={{ fontWeight: 600, mb: 3, fontSize: '1.1rem' }}>
+            <Typography sx={{ 
+              fontWeight: 600, 
+              mb: { xs: 2, sm: 3 }, 
+              fontSize: { xs: '1rem', sm: '1.1rem' }
+            }}>
               Join Existing QuizRoom
             </Typography>
             
@@ -466,7 +548,7 @@ export default function QuizRoomPage() {
                       color: darkMode ? 'white' : 'black',
                       px: 2,
                       py: 1,
-                      fontSize: '0.85rem',
+                      fontSize: { xs: '0.8rem', sm: '0.85rem' },
                       background: 'transparent',
                     },
                   }}
@@ -474,7 +556,11 @@ export default function QuizRoomPage() {
               </Box>
               <Button 
                 onClick={handleJoin} 
-                sx={buttonStyles(theme)}
+                sx={{
+                  ...buttonStyles(theme),
+                  fontSize: { xs: '0.8rem', sm: '0.875rem' },
+                  py: { xs: 1, sm: 1.5 },
+                }}
               >
                 JOIN
               </Button>

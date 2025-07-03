@@ -133,13 +133,14 @@ export default function LoginPage() {
       </IconButton> */}
 
       <Typography
-        variant="h2"
+        variant="h3"
         sx={{
           mb: 3,
           fontWeight: 700,
           letterSpacing: '2px',
           userSelect: 'none',
           zIndex: 1,
+          textAlign: 'center'
         }}
       >
         The Surface Quiz
