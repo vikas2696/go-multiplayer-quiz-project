@@ -44,12 +44,6 @@ export default function LiveQuizPage() {
   const [showEndButton, setShowEndButton] = useState(false);
   const hasTimeUpRun = useRef(false);
   const selectedAnswerRef = useRef('');
-  
-  // Loading countdown states
-  const [showLoadingCountdown, setShowLoadingCountdown] = useState(false);
-  const [loadingCountdown, setLoadingCountdown] = useState(5);
-  const [isFirstQuestion, setIsFirstQuestion] = useState(true);
-  const loadingCountdownRef = useRef(null);
 
   const ws_url = `${config.BASE_WS_URL}/quizrooms/${quizId}/ws/live?token=${token}`;
   const [ socketRef, connected ] = useWebSocketLive(ws_url);
@@ -98,24 +92,6 @@ export default function LiveQuizPage() {
     }
   },[questions, isHost]);
 
-  // Loading countdown effect
-  useEffect(() => {
-    if (showLoadingCountdown && loadingCountdown > 0) {
-      loadingCountdownRef.current = setTimeout(() => {
-        setLoadingCountdown(prev => prev - 1);
-      }, 1000);
-    } else if (showLoadingCountdown && loadingCountdown === 0) {
-      setShowLoadingCountdown(false);
-      setLoadingCountdown(5); // Reset
-    }
-
-    return () => {
-      if (loadingCountdownRef.current) {
-        clearTimeout(loadingCountdownRef.current);
-      }
-    };
-  }, [showLoadingCountdown, loadingCountdown]);
-
   //for receiving messages from WS
   useEffect(() => {
     if (!socketRef.current) return;
@@ -123,22 +99,8 @@ export default function LiveQuizPage() {
       const data = JSON.parse(e.data);
       if(data.Type === 'question') {
         setShowScorecard(false);
-        
-        if (isFirstQuestion) {
-          // Show loading countdown for first question
-          setShowLoadingCountdown(true);
-          setIsFirstQuestion(false);
-          
-          // Set question and start timer after countdown
-          setTimeout(() => {
-            setQuestion(data.Msg.Question);
-            startTimer(data.Msg.Timer);
-          }, 3000);
-        } else {
-          
-          setQuestion(data.Msg.Question);
-          startTimer(data.Msg.Timer);
-        }
+        setQuestion(data.Msg.Question);
+        startTimer(data.Msg.Timer);
       } else if(data.Type === 'scorecard') {
         setScoreSheet(data.Msg);
       } else if(data.Type === 'last_question') {
@@ -154,7 +116,7 @@ export default function LiveQuizPage() {
     return () => {
       socketRef.current.removeEventListener('message', handleMessage);
     };
-  }, [socketRef, isFirstQuestion]);
+  }, [socketRef]);
 
   //for sending messages to WS
   const sendMessage = (msg) => {
@@ -271,57 +233,7 @@ export default function LiveQuizPage() {
     <Starbg />
       <CountdownTimer ref={timerRef} onTimeUp={handleTimeUp} />
 
-      {/* Loading Countdown Screen */}
-      {showLoadingCountdown && (
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            background: darkMode ? '#1a1a1a' : '#f5f5f5',
-            color: darkMode ? 'white' : 'black',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000,
-          }}
-        >
-          <Starbg />
-          <motion.div
-            key={loadingCountdown}
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 1.5, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Typography
-              variant="h1"
-              sx={{
-                fontSize: '8rem',
-                fontWeight: 700,
-                color: '#58a6ff',
-                textShadow: darkMode ? '0 0 20px #58a6ff' : '0 0 20px #318CE7',
-                mb: 2,
-              }}
-            >
-              {loadingCountdown}
-            </Typography>
-          </motion.div>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 500,
-              color: darkMode ? '#cccccc' : '#666666',
-              textAlign: 'center',
-            }}
-          >
-            Get Ready!
-          </Typography>
-        </Box>
-      )}
-
       {/* Question box */}
-      {!showLoadingCountdown && (
         <Box
           sx={{
             height: '50%',
@@ -358,37 +270,33 @@ export default function LiveQuizPage() {
             {question.Ques}
           </Typography>
         </Box>
-      )}
 
       {/* Options box */}
-      {!showLoadingCountdown && (
-        <Box sx={{ height: '50%', display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: 2, p: 3, pb: 5, zIndex: 1 }}>
-          {optionKeys.map((key) => (
-          <Box
-            key={key}
-            onClick={() => handleSelect(key)}
-            sx={{
-              borderRadius: '16px',
-              py: 2,
-              px: 3,
-              textAlign: 'center',
-              cursor: 'pointer',
-              fontWeight: 500,
-              fontSize: '1rem',
-              transition: 'all 0.2s ease-in-out',
-              ...getOptionStyles(key),
-              '&:hover': {
-                boxShadow: darkMode ? '0 0 6px #ffffff33' : '0 0 6px #00000022',
-                transform: 'scale(1.01)',
-              },
-            }}
-          >
-            {question[key]}
-          </Box>
-          ))}
+      <Box sx={{ height: '50%', display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: 2, p: 3, pb: 5, zIndex: 1 }}>
+        {optionKeys.map((key) => (
+        <Box
+          key={key}
+          onClick={() => handleSelect(key)}
+          sx={{
+            borderRadius: '16px',
+            py: 2,
+            px: 3,
+            textAlign: 'center',
+            cursor: 'pointer',
+            fontWeight: 500,
+            fontSize: '1rem',
+            transition: 'all 0.2s ease-in-out',
+            ...getOptionStyles(key),
+            '&:hover': {
+              boxShadow: darkMode ? '0 0 6px #ffffff33' : '0 0 6px #00000022',
+              transform: 'scale(1.01)',
+            },
+          }}
+        >
+          {question[key]}
         </Box>
-      )}
-
+        ))}
+      </Box>
         <Modal
           open={showScorecard}
           onClose={() => {}}
