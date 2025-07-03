@@ -82,7 +82,9 @@ export default function QuizRoomPage() {
 
   useEffect(() => {
     axios.get(`${config.BASE_URL}/quizrooms`)
-      .then(response => setRooms(response.data.quizrooms))
+      .then(response => {setRooms(response.data.quizrooms)
+        //console.log(response.data.quizrooms)
+      })
       .catch(err => toast.error(GetErrorMessage(err)));
   }, []);
 
