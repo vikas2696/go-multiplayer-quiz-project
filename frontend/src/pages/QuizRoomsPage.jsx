@@ -107,17 +107,18 @@ export default function QuizRoomPage() {
   }
 
   return (
-    <Box sx={{
-      minHeight: '100vh',
-      width: '100%',
-      background: darkMode ? '#1a1a1a' : '#f5f5f5',
-      color: darkMode ? 'white' : 'black',
-      fontFamily: 'Roboto, sans-serif',
-      display: 'flex',
-      flexDirection: 'column',
-      overflow: { xs: 'auto', lg: 'hidden' },
-      position: 'relative',
-    }}>
+    <Box
+      sx={{
+        position: 'absolute',
+        inset: 0,
+        background: darkMode ? '#1a1a1a' : '#f5f5f5',
+        color: darkMode ? 'white' : 'black',
+        fontFamily: 'Roboto, sans-serif',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+      }}
+    >
       <AnimatedStars />
 
       {/* Header */}
@@ -126,36 +127,33 @@ export default function QuizRoomPage() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          px: { xs: 1, sm: 2 },
-          pt: { xs: 1, sm: 2 },
+          px: 2,
+          py: 2,
           zIndex: 10,
         }}
       >
         <Typography 
           variant="h4" 
-          sx={{ 
-            fontWeight: 700, 
-            zIndex: 1,
-            fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' }
-          }}
+          sx={{ fontWeight: 700, zIndex: 1 }}
         >
           QUIZROOMS
         </Typography>
         <LogoutButton onLogout={logout} />
       </Box>
 
-      {/* Main Content */}
-      <Box 
-        sx={{ 
-          flex: 1, 
-          display: 'flex', 
-          flexDirection: { xs: 'column', lg: 'row' }, 
-          gap: { xs: 2, sm: 3 }, 
-          p: { xs: 1, sm: 2 },
-          overflow: { xs: 'visible', lg: 'hidden' },
-          minHeight: { xs: 'auto', lg: 0 }
-        }}
-      >
+      {/* Main content here... */}
+      <Box
+  sx={{
+    flex: 1,
+    display: 'flex',
+    flexDirection: { xs: 'column', lg: 'row' },
+    gap: 2,
+    px: 2,
+    pb: 2,
+    overflowY: 'auto',     // Enable vertical scroll
+    minHeight: 0,          // Important to allow scrollable flex child
+  }}
+>
         {/* Available Rooms Section */}
         <Box
           sx={{
