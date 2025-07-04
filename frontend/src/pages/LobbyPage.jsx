@@ -311,13 +311,13 @@ export default function LobbyPage() {
             </Typography>
 
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-              {quizRoom?.Players?.map((player) => (
+              {quizRoom?.Players?.map((player, index) => (
                 <Typography
                   key={player.PlayerId}
                   variant="body2"
                   sx={{ color: '#c9d1d9' }}
                 >
-                  ▸ {player.Username}
+                  ▸ {player.Username}{index === 0 && ' (Host)'}
                 </Typography>
               ))}
             </Box>

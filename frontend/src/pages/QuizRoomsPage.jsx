@@ -112,6 +112,10 @@ export default function QuizRoomPage() {
     });
   }
 
+  const handleCardClick = (room) => {
+    //lets see
+  }
+
   return (
     <Box
       sx={{
@@ -149,17 +153,17 @@ export default function QuizRoomPage() {
 
       {/* Main content here... */}
       <Box
-  sx={{
-    flex: 1,
-    display: 'flex',
-    flexDirection: { xs: 'column', lg: 'row' },
-    gap: 2,
-    px: 2,
-    pb: 2,
-    overflowY: 'auto',     // Enable vertical scroll
-    minHeight: 0,          // Important to allow scrollable flex child
-  }}
->
+        sx={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: { xs: 'column', lg: 'row' },
+          gap: 2,
+          px: 2,
+          pb: 2,
+          overflowY: 'auto', 
+          minHeight: 0,    
+        }}
+      >
         {/* Available Rooms Section */}
         <Box
           sx={{
@@ -193,12 +197,13 @@ export default function QuizRoomPage() {
           >
             {rooms && Array.isArray(rooms) && rooms.filter(room => room.PlayersAnswers[1] === 'false').length > 0 ? (
               rooms.map((room, i) =>
-                room.PlayersAnswers[1] === 'false' && (
+                room.PlayersAnswers[1] === 'false' && !room.IsRunnning &&(
                   <Box key={i} sx={{ 
                     width: { xs: 'calc(50% - 8px)', sm: '280px', md: '200px' },
                     minWidth: { xs: '140px', sm: '200px' }
                   }}>
                     <Card
+                      onClick= {handleCardClick}
                       sx={{
                         backgroundColor: 'rgba(17, 17, 17, 0.4)',
                         color: '#c9d1d9',
@@ -237,12 +242,12 @@ export default function QuizRoomPage() {
                         <Typography
                           variant="caption"
                           sx={{
-                            color: room.IsRunnning ? '#00e676' : '#fd9917',
+                            color: room.IsRunnning ? '#fd9917' : '#00e676',
                             fontWeight: 500,
                             fontSize: { xs: '0.65rem', sm: '0.75rem' }
                           }}
                         >
-                          {room.IsRunnning ? 'QUIZZING' : 'IN LOBBY'}
+                          {room.IsRunnning ? 'IN QUIZ' : 'IN LOBBY'}
                         </Typography>
                       </Box>
 
@@ -255,7 +260,7 @@ export default function QuizRoomPage() {
                             fontWeight: 600,
                             letterSpacing: { xs: 0.5, sm: 1 },
                             mb: { xs: 0.5, sm: 1 },
-                            fontSize: { xs: '0.6rem', sm: '0.875rem' }
+                            fontSize: { xs: '0.7rem', sm: '0.975rem' }
                           }}
                         >
                           QuizRoom #{room.QuizRoomId}
@@ -277,6 +282,17 @@ export default function QuizRoomPage() {
                         </Typography>
 
                         <Box sx={{ lineHeight: { xs: 1.3, sm: 1.6 } }}>
+                          <Typography 
+                            variant="body2" 
+                            sx={{ 
+                              color: '#c9d1d9',
+                              fontSize: { xs: '0.6rem', sm: '0.875rem' },
+                              mb: { xs: 0.2, sm: 0.5 }
+                            }}
+                          >
+                            Host: <span style={{ color: '#58a6ff' }}>{room.Players.length != 0 ? room.Players[0].Username : 'None'}</span>
+                          </Typography>
+
                           <Typography 
                             variant="body2" 
                             sx={{ 
