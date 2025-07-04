@@ -32,7 +32,7 @@ import CompactCard from '../components/QuizRoomCard';
 export default function QuizRoomPage() {
   const theme = useTheme();
   const [darkMode, setDarkMode] = useState(true);
-  const [topic, setTopic] = useState('science');
+  const [topic, setTopic] = useState('');
   const [time, setTime] = useState(10);
   const [number, setNumber] = useState(10);
   const [privacy, setPrivacy] = useState(false);
@@ -44,6 +44,10 @@ export default function QuizRoomPage() {
   const decoded = jwtDecode(token);
 
   const handleCreate = () => {
+    if(topic === '') {
+      toast.error('No topic chosen!');
+      return;
+    }
     axios.post(`${config.BASE_URL}/create-quizroom`, {
       "Players": [{
         "PlayerId": decoded.user_id,
@@ -395,6 +399,17 @@ export default function QuizRoomPage() {
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   variant="standard"
+                  SelectProps={{
+                    displayEmpty: true,
+                    renderValue: (selected) =>
+                      selected === '' ? (
+                        <span style={{ color: darkMode ? '#888' : '#888' }}>
+                          Click here to choose a topic
+                        </span>
+                      ) : (
+                        selected
+                      ),
+                  }}
                   InputProps={{
                     disableUnderline: true,
                     sx: {
@@ -405,10 +420,10 @@ export default function QuizRoomPage() {
                       background: 'transparent',
                     },
                   }}
-                  InputLabelProps={{
-                    sx: { color: darkMode ? '#aaa' : '#666' },
-                  }}
                 >
+                  <MenuItem value="" disabled>
+                    Click here to choose a topic
+                  </MenuItem>
                   <MenuItem value="science">Science</MenuItem>
                   <MenuItem value="geography">Geography</MenuItem>
                   <MenuItem value="capitals">Capitals</MenuItem>
@@ -419,6 +434,7 @@ export default function QuizRoomPage() {
                   <MenuItem value="indian_geography">Indian Geography</MenuItem>
                   <MenuItem value="bollywood_fun">Bollywood Fun</MenuItem>
                 </TextField>
+
               </Box>
 
               {/* Sliders */}
