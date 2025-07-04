@@ -66,6 +66,12 @@ export default function LoginPage() {
       return;
     }
 
+    if (formData.username.length < 3 || formData.username.length > 25) {
+      setError('Username must be 3–25 characters long');
+      toast.error('Username must be 3–25 characters long');
+      return;
+    }
+
     setLoading(true);
     setError('');
     setMessage('');

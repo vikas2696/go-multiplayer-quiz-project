@@ -294,7 +294,7 @@ export default function QuizRoomPage() {
                           </Typography>
 
                           <Typography 
-                            variant="body2" 
+                            variant="body2"
                             sx={{ 
                               color: '#c9d1d9',
                               fontSize: { xs: '0.6rem', sm: '0.875rem' },
