@@ -43,7 +43,14 @@ func handleQuizAgent(context *gin.Context) {
 		return
 	}
 
-	err = os.WriteFile("database/agent.json", body, 0644)
+	var prettyJSON bytes.Buffer
+
+	err = json.Indent(&prettyJSON, body, "", "  ")
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "file formatting error"})
+	}
+
+	err = os.WriteFile("database/agent.json", prettyJSON.Bytes(), 0644)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": "failed to create questions file"})
 		return
