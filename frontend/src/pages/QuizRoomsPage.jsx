@@ -116,6 +116,10 @@ export default function QuizRoomPage() {
     //lets see
   }
 
+  const handleAgentZone = () => {
+    navigate('/quizrooms/quiz-agent')
+  }
+
   return (
     <Box
       sx={{
@@ -598,6 +602,17 @@ export default function QuizRoomPage() {
               </Button>
             </Box>
           </Box>
+          <Button 
+                onClick={handleAgentZone} 
+                sx={{
+                  ...buttonStyles(theme),
+                  fontSize: { xs: '0.8rem', sm: '0.875rem' },
+                  py: { xs: 1, sm: 1.5 },
+                  mb: { xs: 0.5, sm: 1 },
+                }}
+              >
+                ***Explore QuizAgent***
+              </Button>
         </Box>
       </Box>
     </Box>
