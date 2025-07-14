@@ -21,19 +21,41 @@ import { GetErrorMessage } from '../utils/ErrorHandler';
 import isTokenValid from '../utils/TokenHandler';
 
 export default function LoginPage() {
-  const [isLogin, setIsLogin] = useState(true);
-  const [darkMode, setDarkMode] = useState(true);
-  const [showPassword, setShowPassword] = useState(false); 
   const [formData, setFormData] = useState({ topic: '', difficulty: '' });
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
   const navigate = useNavigate();
-  const theme = useTheme();
+
+  const token = localStorage.getItem('token');
+  const decoded = jwtDecode(token);
 
   const handleAgent = () => {
     console.log('this is the data to be send\n');
     console.log(formData);
+
+    if(topic === '' || difficulty === '') {
+      toast.error('Please fill in all the fields!');
+      return;
+    }
+
+    setLoading(true);
+
+    axios.post(`${config.BASE_URL}/quiz-agent`, {
+      "Topic": formData.topic,
+      "NoQ": 10,
+      "Difficulty": formData.difficulty,
+    }, {
+      headers: {
+        Authorization: `${token}`,
+        'Content-Type': 'application/json',
+      }
+    }).then(response => {
+      toast.success(response.data.message);
+      setLoading(false)
+      //navigate(`/quizrooms/${response.data.quiz_id}/lobby`);
+    }).catch(err => {
+      toast.error(GetErrorMessage(err));
+    });
+
   };
 
 
