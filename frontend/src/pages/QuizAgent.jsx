@@ -1,39 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import config from "../config";
+import Switch from '@mui/joy/Switch';
 import {
   Box,
   Button,
   TextField,
   Typography,
-  Link,
-  IconButton,
-  Alert,
+  Slider,
   CircularProgress,
   useTheme,
 } from '@mui/material';
-import { motion } from 'framer-motion';
-import Starbg from '../components/Starbg'
-import { Sun, Moon, Eye, EyeOff } from 'lucide-react';
+import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import { GetErrorMessage } from '../utils/ErrorHandler';
-import { jwtDecode } from 'jwt-decode';
-import isTokenValid from '../utils/TokenHandler';
+import Starbg from '../components/Starbg';
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({ topic: '', difficulty: '' });
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const [agentCreated, setAgentCreated] = useState(false);
+  const [time, setTime] = useState(10);
+  const [number, setNumber] = useState(10);
+  const [privacy, setPrivacy] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
-  const theme = useTheme();
 
+  const theme = useTheme();
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const decoded = jwtDecode(token);
 
   const handleAgent = () => {
-
-    if(formData.topic === '' || formData.difficulty === '') {
+    if (formData.topic === '' || formData.difficulty === '') {
       toast.error('Please fill in all the fields!');
       return;
     }
@@ -51,18 +50,14 @@ export default function LoginPage() {
       }
     }).then(response => {
       toast.success(response.data.message);
-      setLoading(false)
+      setLoading(false);
       if (response.status === 201) {
-        handleCreate()
-        //toast.success("ready to make quizroom");
+        setAgentCreated(true);
       }
-     
-      //navigate(`/quizrooms/${response.data.quiz_id}/lobby`);
     }).catch(err => {
       toast.error(GetErrorMessage(err));
-      setLoading(false)
+      setLoading(false);
     });
-
   };
 
   const handleCreate = () => {
@@ -71,10 +66,12 @@ export default function LoginPage() {
         "PlayerId": decoded.user_id,
         "Username": decoded.username
       }],
-      "TimerTime": 10,
+      "TimerTime": time,
       "QuizTopic": "agent",
-      "PlayersAnswers": {0: String("10"), //using this for number of questions
-                         1: String("false")} //using this for public/private
+      "PlayersAnswers": {
+        0: String(number),
+        1: String(privacy)
+      }
     }, {
       headers: {
         Authorization: `${token}`,
@@ -90,10 +87,7 @@ export default function LoginPage() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -118,70 +112,47 @@ export default function LoginPage() {
 
       <Typography
         variant="h5"
-        sx={{
-          mb: 3,
-          fontWeight: 700,
-          letterSpacing: '2px',
-          userSelect: 'none',
-          zIndex: 1,
-          textAlign: 'center'
-        }}
+        sx={{ mb: 3, fontWeight: 700, letterSpacing: '2px', userSelect: 'none', zIndex: 1, textAlign: 'center' }}
       >
         The Surface Quiz Generator
       </Typography>
 
-      <Box
-        sx={{
-          width: '100%',
-          maxWidth: 300,
-          background: darkMode ? '#0d0d0d' : '#e0e0e0',
-          borderRadius: '20px',
-          boxShadow: darkMode
-            ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
-            : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
-          border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
-          zIndex: 1,
-          position: 'relative',
-        }}
-      >
+      {/* Input: Topic */}
+      {!agentCreated && (
+      <Box sx={{
+        width: '100%', maxWidth: 300, background: darkMode ? '#0d0d0d' : '#e0e0e0',
+        borderRadius: '20px', boxShadow: darkMode
+          ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
+          : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
+        border: `1px solid ${darkMode ? '#222' : '#ccc'}`, zIndex: 1
+      }}>
         <TextField
-          fullWidth
-          placeholder="write a topic of your choice here"
+          fullWidth placeholder="Topic"
           name="topic"
           value={formData.topic}
           onChange={handleInputChange}
           variant="standard"
-          type="text"
           InputProps={{
             disableUnderline: true,
             sx: {
               color: darkMode ? 'white' : 'black',
-              px: 2,
-              py: 1,
-              fontSize: '0.85rem',
-              background: 'transparent',
+              px: 2, py: 1, fontSize: '0.85rem', background: 'transparent',
             },
           }}
         />
-      </Box>
+      </Box>)}
 
-      <Box
-        sx={{
-          width: '100%',
-          maxWidth: 300,
-          background: darkMode ? '#0d0d0d' : '#e0e0e0',
-          borderRadius: '20px',
-          boxShadow: darkMode
-            ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
-            : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
-          border: `1px solid ${darkMode ? '#222' : '#ccc'}`,
-          zIndex: 1,
-          position: 'relative',
-        }}
-      >
+      {/* Input: Difficulty */}
+      {!agentCreated && (
+      <Box sx={{
+        width: '100%', maxWidth: 300, background: darkMode ? '#0d0d0d' : '#e0e0e0',
+        borderRadius: '20px', boxShadow: darkMode
+          ? 'inset 3px 3px 8px #000, inset -3px -3px 8px #1a1a1a'
+          : 'inset 3px 3px 8px #c0c0c0, inset -3px -3px 8px #ffffff',
+        border: `1px solid ${darkMode ? '#222' : '#ccc'}`, zIndex: 1
+      }}>
         <TextField
-          fullWidth
-          placeholder="difficulty"
+          fullWidth placeholder="Difficulty"
           name="difficulty"
           value={formData.difficulty}
           onChange={handleInputChange}
@@ -190,53 +161,87 @@ export default function LoginPage() {
             disableUnderline: true,
             sx: {
               color: darkMode ? 'white' : 'black',
-              px: 2,
-              py: 1,
-              fontSize: '0.85rem',
-              background: 'transparent',
+              px: 2, py: 1, fontSize: '0.85rem', background: 'transparent',
             },
           }}
         />
-      </Box>
+      </Box>)}
 
-      <Box sx={{ width: '100%', maxWidth: 300, mx: 'auto', zIndex: 1 }}>
-        <Button
-          fullWidth
-          onClick={handleAgent}
-          disabled={loading}
-          sx={{
-            py: 1.1,
-            borderRadius: '20px',
-            fontSize: '0.85rem',
-            textTransform: 'none',
-            color: '#fff',
-            background: '#000',
-            border: darkMode
-              ? `1px solid ${theme.palette.divider}`
-              : `2px solid ${theme.palette.divider}`,
-            '&:hover': {
-              background: darkMode ? '#1a1a1a' : '#222',
-            },
-            '&:focus-visible': {
-              outline: 'none',
-              borderColor: '#66ccff',
-              boxShadow: '0 0 6px 2px #66ccff',
-            },
-          }}
-        >
-          {loading ? <CircularProgress size={20} sx={{ color: 'white' }} /> : 'Make a Quiz'}
-        </Button>
-      </Box>
+      {!agentCreated && (
+        <Box sx={{ width: '100%', maxWidth: 300 }}>
+          <Button
+            fullWidth
+            onClick={handleAgent}
+            disabled={loading}
+            sx={{
+              py: 1.1,
+              borderRadius: '20px',
+              fontSize: '0.85rem',
+              textTransform: 'none',
+              color: '#fff',
+              background: '#000',
+              border: darkMode
+                ? `1px solid ${theme.palette.divider}`
+                : `2px solid ${theme.palette.divider}`,
+              '&:hover': {
+                background: darkMode ? '#1a1a1a' : '#222',
+              },
+            }}
+          >
+            {loading ? <CircularProgress size={20} sx={{ color: 'white' }} /> : 'Generate Quiz'}
+          </Button>
+        </Box>
+      )}
 
-      <Typography
-        sx={{
-          color: darkMode ? '#aaa' : '#555',
-          mt: 1,
-          fontSize: '0.75rem',
-          zIndex: 1,
-        }}
-      > 
-      IT IS NOT STABLE YET, WE ARE WORKING ON IT. YOU MIGHT NEED TO TRY MULTIPLE TIMES TO SUCCESSFULLY CREATE A QUIZ
+      {agentCreated && (
+        <>
+          {/* Sliders */}
+          <Box sx={{ width: '100%', maxWidth: 300, display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box>
+              <Typography sx={{ fontSize: '0.85rem', color: darkMode ? '#ccc' : '#666' }}>
+                Time per Question: {time} seconds
+              </Typography>
+              <Slider value={time} onChange={(_, val) => setTime(val)} min={2} max={30} step={1}
+                sx={{ color: '#66ccff' }} />
+            </Box>
+            <Box>
+              <Typography sx={{ fontSize: '0.85rem', color: darkMode ? '#ccc' : '#666' }}>
+                No. of Questions: {number}
+              </Typography>
+              <Slider value={number} onChange={(_, val) => setNumber(val)} min={5} max={25} step={1}
+                sx={{ color: '#66ccff' }} />
+            </Box>
+            {/* Privacy Switch */}
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Typography sx={{ fontSize: '0.85rem', color: darkMode ? '#ccc' : '#666', mr: 2 }}>
+                Private:
+              </Typography>
+              <Switch checked={privacy} onChange={e => setPrivacy(e.target.checked)} />
+            </Box>
+            {/* Create Room Button */}
+            <Button
+              fullWidth
+              onClick={handleCreate}
+              sx={{
+                py: 1.1,
+                borderRadius: '20px',
+                fontSize: '0.85rem',
+                textTransform: 'none',
+                color: '#fff',
+                background: '#000',
+                '&:hover': {
+                  background: darkMode ? '#1a1a1a' : '#222',
+                },
+              }}
+            >
+              Create Room
+            </Button>
+          </Box>
+        </>
+      )}
+
+      <Typography sx={{ color: darkMode ? '#aaa' : '#555', mt: 2, fontSize: '0.75rem', zIndex: 1 }}>
+        IT IS NOT STABLE YET, WE ARE WORKING ON IT. YOU MIGHT NEED TO TRY MULTIPLE TIMES TO SUCCESSFULLY CREATE A QUIZ
       </Typography>
     </Box>
   );

@@ -1,92 +1,92 @@
 [
   {
     "QuestionId": 1,
-    "Ques": "What is the process called when plants make their own food?",
-    "OptionA": "Respiration",
-    "OptionB": "Photosynthesis",
-    "OptionC": "Cellular Respiration",
-    "OptionD": "Mitosis",
-    "Answer": "Photosynthesis"
+    "Ques": "What is the value of 2 + 2?",
+    "OptionA": "3",
+    "OptionB": "4",
+    "OptionC": "5",
+    "OptionD": "6",
+    "Answer": "B. 4"
   },
   {
     "QuestionId": 2,
-    "Ques": "What is the largest planet in our solar system?",
-    "OptionA": "Earth",
-    "OptionB": "Saturn",
-    "OptionC": "Jupiter",
-    "OptionD": "Uranus",
-    "Answer": "Jupiter"
+    "Ques": "If Sally has 12 pencils and she gives 4 to her friend, how many pencils does Sally have left?",
+    "OptionA": "6",
+    "OptionB": "8",
+    "OptionC": "12",
+    "OptionD": "16",
+    "Answer": "A. 8"
   },
   {
     "QuestionId": 3,
-    "Ques": "What is the scientific term for the 'building blocks of life'?",
-    "OptionA": "Cells",
-    "OptionB": "Molecules",
-    "OptionC": "Atoms",
-    "OptionD": "Tissues",
-    "Answer": "Cells"
+    "Ques": "What is the result of 5 x 3?",
+    "OptionA": "15",
+    "OptionB": "16",
+    "OptionC": "17",
+    "OptionD": "18",
+    "Answer": "A. 15"
   },
   {
     "QuestionId": 4,
-    "Ques": "What is the process called when an organism gets bigger and stronger?",
-    "OptionA": "Photosynthesis",
-    "OptionB": "Mitosis",
-    "OptionC": "Growth",
-    "OptionD": "Development",
-    "Answer": "Growth"
+    "Ques": "If a book costs $15 and you pay with a $20 bill, how much change will you get?",
+    "OptionA": "$2",
+    "OptionB": "$3",
+    "OptionC": "$4",
+    "OptionD": "$5",
+    "Answer": "A. $5"
   },
   {
     "QuestionId": 5,
-    "Ques": "What is the scientific term for the 'study of the structure of the Earth'?",
-    "OptionA": "Geology",
-    "OptionB": "Geography",
-    "OptionC": "Meteorology",
-    "OptionD": "Astronomy",
-    "Answer": "Geology"
+    "Ques": "What is the value of 7 - 1?",
+    "OptionA": "5",
+    "OptionB": "6",
+    "OptionC": "8",
+    "OptionD": "9",
+    "Answer": "A. 6"
   },
   {
     "QuestionId": 6,
-    "Ques": "What is the term for the movement of water through a plant, from the roots to the leaves?",
-    "OptionA": "Respiration",
-    "OptionB": "Photosynthesis",
-    "OptionC": "Transpiration",
-    "OptionD": "Osmostosis",
-    "Answer": "Transpiration"
+    "Ques": "If you have $8 and you spend $2 on a toy, how much money do you have left?",
+    "OptionA": "$4",
+    "OptionB": "$6",
+    "OptionC": "$8",
+    "OptionD": "$10",
+    "Answer": "B. $6"
   },
   {
     "QuestionId": 7,
-    "Ques": "What is the term for the process by which an organism becomes reproductively mature?",
-    "OptionA": "Mitosis",
-    "OptionB": "Meiosis",
-    "OptionC": "Gametogenesis",
-    "OptionD": "Cellular Respiration",
-    "Answer": "Gametogenesis"
+    "Ques": "What is the result of 9 ÷ 3?",
+    "OptionA": "2",
+    "OptionB": "3",
+    "OptionC": "4",
+    "OptionD": "5",
+    "Answer": "B. 3"
   },
   {
     "QuestionId": 8,
-    "Ques": "What is the term for the 'study of the study of the universe'?",
-    "OptionA": "Astrology",
-    "OptionB": "Astronomy",
-    "OptionC": "Geology",
-    "OptionD": "Meteorology",
-    "Answer": "Astrology"
+    "Ques": "If a jar contains 18 marbles, and 6 of them are red, what fraction of the marbles are red?",
+    "OptionA": "1/2",
+    "OptionB": "2/3",
+    "OptionC": "1/3",
+    "OptionD": "3/4",
+    "Answer": "C. 1/3"
   },
   {
     "QuestionId": 9,
-    "Ques": "What is the term for the movement of particles in a gas, from an area of high pressure to an area of low pressure?",
-    "OptionA": "Diffusion",
-    "OptionB": "Osmosis",
-    "OptionC": "Evaporation",
-    "OptionD": "Air Current",
-    "Answer": "Diffusion"
+    "Ques": "What is the value of 24 ÷ 4?",
+    "OptionA": "4",
+    "OptionB": "5",
+    "OptionC": "6",
+    "OptionD": "8",
+    "Answer": "C. 6"
   },
   {
     "QuestionId": 10,
-    "Ques": "What is the term for the type of rock that can be formed from the cooling and solidification of magma?",
-    "OptionA": "Igneous",
-    "OptionB": "Sedimentary",
-    "OptionC": "Metamorphic",
-    "OptionD": "Magmatic",
-    "Answer": "Igneous"
+    "Ques": "If a pencil is 15 cm long and it is divided into 3 parts, how long is each part?",
+    "OptionA": "3 cm",
+    "OptionB": "5 cm",
+    "OptionC": "7.5 cm",
+    "OptionD": "10 cm",
+    "Answer": "C. 7.5 cm"
   }
 ]
