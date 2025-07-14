@@ -4,7 +4,7 @@ import AuthProtectedRoute from './middleware/AuthProtectionRoute'
 import FlowProtectedRoute from './middleware/FlowProtectionRoute'
 import LiveFlowProtectedRouteHost from './middleware/LiveQuizFlowProtectionHost';
 import Signup from './pages/Signup';
-import Dashboard from './pages/Dasboard'
+import QuizAgent from './pages/QuizAgent'
 import QuizRooms from './pages/QuizRoomsPage'
 import LobbyPage from './pages/LobbyPage'
 import LivePage from './pages/LiveQuizPage'
@@ -23,6 +23,12 @@ function App() {
           </AuthProtectedRoute>
         }/>
         
+        <Route path="/quizrooms/quiz-agent" element={
+          <AuthProtectedRoute>
+            <QuizAgent />
+          </AuthProtectedRoute>
+        }/>
+
         <Route path="/quizrooms/:quizId/lobby" element={
           <AuthProtectedRoute>
             <FlowProtectedRoute currentPage="lobby">
