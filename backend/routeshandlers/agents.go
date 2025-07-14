@@ -14,7 +14,7 @@ import (
 func handleQuizAgent(context *gin.Context) {
 
 	agent_url := "https://thesurfacequiz-ai-agent.up.railway.app/query"
-	contentType := "applicaton/json"
+	contentType := "application/json"
 	var client_request models.ClientRequest
 
 	err := context.ShouldBindJSON(&client_request)
@@ -35,6 +35,11 @@ func handleQuizAgent(context *gin.Context) {
 		return
 	}
 
+	if response.StatusCode != http.StatusOK {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "agent returned non-200"})
+		return
+	}
+
 	defer response.Body.Close()
 
 	body, err := io.ReadAll(response.Body)
@@ -43,11 +48,21 @@ func handleQuizAgent(context *gin.Context) {
 		return
 	}
 
-	var prettyJSON bytes.Buffer
-
-	err = json.Indent(&prettyJSON, body, "", "  ")
+	//getting only questions
+	var responseMap map[string]json.RawMessage
+	err = json.Unmarshal(body, &responseMap)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "file formatting error"})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "file formatting error: map"})
+		return
+	}
+
+	questionsOnlyBody := responseMap["questions"]
+
+	var prettyJSON bytes.Buffer
+	err = json.Indent(&prettyJSON, questionsOnlyBody, "", "  ")
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "file formatting error: pretty JSON "})
+		return
 	}
 
 	err = os.WriteFile("database/agent.json", prettyJSON.Bytes(), 0644)

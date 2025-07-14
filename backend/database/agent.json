@@ -1,94 +1,92 @@
-{
-  "questions": [
-    {
-      "QuestionId": 1,
-      "Ques": "Find the derivative of the function f(x) = 2x^3 + 5x^2 - 3x + 1.",
-      "OptionA": "12x^2 + 10x - 3",
-      "OptionB": "6x^2 + 10x - 3",
-      "OptionC": "3x^2 + 10x - 3",
-      "OptionD": "x^2 + 10x - 3",
-      "Answer": "6x^2 + 10x - 3"
-    },
-    {
-      "QuestionId": 2,
-      "Ques": "Solve the equation: (x + 2)(x - 3) = 0.",
-      "OptionA": "x = -2 and x = 3",
-      "OptionB": "x = 2 and x = -3",
-      "OptionC": "x = -2 or x = 3",
-      "OptionD": "x = 2 or x = -3",
-      "Answer": "x = -2 and x = 3"
-    },
-    {
-      "QuestionId": 3,
-      "Ques": "Find the values of x and y that satisfy the system of equations: 2x + 3y = 10 and x - 2y = -3.",
-      "OptionA": "x = 2 and y = 1",
-      "OptionB": "x = 3 and y = 2",
-      "OptionC": "x = 4 and y = 3",
-      "OptionD": "x = 5 and y = 4",
-      "Answer": "x = 2 and y = 1"
-    },
-    {
-      "QuestionId": 4,
-      "Ques": "Find the volume of the solid formed by rotating the region bounded by y = x^2, y = 0, and x = 1 about the x-axis.",
-      "OptionA": "π/3 cubic units",
-      "OptionB": "2π/3 cubic units",
-      "OptionC": "π cubic units",
-      "OptionD": "4π/3 cubic units",
-      "Answer": "2π/3 cubic units"
-    },
-    {
-      "QuestionId": 5,
-      "Ques": "Solve the equation: e^(x-2) = 5.",
-      "OptionA": "x = 1",
-      "OptionB": "x = 2",
-      "OptionC": "x = 3",
-      "OptionD": "x = 4",
-      "Answer": "x = 2 + ln(5)"
-    },
-    {
-      "QuestionId": 6,
-      "Ques": "Find the area under the curve y = x^2 + 3x + 2 between x = 1 and x = 3.",
-      "OptionA": "12 square units",
-      "OptionB": "18 square units",
-      "OptionC": "20 square units",
-      "OptionD": "24 square units",
-      "Answer": "20 square units"
-    },
-    {
-      "QuestionId": 7,
-      "Ques": "Solve the equation: sin(x) = cos(x).",
-      "OptionA": "x = π/4",
-      "OptionB": "x = π/2",
-      "OptionC": "x = 3π/4",
-      "OptionD": "x = π",
-      "Answer": "x = π/4"
-    },
-    {
-      "QuestionId": 8,
-      "Ques": "Find the point symmetrical to (2, 3) about the origin.",
-      "OptionA": "(-2, -3)",
-      "OptionB": "(-2, 3)",
-      "OptionC": "(2, -3)",
-      "OptionD": "(2, 3)",
-      "Answer": "(-2, -3)"
-    },
-    {
-      "QuestionId": 9,
-      "Ques": "Solve the equation: 2x^2 + 5x - 3 = 0.",
-      "OptionA": "x = 1 and x = 2",
-      "OptionB": "x = -1 and x = -2",
-      "OptionC": "x = 1 or x = -2",
-      "OptionD": "x = 2 or x = -1",
-      "Answer": "x = 1 and x = -3/2"
-    },
-    {
-      "QuestionId": 10,
-      "Ques": "Find the limit as x approaches 2 of the function f(x) = (x - 2)^2 / (x - 2).",
-      "OptionA": "1",
-      "OptionB": "2",
-      "OptionC": "3",
-      "OptionD": "4",
-      "Answer": "2"
-    }
-  ]
-}
+[
+  {
+    "QuestionId": 1,
+    "Ques": "What is the value of x in the equation 2x + 5 = 11?",
+    "OptionA": "2",
+    "OptionB": "3",
+    "OptionC": "4",
+    "OptionD": "5",
+    "Answer": "3"
+  },
+  {
+    "QuestionId": 2,
+    "Ques": "What is the sum of 5 + 4?",
+    "OptionA": "6",
+    "OptionB": "7",
+    "OptionC": "8",
+    "OptionD": "9",
+    "Answer": "9"
+  },
+  {
+    "QuestionId": 3,
+    "Ques": "What is the product of 3 × 4?",
+    "OptionA": "8",
+    "OptionB": "12",
+    "OptionC": "15",
+    "OptionD": "20",
+    "Answer": "12"
+  },
+  {
+    "QuestionId": 4,
+    "Ques": "What is the value of y in the equation y - 3 = 7?",
+    "OptionA": "4",
+    "OptionB": "5",
+    "OptionC": "6",
+    "OptionD": "8",
+    "Answer": "10"
+  },
+  {
+    "QuestionId": 5,
+    "Ques": "What is the result of 7 - 2?",
+    "OptionA": "3",
+    "OptionB": "4",
+    "OptionC": "5",
+    "OptionD": "6",
+    "Answer": "5"
+  },
+  {
+    "QuestionId": 6,
+    "Ques": "What is the product of 2 × 6?",
+    "OptionA": "8",
+    "OptionB": "10",
+    "OptionC": "12",
+    "OptionD": "14",
+    "Answer": "12"
+  },
+  {
+    "QuestionId": 7,
+    "Ques": "What is the value of x in the equation x + 2 = 9?",
+    "OptionA": "5",
+    "OptionB": "6",
+    "OptionC": "7",
+    "OptionD": "8",
+    "Answer": "7"
+  },
+  {
+    "QuestionId": 8,
+    "Ques": "What is the result of 9 + 1?",
+    "OptionA": "8",
+    "OptionB": "9",
+    "OptionC": "10",
+    "OptionD": "11",
+    "Answer": "10"
+  },
+  {
+    "QuestionId": 9,
+    "Ques": "What is the product of 4 × 3?",
+    "OptionA": "8",
+    "OptionB": "10",
+    "OptionC": "12",
+    "OptionD": "15",
+    "Answer": "12"
+  },
+  {
+    "QuestionId": 10,
+    "Ques": "What is the value of y in the equation y + 4 = 10?",
+    "OptionA": "4",
+    "OptionB": "5",
+    "OptionC": "6",
+    "OptionD": "8",
+    "Answer": "6"
+  }
+]
