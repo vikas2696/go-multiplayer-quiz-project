@@ -24,15 +24,15 @@ export default function LoginPage() {
   const [formData, setFormData] = useState({ topic: '', difficulty: '' });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [darkMode, setDarkMode] = useState(true);
+  const theme = useTheme();
 
   const token = localStorage.getItem('token');
-  const decoded = jwtDecode(token);
+  //const decoded = jwtDecode(token);
 
   const handleAgent = () => {
-    console.log('this is the data to be send\n');
-    console.log(formData);
 
-    if(topic === '' || difficulty === '') {
+    if(formData.topic === '' || formData.difficulty === '') {
       toast.error('Please fill in all the fields!');
       return;
     }
@@ -41,7 +41,7 @@ export default function LoginPage() {
 
     axios.post(`${config.BASE_URL}/quiz-agent`, {
       "Topic": formData.topic,
-      "NoQ": 10,
+      "NoQ": '10',
       "Difficulty": formData.difficulty,
     }, {
       headers: {
@@ -54,6 +54,7 @@ export default function LoginPage() {
       //navigate(`/quizrooms/${response.data.quiz_id}/lobby`);
     }).catch(err => {
       toast.error(GetErrorMessage(err));
+      setLoading(false)
     });
 
   };

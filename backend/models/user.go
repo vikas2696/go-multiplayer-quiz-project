@@ -14,6 +14,12 @@ type User struct {
 	Password string
 }
 
+type ClientRequest struct {
+	Topic      string `json:"topic"`
+	NoQ        string `json:"noq"`
+	Difficulty string `json:"difficulty"`
+}
+
 func (user *User) SaveUserToDB() error {
 
 	userQuery := "INSERT INTO users (username, password) VALUES ($1, $2) RETURNING userid"
