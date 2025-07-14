@@ -1,92 +1,92 @@
 [
   {
     "QuestionId": 1,
-    "Ques": "What is the value of 2 + 2?",
+    "Ques": "5 + 2 = ?",
     "OptionA": "3",
-    "OptionB": "4",
-    "OptionC": "5",
-    "OptionD": "6",
-    "Answer": "B. 4"
+    "OptionB": "5",
+    "OptionC": "7",
+    "OptionD": "9",
+    "Answer": "7"
   },
   {
     "QuestionId": 2,
-    "Ques": "If Sally has 12 pencils and she gives 4 to her friend, how many pencils does Sally have left?",
-    "OptionA": "6",
-    "OptionB": "8",
-    "OptionC": "12",
-    "OptionD": "16",
-    "Answer": "A. 8"
-  },
-  {
-    "QuestionId": 3,
-    "Ques": "What is the result of 5 x 3?",
-    "OptionA": "15",
-    "OptionB": "16",
-    "OptionC": "17",
-    "OptionD": "18",
-    "Answer": "A. 15"
-  },
-  {
-    "QuestionId": 4,
-    "Ques": "If a book costs $15 and you pay with a $20 bill, how much change will you get?",
-    "OptionA": "$2",
-    "OptionB": "$3",
-    "OptionC": "$4",
-    "OptionD": "$5",
-    "Answer": "A. $5"
-  },
-  {
-    "QuestionId": 5,
-    "Ques": "What is the value of 7 - 1?",
-    "OptionA": "5",
-    "OptionB": "6",
-    "OptionC": "8",
-    "OptionD": "9",
-    "Answer": "A. 6"
-  },
-  {
-    "QuestionId": 6,
-    "Ques": "If you have $8 and you spend $2 on a toy, how much money do you have left?",
-    "OptionA": "$4",
-    "OptionB": "$6",
-    "OptionC": "$8",
-    "OptionD": "$10",
-    "Answer": "B. $6"
-  },
-  {
-    "QuestionId": 7,
-    "Ques": "What is the result of 9 ÷ 3?",
+    "Ques": "The value of x in the equation 2x = 6 is?",
     "OptionA": "2",
     "OptionB": "3",
     "OptionC": "4",
     "OptionD": "5",
-    "Answer": "B. 3"
+    "Answer": "3"
+  },
+  {
+    "QuestionId": 3,
+    "Ques": "What is the circumference of a circle with radius 4 cm?",
+    "OptionA": "8 cm",
+    "OptionB": "12 cm",
+    "OptionC": "16 cm",
+    "OptionD": "20 cm",
+    "Answer": "16 cm"
+  },
+  {
+    "QuestionId": 4,
+    "Ques": "What is the value of y in the equation y - 3 = 7?",
+    "OptionA": "4",
+    "OptionB": "5",
+    "OptionC": "8",
+    "OptionD": "10",
+    "Answer": "10"
+  },
+  {
+    "QuestionId": 5,
+    "Ques": "The sum of 3.5 and 2.8 is?",
+    "OptionA": "6.2",
+    "OptionB": "6.3",
+    "OptionC": "6.5",
+    "OptionD": "6.7",
+    "Answer": "6.3"
+  },
+  {
+    "QuestionId": 6,
+    "Ques": "What is the product of 4 and 9?",
+    "OptionA": "28",
+    "OptionB": "34",
+    "OptionC": "36",
+    "OptionD": "40",
+    "Answer": "36"
+  },
+  {
+    "QuestionId": 7,
+    "Ques": "The difference between 15 and 9 is?",
+    "OptionA": "2",
+    "OptionB": "3",
+    "OptionC": "6",
+    "OptionD": "8",
+    "Answer": "6"
   },
   {
     "QuestionId": 8,
-    "Ques": "If a jar contains 18 marbles, and 6 of them are red, what fraction of the marbles are red?",
-    "OptionA": "1/2",
-    "OptionB": "2/3",
-    "OptionC": "1/3",
-    "OptionD": "3/4",
-    "Answer": "C. 1/3"
+    "Ques": "What is the value of x in the equation 4x = 20?",
+    "OptionA": "2",
+    "OptionB": "3",
+    "OptionC": "4",
+    "OptionD": "5",
+    "Answer": "5"
   },
   {
     "QuestionId": 9,
-    "Ques": "What is the value of 24 ÷ 4?",
-    "OptionA": "4",
-    "OptionB": "5",
-    "OptionC": "6",
-    "OptionD": "8",
-    "Answer": "C. 6"
+    "Ques": "The sum of 25 and 11 is?",
+    "OptionA": "30",
+    "OptionB": "31",
+    "OptionC": "32",
+    "OptionD": "36",
+    "Answer": "36"
   },
   {
     "QuestionId": 10,
-    "Ques": "If a pencil is 15 cm long and it is divided into 3 parts, how long is each part?",
-    "OptionA": "3 cm",
-    "OptionB": "5 cm",
-    "OptionC": "7.5 cm",
-    "OptionD": "10 cm",
-    "Answer": "C. 7.5 cm"
+    "Ques": "What is the result of multiplying 7 by 3?",
+    "OptionA": "17",
+    "OptionB": "20",
+    "OptionC": "21",
+    "OptionD": "24",
+    "Answer": "21"
   }
 ]

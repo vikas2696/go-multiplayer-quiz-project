@@ -25,6 +25,7 @@ export default function LoginPage() {
   const [number, setNumber] = useState(10);
   const [privacy, setPrivacy] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+  const [header, setHeader] = useState('Try searching for any topic of your choice, I will make a quiz for you.')
 
   const theme = useTheme();
   const navigate = useNavigate();
@@ -52,7 +53,10 @@ export default function LoginPage() {
       toast.success(response.data.message);
       setLoading(false);
       if (response.status === 201) {
+        setHeader('YAYY! FOUND IT! Now create the room and enjoy the quiz')
         setAgentCreated(true);
+      } else {
+        setHeader('TRY AGAIN! I WILL GET THERE EVENTUALLY!')
       }
     }).catch(err => {
       toast.error(GetErrorMessage(err));
@@ -111,10 +115,10 @@ export default function LoginPage() {
       <Starbg />
 
       <Typography
-        variant="h5"
-        sx={{ mb: 3, fontWeight: 700, letterSpacing: '2px', userSelect: 'none', zIndex: 1, textAlign: 'center' }}
+        variant="h4"
+        sx={{ mb: 3, fontWeight: 600, letterSpacing: '2px', userSelect: 'none', zIndex: 1, textAlign: 'center' }}
       >
-        The Surface Quiz Generator
+        {header}
       </Typography>
 
       {/* Input: Topic */}
@@ -188,7 +192,7 @@ export default function LoginPage() {
               },
             }}
           >
-            {loading ? <CircularProgress size={20} sx={{ color: 'white' }} /> : 'Generate Quiz'}
+            {loading ? <CircularProgress size={18} sx={{ color: 'white' }} /> : 'SEARCH'}
           </Button>
         </Box>
       )}
@@ -240,9 +244,10 @@ export default function LoginPage() {
         </>
       )}
 
-      <Typography sx={{ color: darkMode ? '#aaa' : '#555', mt: 2, fontSize: '0.75rem', zIndex: 1 }}>
-        IT IS NOT STABLE YET, WE ARE WORKING ON IT. YOU MIGHT NEED TO TRY MULTIPLE TIMES TO SUCCESSFULLY CREATE A QUIZ
-      </Typography>
+      {!agentCreated && (
+        <Typography sx={{ color: darkMode ? '#aaa' : '#555', mt: 2, fontSize: '0.75rem', zIndex: 1 }}>
+          TRY TO BE AS CONCISE AS POSSIBLE. IF TOPIC NOT FOUND, TRY AGAIN WITH A SLIGHTLY DIFFERNTT INPUT.
+        </Typography>)}
     </Box>
   );
 }
