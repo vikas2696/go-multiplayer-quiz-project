@@ -18,6 +18,7 @@ import Starbg from '../components/Starbg'
 import { Sun, Moon, Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
 import { GetErrorMessage } from '../utils/ErrorHandler';
+import { jwtDecode } from 'jwt-decode';
 import isTokenValid from '../utils/TokenHandler';
 
 export default function LoginPage() {
@@ -28,7 +29,7 @@ export default function LoginPage() {
   const theme = useTheme();
 
   const token = localStorage.getItem('token');
-  //const decoded = jwtDecode(token);
+  const decoded = jwtDecode(token);
 
   const handleAgent = () => {
 
@@ -51,6 +52,11 @@ export default function LoginPage() {
     }).then(response => {
       toast.success(response.data.message);
       setLoading(false)
+      if (response.status === 201) {
+        handleCreate()
+        //toast.success("ready to make quizroom");
+      }
+     
       //navigate(`/quizrooms/${response.data.quiz_id}/lobby`);
     }).catch(err => {
       toast.error(GetErrorMessage(err));
@@ -59,6 +65,28 @@ export default function LoginPage() {
 
   };
 
+  const handleCreate = () => {
+    axios.post(`${config.BASE_URL}/create-quizroom`, {
+      "Players": [{
+        "PlayerId": decoded.user_id,
+        "Username": decoded.username
+      }],
+      "TimerTime": 10,
+      "QuizTopic": "agent",
+      "PlayersAnswers": {0: String("10"), //using this for number of questions
+                         1: String("false")} //using this for public/private
+    }, {
+      headers: {
+        Authorization: `${token}`,
+        'Content-Type': 'application/json',
+      }
+    }).then(response => {
+      toast.success(response.data.message);
+      navigate(`/quizrooms/${response.data.quiz_id}/lobby`);
+    }).catch(err => {
+      toast.error(GetErrorMessage(err));
+    });
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
