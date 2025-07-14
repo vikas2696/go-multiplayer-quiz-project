@@ -14,7 +14,6 @@ func RunRoutes(server *gin.Engine) {
 
 	server.GET("/quizrooms/:id/ws/lobby", webSocketLobby)
 	server.GET("/quizrooms/:id/ws/live", webSocketLive)
-	server.GET("/:topic/update-questions", handleUpdateQuestions)
 
 	AuthOnlyRoutes := server.Group("/", middleware.AuthMiddeleware)
 	{
