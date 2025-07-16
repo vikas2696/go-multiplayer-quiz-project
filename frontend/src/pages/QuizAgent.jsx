@@ -59,7 +59,8 @@ export default function LoginPage() {
         setHeader('TRY AGAIN! I WILL GET THERE EVENTUALLY!')
       }
     }).catch(err => {
-      toast.error(GetErrorMessage(err));
+      //toast.error(GetErrorMessage(err));
+      toast.error("failed to search try again!");
       setLoading(false);
     });
   };
