@@ -25,7 +25,7 @@ func GetSessionToken(userId int64, username string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"user_id":  userId,
 		"username": username,
-		"exp":      time.Now().Add(time.Hour * 12).Unix(),
+		"exp":      time.Now().Add(time.Hour * 24 * 90).Unix(),
 	})
 
 	return token.SignedString([]byte(secretKey))
